@@ -1,0 +1,22 @@
+{
+  "purpose": "research",
+  "train_manifest": "manifests/trans10k/train.json",
+  "val_manifest": "manifests/trans10k/validation.json",
+  "size": 512,
+  "pretrained": true,
+  "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+  "boundary": false,
+  "augmentation": false,
+  "boundary_radius": 1,
+  "boundary_weight": 0.1,
+  "seed": 42,
+  "batch_size": 8,
+  "epochs": 30,
+  "lr": 0.00006,
+  "weight_decay": 0.01,
+  "amp": true,
+  "amp_dtype": "bfloat16",
+  "device": "cuda",
+  "workers": 0,
+  "cpu_threads": 4
+}

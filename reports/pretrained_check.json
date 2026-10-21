@@ -1,0 +1,13 @@
+{
+  "pretrained_encoder": true,
+  "revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+  "logits_shape": [
+    2,
+    1,
+    16,
+    16
+  ],
+  "finite": true,
+  "encoder_gradient": 9.81289005279541,
+  "device": "cpu"
+}

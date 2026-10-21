@@ -1,0 +1,49 @@
+本次交付状态（2026-10-21，Asia/Shanghai）
+
+已完成的工程实现
+- RGB -> SegFormer-B0 -> 原图尺寸二值 mask/overlay。
+- 固定版本 ImageNet 编码器、新 decoder、全部 fine-tune。
+- V1 官方 RGB mask 严格解码；255 保留为前景。
+- train/validation/test manifest 审计、尺寸/数量/跨 split 精确重复检查。
+- BCE+Dice、双卷积辅助边界头、平衡边界 BCE、void 邻域屏蔽。
+- A/B/C/D 四组共享预算配置、光度增强、12 固定条件评估。
+- 原图尺寸 pooled foreground IoU/F1 与 image-mean Boundary IoU。
+- hard/easy 子集、逐图 CSV、四联图、checkpoint/配置/环境记录。
+- 中文五人计划、优化 TXT、课程验收清单、GitHub PR 模板和 CI。
+
+实际验证（不是估计或虚构的实验结果）
+1) pytest：32 项通过。结构化记录见 pytest.xml。
+2) CPU smoke：12 张合成 train、4 张 validation、4 张 test；真实 B0 结构训练三 epoch。
+   成功保存 best.pt/last.pt、重载模型、评估 clean+12 扰动、输出单图预测。
+   最终代码原始运行在 runs/smoke_final（该目录不上传 Git）。小型摘要见 smoke_summary.json。
+3) 预测文件核验：mask 为输入原始 112x80 尺寸，像素只含 0/255。
+4) 真正 ImageNet 权重加载及 encoder 反向传播已通过，见 pretrained_check.json。
+5) CUDA 12.8 / PyTorch 2.7.1+cu128，RTX 5090 Laptop GPU：
+   预训练 B0，512 输入、batch 2、BF16 AMP、边界损失，四步前向/反向成功。
+   记录见 gpu_check.json；输入为合成张量，不是 Trans10K GPU 性能基准。
+6) 实际 train/evaluate 入口的 GPU smoke 也完成；记录见 gpu_engine_summary.json。
+7) Python compileall 通过；大文件/原始 PDF/环境/数据已由 .gitignore 排除。
+
+实测修复记录
+实际 GPU 数据管道首次使用 FP16/默认 GradScaler 时遇到非有限梯度，被检查拦截。
+已改为本机支持的 BF16（无需 loss scaling），重新完成实际 train -> checkpoint ->
+CUDA evaluate 的流程；失败运行保留于本地 runs/gpu_engine_smoke，未作为成果。
+不支持 BF16 的显卡将 amp=false；所有消融统一相同精度设置。
+
+当前不能声称已完成的内容
+- 未下载/审计完整 Trans10K；未在真实数据上完成正式 A/B/C/D 训练。
+- 没有可用于真实透明物体检测的已训练好 checkpoint。
+- GSD 官方 test 迁移、近重复/标注审计未完成。
+- V2 类别映射、两类别剔除训练、per-category recall 未实现/未完成。
+- 三种子重复、最终六页 CVPR 报告和十分钟展示未完成。
+- 没有满分承诺，老师文件也没有可用于保证成绩的数值阈值。
+
+GPU 工程测试仅说明硬件、依赖和模型路径可运行。
+正式显存/耗时必须用真实数据、正式 batch、完整 validation 测量。
+合成数据 loss/IoU 不得放入正式课程 benchmark 结果表。
+
+GitHub
+目标仓库：https://github.com/YUANJIAYI-UST/MAIE5421_Group24
+已确认仓库初始无分支，并已连接本地 origin。
+初始版本已上传至 main，独立 Linux 环境的 GitHub 自动测试已通过。
+用户要求本次不添加协作者；没有发送邀请。后续授权步骤在 docs/06_GITHUB_COLLABORATION.txt。

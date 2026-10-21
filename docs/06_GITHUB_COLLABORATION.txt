@@ -1,0 +1,58 @@
+GitHub 仓库与五人协作
+目标：https://github.com/YUANJIAYI-UST/MAIE5421_Group24
+本次推送/认证状态以 reports/IMPLEMENTATION_STATUS.txt 为准。
+用户已明确本次不添加其他四位协作者，因此没有自动发出邀请。
+
+一、老师是否要求检查编辑记录？
+提供的 Guidelines v3 和 proposal 没有该要求。
+Guidelines 的 GitHub 地址指向 CVPR 模板，不是代码提交要求。
+仍建议保留真实 Git 记录，支持个人贡献说明与可复现性；Canvas 额外要求需组内确认。
+
+二、后续让其他人获得编辑权限（仓库 owner 操作）
+仓库 Settings -> Access / Collaborators -> Add people，输入准确 GitHub 用户名。
+对方接受邀请后才能直接推送自己的分支。public 仓库可见不代表每个人都能 push。
+官方说明：
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository
+未加权限时公开仓库仍可 fork 后提 PR；课程是否允许公开由组内确认。
+不共享 GitHub 密码或 token；需要登录时只在 GitHub/本机登录窗口操作。
+
+三、每人开始工作
+  git clone https://github.com/YUANJIAYI-UST/MAIE5421_Group24.git
+  cd MAIE5421_Group24
+  git config user.name "你自己的姓名"
+  git config user.email "你自己的 GitHub 邮箱或官方 noreply 邮箱"
+  git switch -c feature/你的任务简称
+  .\scripts\setup.ps1 -Device cuda
+CPU 队员把最后一条改为 -Device cpu。
+Windows 可以先使用 `Get-Content docs/00_START_HERE.txt -Encoding UTF8` 阅读文档。
+
+四、一次任务的真实提交
+修改 -> 运行相关测试 -> git diff -> 只 add 自己这次的文件 -> commit -> push -> PR。
+例：
+  git add transparent_seg/metrics.py tests/test_core.py
+  git commit -m "Validate pooled IoU on variable-size images"
+  git push -u origin feature/你的任务简称
+在 GitHub 发 PR，按模板写问题、行为、验证、协议影响；找另一人 review 后合并。
+不要每个人直接改 main；不 force push 共享分支。
+CI checks 应通过后再合并。是否配置强制 branch protection 由 owner 决定。
+
+五、如何保存编辑记录和个人贡献
+  git log --all --date=iso --pretty=fuller
+  git shortlog -sne --all
+  git log --all --stat
+配合 PR discussion、review、Issue 任务、实验 config/hash/log，比 commit 数本身更有意义。
+初始版本作为共同开发起点，后续每个人负责实现、修正、实验与复核。
+报告按实际工作列出个人贡献，并遵守课程合作及引用规范。
+
+六、上传与归档范围
+上传：代码、tests、configs、TXT 计划、CI、已核实的小型检查记录。
+不上传：.venv/.local_deps、data、权重、巨大 runs、原始课程 PDF、凭据。
+完整实验的 checkpoint 可保存在学校共享盘；结果目录记录 hash 和受控下载位置。
+公开发布任何权重/数据前核对其许可及课堂要求。
+
+七、如果本次自动上传因账号尚未登录而停在本地 commit
+使用 GitHub Desktop 登录 owner，Add local repository 指向本目录，执行 Push origin；
+或在本机 Git Credential Manager 完成登录后运行：
+  git push -u origin main
+不需要重建仓库、不需要删文件或重新伪造初始提交。
+若远程在此期间出现其他提交，先 fetch 并检查差异；不要使用 --force。

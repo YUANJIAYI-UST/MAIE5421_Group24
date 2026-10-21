@@ -1,0 +1,76 @@
+可优化与待完成任务（交给五人继续开发）
+优先级 P0=形成可信课程成果必需；P1=兑现 proposal/增强证据；P2=核心完成后探索。
+已实现功能的运行成功不等于实验效果良好。以下明确区分未完成与可选优化。
+
+P0-01 正式数据审计与基线训练 [CHOU + WANG]
+当前：官方目录解析、编码/尺寸/数量/精确跨 split 重复检查已实现。
+待做：真实 V1 下载、人工叠图审计、近重复候选复核、跑完 A。
+验收：5000/1000/4428；固定 manifest；real validation/test 表，不拿 smoke 填数。
+
+P0-02 正式边界参数选择与四组消融 [YIN + WANG]
+当前：边界辅助头、平衡 BCE、r/lambda、A/B/C/D 已实现。
+待做：validation 上 r=1/2、lambda=0.1/0.3 网格，固定同一组用于 B/D。
+建议：先以 validation foreground IoU 选择，若同分再看 Boundary IoU；提前登记规则。
+验收：初始化 hash、预算、种子、数据一致；清楚报告是否提高及其代价。
+
+P0-03 梯度/塌缩诊断 [WANG]
+当前：有限 loss、梯度裁剪、CUDA AMP、最佳 checkpoint 保存已实现。
+待做：固定 8-16 张真实训练图过拟合，检查前景比例、预测直方图、每模块梯度。
+优化：resume 应同时保存 optimizer/scheduler/RNG/DataLoader epoch 状态；
+当前 BF16 无 scaler，若后续增加 FP16，则还要保存 scaler 并处理跳过步的公平预算。
+验收：中断续训与不中断轨迹一致（允许已说明的 GPU 数值容差）。
+当前 last.pt 用于最终模型恢复，不提供无缝续训；请勿把它描述成完整 resume。
+
+P0-04 可复现真实评估与定性案例 [ZHANG]
+当前：原尺寸 pooled IoU/F1、Boundary IoU、hard 子集、CSV、固定前若干张四联图。
+待做：误差分桶、失败样本排序、固定代表性样本、统一可读图题与局部放大。
+验收：训练/选模/测试隔离；包括失败案例，不只展示最好样本。
+
+P1-01 GSD 零微调迁移 [YUAN + CHOU]
+当前：通用 binary_0255 / binary_01 解码和外部 manifest 评估可复用。
+缺项：官方 release 专用导入器、重叠审计、标注语义兼容性检查、实际结果。
+开发：导入为 schema_version=1 的 test manifest；每项保存 image/mask 路径和 hash。
+验收：明确哪些样本排除及原因；GSD test 不参与选择 checkpoint/阈值。
+注意 GSD、GSD-S、GDD 不是同一数据集；本 proposal 指 GSD (CVPR 2021)。
+
+P1-02 V2 两类别隔离协议 [CHOU + ZHANG]
+缺项：V2 解码器、图像 ID 对齐、类别计数、隔离清单、类别 recall 聚合。
+顺序：只看 train/val counts 选两类 -> 写入固定配置 ->
+剔除所有含两类的 train/val 图 -> A/D 从 ImageNet 和新 decoder 开始 ->
+seen-only validation 选模 -> 官方 test 含 held-out 类子集评估。
+训练/二值评估仍使用 V1 mask；V2 只做过滤和类别 recall。
+混合 seen/unseen 的图也必须从训练/验证移除。
+报告每类别 TP/GT 像素形成 recall、背景 FP/(FP+TN)、子集图片/像素数。
+“未见”仅指任务训练未见，不能声称 ImageNet 预训练绝未见过该语义类。
+这是 proposal 核心承诺，尽量完成；若取消需明确说明且评估老师是否接受。
+
+P1-03 多 seed 与不确定性 [ZHANG，其他人各复现一条]
+A/D 用 seeds 42/43/44；相同数据与冻结参数，不从三 seed 选最好作为唯一结果。
+均值与样本标准差要分清；可做 paired image bootstrap，但解释它不同于跨训练 seed 波动。
+四组 main + 两次 held-out = 六次；A/D 各额外两次 = 十次，调参不计入。
+
+P1-04 更完整的审计与重跑能力 [全员]
+冻结软件环境与权重版本；manifest hash 已保存，但运行前重新核验文件 hash 可补上。
+数据移动用 --root；不要改训练/测试归属。精确像素 hash 无法发现重编码/裁剪近重复。
+可以加轻量数据一致性检查、正式报告表汇总器、checkpoint 元数据索引。
+边界 inference 当前不执行辅助头；可导出只含 encoder+seg decoder 的轻量部署权重。
+
+P2-01 结构或损失扩展 [YIN + WANG]
+候选：多尺度边界监督、边界/区域特征交互、更薄目标的采样策略。
+先完整复现 proposal，再新增 E 实验。不要悄悄改 B/D 让原消融失去可比性。
+边界监督本身已有论文先例；创新应表述为具体设计/证据，不能称“首次”。
+
+P2-02 真实场景与效率 [YUAN + ZHANG]
+采集不同照明/背景的自有玻璃图并有一致人工标注；报告采集与标注协议。
+记录输入分辨率、显存、延迟、参数量，讨论精度/速度折中。
+若做额外后处理/阈值校准，只可作为单独实验，不能混入 proposal 固定 0.5 主结果。
+
+P2-03 UI 演示 [任一成员]
+CLI 已能输出 mask/overlay。可增加简单本地图像选择界面，但不是当前得分瓶颈。
+先完成真实实验、分析和报告，再考虑界面美化。
+
+不建议当前做的事
+从头堆大模型、换成生成式扩散而丢失原 proposal 主线；
+同时改分辨率/epoch/增强导致消融不公平；追求漂亮 smoke 分数；
+将二值 foreground IoU 与 TransLab/Trans2Seg multiclass mIoU 直接并列宣称超越；
+让某个同学只做排版而没有与成果相关的技术贡献。

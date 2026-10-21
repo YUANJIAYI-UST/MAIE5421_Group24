@@ -1,0 +1,1 @@
+{"extends": "D_combined.json", "purpose": "pilot", "epochs": 1, "max_steps_per_epoch": 20}

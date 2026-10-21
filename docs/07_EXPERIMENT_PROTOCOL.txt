@@ -1,0 +1,46 @@
+当前实验协议（starter，正式训练前由全组复核冻结）
+
+模型：ImageNet MiT-B0；新初始化 4 层 1x1 通道投影 + 拼接融合 + BN/ReLU/Dropout(0.1)。
+二值 1x1 head。B/D 增加 Conv3x3(256->64)/ReLU/Conv1x1(64->1) 边界 head。
+与标准 SegFormer 的逐像素 MLP 投影数学等价；不是 TransLab 论文原网络复现。
+全部参数 fine-tune；同 seed 的共有参数在 A/B/C/D 中完全相同。
+MiT-B0 权重版本已固定；不加载 ADE20K 分割权重。
+
+输入：RGB /255，直接 resize 512x512；ImageNet mean/std。
+本版无额外随机裁剪/翻转，四组几何一致，避免加入未声明额外变量。
+target/valid nearest-neighbor resize；先合并 V1 透明类别再构造边界。
+photometric 在 resize 后、normalization 前；每次最多一种，p=0.5，强度均匀 [0.8,1.2]。
+brightness=c*I；contrast=mean_c(I)+c*(I-mean_c(I))；gamma=I^gamma，均 clip [0,1]。
+test 12 条件取 proposal 固定值，彼此独立施加。contrast 的 mean 按每图每通道计算。
+
+优化：初始 AdamW lr=6e-5、weight_decay=0.01、batch 8、30 epochs、gradient clip 1。
+warmup 为 5% optimizer steps（至少 1），之后 polynomial decay power 0.9。
+这些是待 pilot/validation 冻结的初值，不是效果承诺。
+本版为所有参数统一 weight decay；若改 parameter groups，四组必须一起重跑。
+主训练的 steps_per_epoch=ceil(N/batch)；不丢最后 batch。
+CUDA AMP 使用 BF16（无需 GradScaler）；CPU smoke 不启用 AMP。
+不支持 BF16 的旧 GPU 请将 amp=false，四组保持同一精度协议。
+GPU 可有微小非确定性，需说明。
+
+损失：逐有效像素 BCE 均值 + 逐图 soft Dice 均值 + lambda * boundary BCE。
+boundary 为 dilate(Y)-erode(Y)，方形半径 r，图外 mask 视为 0。
+boundary BCE 对有效正/负边界分别求均值再各乘 0.5；单一类时退化为普通 BCE。
+void 的邻域剔除，不把无效像素附近人为边缘作为监督；背景像素正常监督。
+全无效图片不参与 Dice 均值；全无效 batch loss=0 且梯度=0。
+
+选模：只看 validation pooled foreground IoU，严格更好时更新 best.pt，同分保留较早 epoch。
+推理：辅助头不执行；logits bilinear resize 回原图，sigmoid>=0.5；无后处理。
+指标：foreground IoU 与 region F1 均累计全数据集像素后计算，Boundary IoU 逐图平均。
+Boundary IoU 使用内边界与官方宽度，非训练时双侧 morphological gradient。
+可视化默认取 manifest 前若干张，正式论文另固定代表样本并声明选择方式。
+
+主表模板（待真实实验填写，不填虚构数值）
+模型 | seed | full IoU | full F1 | BIoU | hard IoU | hard BIoU | 时间 | 峰值显存
+A    | 42   | pending  | pending | ...
+B    | 42   | pending  | pending | ...
+C    | 42   | pending  | pending | ...
+D    | 42   | pending  | pending | ...
+
+扩展表：12 条件绝对分数与均值/drop；A/D GSD；A/D held-out；A/D 三种子均值/标准差。
+不要将 clean test 结果用于挑参数；测试运行后发现软件 bug 可以修正并统一重评所有模型，
+保留 bug/修复说明，不通过挑测试样本或改变阈值抬分。

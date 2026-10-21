@@ -1,0 +1,135 @@
+{
+  "purpose": "synthetic GPU engine verification; NOT a benchmark",
+  "config": {
+    "purpose": "smoke",
+    "train_manifest": "manifests/smoke/train.json",
+    "val_manifest": "manifests/smoke/validation.json",
+    "size": 512,
+    "pretrained": true,
+    "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "boundary": true,
+    "augmentation": true,
+    "boundary_radius": 1,
+    "boundary_weight": 0.1,
+    "seed": 42,
+    "batch_size": 2,
+    "epochs": 1,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "amp": true,
+    "amp_dtype": "bfloat16",
+    "device": "cuda",
+    "workers": 0,
+    "cpu_threads": 4,
+    "ablation": "D",
+    "max_steps_per_epoch": 2
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": {
+        "total": 1.072579711675644,
+        "bce": 0.581470176577568,
+        "dice": 0.42834411561489105,
+        "boundary": 0.6276547014713287
+      },
+      "validation": {
+        "all": {
+          "images": 4,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.9142386831275721,
+          "region_f1": 0.9551982113681314,
+          "boundary_iou": 0.38419006600926364,
+          "boundary_images": 4,
+          "background_fpr": 0.11946648269518224,
+          "tp": 22216,
+          "fp": 2078,
+          "fn": 6,
+          "tn": 15316
+        },
+        "easy": {
+          "images": 2,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.9163834126444595,
+          "region_f1": 0.9563675062078751,
+          "boundary_iou": 0.40379788298446784,
+          "boundary_images": 2,
+          "background_fpr": 0.11671024483004516,
+          "tp": 10784,
+          "fp": 982,
+          "fn": 2,
+          "tn": 7432
+        },
+        "hard": {
+          "images": 2,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.9122247047558251,
+          "region_f1": 0.9540978133867468,
+          "boundary_iou": 0.36458224903405934,
+          "boundary_images": 2,
+          "background_fpr": 0.1220489977728285,
+          "tp": 11432,
+          "fp": 1096,
+          "fn": 4,
+          "tn": 7884
+        }
+      },
+      "selected": true,
+      "lr": 0.0,
+      "seconds": 2.0002124999882653,
+      "peak_cuda_memory_mb": 883.6181640625
+    }
+  ],
+  "test": {
+    "split": "test",
+    "dataset": "synthetic_smoke",
+    "synthetic": true,
+    "complete_official_split": false,
+    "manifest_sha256": "40ca2e7d5775ee58c1e45850ec5aed73161d1d48b0b8d588b51f63de731a8059",
+    "condition": "clean",
+    "threshold": 0.5,
+    "resolution": "original",
+    "scores": {
+      "all": {
+        "images": 4,
+        "skipped_all_void": 0,
+        "foreground_iou": 0.9048368069209595,
+        "region_f1": 0.9500412881915772,
+        "boundary_iou": 0.3493505947518373,
+        "boundary_images": 4,
+        "background_fpr": 0.11477405016403852,
+        "tp": 20709,
+        "fp": 2169,
+        "fn": 9,
+        "tn": 16729
+      },
+      "easy": {
+        "images": 2,
+        "skipped_all_void": 0,
+        "foreground_iou": 0.9070792559287666,
+        "region_f1": 0.9512758875739645,
+        "boundary_iou": 0.3630314300443803,
+        "boundary_images": 2,
+        "background_fpr": 0.11798383475527616,
+        "tp": 10289,
+        "fp": 1051,
+        "fn": 3,
+        "tn": 7857
+      },
+      "hard": {
+        "images": 2,
+        "skipped_all_void": 0,
+        "foreground_iou": 0.9026334026334026,
+        "region_f1": 0.948825350573666,
+        "boundary_iou": 0.3356697594592941,
+        "boundary_images": 2,
+        "background_fpr": 0.11191191191191191,
+        "tp": 10420,
+        "fp": 1118,
+        "fn": 6,
+        "tn": 8872
+      }
+    }
+  },
+  "checkpoint_sha256": "8944bfb3499ed6a785ad9e6a117ad075d6ba9989709838023c9c4e62f7770421"
+}

@@ -1,0 +1,93 @@
+五人开发计划（建议责任分配，可互换，未声称这些工作已经由成员完成）
+规划日：2026-10-21。暂定截止：2026-11-21，必须向老师/Canvas 核实。
+总原则：每人至少拥有一个实现模块、一项可复现实验、一次交叉 review、相关报告段落。
+初始代码仅为共同起点；后续提交使用实际贡献者自己的身份。
+
+成员 1：CHOU Zhiyue —— 数据与隔离协议
+主文件：data.py、prepare.py；新增 data_gsd.py / prepare_holdout.py 可与成员 4/5 合作。
+任务 D01：下载 V1，审计 5000/1000/4428，检查原尺寸叠图、编码、缺失/重复文件。
+任务 D02：加入感知重复候选检索，人工复核；记录排除原因，不擅改官方测试划分。
+任务 D03：V2 图像 ID 对齐 V1；仅从 train/val 统计确定两类，生成隔离清单。
+交付：数据清单哈希、audit.json、类别计数表、split 生成代码和泄漏测试。
+验收：训练/验证没有 held-out 类；V1 二值标签未被 V2 重解释；别人可复现同一清单。
+review：成员 5 复核隔离和数据统计。
+
+成员 2：WANG Zenan —— 基线、训练与算力
+主文件：model.py、train.py、configs/、安装/运行脚本。
+任务 M01：RTX GPU pilot，记录 512 输入 batch 4/8 的显存、步时、完整验证时间。
+任务 M02：小样本过拟合诊断、完整 A 基线；冻结 AdamW/epoch/batch/初始化版本。
+任务 M03：实现含 optimizer/scheduler/RNG 的可重复 resume，回归测试断点续训；
+          若后续改 FP16 还需保存 scaler，当前 BF16 不使用 scaler。
+任务 M04：必要时统一加入梯度累计；所有消融保持有效 batch 和 optimizer step 数相同。
+交付：基线 checkpoint、训练曲线、资源表、resume PR、冻结配置。
+验收：全层有梯度；训练无 NaN/全背景；同 seed 的共享初始 hash 一致。
+review：成员 3 复核梯度与优化器逻辑。
+
+成员 3：YIN Qinyi —— 边界方法与消融
+主文件：losses.py、model.py 辅助头、边界诊断脚本。
+任务 B01：绘制 merged binary target 与 r=1/2 的边界监督，检查 void 邻域。
+任务 B02：在 validation 上比较 (r,lambda) 的四组合；先登记规则再训练。
+任务 B03：冻结一个共享 (r,lambda) 给 B/D；完成 B 与 D，配合 A/C 保持预算一致。
+任务 B04：分析边界改善和区域 IoU 权衡，选取薄边缘/遮挡/大窗失败案例。
+交付：验证网格表、选择理由、B/D 日志、边界可视化与消融分析。
+验收：边界 loss 有非零梯度，推理不依赖辅助 head，测试集未参与调参。
+review：成员 2 复核控制变量。
+
+成员 4：YUAN Jiayi —— 外观鲁棒性与迁移
+主文件：data.py 的 perturb、evaluate.py；新增 GSD 导入/重叠分析模块。
+任务 A01：核验光度增强与 mask 不变；完成 C，整理 12 条件的配对结果。
+任务 A02：GSD 官方 test 导入（保留原 split），验证前景极性与 visible-region 定义。
+任务 A03：与成员 1 对照 Trans10K train/val 做精确及近重复审计，固定 test 文件清单。
+任务 A04：仅用 A/D 已选 checkpoint 在 GSD 推理，不微调、不重新选择阈值。
+交付：C checkpoint、扰动表/下降曲线、GSD importer、重叠日志、迁移表。
+验收：各模型输入相同，12 条件分别施加，不级联；GSD 不参与选模。
+review：成员 1 复核 GSD 标签和去重；成员 5 复核统计。
+
+成员 5：ZHANG Xinyu —— 评估、未见类别与复现
+主文件：metrics.py、evaluate.py、tests/；新增汇总/held-out evaluation。
+任务 E01：用手工可算例子验证 pooled IoU/F1 和 image-mean Boundary IoU。
+任务 E02：与成员 1 实现 per-category recall、背景 FPR、seen/held-out 子集数量表。
+任务 E03：协调 A/D 在隔离 split 重新从 ImageNet 训练；不能沿用全类别 checkpoint。
+任务 E04：独立机器复现，汇总均值/标准差、失败案例、CVPR 格式与最终图表。
+交付：评估回归测试、两次 held-out 结果、汇总 CSV、复现检查记录。
+验收：指标从原图尺寸最终 mask 算；无数据泄漏；报告图表可追溯到 run。
+review：成员 4 复核 recall/扰动表。
+
+阶段 1：10/21-10/27 数据与可训练基线
+成员 1 数据审计；成员 2 GPU pilot/小样本过拟合；成员 3 边界可视化；
+成员 4 GSD 下载和编码审计；成员 5 指标独立校验/CI。
+里程碑：V1 数据可用，基础测试绿灯，512 GPU 可训；确定硬件预算。
+
+阶段 2：10/28-11/03 验证调参与协议冻结
+完成边界四组合小网格；augmentation 不变；冻结训练 budget、seed 与 B/D 共享参数。
+从 V2 train/val 选定两类，写入配置；冻结 GSD release 和排除规则。
+建议一次 30 分钟交叉 review；任何协议变更进入 PR，不靠群消息口头调整。
+里程碑：experiment protocol v1；四组共同初始化和数据清单可核对。
+
+阶段 3：11/04-11/10 主消融与压力测试
+单 GPU 顺序跑 A/B/C/D；研究实验与演示代码不要争用 GPU。
+运行 full/easy/hard、12 条件扰动、A/D 的 GSD 迁移；输出第一版真实结果表。
+里程碑：四次完整主训练与可复现评估；出现负结果也保存。
+
+阶段 4：11/11-11/16 未见类别与重复
+运行隔离训练 A/D 共两次（六次核心训练到此齐全）。
+资源允许再对 A/D 各增加两个 seed：主实验各三 seed，总计十次，调参另计。
+成员 1/5 复核泄漏，成员 3/4 分析困难样本；11/16 冻结最终数字。
+
+阶段 5：11/17-11/21 报告、展示、交付
+11/17-18：各人写自己模块的方法/结果，成员 5 统一 CVPR 格式和引用。
+11/19：另一台环境复现；检查 checkpoint、依赖、配置、manifest、提交 hash。
+11/20：全员十分钟彩排和问答，每个人解释自己的设计、证据与局限。
+11/21：提交最终六页报告和老师实际要求的其他文件；保留一份不可变发布包。
+若最终 ddl 提前，优先保住四组主消融/真实评估；主动说明未完成项，不能编造实验。
+
+算力估计方法（不先编造训练耗时）
+每 epoch optimizer steps = ceil(5000/batch_size)，当前 batch 8 为 625。
+单次训练估计 = epochs * (625 * 稳态步时 + 完整 validation 秒数)；加下载/IO 余量。
+先跑 pilot 后填写；训练网格、六次核心训练、四次 seed 重复需分别计时。
+记录单卡排队表；每次长训练有人负责检查日志和备份结果。
+
+每人的贡献证据
+一个任务可包含多个真实 commit；不要追求数量相同。
+记录 Issue/PR、设计决定、测试命令、run 路径/哈希、review 与报告段落。
+提交人并不等于唯一贡献者：共同调试写实际分工，真实共同开发才用 Co-authored-by。

@@ -1,0 +1,83 @@
+数据集选择与获取（官方来源核验：2026-10-21）
+
+一、主数据集：Trans10K-v1 —— 对本题和本 proposal 最合适
+理由：老师 Topic 10 直接推荐 Trans10K；proposal 明确采用 V1 二值合并标签。
+使用原始 5000 train / 1000 validation / 4428 test，不重新随机切分。
+validation/test 的 easy/hard 沿用官方目录；不能按本模型得分自行定义 hard。
+官方项目：https://xieenze.github.io/projects/TransLAB/TransLAB.html
+官方代码：https://github.com/xieenze/Segment_Transparent_Objects
+官方 mask 解码依据：
+https://github.com/xieenze/Segment_Transparent_Objects/blob/master/segmentron/data/dataloader/trans10k.py
+
+官方 Google Drive 下载：
+Train：https://drive.google.com/file/d/1ZNTTbGjvPUHuLj3r3wEg8m12et7tDluz/view
+Validation：https://drive.google.com/file/d/1I3BVEygFrCT3BmZL9byt2VFMt5ouCwRX/view
+Test：https://drive.google.com/file/d/1A1mLgpOjioSQ1pzSUkU0Ce_3W_YozqgY/view
+国内官方备用入口（可从上方项目页再次确认）：
+Train：https://pan.baidu.com/s/15XBr1zfnuNc8fA3YwXRqAA  提取码 axd1
+Validation：https://pan.baidu.com/s/1SzJZfvof1iRkZLvK5WL0Ow  提取码 bsbd
+Test：https://pan.baidu.com/s/18FQRL4uD84D8O2ORdMGXBA  提取码 hiqi
+本次核验了官方页面和链接目标，未完成全部归档下载或逐个验证网盘权限。
+网盘可能需要登录/有流量限额；不要因此随便换成不明确版本的第三方镜像。
+
+解压后的项目目录：
+data/Trans10K/
+  train/images/*.jpg
+  train/masks/*_mask.png
+  validation/easy/images/*.jpg
+  validation/easy/masks/*_mask.png
+  validation/hard/images/*.jpg
+  validation/hard/masks/*_mask.png
+  test/easy/images/*.jpg
+  test/easy/masks/*_mask.png
+  test/hard/images/*.jpg
+  test/hard/masks/*_mask.png
+有些解压工具会多包一层 train/train，请调整到上述结构再执行。
+
+审计命令：
+  .\.venv\Scripts\python.exe -m transparent_seg.prepare --root data/Trans10K --output manifests/trans10k
+若只导入小样本做 pilot，可用 --allow-partial；主 research 配置会拒绝不完整划分。
+不要通过 --allow-partial 把缺数据的结果包装成完整 benchmark。
+
+标签规则：RGB channel mean 0/85/255 -> binary 0/1/1。
+红色 [255,0,0] 也有 mean 85；不能 convert('L') 再阈值。
+白色 255 是前景，绝不是默认 ignore_index。未知颜色立即报错，由人确认。
+当前官方 V1 路径无显式 void 配置；若版本有 void，必须注明来源并独立定义，不能吞掉未知值。
+
+二、类别隔离：Trans10K-v2 —— 只用于细类别过滤/recall
+官方代码与数据链接：https://github.com/xieenze/Trans2Seg
+Google Drive：https://drive.google.com/file/d/1YzAAMY8xfL9BMTIDU-nFC3dcGbSIBPu5/view
+百度：https://pan.baidu.com/s/1P-2l-Q2brbnwRd2kXi--Dg  提取码 oqms
+官方结构中标签目录为 masks_12，含背景和 11 个前景细类别。
+V2 与 V1 共用图像，不能把它当成独立外部测试集。
+必须审计 V2 原始 palette/ID；本版不猜颜色映射，也未实现 V2 解码。
+训练和二值评估保持 V1 GT；V2 只确定图像中是否出现 held-out 类及类别 recall。
+
+三、跨数据集迁移：GSD (CVPR 2021)
+作者项目：https://jiaying.link/cvpr2021-gsd/
+当前作者项目页链接到：https://huggingface.co/datasets/garrying/GSD
+只使用其 test split 对 A/D 做零微调迁移。不要混用 GSD-S 或 GDD。
+下载时固定仓库 revision，保存 dataset card、文件清单、图片数及 mask 唯一值。
+不要从二手论文的总图片数推断当前 release 的 split；以审计后的实际清单为准。
+当前数据卡列出 CC BY-NC 4.0；实际使用时保存许可版本并按论文引用。
+GSD 专用导入、Trans10K 重叠/近重复分析、标注兼容性与真实评估是成员 4/1 的后续任务。
+
+四、预训练编码器（不是已训练好的透明物体模型）
+https://huggingface.co/nvidia/mit-b0
+固定 revision：80983a413c30d36a39c20203974ae7807835e2b4
+正式首次训练自动缓存到 .cache/huggingface；本次已验证下载和反向传播。
+只使用 ImageNet 编码器，解码器与二值头新初始化，所有层微调。
+没有下载 ADE20K 分割模型替代 proposal 基线。
+
+五、数据使用与复现
+数据和预训练权重许可分别保留；代码仓库许可不自动等于数据/权重许可。
+GitHub 只保存代码/配置/汇总，不重新公开数据集原图、网盘归档或巨大权重。
+在论文引用原作者。发布 checkpoint 前检查其适用许可和课程公开规则。
+audit 的精确像素 hash 可发现跨 split 完全相同图，但不是完整近重复证明。
+正式结果应记录 archive SHA256、manifest SHA256、排除清单和审计者。
+
+六、相关实现原始依据
+SegFormer 官方库文档：https://huggingface.co/docs/transformers/v4.46.3/en/model_doc/segformer
+Boundary IoU 官方算法：https://github.com/bowenc0221/boundary-iou-api
+PyTorch CUDA wheel：https://pytorch.org/get-started/previous-versions/
+本项目使用 scipy 方形最小滤波重新实现内边界提取，并以迭代腐蚀回归校验。

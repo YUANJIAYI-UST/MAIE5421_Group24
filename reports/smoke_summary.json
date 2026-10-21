@@ -1,0 +1,93 @@
+{
+  "purpose": "synthetic software smoke test only; NOT a Trans10K benchmark",
+  "config": {
+    "purpose": "smoke",
+    "train_manifest": "manifests/smoke/train.json",
+    "val_manifest": "manifests/smoke/validation.json",
+    "size": 64,
+    "pretrained": false,
+    "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "boundary": true,
+    "augmentation": true,
+    "boundary_radius": 1,
+    "boundary_weight": 0.1,
+    "seed": 42,
+    "batch_size": 4,
+    "epochs": 3,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "amp": false,
+    "amp_dtype": "bfloat16",
+    "device": "cpu",
+    "workers": 0,
+    "cpu_threads": 4,
+    "ablation": "D"
+  },
+  "epochs": 3,
+  "training_loss": [
+    0.6710955003897349,
+    0.24165440599123636,
+    0.19633314510186514
+  ],
+  "clean": {
+    "split": "test",
+    "dataset": "synthetic_smoke",
+    "synthetic": true,
+    "complete_official_split": false,
+    "manifest_sha256": "40ca2e7d5775ee58c1e45850ec5aed73161d1d48b0b8d588b51f63de731a8059",
+    "condition": "clean",
+    "threshold": 0.5,
+    "resolution": "original",
+    "scores": {
+      "all": {
+        "images": 4,
+        "skipped_all_void": 0,
+        "foreground_iou": 0.9512732146276086,
+        "region_f1": 0.975028209782662,
+        "boundary_iou": 0.6131434362068334,
+        "boundary_images": 4,
+        "background_fpr": 0.009207323526299079,
+        "tp": 19874,
+        "fp": 174,
+        "fn": 844,
+        "tn": 18724
+      },
+      "easy": {
+        "images": 2,
+        "skipped_all_void": 0,
+        "foreground_iou": 0.9509983601813446,
+        "region_f1": 0.974883812914071,
+        "boundary_iou": 0.6136380628898572,
+        "boundary_images": 2,
+        "background_fpr": 0.008419398293668612,
+        "tp": 9859,
+        "fp": 75,
+        "fn": 433,
+        "tn": 8833
+      },
+      "hard": {
+        "images": 2,
+        "skipped_all_void": 0,
+        "foreground_iou": 0.9515439429928741,
+        "region_f1": 0.9751703992210321,
+        "boundary_iou": 0.6126488095238095,
+        "boundary_images": 2,
+        "background_fpr": 0.00990990990990991,
+        "tp": 10015,
+        "fp": 99,
+        "fn": 411,
+        "tn": 9891
+      }
+    }
+  },
+  "perturbations": 12,
+  "checkpoint_sha256": "51752e9691b0c0c4cf33394f86df11fa536b9b8d9f2363ecb0fff7c286ea8327",
+  "original_size_prediction": [
+    112,
+    80
+  ],
+  "binary_values": [
+    0,
+    255
+  ]
+}

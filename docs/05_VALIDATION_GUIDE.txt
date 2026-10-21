@@ -1,0 +1,99 @@
+如何逐步检验代码与课程要求
+所有 PowerShell 命令从仓库根目录运行。检查上一条命令成功后再继续。
+若执行策略禁止本地 ps1，仅对当前 PowerShell 会话使用：
+  Set-ExecutionPolicy -Scope Process Bypass
+也可直接执行各脚本内部的 Python 命令，不必改系统全局策略。
+
+第 1 关：环境与 GPU
+  .\scripts\setup.ps1 -Device cuda
+  .\.venv\Scripts\python.exe -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0))"
+本机检测到 RTX 5090 Laptop GPU 约 24GB；使用 cu128 wheel，不要安装只支持旧架构的 wheel。
+setup 会做 CUDA 矩阵前向/反向；仅 nvidia-smi 能看到 GPU 不等于 PyTorch 可计算。
+本训练协议使用 BF16 AMP；不支持 BF16 的旧卡将 configs/base.json 的 amp 设为 false。
+可运行 .\.venv\Scripts\python.exe scripts/check_gpu.py 复核 512 模型/边界损失计算，
+该命令使用合成张量，不能代替后面的真实数据 pilot。
+不需要 GPU 的队员可运行 .\scripts\setup.ps1 -Device cpu。
+不要把 `.venv` 提交或从他人电脑复制；每人按相同 requirements 创建环境。
+
+第 2 关：单元与回归测试
+  .\.venv\Scripts\python.exe -m pytest -q
+应全部通过；覆盖标签编码、未知标签失败、void、边界、指标和共享初始化。
+若这里失败不要直接进行耗时完整训练。CI 在 push/PR 时执行相同核心检查。
+
+第 3 关：不依赖真实数据的端到端 smoke
+  .\scripts\smoke.ps1 -Run runs/smoke_new
+若 smoke_new 已存在，换新目录（例如 smoke_20261022），避免覆盖旧证据。
+脚本生成 12/4/4 张明确标注 synthetic 的形状图，CPU 上跑真实 B0 结构三个 epoch，
+随后测试 clean+12 扰动、hard/easy 分组和单图推理。
+检查：runs/smoke_new/history.jsonl、best.pt、evaluation/、prediction/mask.png。
+四联图顺序：原图、GT、预测、预测叠图。这里 easy/hard 名称仅模拟目录。
+通过只说明流程能工作。随机初始化合成图模型不代表可用于真实玻璃检测。
+smoke 命令强制 CPU，方便全部队员一致复现；GPU 路径另做第 5 关。
+
+第 4 关：真实数据审计
+按 04_DATASETS_AND_DOWNLOAD.txt 下载和解压官方 V1 三个 split。
+  .\.venv\Scripts\python.exe -m transparent_seg.prepare --root data/Trans10K --output manifests/trans10k
+打开 manifests/trans10k/audit.json，数量应为 5000 / 1000 / 4428。
+随机抽 20 张 train 和 20 张 validation 做原图/GT 叠图，重点看透明白色标签。
+不能把 255 忽略；不能把整个图像边框误当作玻璃；不能错位配对图和标签。
+检查错误日志；有重复应先人工复核并记录处理，不要静默忽略。
+
+第 5 关：真实 GPU pilot
+  .\.venv\Scripts\python.exe -m transparent_seg.train --config configs/pilot.json --output runs/pilot
+pilot 使用 D 配置、512 输入、20 个训练 batch；仍计算完整 validation。
+因此 pilot 的时间不等于 20 steps 的时间，不要误以为验证“卡住”。
+看 history.jsonl 的 seconds/peak_cuda_memory_mb，检查 foreground_iou 与输出前景比例。
+若 OOM：先将 base.json 的 batch_size 统一调为 4，再重新进行四组公平实验。
+学习率、epoch 等当前是起点，不是已经验证的最优值；按 pilot/validation 冻结。
+建议另做 8-16 张真实训练图片过拟合诊断，组内目标可设 IoU>0.9 来查软件问题，
+此阈值仅诊断小样本可学习性，绝非老师 test 得分要求。
+
+第 6 关：冻结协议并训练四组
+先用 validation 完成 r/lambda 选择，写回 base.json；不要动 test 做选择。
+  .\scripts\run_ablations.ps1 -Seed 42
+也可以单独运行：
+  .\.venv\Scripts\python.exe -m transparent_seg.train --config configs/A_baseline.json --output runs/A_baseline_seed42
+  .\.venv\Scripts\python.exe -m transparent_seg.train --config configs/B_boundary.json --output runs/B_boundary_seed42
+  .\.venv\Scripts\python.exe -m transparent_seg.train --config configs/C_augmentation.json --output runs/C_augmentation_seed42
+  .\.venv\Scripts\python.exe -m transparent_seg.train --config configs/D_combined.json --output runs/D_combined_seed42
+不要在同一个 GPU 上同时开四个命令。脚本按顺序执行。
+best.pt 按 validation foreground IoU 选出；last.pt 为最后 epoch 模型。
+environment.json 中检查 shared initialization hash、encoder revision、manifest hash。
+每次都有 config.json / pip_freeze.txt / history.jsonl；保存小型日志到结果归档。
+
+第 7 关：冻结 checkpoint 后正式评估
+  .\.venv\Scripts\python.exe -m transparent_seg.evaluate --checkpoint runs/A_baseline_seed42/best.pt --manifest manifests/trans10k/test.json --output runs/A_baseline_seed42/test --robustness
+对 B/C/D 的各自 best.pt 执行相同命令，只替换 run 目录。
+输出 clean/metrics.json、clean/per_image.csv、visuals/、每个扰动目录和 robustness.json。
+clean scores 的 all 是全测试集，hard 是官方困难子集，easy 为额外诊断。
+IoU/F1/Boundary IoU 都以 0-1 表示；论文写百分数时乘 100。
+drop 是 clean - 12 条件均值，乘 100 是百分点，可能为负，不能截断为 0。
+region F1 是 Dice；pooled 指跨图片累计 TP/FP/FN 后再算；Boundary IoU 为逐图均值。
+width=max(1,round(0.02*sqrt(H^2+W^2)))；H/W 是原图尺寸。
+empty-empty 定义为 1；all-void 图片跳过并计数，空子集返回 null。
+不能把可视化 resized 缩略图拿来重新算指标。
+
+第 8 关：单张真实图推理
+  .\.venv\Scripts\python.exe -m transparent_seg.predict --checkpoint runs/D_combined_seed42/best.pt --image path/to/glass.jpg --output runs/demo_glass
+用实际图片路径替换 path/to/glass.jpg；检查 mask 和 overlay 的原图尺寸。
+mask 只能有 0/255。弱边缘、反射、遮挡、复杂背景分别挑选案例，包含失败图。
+不要用 runs/smoke/best.pt 来展示正式模型效果。
+
+第 9 关：补齐 proposal 承诺
+GSD 与 V2 任务参照 03_OPTIMIZATION_BACKLOG.txt，当前未完成，不能打钩。
+GSD 用固定 test，不微调；V2 held-out 重新训练 A/D，不复用全类别训练后的权重。
+研究主要结论尽可能用三种子重复验证；既报告平均收益，也报告波动/计算成本。
+
+第 10 关：最终交付验收
+用 01_REQUIREMENTS_AND_ACCEPTANCE.txt 的 R01-R11/P01-P10 逐项签名确认。
+六页 CVPR 正文、参考文献另计；成员责任、里程碑、方法、实验、结论齐全。
+约十分钟展示；每位成员能解释其模块和失败案例。确认真正截止时间和提交入口。
+保留实验协议、checkpoint hash、数据/代码版本；从另一台环境完整复现一例。
+
+常见故障
+CUDA unavailable：检查是否装了 +cpu；重跑 setup.ps1 -Device cuda。
+编码报错：先查看 mask RGB 唯一值，确认没有拿错 V2；不要改成 mask>0 掩盖问题。
+Found 0 / count mismatch：检查解压层级、官方 easy/hard 子目录与 _mask.png 后缀。
+已有 run 目录：换输出目录，程序刻意防止覆盖。
+权重网络超时：使用已缓存的固定 revision；不要改用未知预训练分割模型。
+训练效果差：先标签/过拟合/优化器诊断，再调超参；不按 test 好坏改阈值。

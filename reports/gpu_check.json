@@ -1,0 +1,28 @@
+{
+  "purpose": "synthetic CUDA engineering check; not Trans10K performance",
+  "torch": "2.7.1+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU",
+  "batch_size": 2,
+  "size": 512,
+  "pretrained": true,
+  "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+  "amp": true,
+  "amp_dtype": "bfloat16",
+  "steps": 4,
+  "finite_forward_backward": true,
+  "losses": [
+    1.37442946434021,
+    1.322725534439087,
+    1.2615008354187012,
+    1.2185113430023193
+  ],
+  "seconds_per_step": [
+    1.4966432000073837,
+    0.07843129998946097,
+    0.07694429998809937,
+    0.05850379999901634
+  ],
+  "mean_seconds_excluding_first": 0.07129313332552556,
+  "peak_allocated_mb": 884.24169921875
+}

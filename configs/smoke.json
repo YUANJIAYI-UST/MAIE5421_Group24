@@ -1,0 +1,13 @@
+{
+  "extends": "D_combined.json",
+  "purpose": "smoke",
+  "train_manifest": "manifests/smoke/train.json",
+  "val_manifest": "manifests/smoke/validation.json",
+  "size": 64,
+  "pretrained": false,
+  "device": "cpu",
+  "batch_size": 4,
+  "epochs": 3,
+  "lr": 0.001,
+  "amp": false
+}

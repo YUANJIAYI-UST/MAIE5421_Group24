@@ -1,0 +1,35 @@
+阅读顺序与当前交付
+更新日期：2026-10-21（Asia/Shanghai）
+
+1. 本次给你什么
+代码不是空目录：已提供 MiT-B0 编码器、随机初始化 SegFormer 风格融合解码器、
+二值分割头、两层卷积边界辅助头、BCE+Dice+边界损失，以及训练/推理/评估入口。
+A/B/C/D 四组共用配置；训练选模只看 validation foreground IoU。
+输出原图大小 0/255 PNG；前景为透明区域，背景也参加监督。
+提供 12 种固定光度扰动、easy/hard 分组、逐图 CSV、可视化及实验配置记录。
+
+2. 没有什么
+没有完整 Trans10K 训练结果；没有声称已经达到老师的“高 IoU/F-score”。
+GSD 真实迁移、V2 未见类别隔离训练、三种子重复还需队员完成。
+未制作最终六页论文或十分钟 presentation；已在计划中预留。
+不存在能从这些文件推出的“满分保证”，老师也未给出具体满分分数线。
+
+3. 你现在应做的事情
+第一步：打开 reports/IMPLEMENTATION_STATUS.txt 看实际跑通了什么。
+第二步：按 05_VALIDATION_GUIDE.txt 复现测试和 smoke，不把 smoke 数字放进成果表。
+第三步：按 04_DATASETS_AND_DOWNLOAD.txt 下载官方 V1 三个 split 并运行 audit。
+第四步：五人确认 02_FIVE_MEMBER_DEVELOPMENT_PLAN.txt 中的建议分工。
+第五步：先 GPU pilot，再冻结训练预算和验证集超参数，然后启动 A/B/C/D。
+
+4. 关键文件
+  transparent_seg/data.py      255 是前景、严格编码、光度增强
+  transparent_seg/model.py     B0 + 两个 head；推理不计算边界 head
+  transparent_seg/losses.py    正负边界平衡、void 邻域剔除
+  transparent_seg/metrics.py   pooled IoU/F1、image-mean Boundary IoU
+  transparent_seg/train.py     validation 选模、日志、初始参数 hash
+  transparent_seg/evaluate.py  原图尺寸、hard 子集、12 条件扰动
+
+5. 截止日期与仓库
+用户暂定 2026-11-21；这是计划假设，最终以 Canvas/老师公告为准。
+目标：https://github.com/YUANJIAYI-UST/MAIE5421_Group24
+初始版本作为共同开发起点；五位同学应复核、理解、继续开发并如实记录贡献。
