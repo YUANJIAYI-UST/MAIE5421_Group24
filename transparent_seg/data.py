@@ -80,13 +80,53 @@ def read_manifest(path, root=None):
     ids = [sample["id"] for sample in manifest["samples"]]
     if len(ids) != len(set(ids)):
         raise ValueError("Duplicate sample IDs")
-    base = Path(root or manifest["root"]).resolve()
+    if root is not None:
+        base = Path(root).resolve()
+    elif manifest.get("root_relative_to_manifest"):
+        if Path(manifest["root"]).is_absolute():
+            raise ValueError("Portable manifest root must be relative")
+        base = (Path(path).resolve().parent / manifest["root"]).resolve()
+    else:
+        base = Path(manifest["root"]).resolve()
     for sample in manifest["samples"]:
-        for key in ("image", "mask"):
+        keys = ("image", "mask", "v2_category_mask") if "v2_category_mask" in sample else ("image", "mask")
+        for key in keys:
             p = (base / sample[key]).resolve()
             if not p.is_relative_to(base) or not p.is_file():
                 raise ValueError(f"Missing/outside-root {key}: {p}")
     return manifest, base
+
+
+def validate_derivative_use(config, training, validation):
+    """Require an explicit version and byte hashes for a local derivative pilot."""
+    protocols = [m.get('data_protocol') for m in (training, validation)]
+    if not any(protocols):
+        if config.get('data_protocol_id'):
+            raise ValueError('Pinned derivative config requires data_protocol metadata')
+        return
+    if not all(protocols) or protocols[0] != protocols[1]:
+        raise ValueError('Train/validation data protocols differ')
+    protocol = protocols[0]
+    if config.get('data_protocol_id') != protocol['id']:
+        raise ValueError('Explicit data_protocol_id is required for a derivative')
+    if config.get('purpose') != 'pilot':
+        raise ValueError('This local derivative is pilot-only pending human/member-5 review; research protocol must be frozen separately')
+    if protocol.get('kind') == 'v2_category_holdout':
+        held = set(protocol.get('held_out_class_ids', []))
+        if len(held) != 2 or not held <= set(range(1, 12)):
+            raise ValueError('Holdout protocol requires two foreground class IDs')
+        for manifest in (training, validation):
+            if manifest['encoding'] != 'trans10k_v1_rgb' or manifest.get('complete_official_split'):
+                raise ValueError('Holdout manifests must retain V1 labels and declare a filtered split')
+            for sample in manifest['samples']:
+                if (not sample.get('v2_category_eligible') or 'v2_category_ids' not in sample
+                        or held.intersection(sample['v2_category_ids'])):
+                    raise ValueError('Held-out category or unresolved V2 label in train/validation')
+    expected = config.get('expected_manifest_sha256', {})
+    for split, key in (('train', 'train_manifest'), ('validation', 'val_manifest')):
+        digest = hashlib.sha256(Path(config[key]).read_bytes()).hexdigest()
+        if expected.get(split) != digest:
+            raise ValueError(f'Derivative manifest hash differs from pinned config: {split}')
 
 
 class SegmentationDataset(Dataset):

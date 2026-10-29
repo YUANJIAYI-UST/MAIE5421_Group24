@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "configs": [
+    "configs/pilot_member1_final_v1_20261029.json",
+    "configs/pilot_member1_final_A_20261029.json",
+    "configs/pilot_member1_final_D_20261029.json"
+  ],
+  "protocol_and_hash_guards": "passed",
+  "gpu_training": "not_run"
+}

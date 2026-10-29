@@ -1,0 +1,3612 @@
+{
+  "schema": "trans10k_ai_second_review_v1",
+  "reviewed_on": "2026-10-29",
+  "reviewer": "Codex AI visual second review",
+  "scope": "All 153 workbook pairs; 27 contact sheets plus enlarged source-image comparisons for initial disagreements; crop alignment is supporting evidence only.",
+  "limitations": [
+    "AI review is not the independent review by member 5.",
+    "Pair 141 remains B/C uncertain.",
+    "Agreement is not proof that two files originated from the same camera exposure.",
+    "Only the fixed candidate list was reviewed; no claim of exhaustive duplicate detection."
+  ],
+  "source_workbook": "/Users/zhiyue/Documents/ChatGPT/cv/outputs/01a15e90-62ac-7062-9044-3f6eb026725c/d02_review/D02_人工复核表_20261028.xlsx",
+  "source_workbook_sha256": "668aa1e96f819ac780fd6d04444dd04fb66580a8a8304026ea756262fa1bcd70",
+  "candidate_sha256": "a6ccf611f5d59701d1b6a337c7035103f0296d5b7ee8edcb6574af6172aa2600",
+  "human_counts": {
+    "A": 67,
+    "B": 78,
+    "C": 8,
+    "D": 0
+  },
+  "ai_counts": {
+    "A": 52,
+    "B": 99,
+    "C": 1,
+    "D": 1
+  },
+  "agreements": 129,
+  "differences": 24,
+  "proposed_changes": 23,
+  "uncertain_differences": 1,
+  "change_groups": {
+    "A->B": [
+      31,
+      34,
+      58,
+      70,
+      83,
+      87,
+      90,
+      95,
+      102,
+      103,
+      106,
+      108,
+      109,
+      128,
+      129,
+      135
+    ],
+    "C->B": [
+      113,
+      119,
+      121,
+      126,
+      132,
+      133
+    ],
+    "B->A": [
+      149
+    ],
+    "C->D": [
+      141
+    ]
+  },
+  "data_modified": false,
+  "exclusions_applied": false,
+  "official_splits_modified": false,
+  "member5_review_completed": false,
+  "records": [
+    {
+      "number": 1,
+      "key": "1b0732e37970f5f1c1f4",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9064.jpg",
+        "train/images/9760.jpg"
+      ],
+      "source_image_sha256": [
+        "39a6b9f724614592d4ac5e05bfbdd80fbff4c0b7b5f39fdee7fdc7d393a26acd",
+        "5ea16e1c2ca762cd0399f448ac5b0a4a0eebafb3ab86da17ce8bc3c3188ecbb7"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯口反光、桌沿和笔记本细节位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_01.jpg"
+    },
+    {
+      "number": 2,
+      "key": "600e7d93f797452bf17f",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/5731.jpg",
+        "train/images/5743.jpg"
+      ],
+      "source_image_sha256": [
+        "2a76f0f97325951dd5c96ea4f382b0d678c898a55ca761b2e21de40f290c7a4f",
+        "f30c89f70554cccbec165faef717b66bfb1ce60021c21f1eec65cc68ac607162"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "桌面纹理与杯、眼镜、盒子细节位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_01.jpg"
+    },
+    {
+      "number": 3,
+      "key": "1e4efea17786aec07346",
+      "group": "跨划分",
+      "ids": [
+        "train/images/581.jpg",
+        "validation/easy/images/637.jpg"
+      ],
+      "source_image_sha256": [
+        "a6fcae0b483b4068c526d229928facb4259a1bf14d262796fcc80c7d0516e73f",
+        "b4cc991f5cc3f73f0c2cd2d6c99747de6647a56aac691598bd6beb44653fd613"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "勺子从杯旁横放改为杯内竖放",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_01.jpg"
+    },
+    {
+      "number": 4,
+      "key": "60659907daf3bcec3ef1",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9594.jpg",
+        "train/images/9168.jpg"
+      ],
+      "source_image_sha256": [
+        "b833c3e51fba1f6ea81e9ef375ed7bc973d23ed03b8e6546cd8053db5bfc9968",
+        "857bc305d71a3d5fd485c83c7405e9820829b4369944f87040dd1f4e3915e313"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "瓶体、背景水壶及旁边玻璃杯位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_01.jpg"
+    },
+    {
+      "number": 5,
+      "key": "2ac7ff3ec776092213a9",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9128.jpg",
+        "train/images/9243.jpg"
+      ],
+      "source_image_sha256": [
+        "e89d5f32e4a7dec981e357dc47579d491780fc01a5bdc7ad883146f8f4a7c6e2",
+        "7710f01716a1c3102b02e2880eb6b149bed2070f3d0606648e8b5bb8e69a5fdb"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "壶身反光、粉色托盘和背景细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_01.jpg"
+    },
+    {
+      "number": 6,
+      "key": "a9639eb0c153504c544a",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9295.jpg",
+        "train/images/9430.jpg"
+      ],
+      "source_image_sha256": [
+        "0416b11a9af117ec3b75c4964a9eae8bd891b45babc02c7aefa2f625bf5b4be0",
+        "ce6e6d774975ab7ef4071a6afbaccaf3b5a39331f565cb62430cb59bd6063313"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "瓶内物品、瓶盖和桌面细节位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_01.jpg"
+    },
+    {
+      "number": 7,
+      "key": "dbb739bb6e9689c37466",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9840.jpg",
+        "train/images/9870.jpg"
+      ],
+      "source_image_sha256": [
+        "c52238423ebe63fcd5af4e26a7c381aa70241db56332237bbcea0068fd5114c6",
+        "44e5521b03507e120ad6acf1fc170b3e4466dcce8dd374c504714c19ee5ab7cb"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "罐盖反光、字样和背景锅的位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_02.jpg"
+    },
+    {
+      "number": 8,
+      "key": "b6d510a968a235bd890c",
+      "group": "跨划分",
+      "ids": [
+        "train/images/862.jpg",
+        "validation/easy/images/2418.jpg"
+      ],
+      "source_image_sha256": [
+        "8b5ca260acb01c37427d40d23d4b3a5552b16fe7b8328e4c2feaa1dd387763d8",
+        "aeca22adfcd1c7c12de7d8685df95041dc931b4d98704a3c0d1982ec2dfafd97"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "绿色便签由杯左移到杯后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_02.jpg"
+    },
+    {
+      "number": 9,
+      "key": "ceb8a94103d38fd9f464",
+      "group": "跨划分",
+      "ids": [
+        "train/images/9546.jpg",
+        "validation/easy/images/10006.jpg"
+      ],
+      "source_image_sha256": [
+        "bea667164039be4a6cf29b01a6cc08478582b68abe992a3986413acae1a092b3",
+        "5093cce276390b917d2e421745394ba5ca8b350f2e10a7cae3808596ed3ad0e6"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "a",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "玻璃杯、红白包装盒和底部标签细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_02.jpg"
+    },
+    {
+      "number": 10,
+      "key": "c1b8c3d634ba910cb006",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/1561.jpg",
+        "train/images/1303.jpg"
+      ],
+      "source_image_sha256": [
+        "887a05594bf0af755891858c668403e84991bd595e552efd25b2f9f6013a6852",
+        "c5a5b1a9afa7606a52584da857681e8741ad3ee69ade08cfdc70057e289bd6c0"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "右图增加纸杯，笔的位置也变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_02.jpg"
+    },
+    {
+      "number": 11,
+      "key": "110fee60457279fd3e1c",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9619.jpg",
+        "train/images/9160.jpg"
+      ],
+      "source_image_sha256": [
+        "af82e478bd190613200ce9cbb110149b0304f69e3f6efb6c733e8bc89bffe4ed",
+        "11b94a5940774ab926098ceb0954a2091f9a5524133fc21947e1d2d026f716b3"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "水壶内容物、遥控器和背景细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_02.jpg"
+    },
+    {
+      "number": 12,
+      "key": "60116185385cde770bad",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9167.jpg",
+        "train/images/9207.jpg"
+      ],
+      "source_image_sha256": [
+        "f07db481e6dd9cd5ffb987efa7f79c81ff0490ebb6e169fdb85e91e0fd92579f",
+        "61b02329d0a957179203fd94bc5a18394fa01fd81d26bcc3966a6c615dab6b2e"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "水瓶、纸盒、背包和桌沿位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_02.jpg"
+    },
+    {
+      "number": 13,
+      "key": "4689701f0f164dedda1f",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9678.jpg",
+        "train/images/9106.jpg"
+      ],
+      "source_image_sha256": [
+        "d15161346b3de0256af2f37630ca53df216bb651f564f3ac2cd174d178cb4e51",
+        "06083e656bdf4e1db895b5f6a1896b3c91cf155dd557bf27ebce9a92af313c97"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "壶体反光与台面、墙面边界细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_03.jpg"
+    },
+    {
+      "number": 14,
+      "key": "66a410c7271af67fa494",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/1350.jpg",
+        "train/images/1537.jpg"
+      ],
+      "source_image_sha256": [
+        "6bd86870f324b55df5d5c2e9e5d27ab82447f7a526c0359c0cc09ea25a10902f",
+        "b5a5b5be71c529a6a1fb589d12fe6df9e65456058748226b503a597eb9576f43"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "细长盒子从杯左移到杯右",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_03.jpg"
+    },
+    {
+      "number": 15,
+      "key": "fd18044f6e770100d6e0",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9123.jpg",
+        "train/images/9059.jpg"
+      ],
+      "source_image_sha256": [
+        "6a4a218c773b1ff7a8ff1b0f0d66d6473b65cb131937fb07366348cf12be4e6a",
+        "67a25d457e07f3d3391dfa8332c86165bdae1d47281320b4ac1452c4a981e8b7"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "粉边杯、红包装盒、地砖及电线位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_03.jpg"
+    },
+    {
+      "number": 16,
+      "key": "18baeccc89ee6379ba48",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9992.jpg",
+        "train/images/10058.jpg"
+      ],
+      "source_image_sha256": [
+        "f6788385559c2e669416c9587a08cca247ecd43b400224bab0de11fc46af8d13",
+        "a2f64af6c610650ff78467c49f48d2d30520ecf3f7de57aa02ceaebbcf4bfcd0"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "透明杯叠放结构、反光和背景污点一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_03.jpg"
+    },
+    {
+      "number": 17,
+      "key": "c69b5069a862d42626a0",
+      "group": "跨划分",
+      "ids": [
+        "test/hard/images/5911.jpg",
+        "validation/hard/images/5688.jpg"
+      ],
+      "source_image_sha256": [
+        "2c6bbd708ebb4ec177691f11fb48a4660c61af2d64fe28211e5966b2917895cd",
+        "f04b8f35ff6817b202225a2ab9cef81891a1b9a4c5afbaa23b3865393380163f"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "玻璃门条纹、盆栽和椅子位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_03.jpg"
+    },
+    {
+      "number": 18,
+      "key": "8cdaf76710c8d1131005",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/10333.jpg",
+        "validation/easy/images/9629.jpg"
+      ],
+      "source_image_sha256": [
+        "29a3219361be08d4e830e6b88690fdf8a6a8273dc8dc31f801dbfb00fbe31971",
+        "b56d225379fdd66abc5d5831250473e8b649996dd3bee311a0a476efb33e4cc4"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯沿、斜置器具及台面光斑一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_03.jpg"
+    },
+    {
+      "number": 19,
+      "key": "cedd7bd746a8c2ef26e9",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2667.jpg",
+        "train/images/2092.jpg"
+      ],
+      "source_image_sha256": [
+        "6854c44eacef4d48f2e0481f747130ab5f573ac0535afdccd07df741b67ab407",
+        "d4e341a0f5f26cb9279a518247bc1820dde7c8216c4ab3fdcf387cef413d73a9"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "绿色便签在左图出现、右图没有",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_04.jpg"
+    },
+    {
+      "number": 20,
+      "key": "d4026843dea4c7932f0a",
+      "group": "跨划分",
+      "ids": [
+        "train/images/3312.jpg",
+        "validation/easy/images/2960.jpg"
+      ],
+      "source_image_sha256": [
+        "76cc2f994fad1ffbd13cab97b4f5a9255caa56856ab40bce8ea4dbe13cfd33a5",
+        "35e1a70ec708828fe9e774a4880ae2c2832c2c3260eafebbd4da2b0e3cbf8c54"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "左侧小包装仅在左图出现",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_04.jpg"
+    },
+    {
+      "number": 21,
+      "key": "36aa150e54677ff1fddd",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2429.jpg",
+        "train/images/758.jpg"
+      ],
+      "source_image_sha256": [
+        "272da2b4f2cf3b649b911299296a813c5f1624a98d92ca32bbfa29f2b2c0132c",
+        "a127ec39920d7589fe5e02394679fb4f2b4b7d75a7f682f94ee0766845bf7d7d"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "圆柱物品从杯右移到杯前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_04.jpg"
+    },
+    {
+      "number": 22,
+      "key": "8e39fe30aa518482cb3e",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/1536.jpg",
+        "train/images/862.jpg"
+      ],
+      "source_image_sha256": [
+        "18d5715d04d957fabe8e5164cd34180613fadc5bf1575ddaf52871d970353e26",
+        "8b5ca260acb01c37427d40d23d4b3a5552b16fe7b8328e4c2feaa1dd387763d8"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前后道具由小瓶换成便签和绿色盒",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_04.jpg"
+    },
+    {
+      "number": 23,
+      "key": "3bd674aae6992515c141",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/1536.jpg",
+        "validation/easy/images/2418.jpg"
+      ],
+      "source_image_sha256": [
+        "18d5715d04d957fabe8e5164cd34180613fadc5bf1575ddaf52871d970353e26",
+        "aeca22adfcd1c7c12de7d8685df95041dc931b4d98704a3c0d1982ec2dfafd97"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前后道具由小瓶换成便签和绿色盒",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_04.jpg"
+    },
+    {
+      "number": 24,
+      "key": "3de0fa420e841a1d2b68",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2586.jpg",
+        "train/images/5027.jpg"
+      ],
+      "source_image_sha256": [
+        "c4341effd3b9a71a3304e32e6b1bdc3cdb7a75fd82363a3193aac209a2355cd7",
+        "65e215e8ddbcf06fb4302a58c35a21ae31670a16827c6aefb75b65863da56394"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "勺子从左下方向改为右上方",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_04.jpg"
+    },
+    {
+      "number": 25,
+      "key": "8f716e1b30d29e106152",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/8932.jpg",
+        "train/images/9243.jpg"
+      ],
+      "source_image_sha256": [
+        "7346fd048f28224f71f4d47e835df1cecfec2c23b5fdf07cc1b6387b0b1f97ae",
+        "7710f01716a1c3102b02e2880eb6b149bed2070f3d0606648e8b5bb8e69a5fdb"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "壶身反光、把手、壶盖木纹和墙面细节一致；差异为裁切与缩放",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_05.jpg"
+    },
+    {
+      "number": 26,
+      "key": "54ba2cd108a9fb7adc62",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9212.jpg",
+        "train/images/9242.jpg"
+      ],
+      "source_image_sha256": [
+        "23f78902ed29f458521ab8900b0a744e5914c85a2033bbcd1090866cc87df4ee",
+        "37bc313dcb10f9c6ff0faaa2ff2932853074a687a6c77872e197f9d5b4f6cccf"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "圆形商标、杯底文字与背景位置一致，边缘取景略有差异",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_05.jpg"
+    },
+    {
+      "number": 27,
+      "key": "c9d67301c304beeb37d8",
+      "group": "跨划分",
+      "ids": [
+        "train/images/9411.jpg",
+        "validation/easy/images/10228.jpg"
+      ],
+      "source_image_sha256": [
+        "904b2f6875b108bfe62817ec4a7518eccb4ace3f113bcbdc6b024f9d167ad740",
+        "e2eefc85c188ac0837135e1cb2e9c0127851d4deba79a9ed1ce451d367c5d05a"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "绿色纸盒、杯底标签及反光位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_05.jpg"
+    },
+    {
+      "number": 28,
+      "key": "29dee7b3d7bdbf7727f3",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/10281.jpg",
+        "train/images/9023.jpg"
+      ],
+      "source_image_sha256": [
+        "9102f6b966cc8d0d2f79e9459a488a862625ab0a233661984f2b1de3227a5ec3",
+        "ad7d5bdee094eb7369da689a2e30279dc302d51945128f43e1f99afb0e8f69c7"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "双杯、桌面与背景墙细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_05.jpg"
+    },
+    {
+      "number": 29,
+      "key": "c00a8c88681f3843e2f2",
+      "group": "跨划分",
+      "ids": [
+        "train/images/4258.jpg",
+        "validation/easy/images/2960.jpg"
+      ],
+      "source_image_sha256": [
+        "a4bf930ed74bba94bc70ece50d1b5c9c857778f6d022c54541466149aa01a788",
+        "35e1a70ec708828fe9e774a4880ae2c2832c2c3260eafebbd4da2b0e3cbf8c54"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "右上包装仅左图存在",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_05.jpg"
+    },
+    {
+      "number": 30,
+      "key": "0c81a14e33021e5ab7b7",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/10110.jpg",
+        "train/images/9286.jpg"
+      ],
+      "source_image_sha256": [
+        "a3db9b6341d29056e56edbf24bb144d2d4228c413aeb52cc9b40fb1033a4d15f",
+        "cb4fa7d6ca140d67ba2e843f41fb13953f0002430297dcb3dcc5e7fe094af68b"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯体、标签及包装盒细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_05.jpg"
+    },
+    {
+      "number": 31,
+      "key": "b73e27a6a1174ab57b35",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2504.jpg",
+        "train/images/3421.jpg"
+      ],
+      "source_image_sha256": [
+        "0bfb2cf8e87a8d79071484c3e0da4ef5f5282910af3183d9e2e0d7afc746fe08",
+        "49ebdcb3634e62d18d8209af75fb88a0461e7e6fc7b47e742d15f8f9fe88a24f"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯子与包装相对位置和拍摄取景不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_06.jpg"
+    },
+    {
+      "number": 32,
+      "key": "226a7ad8132ad474b790",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9093.jpg",
+        "train/images/9286.jpg"
+      ],
+      "source_image_sha256": [
+        "776703111482bbb433713fef12a43eaaed45fa85e7b1a9a1fd775340bcfddf07",
+        "cb4fa7d6ca140d67ba2e843f41fb13953f0002430297dcb3dcc5e7fe094af68b"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯底标签、杯体和包装盒细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_06.jpg"
+    },
+    {
+      "number": 33,
+      "key": "20add07c09a66be28b51",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/1350.jpg",
+        "train/images/3878.jpg"
+      ],
+      "source_image_sha256": [
+        "6bd86870f324b55df5d5c2e9e5d27ab82447f7a526c0359c0cc09ea25a10902f",
+        "a0c2b35bafc7fcd8b3906ed25c31bbb3878a9bd128c2e3f0a8bb8beaadf156a4"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "细长盒子从杯左移到杯口后方",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_06.jpg"
+    },
+    {
+      "number": 34,
+      "key": "7485be13fef621ee7aa2",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2084.jpg",
+        "train/images/4298.jpg"
+      ],
+      "source_image_sha256": [
+        "ba8f8fa6582d91bfa5345f6c28723ed4e696ca26188ae006b25a5df9ff1ecc4b",
+        "97f3ce439f87cdbe72168f41980587be5af6eb56e7cd8496a30afa9f0cf62035"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "门框相对后方窗户和椅子的遮挡关系变化，拍摄角度不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_06.jpg"
+    },
+    {
+      "number": 35,
+      "key": "022f45a7da4372ace0ac",
+      "group": "跨划分",
+      "ids": [
+        "train/images/18.jpg",
+        "validation/easy/images/2960.jpg"
+      ],
+      "source_image_sha256": [
+        "a146caad195704d961abcec269007409e4ad5e43b8856ad72cc9b45102e7d06d",
+        "35e1a70ec708828fe9e774a4880ae2c2832c2c3260eafebbd4da2b0e3cbf8c54"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "小包装从杯口后移除",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_06.jpg"
+    },
+    {
+      "number": 36,
+      "key": "3ad3bc3bbc8ccb649690",
+      "group": "跨划分",
+      "ids": [
+        "train/images/2636.jpg",
+        "validation/easy/images/4871.jpg"
+      ],
+      "source_image_sha256": [
+        "d142a4f7ca00ba9a207d8abd46282a17ac3eab2832f67f1d13a7b197a4b72f87",
+        "9ca0d9f8a3bee540b6e52661489cefb21013fb9d65029774901fdcdcc7d9dd86"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "眼镜框和摆放位置变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_06.jpg"
+    },
+    {
+      "number": 37,
+      "key": "4d197b6680f265ede218",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4111.jpg",
+        "validation/easy/images/3131.jpg"
+      ],
+      "source_image_sha256": [
+        "a5641489dcc6685f48f2ed041ca84aa48c230842aa96130e5d8ea7c1afcbad16",
+        "288decee215ece27b0f9068c86d97c29512042d7ef172069553639246ed4915a"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前长条包装翻面",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_07.jpg"
+    },
+    {
+      "number": 38,
+      "key": "e07c406928dd83d903c2",
+      "group": "跨划分",
+      "ids": [
+        "train/images/2737.jpg",
+        "validation/easy/images/891.jpg"
+      ],
+      "source_image_sha256": [
+        "d72784fe4c14d259a097b2f415ccab7508e4e5b7dba4f516464bc96263a14d42",
+        "0bde604ec5b30ab420ba0d5a668cde8766c8ea6d33b5495882751ebd093a5c04"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯柄朝向和杯子摆放变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_07.jpg"
+    },
+    {
+      "number": 39,
+      "key": "8f3acad51783b6d691d6",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9219.jpg",
+        "train/images/9930.jpg"
+      ],
+      "source_image_sha256": [
+        "df1f9dad2f5e3f2035d0e0cdac6c293476e5a59a403bc99e9850ba964c9807de",
+        "03965a57d24aebf3f5666243018efd28f876fa8a88ee29f1d812f57585d4dcfd"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯口反光、键盘细节一致；平移与缩放配准支持同原图",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_07.jpg"
+    },
+    {
+      "number": 40,
+      "key": "7832d084115073a14662",
+      "group": "跨划分",
+      "ids": [
+        "train/images/4624.jpg",
+        "validation/easy/images/2329.jpg"
+      ],
+      "source_image_sha256": [
+        "62bab72b54658e1134205e26456fd2550b8dac0bbc19b9e8ac1935e58c1d08f4",
+        "e1936547b9239dccb06945dc60875f4f80cb830f2c9bf16c09adc8bad136a81b"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "眼镜朝向及与摆件相对位置变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_07.jpg"
+    },
+    {
+      "number": 41,
+      "key": "7f220f840169bd42049d",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4407.jpg",
+        "train/images/4614.jpg"
+      ],
+      "source_image_sha256": [
+        "d83f36e66950aca88dd95a63e16a7362147b4bc7f87f403e32325e2d8ca2f063",
+        "0ac34022576fa2571cef0b5c19f12c7bdd45d634e5090b1f6dde9cd9f507b3e5"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "带纸牌物品从杯左移到杯后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_07.jpg"
+    },
+    {
+      "number": 42,
+      "key": "88631b39d54e0d35df4b",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4960.jpg",
+        "train/images/3387.jpg"
+      ],
+      "source_image_sha256": [
+        "62daa57f3cb38973934c0a81dbaee2a1076fb7db643950fe6a29d51299c787ca",
+        "adc7fbd3aad7eb037492c28315a231197ab544409a8bdb9826bef3107f173ab8"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯后软管包装翻面",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_07.jpg"
+    },
+    {
+      "number": 43,
+      "key": "51f19d0eabc53c275e75",
+      "group": "跨划分",
+      "ids": [
+        "train/images/1378.jpg",
+        "validation/easy/images/2621.jpg"
+      ],
+      "source_image_sha256": [
+        "d792d60f0c8f6da6c032486937fbf39ce4fc21f98232f79f265521210afe56ec",
+        "4907b01a7ef08d13833144419321cf4208b86e5defed026214a408a2607fee2d"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "背景马克杯从正放变为倒置",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_08.jpg"
+    },
+    {
+      "number": 44,
+      "key": "34d48a48ab064b17d366",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/118.jpg",
+        "train/images/3086.jpg"
+      ],
+      "source_image_sha256": [
+        "3d1373080752a52a81657c72301173db2d78ff9cb1dda52c726e24938ae72719",
+        "328de45a22cd5683db25fdcbc005fbb0001cea02f37779d697ddea7dc9cb52b6"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "紫色盒子翻面",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_08.jpg"
+    },
+    {
+      "number": 45,
+      "key": "22dc07bdde66d26ed2af",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4446.jpg",
+        "train/images/4268.jpg"
+      ],
+      "source_image_sha256": [
+        "cf29098a759e6322def4c8eb91bce224e779bcc03116faaa3e50a50ae8ac37a3",
+        "61ae1adaf31028234f1ca7b435a8c0e57c7b9b83c74a7b4421b8eec279b560d0"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "包装从右前方移到右后方",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_08.jpg"
+    },
+    {
+      "number": 46,
+      "key": "e07dfa3c9ed0d9e8faed",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2087.jpg",
+        "train/images/4054.jpg"
+      ],
+      "source_image_sha256": [
+        "a4845be44f15f291aa5c7420a13362cb66b2df1b3c76f466f61d038a6cf3e2e4",
+        "d8ab381d3fcc60fbcfaaca7050c5c2b25fff49627a87f2218cff34864aec7c0c"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "后方马克杯朝向及与高脚杯相对关系变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_08.jpg"
+    },
+    {
+      "number": 47,
+      "key": "f31f73db7d5ccd2e8523",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4111.jpg",
+        "train/images/3732.jpg"
+      ],
+      "source_image_sha256": [
+        "a5641489dcc6685f48f2ed041ca84aa48c230842aa96130e5d8ea7c1afcbad16",
+        "8a3d124083613d8afb978ecb646784754eb41abfaef2df850a77d17b36e90113"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "长条包装从杯前移到杯左",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_08.jpg"
+    },
+    {
+      "number": 48,
+      "key": "c02a03040b33fab28c0b",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/10025.jpg",
+        "train/images/9174.jpg"
+      ],
+      "source_image_sha256": [
+        "ce5de61ed2e52b4c0d7528819a92ded89f6441261c60977b770bdf9fe78df3cb",
+        "0cc8ffd1f7762cf74090d849efa2f6d96cccdfd80448fb8dd0462a512a58b310"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "手指、杯体标签及车内背景细节一致，取景裁切不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_08.jpg"
+    },
+    {
+      "number": 49,
+      "key": "9a3329a59b439bbcfe14",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/1087.jpg",
+        "train/images/758.jpg"
+      ],
+      "source_image_sha256": [
+        "f1888a55510ba6656c13ad8e194ccc915505a8f34e356485d8141eaabb4b0ca2",
+        "a127ec39920d7589fe5e02394679fb4f2b4b7d75a7f682f94ee0766845bf7d7d"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "圆柱物品由杯左移到杯前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_09.jpg"
+    },
+    {
+      "number": 50,
+      "key": "3ed91f3710f553ab9449",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2424.jpg",
+        "train/images/1516.jpg"
+      ],
+      "source_image_sha256": [
+        "c25abd83210eeb6e2b5e3665e5341aeca633a0c6cae38948ac6603ca9bb9e314",
+        "38008c3cfaf235a23c42e7860f59c7f16728a90cdbd4d44737d4e0738d04d469"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯后的小瓶被移除",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_09.jpg"
+    },
+    {
+      "number": 51,
+      "key": "0124f79d52aee1145acc",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9508.jpg",
+        "train/images/10082.jpg"
+      ],
+      "source_image_sha256": [
+        "6b595ae1b2e909178b29c282b5d95ce37ee0e787f5c1f98120f0d4c7c008539b",
+        "ab9913657532af6b1c7ae862dffd47719e697077d87ceafa9b9767de7a818b32"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "空杯与装水杯，液面及投影不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_09.jpg"
+    },
+    {
+      "number": 52,
+      "key": "079acbf1f2759a8466a9",
+      "group": "跨划分",
+      "ids": [
+        "train/images/9514.jpg",
+        "validation/easy/images/10178.jpg"
+      ],
+      "source_image_sha256": [
+        "5e2553df6513c3fcf1ba777ef2240baa1cf884fe1fd084e015ab74926af15821",
+        "c3a1250e09bf0774992b7080274b61df04772bff8860b459f61db7f50dba7b53"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "两个杯子、底部纸条和后方纸盒细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_09.jpg"
+    },
+    {
+      "number": 53,
+      "key": "6bd97b89336e57a875eb",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/10234.jpg",
+        "train/images/10326.jpg"
+      ],
+      "source_image_sha256": [
+        "f18fa577feaa9662c3a7e9d521bbf41305c9204f43768fca5386b73c158bc2e8",
+        "d67604bbd64acfec787cd66e1ff01a3f4de08014d42da95b407e5041c262b63c"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "双杯、木纹及黑色包装盒细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_09.jpg"
+    },
+    {
+      "number": 54,
+      "key": "07077bc3e553c14507f3",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/297.jpg",
+        "train/images/862.jpg"
+      ],
+      "source_image_sha256": [
+        "9f12eff3d9e66a2e912ec900a5bac995989ee0877511eaf2d8e2af167fd8e982",
+        "8b5ca260acb01c37427d40d23d4b3a5552b16fe7b8328e4c2feaa1dd387763d8"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前道具由圆柱瓶换成便签和绿色盒",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_09.jpg"
+    },
+    {
+      "number": 55,
+      "key": "a27c11d6bb2daeb66c80",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/3027.jpg",
+        "train/images/4869.jpg"
+      ],
+      "source_image_sha256": [
+        "7812f621f854988b9716c5925908b4c8c3d51cdec93dc9d6be17d461edf71ce4",
+        "4a93253c22d14379d18550588259cf4e7eb9ebed6acb0c5b2912de23f96c6334"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯上图案及杯体相对木纹位置变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_10.jpg"
+    },
+    {
+      "number": 56,
+      "key": "194484a2ce159e3ff4a2",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/3449.jpg",
+        "validation/easy/images/4453.jpg"
+      ],
+      "source_image_sha256": [
+        "325bc725de6254cb46e6e19eb6cf393f4274ce60896848f028a05193c51b026a",
+        "0d85383d74056797c6105edb8fd4d104cb89d3ae3bfd18210d37434d40649ca1"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前物品不同，夹子盒与小包装切换",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_10.jpg"
+    },
+    {
+      "number": 57,
+      "key": "bdabf790b3a3a3fb6cb1",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9897.jpg",
+        "validation/easy/images/9283.jpg"
+      ],
+      "source_image_sha256": [
+        "4870a93148189f72026b166d3ea4b181c230bfc63f4100f3b11214915d5c9512",
+        "39f355254af2f8f4e6eafb3e9043b8922f57c60dd5f5fe22da582d474828ac14"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯体反光、杯底和圆桌木纹细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_10.jpg"
+    },
+    {
+      "number": 58,
+      "key": "9650aee3186dbd56f9c7",
+      "group": "跨划分",
+      "ids": [
+        "test/hard/images/8843.jpg",
+        "train/images/8665.jpg"
+      ],
+      "source_image_sha256": [
+        "3f8e762ad85c747fb464e2e2f1a17c3335b420ba433b68cf1113ff2951e396f3",
+        "b2243ab57595a305d23f874364e57786d1d72cfc9c53fc7220d88e8afdb0f6d9"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "店铺橱窗取景和透视角度变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_10.jpg"
+    },
+    {
+      "number": 59,
+      "key": "c1586e6454c965d4fc7d",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/3513.jpg",
+        "train/images/2414.jpg"
+      ],
+      "source_image_sha256": [
+        "4b43043b55fd58d137934b14a16510c983126d3478fa28cf301a578609c2b2e8",
+        "3e3ec54c397b0d59d4a2063bdcc2e5e2637e2f82fcaf5e9b2d818dc1ede90498"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "高脚杯后方马克杯图案不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_10.jpg"
+    },
+    {
+      "number": 60,
+      "key": "2927e63fc5e8f4f45410",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/5959.jpg",
+        "validation/easy/images/5815.jpg"
+      ],
+      "source_image_sha256": [
+        "2ba005b40d1802204e551883669bf9ad363a36f0dd170962be01b859677241a0",
+        "294234a7dd0d099cd29f6522744bba99b0275a1e55c694c3c904cebb63d593a6"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "瓶身凹痕、杯套纹理、反光及背景细节一致；画幅宽度和裁切不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_10.jpg"
+    },
+    {
+      "number": 61,
+      "key": "5b2f61b6f1864b627757",
+      "group": "跨划分",
+      "ids": [
+        "train/images/2527.jpg",
+        "validation/easy/images/423.jpg"
+      ],
+      "source_image_sha256": [
+        "192979b8148259382b318eaab3dcff8e41d8c3ad29385264a261712219b37eb4",
+        "c67360b8026110126c8db538e36c261836105a3c0a5a802b24ebcd1bd4298e7e"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "小圆柱从杯右移到杯左前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_11.jpg"
+    },
+    {
+      "number": 62,
+      "key": "628335f5f296022f4083",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2667.jpg",
+        "train/images/862.jpg"
+      ],
+      "source_image_sha256": [
+        "6854c44eacef4d48f2e0481f747130ab5f573ac0535afdccd07df741b67ab407",
+        "8b5ca260acb01c37427d40d23d4b3a5552b16fe7b8328e4c2feaa1dd387763d8"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "便签从杯右移到杯左",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_11.jpg"
+    },
+    {
+      "number": 63,
+      "key": "55e41b80fb5faf5dcef5",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2667.jpg",
+        "validation/easy/images/2418.jpg"
+      ],
+      "source_image_sha256": [
+        "6854c44eacef4d48f2e0481f747130ab5f573ac0535afdccd07df741b67ab407",
+        "aeca22adfcd1c7c12de7d8685df95041dc931b4d98704a3c0d1982ec2dfafd97"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "便签从杯右移到杯后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_11.jpg"
+    },
+    {
+      "number": 64,
+      "key": "b2d99423208c43901db3",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/9233.jpg",
+        "train/images/9712.jpg"
+      ],
+      "source_image_sha256": [
+        "7e805db0e10e7452c93e832d3993036c4c7263d960dfe056db77cd0221cca1d6",
+        "1e7be6f380d9731e456378c451eb8b3d118ac240631311ff8404141f061aa4c6"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "水面气泡、杯柄和屏幕细节一致；平移与缩放配准支持同原图",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_11.jpg"
+    },
+    {
+      "number": 65,
+      "key": "6e4078f3c907efe7113a",
+      "group": "跨划分",
+      "ids": [
+        "train/images/2092.jpg",
+        "validation/easy/images/2418.jpg"
+      ],
+      "source_image_sha256": [
+        "d4e341a0f5f26cb9279a518247bc1820dde7c8216c4ab3fdcf387cef413d73a9",
+        "aeca22adfcd1c7c12de7d8685df95041dc931b4d98704a3c0d1982ec2dfafd97"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "右图杯后增加便签",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_11.jpg"
+    },
+    {
+      "number": 66,
+      "key": "5cd962be4fe6d3308dbf",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4442.jpg",
+        "train/images/5137.jpg"
+      ],
+      "source_image_sha256": [
+        "bd8fce1891c64b6573a01a4cc06937c6ad682279ecc4cc242bc0c468fe2ab51d",
+        "348067700440778086da51d329ea6e576ba8d5013f1816801506d6b169babe26"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前道具由紫盖小物换成包装袋",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_11.jpg"
+    },
+    {
+      "number": 67,
+      "key": "055cdbe957f9ce46ff8e",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4605.jpg",
+        "train/images/1015.jpg"
+      ],
+      "source_image_sha256": [
+        "4a96389086f73fb3a1b1c8f7cc17181b9ac5fc30bc6c7e269b4f6df0fd4d8ed3",
+        "4e7292042f57c875d4ca8a683447c5df1910f2c4d127f2b5b2d2f4b164204adf"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "胶带从杯右后移到杯右前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_12.jpg"
+    },
+    {
+      "number": 68,
+      "key": "edb115caeb98a6417dcf",
+      "group": "跨划分",
+      "ids": [
+        "test/hard/images/9261.jpg",
+        "train/images/8913.jpg"
+      ],
+      "source_image_sha256": [
+        "33fc85d0b54768241c9639011f96e7642544946101e72cb407212ed7cc74a658",
+        "d5aa4643b709bfd29b2f32c91adb7a7e267b2c02dbc8738832d57c04b76ea303"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "水瓶、表格纸及绿色桌面物品一致，裁切比例不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_12.jpg"
+    },
+    {
+      "number": 69,
+      "key": "c4fda1cbd912f5eca46d",
+      "group": "跨划分",
+      "ids": [
+        "train/images/581.jpg",
+        "validation/easy/images/1108.jpg"
+      ],
+      "source_image_sha256": [
+        "a6fcae0b483b4068c526d229928facb4259a1bf14d262796fcc80c7d0516e73f",
+        "0664e61c3d5a50cca1e61ca4a5cb343a5f2df7083890b9ac1d9940d00f9fdc47"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "勺子移位且增加木盖",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_12.jpg"
+    },
+    {
+      "number": 70,
+      "key": "6ea8a3f09e82d080a77c",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2415.jpg",
+        "train/images/5010.jpg"
+      ],
+      "source_image_sha256": [
+        "b7d262489264d9e1e88803ebfe7099f92ff53a7907dde554ed95c3092ad0d742",
+        "b3f70d43323a076c957b739a97555d1fd07a8ee69c37e5e22eb7cb06c17481c9"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯与茶盘相对位置及拍摄视角变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_12.jpg"
+    },
+    {
+      "number": 71,
+      "key": "c6aeaf6f1a15cb89ed9b",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/2087.jpg",
+        "train/images/2171.jpg"
+      ],
+      "source_image_sha256": [
+        "a4845be44f15f291aa5c7420a13362cb66b2df1b3c76f466f61d038a6cf3e2e4",
+        "681be765e7c28227f21681825329af70f4d8cec120be5ecf2f334105d42009c9"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "后方马克杯朝向改变",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_12.jpg"
+    },
+    {
+      "number": 72,
+      "key": "cfc3abab1b0b4137494d",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4227.jpg",
+        "train/images/710.jpg"
+      ],
+      "source_image_sha256": [
+        "82f65ec373b34348d671117a3b8e4e127dea35e3cf0e047eb9d837385ef402ab",
+        "5a8621cffd0499ef53c628037a977ff33d43ee597c4e79c50eb8cb68e87a095b"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "拐杖糖从杯右移到杯后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_12.jpg"
+    },
+    {
+      "number": 73,
+      "key": "aca04f2ee91065d53471",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/5081.jpg",
+        "train/images/2092.jpg"
+      ],
+      "source_image_sha256": [
+        "1a70e941275691c6aa851436f4611b0760f049523a28cc439c60b0539b68d624",
+        "d4e341a0f5f26cb9279a518247bc1820dde7c8216c4ab3fdcf387cef413d73a9"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前物品由软管换为绿色包装盒",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_13.jpg"
+    },
+    {
+      "number": 74,
+      "key": "2e1c1721771da8dede30",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/3022.jpg",
+        "train/images/2474.jpg"
+      ],
+      "source_image_sha256": [
+        "5839b682e184a96ed129fbd6bdf1163f4c7d16459cec29e3801bc59025d7ebe8",
+        "fa75f5b628e3284772785663bff983f0fcb1fe95f6dbf2fb8bc906bc8a2a453e"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "透明盒及瓶子摆放、前后关系变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_13.jpg"
+    },
+    {
+      "number": 75,
+      "key": "0a6d5ed0e592b71e53c2",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/3258.jpg",
+        "train/images/4868.jpg"
+      ],
+      "source_image_sha256": [
+        "7322460b31c3c5a57a6d87ce7e21a0be06e607dd4e702c71951bcb37c4b0976a",
+        "a82f1ec4b5cda645921b7b8309576738c6671fe5e9ed9c83b43964323c18bf59"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "笔从杯左侧移到杯口后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_13.jpg"
+    },
+    {
+      "number": 76,
+      "key": "499d8f26785aac5f95e7",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/4660.jpg",
+        "train/images/2451.jpg"
+      ],
+      "source_image_sha256": [
+        "c80f7fd2a86132711498f507840a2f88119c02e7b455a12cdffe77e9833d2826",
+        "3212ac1233abdd1338b99ef3ab536be2a30fa8ba70396f7e31d6c0a8f87d3dea"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "胶带由杯后移到右侧",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_13.jpg"
+    },
+    {
+      "number": 77,
+      "key": "0397ce10c606c3cc8844",
+      "group": "跨划分",
+      "ids": [
+        "test/hard/images/1865.jpg",
+        "validation/hard/images/908.jpg"
+      ],
+      "source_image_sha256": [
+        "a73608cadd3e2ce28c9ce473bf02095747f151a7895a813b7a0f5a9729b66f73",
+        "9627d4d5aa9756c06246ddd6225e4c4ccb17ecfdf8f68c221aa5d9bb23a5834d"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "眼镜场景中的透明水瓶换成红盖瓶",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_13.jpg"
+    },
+    {
+      "number": 78,
+      "key": "1f221ee3fd9ef49e856e",
+      "group": "跨划分",
+      "ids": [
+        "test/easy/images/3907.jpg",
+        "validation/easy/images/247.jpg"
+      ],
+      "source_image_sha256": [
+        "ecfde4908c619ec7f9764de9f07cff93c590820dd276541ea1f4cfea6e799ecd",
+        "df57df284a51db510d1d00abb9fb98b9f28476c4a9084d8ec29b82779a29f3f0"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "茶盘上杯子的形状及柄不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_13.jpg"
+    },
+    {
+      "number": 79,
+      "key": "75edcda7acf79aa90dc4",
+      "group": "跨划分",
+      "ids": [
+        "train/images/2636.jpg",
+        "validation/easy/images/2160.jpg"
+      ],
+      "source_image_sha256": [
+        "d142a4f7ca00ba9a207d8abd46282a17ac3eab2832f67f1d13a7b197a4b72f87",
+        "76ab2f61af93291b60709daf764ef1333ee6273fd545949d516bc34417418e65"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "眼镜框型、摆放和标签位置变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_14.jpg"
+    },
+    {
+      "number": 80,
+      "key": "4f3eb6fa1c36fdc25886",
+      "group": "跨划分",
+      "ids": [
+        "train/images/3242.jpg",
+        "validation/easy/images/3118.jpg"
+      ],
+      "source_image_sha256": [
+        "6b721c4cc8358e5794b250d6f0c9a3e92069162590bb8aa1d4671e2704ba9fc1",
+        "3d55de21d9025e6a3f6160b08ade074e75fd13859835e661b4285372b87dc800"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "相似木桌与格纹杯，周围道具和摆放明显变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_cross_contact_14.jpg"
+    },
+    {
+      "number": 81,
+      "key": "c1514b9d119d710ff6ae",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10110.jpg",
+        "test/easy/images/9093.jpg"
+      ],
+      "source_image_sha256": [
+        "a3db9b6341d29056e56edbf24bb144d2d4228c413aeb52cc9b40fb1033a4d15f",
+        "776703111482bbb433713fef12a43eaaed45fa85e7b1a9a1fd775340bcfddf07"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯底纸条、透明杯与包装盒细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_01.jpg"
+    },
+    {
+      "number": 82,
+      "key": "03f32b6f69722f784192",
+      "group": "同划分",
+      "ids": [
+        "train/images/8980.jpg",
+        "train/images/9893.jpg"
+      ],
+      "source_image_sha256": [
+        "83849108a7f06facaecfa38237be76a16e3a1ca7c2fa786043cc452d41b950e2",
+        "d0c1f61565b847a1cfe8f8da23fa0ade3c29d24c1f862b47a9c663e21e2aa5db"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "双杯、纸条和木纹细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_01.jpg"
+    },
+    {
+      "number": 83,
+      "key": "c8d4cd27807bc4e3e1ef",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/4425.jpg",
+        "test/easy/images/4553.jpg"
+      ],
+      "source_image_sha256": [
+        "d62c7855105f27b4e8f0742c396b6cbf45243e62b143093d849090a80607cbdd",
+        "8576360e65e2ea710c7e5a39bdc9f8a5edd470c14c635b99cdca2a6085f41d2f"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "玻璃竖框相对包和灯具的位置变化，灯光高光也变化，属于同场景另拍",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_01.jpg"
+    },
+    {
+      "number": 84,
+      "key": "5db5135017a1fab1bd40",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/9435.jpg",
+        "test/easy/images/9552.jpg"
+      ],
+      "source_image_sha256": [
+        "c40e9c0f0ac196390a083940a0d2354dbdb48432326c1704b9e4c6c47f0e3d70",
+        "cfe611b6201a21eb18c623ea13e55be96b4097f0fe3d3ac1a988809dcc7c70d0"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "瓶身贴纸、背景马克杯及反光位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_01.jpg"
+    },
+    {
+      "number": 85,
+      "key": "790b499b005389ed39e4",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10018.jpg",
+        "test/easy/images/9366.jpg"
+      ],
+      "source_image_sha256": [
+        "6ca3df3a8d9d50e72145b3b994bdc2620f6cd1b128636cc22eaff46b472a7241",
+        "08093c161833535913dedc95769a32f9494065b961f1f66310c3787b36a35c9f"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯柄、底部标签、椅子和背景设备细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_01.jpg"
+    },
+    {
+      "number": 86,
+      "key": "319b5d98f0ca2f8ba4ad",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/9219.jpg",
+        "test/easy/images/9310.jpg"
+      ],
+      "source_image_sha256": [
+        "df1f9dad2f5e3f2035d0e0cdac6c293476e5a59a403bc99e9850ba964c9807de",
+        "54ae933f679be2dd6d437622c23cc56a6995e63fcb9c82dc3c112da29fac5997"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯口反光、键盘和鼠标细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_01.jpg"
+    },
+    {
+      "number": 87,
+      "key": "80032aade17c0b8c2f24",
+      "group": "同划分",
+      "ids": [
+        "test/hard/images/3441.jpg",
+        "test/hard/images/4758.jpg"
+      ],
+      "source_image_sha256": [
+        "a090a459ef6eb9109c33b51d0f20480c2fc98361ecfcdc9e68362da7807ba148",
+        "8d8a3bdbc2007c70ead0ae3ed4076e3b62eb89e85f07174e9014c9efe1e08ca4"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "前景竖框相对店内模特和招牌的位置变化，玻璃反射也不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_02.jpg"
+    },
+    {
+      "number": 88,
+      "key": "caf8c2e42ade8152ce7a",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10170.jpg",
+        "test/easy/images/9597.jpg"
+      ],
+      "source_image_sha256": [
+        "3670b769a0638323f0b69727087fb6b2fc5838780c890786bbfd1cb360d9f405",
+        "692c4a6135ca2691f9d7e792bee195dffad1d75a46a41a6e127f16a84fa75142"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯身、键盘、笔记本和平板边界细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_02.jpg"
+    },
+    {
+      "number": 89,
+      "key": "ba1663957d2dc7bf96ba",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/1065.jpg",
+        "test/easy/images/293.jpg"
+      ],
+      "source_image_sha256": [
+        "c03445bee77a3ba02bb605814029d4855a7c50031d24bedab8327dcf980a8786",
+        "b6d7a77c0643147fdcd3582a33ca91a7b1fc8bfb1b483c393ecf04a57ef92c1f"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前包装正反面不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_02.jpg"
+    },
+    {
+      "number": 90,
+      "key": "8d2742024147c7f2d939",
+      "group": "同划分",
+      "ids": [
+        "train/images/1324.jpg",
+        "train/images/5186.jpg"
+      ],
+      "source_image_sha256": [
+        "4efe47c273bca7f49e5177380f0538703f420c6444370c5909a1388fffc6b99b",
+        "84c52cb5d2aadb6ff766e7b24399a64eec924b87fd3b0e166442a1c3bb7aefce"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "茶盘上的杯子形状/大小变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_02.jpg"
+    },
+    {
+      "number": 91,
+      "key": "36d5ae0272c1db5f79e4",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/2797.jpg",
+        "test/easy/images/4960.jpg"
+      ],
+      "source_image_sha256": [
+        "9991bf31a6d506a232e77bb49f733686888893a641b5136323f9324c07f32bfc",
+        "62daa57f3cb38973934c0a81dbaee2a1076fb7db643950fe6a29d51299c787ca"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "软管由杯右移到杯后且翻面，照明变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_02.jpg"
+    },
+    {
+      "number": 92,
+      "key": "a068fe3488edd425337c",
+      "group": "同划分",
+      "ids": [
+        "train/images/9082.jpg",
+        "train/images/9102.jpg"
+      ],
+      "source_image_sha256": [
+        "cd77c2702b34cdfefb2c36da03aa9f570f37338da58246a51137d0be6538267b",
+        "9aa79fe9c38e20c4d82adae1c93a8fbe3c329fd58b1808adfe429091eedd5385"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "握瓶手指、瓶套及窗外背景一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_02.jpg"
+    },
+    {
+      "number": 93,
+      "key": "5c579cc3187a806e05b8",
+      "group": "同划分",
+      "ids": [
+        "train/images/9318.jpg",
+        "train/images/9794.jpg"
+      ],
+      "source_image_sha256": [
+        "6be031374a573c3f12b21ddcb58eca9c7195be337a0907f3bdf8e781b6b511c9",
+        "ef3acbb25842141c4dfafface7d305fd4bed09b7ef5f42ee36b8318448a9f850"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯内纸牌、包装盒和木桌细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_03.jpg"
+    },
+    {
+      "number": 94,
+      "key": "4a6c9c31d8d56a2e8d0b",
+      "group": "同划分",
+      "ids": [
+        "train/images/10060.jpg",
+        "train/images/9296.jpg"
+      ],
+      "source_image_sha256": [
+        "0c6064bf9bdaa96edd4fe8112fb01413bdc2fdd6e0de40ba0c7a3aafca19eba9",
+        "65c611aa0b342f48cf1f28c2ac3fe3d901e1f713ed435336cf355487a4b009a5"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "手指、灰色瓶套缝线和背景细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_03.jpg"
+    },
+    {
+      "number": 95,
+      "key": "2a2f6e8423f55bd3b102",
+      "group": "同划分",
+      "ids": [
+        "validation/easy/images/4721.jpg",
+        "validation/easy/images/5211.jpg"
+      ],
+      "source_image_sha256": [
+        "b7fdf52a76494b5e239e798768cbb7c670b8ebcfd6705b6f024366766d4de073",
+        "87b46857b76f3524eb1ad633227fc9a44a0ef62b8cbe56e00372642cdc428e8f"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯柄朝向变化，杯子相对包装的位置变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_03.jpg"
+    },
+    {
+      "number": 96,
+      "key": "6172b53a3a1b21342c82",
+      "group": "同划分",
+      "ids": [
+        "train/images/1537.jpg",
+        "train/images/3878.jpg"
+      ],
+      "source_image_sha256": [
+        "b5a5b5be71c529a6a1fb589d12fe6df9e65456058748226b503a597eb9576f43",
+        "a0c2b35bafc7fcd8b3906ed25c31bbb3878a9bd128c2e3f0a8bb8beaadf156a4"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "细长盒子由杯右移到杯口后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_03.jpg"
+    },
+    {
+      "number": 97,
+      "key": "ad6891373eb1b99a2b75",
+      "group": "同划分",
+      "ids": [
+        "train/images/18.jpg",
+        "train/images/4258.jpg"
+      ],
+      "source_image_sha256": [
+        "a146caad195704d961abcec269007409e4ad5e43b8856ad72cc9b45102e7d06d",
+        "a4bf930ed74bba94bc70ece50d1b5c9c857778f6d022c54541466149aa01a788"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "小包装由杯后移到杯右",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_03.jpg"
+    },
+    {
+      "number": 98,
+      "key": "8a5016b34d767931821c",
+      "group": "同划分",
+      "ids": [
+        "train/images/9466.jpg",
+        "train/images/9948.jpg"
+      ],
+      "source_image_sha256": [
+        "cc955f0560927aa2e125392751095a7a4900c8c2b7ea0e02e2d5fe666994e510",
+        "ee51ea18cf09e14bf9ed601e4fbc2a9a4ef150bb2b2cc3266abaa3d5dd596647"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯内纸牌及后方包装盒细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_03.jpg"
+    },
+    {
+      "number": 99,
+      "key": "ae5dd7c1a083aca50ddd",
+      "group": "同划分",
+      "ids": [
+        "train/images/9522.jpg",
+        "train/images/9776.jpg"
+      ],
+      "source_image_sha256": [
+        "a33bdead1c83cfc1283c38841b88c35460eb4500a168223ea623a5ebf8ab3e45",
+        "d9562a6e313cc0ee2e4f131c744295f23f5406c20c46992c5ee5fe90afe7941b"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "蓝色杯套、杯内茶包与背景细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_04.jpg"
+    },
+    {
+      "number": 100,
+      "key": "9129839bc4157c75758d",
+      "group": "同划分",
+      "ids": [
+        "train/images/5363.jpg",
+        "train/images/5398.jpg"
+      ],
+      "source_image_sha256": [
+        "632457eab7d13188a9c6bc216dd517c1da3cb23f4855ecaac11258b1124fc56d",
+        "94420ca4768e147b0f9282f71726c6bcdfa99418d19b1d8ffbd6142ac56ed5ea"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "窗框、栏杆和楼宇细节可通过平移与缩放对齐，细节检查及中央区域配准支持同原图",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_04.jpg"
+    },
+    {
+      "number": 101,
+      "key": "793282df6e4b453fc2ba",
+      "group": "同划分",
+      "ids": [
+        "validation/easy/images/1663.jpg",
+        "validation/easy/images/3339.jpg"
+      ],
+      "source_image_sha256": [
+        "14f0651a6abbba23227cf72817cc61eaccf1d2384b87656d9494343a95254509",
+        "ab5749bef9596e1d592c96b0ee2b4a323d7e46117845bd5216b6282b8a4ce72b"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "瓶身挂件、橙子、键盘及紫色物品位置一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_04.jpg"
+    },
+    {
+      "number": 102,
+      "key": "7df2e9d78298a7a44091",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/8055.jpg",
+        "test/easy/images/8240.jpg"
+      ],
+      "source_image_sha256": [
+        "eb63e290f935c3726398f2d4e527c1fdae7450412dec8d610b5fd74ee605847a",
+        "0949f7c94f33b7a2d29734fa1607cb4f0566c3d758546c33f097848948b9f763"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "窗口边框相对窗外车辆和建筑的遮挡变化，地砖透视也不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_04.jpg"
+    },
+    {
+      "number": 103,
+      "key": "82929b437bd5c7edcb49",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10315.jpg",
+        "test/easy/images/9824.jpg"
+      ],
+      "source_image_sha256": [
+        "a9214b7d643d690741ba4c934a9264896678462f1aaeb9e9a0a7d0d518df64db",
+        "5c52c678640306b918daa73f4937fc28fc379de9ee4d082b219f74c5b7e4c370"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "三只碗相对桌布条纹和右上笔记本的取景关系变化，碗沿椭圆形状也不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_04.jpg"
+    },
+    {
+      "number": 104,
+      "key": "e58e716eef95620cae05",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10163.jpg",
+        "test/easy/images/9551.jpg"
+      ],
+      "source_image_sha256": [
+        "a36195f136815f9117d2725fcb4571a694e95b70b875e5a11f437567d09193c3",
+        "10cb3e4ee1a9bdeec510c82b55dff4b90b3633e79e255eece7360ccc2cbe45e7"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯底标签、显示器和键盘细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_04.jpg"
+    },
+    {
+      "number": 105,
+      "key": "e59cc449dc4447be9cef",
+      "group": "同划分",
+      "ids": [
+        "test/hard/images/10171.jpg",
+        "test/hard/images/9562.jpg"
+      ],
+      "source_image_sha256": [
+        "e56065fc7a899d4a46eefcb774d0f5bd2d812adb12d1665a642cd125a977f608",
+        "df4f5f07dcde6ef9bea3ed046e918819b102826d3c561311e5f5636e8c4a82f8"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯体反光、纸盒和桌面物品一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_05.jpg"
+    },
+    {
+      "number": 106,
+      "key": "f4b9c70c8d7dcff78d79",
+      "group": "同划分",
+      "ids": [
+        "train/images/1433.jpg",
+        "train/images/1513.jpg"
+      ],
+      "source_image_sha256": [
+        "971898d768948eb6f798c73d425e67eaac9c33a3ec189bb00b752a2af2ef7a79",
+        "bb451b40bf6fea10d1ac5dbb4ad3082f7c62f08c8f7e7cce33817bfae3ccbdd6"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "高脚杯与茶盘、柜板相对位置及拍摄角度不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_05.jpg"
+    },
+    {
+      "number": 107,
+      "key": "d0b725ba3a4307f7e284",
+      "group": "同划分",
+      "ids": [
+        "train/images/5304.jpg",
+        "train/images/5422.jpg"
+      ],
+      "source_image_sha256": [
+        "cb169a17b163bb48339ac47f55bd380e947694a544364d7f05d42054b55a59b3",
+        "e60e90642010063a974f371d2f3e28ce6b06980bec8d75c8e163e6b4cfcd9266"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "浴室陈设、灯光与物品边缘一致，疑似同原图裁剪",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_05.jpg"
+    },
+    {
+      "number": 108,
+      "key": "26dab719955f6dc89886",
+      "group": "同划分",
+      "ids": [
+        "train/images/5880.jpg",
+        "train/images/5919.jpg"
+      ],
+      "source_image_sha256": [
+        "0b3c0ffe6db2e5a2fc94e849d7fcf246ed26dc68e1a94be69f152dba6d0c70a4",
+        "03dc9dbc42c6f22cffdf387532968bfdc32071fbc37cca63939d30d2281e1614"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "纸巾盒与前景物品的相对取景变化，背景虚化和高光不同，属于另拍",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_05.jpg"
+    },
+    {
+      "number": 109,
+      "key": "28cdd78dd4385505851f",
+      "group": "同划分",
+      "ids": [
+        "train/images/725.jpg",
+        "train/images/792.jpg"
+      ],
+      "source_image_sha256": [
+        "a5e7dee2d48af8d57cc84339e1034fb04d5f04932b0a3dbb7ff7f863c81041b4",
+        "30a5573170963c99fe1aa5873d984bd060bd4bcb88cd8b0909676d5c9ab86362"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "窗框相对窗外建筑的遮挡关系变化，属于不同拍摄视点",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_05.jpg"
+    },
+    {
+      "number": 110,
+      "key": "be39c2cc187959bdc132",
+      "group": "同划分",
+      "ids": [
+        "train/images/9266.jpg",
+        "train/images/9777.jpg"
+      ],
+      "source_image_sha256": [
+        "fd410f2a3871009a83825ec9e7c44b9eb2676cf8c5104a18369e1bda031725b4",
+        "34f2aeb5f3b324d0522d5694e63b088f1d9afb296bc9f13ca575e504eb3fe303"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯中物品、杯柄、线缆及周边用品细节一致，裁切不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_05.jpg"
+    },
+    {
+      "number": 111,
+      "key": "027d93692b3432eea2d7",
+      "group": "同划分",
+      "ids": [
+        "train/images/290.jpg",
+        "train/images/4154.jpg"
+      ],
+      "source_image_sha256": [
+        "9919863bf29f3a3c0ebe4545190108f8e0ecc258b834e7a1a0b63a52637ba169",
+        "921b51673592a4fddc69b6c39590ba120943cf59e61e2a28ad2ec0d025d4c6d9"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯后物品由红罐换成夹子盒",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_06.jpg"
+    },
+    {
+      "number": 112,
+      "key": "2a5e7b7497f71e876a97",
+      "group": "同划分",
+      "ids": [
+        "test/hard/images/10185.jpg",
+        "test/hard/images/9258.jpg"
+      ],
+      "source_image_sha256": [
+        "12d089da69a18c9f6fdc256beadc2119a23db35123699f4359d7155f5f303437",
+        "634072268c47062ddffb284f9804efa97ed87dfb1267e92e8aff2afbc1d3825f"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "手指、杯上标记和叶纹桌布细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_06.jpg"
+    },
+    {
+      "number": 113,
+      "key": "229b698fa49106f96fec",
+      "group": "同划分",
+      "ids": [
+        "train/images/1324.jpg",
+        "train/images/1433.jpg"
+      ],
+      "source_image_sha256": [
+        "4efe47c273bca7f49e5177380f0538703f420c6444370c5909a1388fffc6b99b",
+        "971898d768948eb6f798c73d425e67eaac9c33a3ec189bb00b752a2af2ef7a79"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "同一茶盘换了杯型",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_06.jpg"
+    },
+    {
+      "number": 114,
+      "key": "783e23d22bf5c0ea8910",
+      "group": "同划分",
+      "ids": [
+        "train/images/2545.jpg",
+        "train/images/2707.jpg"
+      ],
+      "source_image_sha256": [
+        "efdb9e19bc37458a5e9c1759a12a1d9adef724a645a761f145e14092e03def1b",
+        "814ccf2054e9bef07841684c9203ea9c78efe4a54e21575c5a3ff853dcaf2818"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "黑色笔由杯前移到杯后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_06.jpg"
+    },
+    {
+      "number": 115,
+      "key": "53f9c690aa5458fdb67c",
+      "group": "同划分",
+      "ids": [
+        "train/images/4868.jpg",
+        "train/images/932.jpg"
+      ],
+      "source_image_sha256": [
+        "a82f1ec4b5cda645921b7b8309576738c6671fe5e9ed9c83b43964323c18bf59",
+        "6062182f4688429683c97fd85f4f10c59c977db7ddc4daa871ce7d2ca1a0f9eb"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "笔由杯口后移到杯右",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_06.jpg"
+    },
+    {
+      "number": 116,
+      "key": "211bfb18ca967810ad3a",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10289.jpg",
+        "test/easy/images/9434.jpg"
+      ],
+      "source_image_sha256": [
+        "0bb6bdc08a12591ef24f0ed0e9ed8869bc93acb795efc2ecefe178ac40571cbc",
+        "8b99b72b169774c99cdd92e64282a35df97c85b9ae52030aef2029ed783366f5"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯底标签、包装盒及背景绿植细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_06.jpg"
+    },
+    {
+      "number": 117,
+      "key": "93a66680b82658ac6af7",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/293.jpg",
+        "test/easy/images/3589.jpg"
+      ],
+      "source_image_sha256": [
+        "b6d7a77c0643147fdcd3582a33ca91a7b1fc8bfb1b483c393ecf04a57ef92c1f",
+        "5bb1888d6f89eb6f93d644a0b9019be41250e78c73c469216fcc66ed4c79f566"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "长条包装从杯前移到杯左",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_07.jpg"
+    },
+    {
+      "number": 118,
+      "key": "e9565e126e5536676863",
+      "group": "同划分",
+      "ids": [
+        "train/images/8953.jpg",
+        "train/images/9800.jpg"
+      ],
+      "source_image_sha256": [
+        "6bdec5141aac6dfbb95a752859da364e1ff248f905e55a02bb2928694fb007bf",
+        "82d31c3a4ab8768ea6f1607ddc1b7817bf27074130c378c93016563d954ffb72"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "手指纹理、玻璃反光及衣物背景一致，取景裁切不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_07.jpg"
+    },
+    {
+      "number": 119,
+      "key": "6864ea251fa7bee2fc0a",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/1068.jpg",
+        "test/easy/images/2689.jpg"
+      ],
+      "source_image_sha256": [
+        "e836cbe3579b2addea57894f3dc60ed71b49ca941d5cce4d2e59b660b8527698",
+        "f5a3288f8f2b2310d360a01188a1a968b9b7fb6357fb35e1c83ddf3b37ecd309"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯型和颜色不同，同一茶盘场景",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_07.jpg"
+    },
+    {
+      "number": 120,
+      "key": "46ad8a917302a9df724d",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/8932.jpg",
+        "test/easy/images/9128.jpg"
+      ],
+      "source_image_sha256": [
+        "7346fd048f28224f71f4d47e835df1cecfec2c23b5fdf07cc1b6387b0b1f97ae",
+        "e89d5f32e4a7dec981e357dc47579d491780fc01a5bdc7ad883146f8f4a7c6e2"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "壶盖木纹、壶身反光、把手及背景细节一致；差异为裁切与缩放",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_07.jpg"
+    },
+    {
+      "number": 121,
+      "key": "e671dc42ae8f888b217b",
+      "group": "同划分",
+      "ids": [
+        "train/images/1324.jpg",
+        "train/images/1513.jpg"
+      ],
+      "source_image_sha256": [
+        "4efe47c273bca7f49e5177380f0538703f420c6444370c5909a1388fffc6b99b",
+        "bb451b40bf6fea10d1ac5dbb4ad3082f7c62f08c8f7e7cce33817bfae3ccbdd6"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "同一茶盘更换杯型",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_07.jpg"
+    },
+    {
+      "number": 122,
+      "key": "a42bd3ab54ef54305d6a",
+      "group": "同划分",
+      "ids": [
+        "train/images/2545.jpg",
+        "train/images/3770.jpg"
+      ],
+      "source_image_sha256": [
+        "efdb9e19bc37458a5e9c1759a12a1d9adef724a645a761f145e14092e03def1b",
+        "d9cf95bbc5a342c0911ba0c783879f01eeb2cfe2b4837f0daf626fd3254f2833"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "黑笔从杯前移到杯右",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_07.jpg"
+    },
+    {
+      "number": 123,
+      "key": "4d1cd18605683be76117",
+      "group": "同划分",
+      "ids": [
+        "train/images/2597.jpg",
+        "train/images/3731.jpg"
+      ],
+      "source_image_sha256": [
+        "406b25326b051408337184ef4f86a524a9ac6a59eacc68ef728b17a7b156539b",
+        "e42521393047aa9ff541b7ec794d6441e80e7ac4631c94dd63274a899dc9586b"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯左包装更换",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_08.jpg"
+    },
+    {
+      "number": 124,
+      "key": "797d70e8e4368ec1aa42",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/1065.jpg",
+        "test/easy/images/3589.jpg"
+      ],
+      "source_image_sha256": [
+        "c03445bee77a3ba02bb605814029d4855a7c50031d24bedab8327dcf980a8786",
+        "5bb1888d6f89eb6f93d644a0b9019be41250e78c73c469216fcc66ed4c79f566"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "长条包装从杯前移到杯左",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_08.jpg"
+    },
+    {
+      "number": 125,
+      "key": "5d7f20192008636d1d71",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/3783.jpg",
+        "test/easy/images/4809.jpg"
+      ],
+      "source_image_sha256": [
+        "ebcb8cf3deb8ec4f39a298185cd094e18dd1b61ba24daf19c0ec23d1903f4d71",
+        "ea4495a1e38888114b48a16fdf31e0c49b528f6d41fa36115086a8dec20b6ab4"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "蓝色盒子正反面不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_08.jpg"
+    },
+    {
+      "number": 126,
+      "key": "75ef51bcdd4c7fa92bc6",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/1555.jpg",
+        "test/easy/images/1716.jpg"
+      ],
+      "source_image_sha256": [
+        "49201e974dc76920c5eb098dae9bd706fb28e86d1b357434128e71a5c4aa1169",
+        "84711625aaeaa705ea7966db0286c36caf632dafc4c46b508236709404ac1dd9"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "高脚杯外形及取景变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_08.jpg"
+    },
+    {
+      "number": 127,
+      "key": "f4570a90d258786b538d",
+      "group": "同划分",
+      "ids": [
+        "train/images/2516.jpg",
+        "train/images/5121.jpg"
+      ],
+      "source_image_sha256": [
+        "7b1fd34bd8683bbb2e08bc70c0e49c99a8b27f31de138615f5a50149d6f3d20f",
+        "140d3f3bdaddc5087bf3e22c6874dc37d4f15999c3b8a741955d2cf2b67f0d85"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "软管从杯左移到杯前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_08.jpg"
+    },
+    {
+      "number": 128,
+      "key": "83deaf484630a1a1fe02",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/2084.jpg",
+        "test/easy/images/3308.jpg"
+      ],
+      "source_image_sha256": [
+        "ba8f8fa6582d91bfa5345f6c28723ed4e696ca26188ae006b25a5df9ff1ecc4b",
+        "16562f74011e631b365f1cca17c6d47b68a471d5b9ff6006063e8a131cdb0b09"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "门上的贴纸相对后方椅子、窗户的遮挡关系明显变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_08.jpg"
+    },
+    {
+      "number": 129,
+      "key": "b797159e775b4e2c8056",
+      "group": "同划分",
+      "ids": [
+        "train/images/1391.jpg",
+        "train/images/4312.jpg"
+      ],
+      "source_image_sha256": [
+        "cd96e2eef91f4ae9a1c08f8bf340d529e31e57722312e2eb3491af876ac2c26b",
+        "4b1599ef3d43c97e16dfa54da068175474514ae037176e5116910695719b1812"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "窗框相对外侧建筑的遮挡及窗台盆栽的取景关系变化",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_09.jpg"
+    },
+    {
+      "number": 130,
+      "key": "44c6830cd6421160b964",
+      "group": "同划分",
+      "ids": [
+        "train/images/18.jpg",
+        "train/images/3312.jpg"
+      ],
+      "source_image_sha256": [
+        "a146caad195704d961abcec269007409e4ad5e43b8856ad72cc9b45102e7d06d",
+        "76cc2f994fad1ffbd13cab97b4f5a9255caa56856ab40bce8ea4dbe13cfd33a5"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "小包装从杯后移到杯左",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_09.jpg"
+    },
+    {
+      "number": 131,
+      "key": "74af33d1d43b8dcaf119",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/466.jpg",
+        "test/easy/images/941.jpg"
+      ],
+      "source_image_sha256": [
+        "44f3551148e0aec55b367c3ca0d04dc5bb1deb1c4500a33d38f82e1982f1b2a3",
+        "3a5b85ebceab23aa484cedd3914ae19b1d060cfb87d5f03b5ca4a85032be503a"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "黑笔从杯右移到杯后",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_09.jpg"
+    },
+    {
+      "number": 132,
+      "key": "024f15418c5243f2dc56",
+      "group": "同划分",
+      "ids": [
+        "train/images/1433.jpg",
+        "train/images/5186.jpg"
+      ],
+      "source_image_sha256": [
+        "971898d768948eb6f798c73d425e67eaac9c33a3ec189bb00b752a2af2ef7a79",
+        "84c52cb5d2aadb6ff766e7b24399a64eec924b87fd3b0e166442a1c3bb7aefce"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "茶盘上高脚杯换成直筒杯",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_09.jpg"
+    },
+    {
+      "number": 133,
+      "key": "eb676d67e2a2f873a4a8",
+      "group": "同划分",
+      "ids": [
+        "train/images/1513.jpg",
+        "train/images/5186.jpg"
+      ],
+      "source_image_sha256": [
+        "bb451b40bf6fea10d1ac5dbb4ad3082f7c62f08c8f7e7cce33817bfae3ccbdd6",
+        "84c52cb5d2aadb6ff766e7b24399a64eec924b87fd3b0e166442a1c3bb7aefce"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "茶盘上高脚杯换成直筒杯",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_09.jpg"
+    },
+    {
+      "number": 134,
+      "key": "4756cac03098d342b37b",
+      "group": "同划分",
+      "ids": [
+        "train/images/2092.jpg",
+        "train/images/862.jpg"
+      ],
+      "source_image_sha256": [
+        "d4e341a0f5f26cb9279a518247bc1820dde7c8216c4ab3fdcf387cef413d73a9",
+        "8b5ca260acb01c37427d40d23d4b3a5552b16fe7b8328e4c2feaa1dd387763d8"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "右图杯左增加便签",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_09.jpg"
+    },
+    {
+      "number": 135,
+      "key": "6da302e221c158b92e7f",
+      "group": "同划分",
+      "ids": [
+        "train/images/5907.jpg",
+        "train/images/5918.jpg"
+      ],
+      "source_image_sha256": [
+        "94a2d8e8849c3c32fe11d9a1d689ad0351c676301eb092e891724eda64d4af6f",
+        "325bdf2b847d827c06b3959bcccb2aa1e941517dc3cc5664742f131d83a025e9"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "前景瓶身的校徽和文字转向，后方瓶子遮挡关系变化，属于另拍",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_10.jpg"
+    },
+    {
+      "number": 136,
+      "key": "1c96b5a139a253c54ead",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10109.jpg",
+        "test/easy/images/9470.jpg"
+      ],
+      "source_image_sha256": [
+        "75b84b6a8671ed1f00f6fdeefd862a091c9fce123016d209dd1e1c73f7b45156",
+        "cee99ee3ececc71238184778e6cd4fd50a3db499495d6f23393722b5dbc70abc"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "握杯手指、玻璃反光和桌面细节一致",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_10.jpg"
+    },
+    {
+      "number": 137,
+      "key": "5f065e32fac839a8f386",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/1072.jpg",
+        "test/easy/images/3589.jpg"
+      ],
+      "source_image_sha256": [
+        "bb6aa19ff60578d274c8cd981496826b4028b31ff7ea0d59e26f6f4a3a834548",
+        "5bb1888d6f89eb6f93d644a0b9019be41250e78c73c469216fcc66ed4c79f566"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "长条包装翻面且靠近杯子",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_10.jpg"
+    },
+    {
+      "number": 138,
+      "key": "17b588a4393172e9c761",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/2246.jpg",
+        "test/easy/images/748.jpg"
+      ],
+      "source_image_sha256": [
+        "f3125959796b1d4a7275a62aecc62d9b09c4fb60c85cdfa6b03cb49c97392bb4",
+        "b2932314eeef0e5822bc716d423c1311fa35060438e1d2ddfd9793bd6b789149"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯旁圆柱和笔换成软管，照明变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_10.jpg"
+    },
+    {
+      "number": 139,
+      "key": "e97b4e07217989f8ea61",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/2667.jpg",
+        "test/easy/images/297.jpg"
+      ],
+      "source_image_sha256": [
+        "6854c44eacef4d48f2e0481f747130ab5f573ac0535afdccd07df741b67ab407",
+        "9f12eff3d9e66a2e912ec900a5bac995989ee0877511eaf2d8e2af167fd8e982"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "便签和绿色包装换为圆柱物品",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_10.jpg"
+    },
+    {
+      "number": 140,
+      "key": "0b70772b938d02ddcb0a",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/3452.jpg",
+        "test/easy/images/3834.jpg"
+      ],
+      "source_image_sha256": [
+        "e70494df81a6eb8ca823f30e3b27a669415ebe5b07604c396ef6ca81d80c2f9a",
+        "d808a9ef1574e3c8d0fb0276ca9658575736006f0ca1897a204fee887853b814"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯前绿色包装翻面",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_10.jpg"
+    },
+    {
+      "number": 141,
+      "key": "804a15e65dd102445d91",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/6755.jpg",
+        "test/easy/images/8481.jpg"
+      ],
+      "source_image_sha256": [
+        "3c48e4faa79ce4331163b3ec842fca412e5897f3dca850c4250c9e64d25d0fb3",
+        "cb9a59b1c83f7035215bc856b5dee55a3864db7863d0aace4c0eeb67be150719"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "D",
+      "observation": "门厅结构很相似，但告示和玻璃后方陈设不同；仅凭这两图无法确定是否同一处门厅，B/C 待定",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_11.jpg"
+    },
+    {
+      "number": 142,
+      "key": "0db01ded6f9614505c4e",
+      "group": "同划分",
+      "ids": [
+        "validation/easy/images/1108.jpg",
+        "validation/easy/images/637.jpg"
+      ],
+      "source_image_sha256": [
+        "0664e61c3d5a50cca1e61ca4a5cb343a5f2df7083890b9ac1d9940d00f9fdc47",
+        "b4cc991f5cc3f73f0c2cd2d6c99747de6647a56aac691598bd6beb44653fd613"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "右图移除了木盖和勺子",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_11.jpg"
+    },
+    {
+      "number": 143,
+      "key": "6517100bb9e60bf98192",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/10202.jpg",
+        "test/easy/images/8965.jpg"
+      ],
+      "source_image_sha256": [
+        "b1144b84749b77790f9623874810a9798a0dd8374c82d2954df54968962466c2",
+        "34f35e415c6b47d92612e59600df58f59b100c8a713d6086a39b6227f8693551"
+      ],
+      "human_answer": "A",
+      "human_raw_answer": "A",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "手指、杯身标记及背景门板细节一致，取景略有裁切",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_11.jpg"
+    },
+    {
+      "number": 144,
+      "key": "8ef7203d6a2edac6738c",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/228.jpg",
+        "test/easy/images/3001.jpg"
+      ],
+      "source_image_sha256": [
+        "04f3a0fce7943d10bb8736e79f69b5298e567112db5a1b8b7668e15cf8e343cd",
+        "b8eb23791a692ffaef950f6606421a6f009365ab7dcc0800e93ca5e2b16e04f6"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯后包装旋转，位置变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_11.jpg"
+    },
+    {
+      "number": 145,
+      "key": "c454479508cb2c255a9d",
+      "group": "同划分",
+      "ids": [
+        "train/images/2171.jpg",
+        "train/images/4054.jpg"
+      ],
+      "source_image_sha256": [
+        "681be765e7c28227f21681825329af70f4d8cec120be5ecf2f334105d42009c9",
+        "d8ab381d3fcc60fbcfaaca7050c5c2b25fff49627a87f2218cff34864aec7c0c"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "高脚杯后马克杯的图案、颜色和方向不同",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_11.jpg"
+    },
+    {
+      "number": 146,
+      "key": "a56669c55078d923264a",
+      "group": "同划分",
+      "ids": [
+        "train/images/4279.jpg",
+        "train/images/7603.jpg"
+      ],
+      "source_image_sha256": [
+        "fc77a955a312f4329189fb78c45723603d54fb41b52a68d8cdf046b6bd69becc",
+        "1f60660fca50a01a53e6f11645a20a5b25ba07d5eccc7c851147c7bad451f4b8"
+      ],
+      "human_answer": "C",
+      "human_raw_answer": "C",
+      "human_note": "",
+      "ai_recommendation": "C",
+      "observation": "窗户形状比例、房间墙面和窗外建筑不同，外观相似但不像同一场景",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_11.jpg"
+    },
+    {
+      "number": 147,
+      "key": "ae01b0011388f739febe",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/1072.jpg",
+        "test/easy/images/293.jpg"
+      ],
+      "source_image_sha256": [
+        "bb6aa19ff60578d274c8cd981496826b4028b31ff7ea0d59e26f6f4a3a834548",
+        "b6d7a77c0643147fdcd3582a33ca91a7b1fc8bfb1b483c393ecf04a57ef92c1f"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "长条包装由杯左移到杯前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_12.jpg"
+    },
+    {
+      "number": 148,
+      "key": "de3fe08113bd31eb156c",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/2797.jpg",
+        "test/easy/images/5119.jpg"
+      ],
+      "source_image_sha256": [
+        "9991bf31a6d506a232e77bb49f733686888893a641b5136323f9324c07f32bfc",
+        "9569bfd0e0de6148c8f301ab81ea2b2d4dc4eb36367a25dca866192eeecb4bb2"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯旁软管换成纸盒，杯子位置也有变化",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_12.jpg"
+    },
+    {
+      "number": 149,
+      "key": "a490b3b208d5158f5f08",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/9123.jpg",
+        "test/easy/images/9950.jpg"
+      ],
+      "source_image_sha256": [
+        "6a4a218c773b1ff7a8ff1b0f0d66d6473b65cb131937fb07366348cf12be4e6a",
+        "c493b8ae4f17086051e83123401410ae1843934a7041c56b89d47cb89648a926"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "A",
+      "observation": "杯口反光、杯底纸条、红盒印刷和地砖电线细节一致；仅裁剪与缩放不同",
+      "agrees_with_human": false,
+      "status": "pending_owner_reconciliation",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_12.jpg"
+    },
+    {
+      "number": 150,
+      "key": "b022789c35bbe35e9356",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/2060.jpg",
+        "test/easy/images/293.jpg"
+      ],
+      "source_image_sha256": [
+        "f45ddcefb9e8fc22d1c077f2cc38b40dbbf51505c19717cdccc83b18ed6734c4",
+        "b6d7a77c0643147fdcd3582a33ca91a7b1fc8bfb1b483c393ecf04a57ef92c1f"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "长条包装由杯右移到杯前",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_12.jpg"
+    },
+    {
+      "number": 151,
+      "key": "1ae75cf3727c32f72ba8",
+      "group": "同划分",
+      "ids": [
+        "test/easy/images/3027.jpg",
+        "test/easy/images/4387.jpg"
+      ],
+      "source_image_sha256": [
+        "7812f621f854988b9716c5925908b4c8c3d51cdec93dc9d6be17d461edf71ce4",
+        "49e5ab656b2c45ce60fd63921560897e4f8f5ce2227462847c51672d6fcab5be"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "杯后道具由圆形物换成黑色包装",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_12.jpg"
+    },
+    {
+      "number": 152,
+      "key": "40e0d896e6bf998004ed",
+      "group": "同划分",
+      "ids": [
+        "train/images/2707.jpg",
+        "train/images/3770.jpg"
+      ],
+      "source_image_sha256": [
+        "814ccf2054e9bef07841684c9203ea9c78efe4a54e21575c5a3ff853dcaf2818",
+        "d9cf95bbc5a342c0911ba0c783879f01eeb2cfe2b4837f0daf626fd3254f2833"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "黑笔由杯后横放移到杯右竖放",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_12.jpg"
+    },
+    {
+      "number": 153,
+      "key": "556b0a1c0969e5575698",
+      "group": "同划分",
+      "ids": [
+        "train/images/15.jpg",
+        "train/images/2368.jpg"
+      ],
+      "source_image_sha256": [
+        "b7f3be839cdd8de4e757fe267926f1ff04ee713dd167c2cd1cf3f76bababeb79",
+        "48fbdfb0313b1b767d50ef6107f3765ab57b4bcd3866ee285c6d0e86374e42e0"
+      ],
+      "human_answer": "B",
+      "human_raw_answer": "B",
+      "human_note": "",
+      "ai_recommendation": "B",
+      "observation": "同类眼镜场景中眼镜转向且旁边方块换成蓝色圆盒",
+      "agrees_with_human": true,
+      "status": "agreement",
+      "human_answer_changed": false,
+      "contact_sheet": "runs/trans10k_member1_20261028/review_gallery/near_within_contact_13.jpg"
+    }
+  ],
+  "source_workbook_verification": {
+    "xlsx": "/Users/zhiyue/Documents/ChatGPT/cv/outputs/01a15e90-62ac-7062-9044-3f6eb026725c/d02_review/D02_人工复核表_20261028.xlsx",
+    "sha256": "668aa1e96f819ac780fd6d04444dd04fb66580a8a8304026ea756262fa1bcd70",
+    "bytes": 4963310,
+    "records": 153,
+    "embedded_images_verified": 306,
+    "data_validation": {
+      "type": "list",
+      "sqref": "D9:D161",
+      "{http://schemas.microsoft.com/office/spreadsheetml/2014/revision}uid": "{00000000-0002-0000-0000-000000000000}"
+    },
+    "freeze_pane": {
+      "xSplit": "1",
+      "ySplit": "8",
+      "topLeftCell": "B160",
+      "activePane": "bottomRight",
+      "state": "frozen"
+    },
+    "returned_answers": 153,
+    "blank_answers": 0,
+    "formula_cache_verified": {
+      "filled": 153,
+      "blank": 0,
+      "uncertain": 0
+    },
+    "native_excel_application_tested": false,
+    "result": "passed"
+  },
+  "crop_alignment_support": [
+    {
+      "number": 25,
+      "center_region_correlation_after_scale_translation": 0.99913,
+      "transform": [
+        1.0029641902510946,
+        0.8798427243090557,
+        0.6798225334268989,
+        0.8845872627576047
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 60,
+      "center_region_correlation_after_scale_translation": 0.999988,
+      "transform": [
+        1.0510586902465042,
+        0.9999998312574296,
+        6.5647334387873695,
+        3.0389378903945486e-06
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 100,
+      "center_region_correlation_after_scale_translation": 0.999363,
+      "transform": [
+        0.9639776644246586,
+        0.9742361641523205,
+        0.23091504537197347,
+        1.2960941221885567
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 103,
+      "center_region_correlation_after_scale_translation": 0.933941,
+      "transform": [
+        0.9308800011485302,
+        1.0803368620519278,
+        0.09303495198851335,
+        9.355727553195102
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 120,
+      "center_region_correlation_after_scale_translation": 0.9992,
+      "transform": [
+        0.9974611996057902,
+        0.893889606279671,
+        1.2656816922427503,
+        2.5111685000238304
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 149,
+      "center_region_correlation_after_scale_translation": 0.998287,
+      "transform": [
+        1.0238926042559904,
+        0.8859787927158262,
+        1.1904752482971221,
+        6.997557436281009
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 39,
+      "center_region_correlation_after_scale_translation": 0.999863,
+      "transform": [
+        1.2030319549744972,
+        0.9878662275384724,
+        9.524311871654392,
+        -2.3480618169804575
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 64,
+      "center_region_correlation_after_scale_translation": 0.999732,
+      "transform": [
+        1.008391505497285,
+        0.9489977577137682,
+        0.8612803364177785,
+        11.538147558814657
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 110,
+      "center_region_correlation_after_scale_translation": 0.999826,
+      "transform": [
+        0.9912833466066098,
+        1.0387372502164463,
+        -0.21246620114255005,
+        5.883967838287904
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 118,
+      "center_region_correlation_after_scale_translation": 0.999844,
+      "transform": [
+        1.0098528467478451,
+        0.9605822360349409,
+        -2.130772920465814,
+        -4.968610598450247
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 48,
+      "center_region_correlation_after_scale_translation": 0.999842,
+      "transform": [
+        0.9908842644058857,
+        1.0503164059623145,
+        -2.2677808275605944,
+        2.553506813309571
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    },
+    {
+      "number": 68,
+      "center_region_correlation_after_scale_translation": 0.99994,
+      "transform": [
+        1.0817097184045523,
+        0.9739800572850784,
+        7.513252571670032,
+        -0.9646383643743882
+      ],
+      "note": "Supporting comparison only; not an automatic same-photo decision. Central image region; no perspective transform."
+    }
+  ],
+  "frozen_manifest_sha256_before_and_after": {
+    "manifests/trans10k_d03_20261028/test_heldout.json": "07abd347df57d7014a9aadcb77628158a47cd55e0f9a5011c59c9e78d0227c3d",
+    "manifests/trans10k_d03_20261028/audit.json": "5c7c69ac5e2c534c34884875af1fc6d0c8f80f8ec77a84e2c269a991176d67f0",
+    "manifests/trans10k_d03_20261028/test_seen.json": "ffcf27acfe2302f587094ba259795ae18788a5570b23774d074ee923b3d5dac1",
+    "manifests/trans10k_d03_20261028/class_counts.json": "8aece935837f56692bc2fb581431c9236e0a9689b08d0c9c4dbda552a7fec0ce",
+    "manifests/trans10k_d03_20261028/test.json": "d994af6a3d62f83edd31893f0491f1ca29573c8810ea274de074238d6f2573ff",
+    "manifests/trans10k_d03_20261028/exclusions.json": "9aaf360eaaadcc077592706b3c3b0a0ba525016dba463c4bc4cc9dfe52dc6c94",
+    "manifests/trans10k_d03_20261028/release.json": "8dc8d51556dbf484b2c70339c9a64fca874017397661ebbc97b319962525eb21",
+    "manifests/trans10k_d03_20261028/validation.json": "e3cade1be74632256fdbf43b6b621062ead501823d214529fec09e24996b63b0",
+    "manifests/trans10k_d03_20261028/rules.json": "31294b6cd41298122b9d1ef7602fb4dd01fc6ea675880943cf6cf16b2e082a46",
+    "manifests/trans10k_d03_20261028/train.json": "0d578d75d698b5ef57fa349768288dd8fb63aeb981302413c86795da607398e6",
+    "manifests/trans10k_d03_20261028/selection.json": "518706353946a225e2cf4c396984cc283d4d002ab73e9318b1e2e3b2f0a96fee"
+  }
+}

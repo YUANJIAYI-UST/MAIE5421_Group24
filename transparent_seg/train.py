@@ -13,7 +13,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from .data import SegmentationDataset, read_manifest
+from .data import SegmentationDataset, read_manifest, validate_derivative_use
 from .evaluate import evaluate
 from .losses import segmentation_loss
 from .model import TransparentSegformer
@@ -69,6 +69,7 @@ def train(config, output):
         raise ValueError("Train/validation image leakage detected")
     if training.meta["dataset"] != validation["dataset"]:
         raise ValueError("Training and validation datasets must match")
+    validate_derivative_use(config, training.meta, validation)
     if config.get("purpose") != "smoke" and (training.meta.get("synthetic") or validation.get("synthetic")):
         raise ValueError("Synthetic smoke data cannot be used for a research run")
     if config.get("purpose") == "research" and not all(
@@ -120,6 +121,7 @@ def train(config, output):
         "train_manifest_sha256": sha256_file(config["train_manifest"]),
         "val_manifest_sha256": sha256_file(config["val_manifest"]),
         "synthetic": training.meta.get("synthetic", False),
+        "data_protocol": training.meta.get("data_protocol"),
         "full_official_train": training.meta.get("complete_official_split", False)})
     (output / "pip_freeze.txt").write_text(subprocess.check_output(
         [sys.executable, "-m", "pip", "freeze"], text=True), encoding="utf-8")

@@ -1,0 +1,193 @@
+{
+  "status": "passed",
+  "counts": {
+    "train": 3230,
+    "validation": 646,
+    "test": 4428,
+    "test_heldout": 1493,
+    "test_seen": 2935
+  },
+  "v1_fields_and_current_binary_mask_hashes_preserved": true,
+  "official_test_membership_unchanged": true,
+  "test_subsets_disjoint_and_complete": true,
+  "held_out_pixels_train_validation": {
+    "train": {
+      "5": 0,
+      "8": 0
+    },
+    "validation": {
+      "5": 0,
+      "8": 0
+    }
+  },
+  "current_v2_masks_redecoded_per_manifest_rows": 12732,
+  "production_loader_checks": [
+    {
+      "split": "train",
+      "id": "train/images/10.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/10001.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/10002.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/150.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/1519.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/1557.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/2538.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/2545.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/2642.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/2672.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/2707.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/3751.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "train",
+      "id": "train/images/3788.jpg",
+      "target_shape": [
+        1,
+        512,
+        512
+      ]
+    },
+    {
+      "split": "validation",
+      "id": "validation/easy/images/10000.jpg",
+      "target_shape": [
+        1,
+        613,
+        444
+      ]
+    },
+    {
+      "split": "validation",
+      "id": "validation/easy/images/10006.jpg",
+      "target_shape": [
+        1,
+        585,
+        445
+      ]
+    },
+    {
+      "split": "validation",
+      "id": "validation/easy/images/10009.jpg",
+      "target_shape": [
+        1,
+        638,
+        585
+      ]
+    }
+  ],
+  "byte_identical_reproduction": {
+    "test_heldout.json": true,
+    "audit.json": true,
+    "test_seen.json": true,
+    "class_counts.json": true,
+    "test.json": true,
+    "class_counts.csv": true,
+    "release.json": true,
+    "validation.json": true,
+    "rules.json": true,
+    "train.json": true,
+    "selection.json": true
+  },
+  "manifest_sha256": {
+    "train": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+    "validation": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f",
+    "test": "08d3e715f87586378d146bc4644f10a9bd4eb5b035d45d650b5e4d150c69a839",
+    "test_heldout": "df1187245aa50f2bd52accfdc71d2a25d173f87a2c7769c0a67a2a00390c3d49",
+    "test_seen": "7ff632c7f86b427e871f4fea94b0bec755affc743072bd3fcb44434879492c35"
+  },
+  "human_review": "18_geometry_and_153_candidate_pairs_complete",
+  "gpu_training": "not_run",
+  "formal_experiment": "not_run"
+}

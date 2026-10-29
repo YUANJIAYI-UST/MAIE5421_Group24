@@ -1,0 +1,57 @@
+Mac 本地运行说明
+
+本机仓库：/Users/zhiyue/Documents/ChatGPT/cv/MAIE5421_Group24
+独立环境：仓库内 .venv；不使用 macOS 系统 Python 3.9。
+当前环境基于已有的 Python 3.12.14（Codex bundled runtime）。
+本说明针对这台 Apple Silicon Mac；依赖以 requirements.txt 为准。
+2026-10-28 为解决本机二进制兼容问题，macOS + Python>=3.11 使用 SciPy 1.17.1；其他平台沿用原固定版本。
+
+1. 进入项目并激活环境
+  cd /Users/zhiyue/Documents/ChatGPT/cv/MAIE5421_Group24
+  source .venv/bin/activate
+  export HF_HOME="$PWD/.cache/huggingface"
+  export PIP_CACHE_DIR="$PWD/.cache/pip"
+  python --version
+
+2. 单独运行现有测试
+  python -m pytest -q
+
+3. 完整快速验收（不必先激活环境）
+  bash scripts/smoke_mac.sh
+
+脚本默认创建香港时间命名的新目录 runs/smoke_mac_YYYYMMDD_HHMMSS。
+也可明确指定一个尚不存在的目录：
+  bash scripts/smoke_mac.sh runs/smoke_mac_second
+
+流程：依赖检查 -> pytest -> 合成数据 -> CPU 训练 3 epoch ->
+clean + 12 种扰动评估 -> 单图预测。
+已有结果目录会被拒绝，不会覆盖先前验收证据。
+合成数据为 train/validation/test = 12/4/4；训练输入 64x64；不下载预训练权重。
+
+每次输出：
+  console.log                 各步骤控制台日志
+  pytest.xml                  本机测试记录
+  training/best.pt、last.pt    本次训练的权重
+  training/history.jsonl      三轮训练及验证记录
+  training/environment.json   Python、PyTorch、代码版本和数据清单哈希
+  training/pip_freeze.txt     完整安装版本
+  evaluation/clean/           指标、逐图 CSV、四联图
+  evaluation/robustness.json  12 种扰动的结果
+  prediction/mask.png         原图大小、像素为 0/255 的预测
+  prediction/overlay.png      预测叠图
+
+4. 如需重建本机环境
+先确认旧 .venv 没有仍在运行的任务，将它另行备份后再创建新环境。
+本次使用的解释器命令：
+  /Users/zhiyue/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -m venv .venv
+  .venv/bin/python -m pip install --cache-dir .cache/pip -r requirements.txt
+
+也可用自己安装的兼容 Python 3.10+ 创建 .venv；本次实际验证的是 Python 3.12.14。
+如果 Codex bundled runtime 被移除，原虚拟环境可能需要用新解释器重建。
+Mac 不使用 Windows setup.ps1 中的 CUDA / +cpu wheel 安装命令。
+
+5. 验收范围
+快速验收按现有 smoke 配置使用 CPU，不代表 CUDA 或 Apple MPS 训练已经验证。
+configs/base.json 的正式训练默认使用 CUDA；不要直接把它当作 Mac 训练配置。
+2026-10-29：真实 Trans10K 数据交付已完成，见 docs/13_MEMBER1_PR_REVIEW.txt；真实 GPU 训练和正式指标仍待完成。
+合成数据分数不能写进课程正式实验结果。

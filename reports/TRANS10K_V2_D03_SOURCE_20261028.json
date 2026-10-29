@@ -1,0 +1,24 @@
+{
+  "author_repository": "https://github.com/xieenze/Trans2Seg",
+  "author_revision": "3972916bba7f985ca1aabc047fea56bdec9e9e5d",
+  "author_google_drive_result": "404; no official archive obtained",
+  "author_baidu_public_archive": {
+    "name": "trans12cls.zip",
+    "bytes": 1172033952,
+    "downloaded": false
+  },
+  "mirror_repository": "https://huggingface.co/datasets/rdyzakya/Trans10K-v2",
+  "mirror_revision": "3445e93f1e507ea6c2dd36f06badfd5e818b699f",
+  "mirror_equivalence_to_author_archive": "unverified_pending_review",
+  "mirror_card_discloses_one_red_to_cup_mapping": true,
+  "local_category_relabeling": false,
+  "parquet_sha256": {
+    "data/train-00000-of-00002.parquet": "72058d0d07ff27c4c428f016a9604629f1e1cda062c5b3c44e256771811f414d",
+    "data/train-00001-of-00002.parquet": "df70f7fd532295b8c53ce30b7b775eaf0d2711124e6070a507b9f5d3ef32d9e9",
+    "data/validation-00000-of-00001.parquet": "2c222c8a95d7cdd934ccd39eed497789a04671380946d42bcc198d2685b4cfb5",
+    "data/test-00000-of-00001.parquet": "65490e8a739785cac23b0178a4236654a59b52618b42f1f2ed222b7f86d94e93"
+  },
+  "alignment_images": 10428,
+  "unresolved_alignment_or_encoding_issues": 0,
+  "selection_sha256": "518706353946a225e2cf4c396984cc283d4d002ab73e9318b1e2e3b2f0a96fee"
+}

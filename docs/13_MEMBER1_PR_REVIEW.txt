@@ -1,0 +1,53 @@
+成员 1 D01–D03：GitHub 评审入口
+负责人 CHOU Zhiyue；按 docs/02_FIVE_MEMBER_DEVELOPMENT_PLAN.txt 由成员 5 ZHANG Xinyu 独立复核。
+
+这份 PR 提交什么
+- V1 原尺寸/编码/文件审计、旋转副本生成、精确和感知重复检索。
+- 153 对人工答案的记录与确定性处理，8 张覆盖存疑图的训练隔离。
+- V2 显式类别解码、ID 对齐、仅从 train/val 选类和最终隔离清单生成。
+- 派生协议 ID/哈希校验、泄漏与复现测试、Mac 环境说明。
+- reports/member1_final_20261029/ 下的小型审计、统计、排除明细、验证结果和版本哈希。
+
+最终结果
+官方 V1 数量为 5000/1000/4428；最终 V1 为 4959/995/4428。
+最终 D03 为 3230/646/4428，test_heldout=1493、test_seen=2935。
+保留优先级 test > validation > train；同源关系包括精确 RGB 与人工 A 的传递连接。
+排除 38 张跨划分同源重复图，另外 8 张因覆盖存疑隔离；原文件及官方 test 完全保留。
+两类仍为先前冻结的 5 Glass Door、8 Floor Glass（论文称 glass wall），没有重新选类。
+V2 仅作为类别过滤依据，V1 二值标签未被 V2 重新解释。
+
+GitHub 与完整交付 ZIP 的区别
+GitHub clone 可以直接运行 61 项软件测试；实际数据不随 Git 提交。
+manifests/、runs/、原始 data/、图片、两份 Excel、模型权重及 ZIP 继续留在 Git 之外。
+reports/member1_final_20261029/ 是评审快照，不是供训练读取的 manifest 目录。
+冻结输入清单、原始人工 Excel、图像证据和 18 张旋转副本都在完整交付 ZIP 中。
+ZIP 文件名：Member1_Final_D01_D02_D03_20261029.zip
+SHA256：b67ba5f5b8c3eccb3b65fe184af78bbf8febfddb6a9dafaf0f65fcef7a3521ba
+大小：35,786,279 字节。文件由负责人单独提供；本 PR 不声称已经发给成员 5。
+
+评审与复现
+1. 在当前 checkout 安装 requirements.txt，运行 python -m pytest -q。
+2. 对照 reports/member1_final_20261029/{v1,d03}/ 下 audit、class_counts、release。
+3. 收到 ZIP 后核对上面的 SHA256，解压到独立目录，按其中 docs/12_MEMBER1_FINAL_HANDOFF.txt
+   的命令重建清单。不要将历史 ZIP 中的全部源码覆盖当前 Git checkout。
+4. 包内冻结输入可在没有原始大数据的情况下重建 22 个文件；逐字节复现已通过。
+5. 核验实际标签时准备同一来源 V1/V2 数据，运行包内的两个实际数据 verifier。
+   相关命令、数据来源和固定 revision 见 docs/09、docs/11、docs/12。
+
+成员 5 复核重点
+[ ] 人工 A/B/C/D 与排除理由对应；第 31 对采用负责人的 A，test-only 第 141 对保留不确定。
+[ ] 8 张覆盖问题隔离、46 条唯一排除记录以及最终数量相符。
+[ ] 官方 test 4428 张和原始标签不变，已确认同源关系没有跨划分残留。
+[ ] D03 train/val 的 5/8 类标注像素为 0；选择文件未使用 test 重选。
+[ ] 类别计数、哈希和 22 个文件复现一致；区分人工与 AI 辅助视觉检查。
+
+完成边界
+成员 1 处理完成，成员 5 独立复核尚未完成。GPU pilot/正式训练和 GSD 合作不计入本 PR 成果。
+V2 固定第三方镜像与作者原 ZIP 的等价性未证明。B 类同场景照片、同划分重复和
+train/470 的空标注保留并披露；不宣称场景完全隔离或已经找全所有重复。
+当前派生配置仅用于显式 pilot，正式 research 接入需成员 2/5 固定协议后处理。
+源码与解释由 Codex 协助；18 张方向图及 153 对重复候选的人工判断来自 CHOU Zhiyue。
+
+资料状态说明
+本 PR 中的旧日期报告、docs/10–12 和人工记录保留交付时的历史措辞。
+“未推送 GitHub”描述的是当时的归档状态；当前 PR 的提交/复核状态以 GitHub 为准。

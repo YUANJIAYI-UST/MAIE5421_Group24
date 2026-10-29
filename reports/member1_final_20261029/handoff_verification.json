@@ -1,0 +1,11 @@
+{
+  "archive": "reports/Member1_Final_D01_D02_D03_20261029.zip",
+  "sha256": "b67ba5f5b8c3eccb3b65fe184af78bbf8febfddb6a9dafaf0f65fcef7a3521ba",
+  "bytes": 35786279,
+  "files": 241,
+  "zip_crc": "passed",
+  "all_payload_hashes": "passed",
+  "fresh_directory_reproduction": "passed",
+  "member1_processing": "complete",
+  "member5_review": "pending"
+}

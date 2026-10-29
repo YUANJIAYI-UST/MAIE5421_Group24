@@ -13,6 +13,12 @@ Boundary-Aware Transparent Object Segmentation under Appearance Variation
 GitHub 协作：docs/06_GITHUB_COLLABORATION.txt
 本次实际验证：reports/IMPLEMENTATION_STATUS.txt
 
+成员 1 D01–D03 最终数据交付（2026-10-29）：docs/13_MEMBER1_PR_REVIEW.txt
+GitHub 评审摘要与清单哈希：reports/member1_final_20261029/
+完整清单、图像复核材料和已填写 Excel 通过交付 ZIP 单独共享；不进入 Git。
+数据负责人已完成处理，待成员 5 ZHANG Xinyu 独立复核；正式 GPU 实验尚未运行。
+Mac 快速验证：docs/08_MAC_QUICKSTART.txt。
+
 Windows 快速验证（在项目根目录的 PowerShell 执行）：
   .\scripts\setup.ps1 -Device cuda
   .\.venv\Scripts\python.exe -m pytest -q

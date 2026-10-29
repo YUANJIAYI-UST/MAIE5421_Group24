@@ -1,0 +1,32 @@
+{
+  "schema": "trans10k_holdout_rules_v1",
+  "id": "trans10k_d03_20261028",
+  "source_type": "third_party_mirror_pending_review",
+  "mirror_repository": "rdyzakya/Trans10K-v2",
+  "mirror_revision": "3445e93f1e507ea6c2dd36f06badfd5e818b699f",
+  "author_code_revision": "3972916bba7f985ca1aabc047fea56bdec9e9e5d",
+  "v2_encoding": "author_rgb_palette",
+  "orientation_policy_sha256": "a7689aa3cf8838be7a3af10f64b0aa8ca504744943cf2b7edceaeec4c5f91b50",
+  "alignment": {
+    "method": "same_official_split_and_filename_plus_rgb_thumbnail_check",
+    "thumbnail_size": 96,
+    "maximum_relative_aspect_error": 0.005,
+    "maximum_thumbnail_rmse": 8.0,
+    "maximum_phash_hamming": 6,
+    "outlier_action": "quarantine_from_train_validation_and_category_test_subsets"
+  },
+  "unknown_category_action": "quarantine_whole_image_without_relabeling",
+  "selection": {
+    "splits": ["train", "validation"],
+    "number_of_held_out_classes": 2,
+    "minimum_class_train_images": 50,
+    "minimum_class_validation_images": 10,
+    "minimum_retained_fraction_each_split": 0.6,
+    "require_each_remaining_class_in_both_splits": true,
+    "ranking": "maximize minimum held-out validation support, then minimum held-out train support, then retained train count, then retained validation count; tie by ascending class IDs"
+  },
+  "label_policy": "V1 binary masks unchanged; V2 used only for image filtering and category metadata",
+  "mixed_seen_unseen_action": "exclude_entire_image_from_train_and_validation",
+  "test_policy": "keep official full test unchanged; derive named category subsets only after selection freeze",
+  "review_status": {"owner": "pending", "member5": "pending"}
+}

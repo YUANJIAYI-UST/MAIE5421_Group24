@@ -1,0 +1,98 @@
+成员 1：V1 本地修正版与 D02 候选交接说明
+版本：trans10k_v1_review_20261028
+
+本次完成的是本地技术处理与复核材料，未代表同学人工复核、成员 5 review
+或全组正式实验协议已经完成。可用于明确标记的 pilot；正式 research 入口继续
+保留检查，避免把暂定数据版本当成最终 benchmark。
+
+一、实际处理规则
+1. data/Trans10K 中官方 5000/1000/4428 个样本及其标注不改写、不删除、不重分组。
+2. 18 张训练标注仅在 data/Trans10K_v1_review_20261028/ 下创建旋转副本。
+   16 张顺时针 90 度；3751、3788 逆时针 90 度。整像素旋转，无插值、无重画。
+   每张副本验证尺寸、原始通道像素、前景像素数和有效像素数。
+3. 对已确认的 11 组跨 split 完全相同图片，保留优先级为 test > validation > train。
+   派生清单排除 10 个训练条目和 1 个验证条目；原文件保留。test 保留全部 4428 张。
+   所有修复和排除均列在 configs/data/trans10k_v1_review_20261028.json。
+4. 本轮有效计数：train 4990；validation 999（easy 788 / hard 211）；
+   test 4428（easy 3491 / hard 937）。这些数仅包含已确认的完全重复排除。
+5. 同 split 的 8 组完全重复暂保留；不同 GT 不合并、不互相覆盖。
+   train/470 的空前景 GT 保留并单列语义复核。不能自行补画标签。
+6. D02 找到 153 对候选，其中跨 split 80 对、同 split 73 对。
+   图像相似度不等于重复结论：相同物体的不同照片、重新压缩、裁剪需逐对区分。
+   尚未基于候选排除任何额外样本。确认后需新建协议版本、重新计算计数和哈希。
+
+二、文件入口（相对于仓库根目录）
+正式原始数据：data/Trans10K/
+仅 18 张修复标注：data/Trans10K_v1_review_20261028/
+可试跑的派生清单：manifests/trans10k_v1_review_20261028/{train,validation,test}.json
+审计和版本指纹：同目录 audit.json、release.json、policy.json
+全部感知候选：runs/trans10k_member1_20261028/perceptual/candidates.json
+离线复核页：runs/trans10k_member1_20261028/review_gallery/review.html
+人工复核空表：同目录 human_review_template.json
+AI 检查记录：runs/trans10k_member1_20261028/ai_review_and_ui_checks.json
+数据验证：runs/trans10k_member1_20261028/verification.json
+测试记录：runs/trans10k_member1_20261028/pytest.xml
+
+三、如何复核
+用浏览器打开 review.html。页面包含图片，不联网，不自动修改数据。
+先看“18 张方向修复”，再看“跨划分相似候选”，最后看同划分候选。
+每项选择判断并填写理由，填写自己的姓名，点“导出复核 JSON”。
+切换页会保留本次填写；关闭或刷新前必须导出。目前没有自动保存／导入功能。
+不能判断时保留 pending 或选“不确定”。不能把 AI 检查填成同学人工复核。
+导出不会重写清单。将文件交给数据负责人，并由成员 5 复核统计和排除规则。
+交接包里的空表与候选表均保持 pending，任何人都不应据此声称复核完成。
+复核页已检查 HTML、内嵌图片及 JavaScript 语法；浏览器工具拒绝 file:// 导航，
+本次未完成浏览器交互验收，也未绕过该限制。可用 JSON 空表完成相同的复核记录。
+
+四、复现（Mac，在仓库根目录）
+使用同一官方 ZIP，按 docs/09_TRANS10K_DATA_WORKFLOW.txt 下载／解压。
+交接包提供本次原始诊断 inventory、audit 与来源记录；生成脚本在使用这些历史
+解码结果前，会重核当前全部源文件的 SHA256 和尺寸，并核对目录成员集合。
+源文件改过、漏文件、额外文件、未记录几何问题、残留精确跨 split 重复都会失败。
+
+生成清单（输出目录必须不存在；可选新的同层目录验证复现）：
+  .venv/bin/python -m transparent_seg.prepare --root data/Trans10K --output manifests/trans10k_v1_review_20261028 --review-policy configs/data/trans10k_v1_review_20261028.json --source-inventory runs/trans10k_data_audit_20261022/diagnostics/diagnostic_inventory.json --source-audit runs/trans10k_data_audit_20261022/diagnostics/audit.json
+
+修复目录已存在时仅接受完全一致的像素；拒绝覆盖不一致的标注副本。
+同层目录重复生成的三个 manifest、audit、release、policy 必须逐字节相同。
+manifest 的 root 相对 manifest 文件解析；跨机器不包含用户名和绝对路径。
+为了得到完全相同的 manifest 文件哈希，保持仓库内目录结构与协议版本名称一致。
+需要显式覆盖 --root 时，传 data/（同时包含 Trans10K 和修复目录），不是 data/Trans10K。
+
+重新做 D02 检索（输出目录必须是新的）：
+  .venv/bin/python -m transparent_seg.near_duplicates --inventory runs/trans10k_data_audit_20261022/diagnostics/diagnostic_inventory.json --output runs/near_new --nominated-pairs configs/data/trans10k_visual_candidates.json
+全图 pHash 距离 <=8，中心 80% 与全图互查 <=6；同时要求 dHash 距离 <=12。
+这些是固定的候选检索参数，不是自动排除阈值，也不是经过测试集效果调优的参数。
+已检索全部图像的所有无序配对，没有截取 top-K；另保留两组历史看图候选。
+强裁剪、旋转、视角变化和同场景图可能漏检，不能声称已证明完全没有近重复。
+精确重复组由 D01 单独列出，不在这 153 对感知候选中重复计数。
+
+运行检查：
+  .venv/bin/python -m pytest -q -W error
+  .venv/bin/python scripts/verify_data_release.py --manifests manifests/trans10k_v1_review_20261028 --inventory runs/trans10k_data_audit_20261022/diagnostics/diagnostic_inventory.json --output runs/verify_release_new.json --cpu-step
+cpu-step 只用随机初始化模型和真实图片做一次 512 前向／反向软件检查，不是正式训练。
+
+五、交给成员 2 的试跑配置
+  python -m transparent_seg.train --config configs/pilot_data_review_20261028.json --output runs/pilot_review_new
+该配置继承原 GPU pilot，要求 CUDA、ImageNet 预训练权重，并固定 train/val 清单哈希。
+本 Mac 没有运行这个 GPU pilot；CUDA 显存／速度和预训练下载由成员 2 实际验证。
+普通 A/B/C/D 主配置未改变。派生清单不能伪造 complete_official_split=true。
+训练代码只允许显式匹配 protocol ID、清单哈希的 pilot 使用当前派生版本。
+正式使用前由成员 2/5 固定最终协议，再有针对性地扩展 research 接受条件和测试。
+
+六、Mac 环境说明
+本次 macOS 27.0.1 无法加载 SciPy 1.15.3 的 _spropack 二进制，原 32 项测试在导入时失败。
+已使用官方 PyPI 的 SciPy 1.17.1 修复，pip check 和完整测试通过。
+requirements.txt 仅对 macOS + Python>=3.11 改用 1.17.1，其他平台保留 1.15.3。
+升级会记录到本次环境证据；旧报告是旧环境的历史记录，不覆盖。
+上游说明：https://github.com/scipy/scipy/issues/25635
+
+七、完成边界与成员 5 检查项
+[已完成] 原始文件核验、18 个旋转副本、11 条精确重复排除、清单／哈希、D02 检索代码。
+[已完成] 同机同层目录清单逐字节复现；数据读取、标签、泄漏保护与测试。
+[待人工] 18 个修复方向；153 对候选的保留／排除／不确定及理由；40 张原审计叠图复核。
+[待成员 5] 核对 test 不变、排除理由和有效计数，检查 AI 与人工记录没有混写。
+[待成员 2] 真实 GPU pilot／显存预算；当前 CPU 诊断不能替代。
+[D03 后续更新] 已另行实现 V2 对齐、train/val 选类、隔离清单与泄漏检查；
+见 docs/11_MEMBER1_D03_HOLDOUT.txt。镜像来源、选类方案和人工检查仍待确认。
+本次未发送组员消息、未提交 PR、未推送 GitHub、未运行正式训练或正式评估。

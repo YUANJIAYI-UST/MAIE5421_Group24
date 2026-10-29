@@ -1,0 +1,13 @@
+{
+  "extends": "pilot.json",
+  "ablation": "A",
+  "boundary": false,
+  "augmentation": false,
+  "data_protocol_id": "member1_final_20261029_d03",
+  "train_manifest": "manifests/member1_final_20261029/d03/train.json",
+  "val_manifest": "manifests/member1_final_20261029/d03/validation.json",
+  "expected_manifest_sha256": {
+    "train": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+    "validation": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f"
+  }
+}
