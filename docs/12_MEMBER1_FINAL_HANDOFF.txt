@@ -1,0 +1,97 @@
+成员 1 最终交付说明（2026-10-29）
+负责人：CHOU Zhiyue
+
+结论：D01、D02、D03 的成员 1 数据处理、人工答案整理、清单生成和本机验证已完成。
+本版先由成员 1 完成全部处理，再交成员 5 独立复核。成员 5 尚未复核；不冒称全组验收。
+当前入口为 manifests/member1_final_20261029/。旧版文件和旧报告作为历史证据保留，
+其中“待你确认”等旧状态不代表本版还有未落实的处理任务。本文件说明最新状态。
+
+一、这次具体做了什么
+D01：官方 V1 的 train/validation/test 共 5000/1000/4428 张已经审计，原文件不变。
+18 张方向问题沿用已验证的整像素旋转副本；你确认的 10 张保留，疑似覆盖不足的
+8 张从派生训练清单隔离，保留原文件及修复副本，不自行重画标签。
+隔离 ID：1544、2511、2706、3703、3808、467、964、981（均为 train）。
+40 张固定随机样本的叠图已由 Codex 辅助检查；保留原尺寸叠图的尺寸和哈希证据。
+该项是 AI 辅助视觉检查，不能写成你或成员 5 逐张人工签字。
+train/470 的原标签前景为空；保留原标注并记录其标注意图仍不确定。
+
+D02：153 对人工结果已全部录入，最终 A=53、B=98、C=1、D=1。
+A：同一原图。连同精确 RGB 重复关系建立传递连接，按 test > validation > train
+保留高优先级划分；仅从派生清单排除低优先级条目。同一最高优先级划分内不去重。
+B：同场景不同照片，保留（除非另有 A 关系或覆盖问题），记录场景相似风险。
+C：不同图片，保留（除非另有独立排除理由）。
+D：第 141 对的两张都在 test，完整保留并注明无法确认是否同源；不强行改成 A/B。
+第 31 对遵循你两次确认的 A，排除 train/3421，保留 test/easy/2504，AI 的 B 建议保留在历史证据中。
+原有 11 条精确重复排除加上本次处理后，累计 38 张因跨划分同源重复排除，另 8 张覆盖问题隔离。
+合计排除 46 张：训练 41、验证 5、测试 0；不是排除了 53 张或 153 张。
+每对处理结果见 pair_handling.json；每张排除原因见 exclusions.json。
+
+D03：V2 的 10428 个图像 ID 与 V1 官方划分对齐，使用明确的作者 RGB 编码表。
+继续采用先前仅从 train/val 选出的 ID 5 Glass Door 和 ID 8 Floor Glass（论文名 glass wall）。
+selection.json 完全保留 2026-10-28 冻结字节；本次仅收紧基础清单，不利用 test 重新选类。
+V2 只用于识别类别并整图过滤；训练的二值标签仍来自 V1。
+仍使用固定镜像 rdyzakya/Trans10K-v2，revision 3445e93f1e507ea6c2dd36f06badfd5e818b699f。
+镜像与作者原 ZIP 是否完全一致尚未证明；这是已披露的数据来源限制，不伪称已经解决。
+
+二、最终数量
+                         官方原始     最终 V1      最终 D03
+train                       5000        4959          3230
+validation                  1000         995           646
+test                        4428        4428          4428
+D03 test_heldout                                        1493
+D03 test_seen                                           2935
+V1 -> D03 再移除训练 1729、验证 349 张含 held-out 类的图片。
+测试两个子集互斥、并集为官方 4428 张；没有重分、删除或改写官方 test。
+最终 D03 的 train/validation 中，ID 5/8 的标注图片数和像素数均为 0。
+“没有 held-out 类”指所用 V2 标注中的类别；不声称人工穷尽所有漏标语义。
+
+三、文件入口
+manifests/member1_final_20261029/release.json：最终汇总与版本状态。
+同目录 policy.json：完整处理规则、输入文件 SHA256 和限制。
+同目录 pair_handling.json、exclusions.json：逐对处理、逐图排除理由。
+同目录 v1/、d03/：清单、audit.json、release.json、类别计数 JSON/CSV。
+transparent_seg/prepare_final.py：最终清单生成代码。
+scripts/verify_member1_final.py：独立图关系检查、过滤完整性、类别重计数、逐字节复现。
+scripts/verify_data_release.py、verify_holdout_release.py：实际源文件和标签检查。
+tests/test_final_data.py：传递重复、用户 A 优先、B/C/D 不擅自变 A、保护 test、篡改拒绝等测试。
+reports/D02_OWNER_CONFIRMATION_20261029.json：你提交的人工答案历史。
+reports/MEMBER1_FINAL_VISUAL_AUDIT_20261029.json：AI 抽样叠图检查记录。
+runs/member1_final_20261029/：本次测试和真实数据核验结果。
+review_workbooks/：交付 ZIP 中的两份原始填写 Excel，逐字节保存，未重新生成。
+docs/10、docs/11 和旧版报告：历史流程、下载步骤及最初冻结依据，不作为最新状态入口。
+
+四、复现最终清单（不必重新填写复核表）
+在交付包根目录建立环境：
+  python3.12 -m venv .venv
+  .venv/bin/python -m pip install -r requirements.txt
+如需导入 V2 parquet：
+  .venv/bin/python -m pip install -r requirements-data.txt
+只复现清单无需下载原始大数据：包内已经包含固定输入清单、审计和人工答案。
+输出必须使用新的同层目录，保留已有最终版：
+  .venv/bin/python -m transparent_seg.prepare_final --output manifests/member1_reproduced
+  .venv/bin/python scripts/verify_member1_final.py --release manifests/member1_final_20261029 --replay manifests/member1_reproduced --output runs/my_structural_verification.json
+  .venv/bin/python -m pytest -q
+比较范围为 22 个文件，包括全部 JSON 和类别 CSV；每一字节都应一致。
+历史输入中出现原电脑绝对路径的字段仅为审计出处；最终生成逻辑不用它们定位数据。
+实际清单路径通过 root 相对定位；目录层级应与包内保持一致。
+
+五、验证实际数据
+ZIP 不含原始 V1/V2 图片和大规模原标签；包含 18 张小型方向修复副本。
+已有相同来源数据可复制到 data/Trans10K/ 和 data/Trans10K_v2_mirror_3445e93/。
+没有数据时按 docs/09、docs/11 的固定来源下载与导入步骤准备；镜像 revision 必须一致。
+不要在已有包目录覆盖运行旧版生成命令；需要重做旧流程时使用干净工作目录。
+以下检查会重读图片和标签，并拒绝哈希不符；输出文件也必须是新的：
+  .venv/bin/python scripts/verify_data_release.py --manifests manifests/member1_final_20261029/v1 --inventory runs/trans10k_data_audit_20261022/diagnostics/diagnostic_inventory.json --reproduced-manifests manifests/member1_reproduced/v1 --output runs/my_v1_verification.json --cpu-step
+  .venv/bin/python scripts/verify_holdout_release.py --manifests manifests/member1_final_20261029/d03 --base manifests/member1_final_20261029/v1 --reproduced manifests/member1_reproduced/d03 --output runs/my_d03_verification.json
+本机已核对全部 20856 个 V1 原文件未变、保留修复副本的尺寸/哈希，以及 D03 实际类别标签。
+CPU 512 前向/反向检查只是软件和真实数据通路验证，不是 GPU pilot 或正式训练实验。
+另外验证了 ZIP 解压后的独立目录可重建相同清单；这仍不是成员 5 电脑上的实际验收。
+
+六、其他成员可以接着做什么
+成员 5：拿本版成品复核数据统计、隔离规则、哈希及复现，不需要替成员 1补生成代码或补处理清单。
+成员 2：GPU pilot 可接 configs/pilot_member1_final_v1_20261029.json；
+D03 的 A/D 对照入口为 configs/pilot_member1_final_A_20261029.json 和 pilot_member1_final_D_20261029.json。
+三份配置均固定新清单哈希。正式 research 入口仍需成员 2/5 明确接受派生协议后接入。
+不能把派生 train/val 的 complete_official_split 改成 true 来绕过正式实验检查。
+GSD 数据准备属成员 4 的合作范围，不计入本次 D01-D03 完成声明。
+本版没有运行正式 GPU 训练、发消息、推送 GitHub 或替成员 5 签字。

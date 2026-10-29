@@ -1,0 +1,315 @@
+{
+  "schema": "trans10k_flagged_mask_lineage_check_v1",
+  "checked_at": "2026-10-28T20:49:15.735276+08:00",
+  "human_review_sha256": "f8bd80aad822f470f5c416b448e39aadd230142e38b2e2c14c66ad9a334bd785",
+  "scope": "Read-only checks of the eight owner-flagged masks, decode and existing gallery reproduction",
+  "records": [
+    {
+      "id": "train/images/1544.jpg",
+      "batch_item_number": 3,
+      "source_mask": "data/Trans10K/train/masks/1544_mask.png",
+      "source_mask_sha256": "fa440dc8482b05bbb2b075c9d2cf9d66f8f1c5e2653b1da3779cef8dc9bcf1ee",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/1544_mask.png",
+      "rotated_copy_sha256": "6a054e97afa8365e391bf5aa941fe9ebe1d7c5ba58f7a43a664559da19c2e90f",
+      "displayed_panel_sha256": "6fe506615060918100b8e6820892536b30caa6cce7c66d7be3e72f3402de9dd6",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 1592987,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/2511.jpg",
+      "batch_item_number": 5,
+      "source_mask": "data/Trans10K/train/masks/2511_mask.png",
+      "source_mask_sha256": "25426cb23d1c0e47d204a88da2ca7cde7818e1d2689ec30073f5cc982bee3fa3",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/2511_mask.png",
+      "rotated_copy_sha256": "a892fa15df9090d1366aa0147b965e40179bbccd33dba679ccfd897b2f44230e",
+      "displayed_panel_sha256": "db2a5b96dfe355ce0bf119ebce6c8eb19a2dde6dcf87ecbfb11903b0f035fa13",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 1732026,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/2706.jpg",
+      "batch_item_number": 10,
+      "source_mask": "data/Trans10K/train/masks/2706_mask.png",
+      "source_mask_sha256": "e22ab6df811f2886755f467cc5bbf1f371a3f2b2e40cfb80da5b1306fb1ebcae",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/2706_mask.png",
+      "rotated_copy_sha256": "92a871f31ee9d2373a1e202e43e48b02a7783d0d6994c8446999a1b4ac48801c",
+      "displayed_panel_sha256": "e8ec5f63c24b085aec288201ae61c202a2b733114a4f7362d7dcc9f05360e679",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 2129858,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/3703.jpg",
+      "batch_item_number": 12,
+      "source_mask": "data/Trans10K/train/masks/3703_mask.png",
+      "source_mask_sha256": "a63c022836bd0c37f05a4c4f72735154a798ade9fcfcaeec16f0065843ec9ef6",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/3703_mask.png",
+      "rotated_copy_sha256": "0d2e2b245adc6f037eb748ca0d56491d8d677a35217085816ca489f91f3bc8b1",
+      "displayed_panel_sha256": "97c944f275785d39be207fca1eff9d8fd44f6fc239fd5f66e38a22f84922b0bd",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 2144633,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/3808.jpg",
+      "batch_item_number": 15,
+      "source_mask": "data/Trans10K/train/masks/3808_mask.png",
+      "source_mask_sha256": "30c3ac1f8e417ec2579243038cfb71142ffd5f049780ec12b292a53a5867fdd0",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/3808_mask.png",
+      "rotated_copy_sha256": "a180ce51903d50d2908557dc4a2cc143f1b5a4bcc0518e666fc97726535dea20",
+      "displayed_panel_sha256": "55a8ff30af3e2048c2d2882a6e17666a865b0a4a6ddf1c06a7d262f85c2d1d69",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 2198709,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/467.jpg",
+      "batch_item_number": 16,
+      "source_mask": "data/Trans10K/train/masks/467_mask.png",
+      "source_mask_sha256": "0d3fef64bdd484fb7fc3dc3c51fbc2ec9533a4c1aa7da85947a043c4729011c7",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/467_mask.png",
+      "rotated_copy_sha256": "67e58ca6cd59054b2da87b1f544a8b5e294b40afc73546f7458e26c0e23d4229",
+      "displayed_panel_sha256": "7bfba81b9b21fc7e3be199bb577549d1bc20623febecbb5906c8d01fca5df16c",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 2368821,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/964.jpg",
+      "batch_item_number": 17,
+      "source_mask": "data/Trans10K/train/masks/964_mask.png",
+      "source_mask_sha256": "a3cd68fe7a5b61f52b5d831242cec26bd92eb2fc54a1c25666323454f85e08f5",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/964_mask.png",
+      "rotated_copy_sha256": "a92663e9bdfa395ec2055ce20cb2670f3c1746fba9475d88630397741ef03064",
+      "displayed_panel_sha256": "8c9308707b87685bb918bb02c9a561ffeaced99a6f1399b2bef31e7102a0bd81",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 3453297,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    },
+    {
+      "id": "train/images/981.jpg",
+      "batch_item_number": 18,
+      "source_mask": "data/Trans10K/train/masks/981_mask.png",
+      "source_mask_sha256": "d37d227621c182b382782ed70aa191521dc92fb772e45baa96c28e20d09ac819",
+      "rotated_copy": "data/Trans10K_v1_review_20261028/train/masks/981_mask.png",
+      "rotated_copy_sha256": "a3f65e5f71e8a8da5780eb8cd9b327b440f7ef55f5065baa8644e3e28e4f2225",
+      "displayed_panel_sha256": "e7514933619885c7f10195c0eaed6556d8d5f2d2dd86e35d3ea9222340cb059b",
+      "operation": "rotate_90_cw",
+      "image_exif_orientation": null,
+      "mask_rgb_codes": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          255,
+          0,
+          0
+        ]
+      ],
+      "foreground_pixels": 1665207,
+      "checks": {
+        "source_mask_hash_matches_audit": true,
+        "copy_hash_matches_audit": true,
+        "source_image_hash_matches_review": true,
+        "copy_equals_exact_rotation": true,
+        "foreground_pixel_count_preserved": true,
+        "decoded_target_matches_raw_foreground": true,
+        "all_pixels_valid": true,
+        "image_mask_dimensions_match": true,
+        "displayed_panel_reproduces_exactly": true
+      },
+      "all_checks_passed": true,
+      "human_observation": "suspected cup-bottom/base-rim annotation undercoverage",
+      "semantic_issue_resolved": false
+    }
+  ],
+  "conclusion": "All rotated copies preserve source pixel values, decoding preserves foreground, and displayed panels reproduce exactly. This does not establish annotation correctness or independently prove chosen rotation direction.",
+  "handling": "Keep original labels and existing candidate masks/manifests unchanged; retain eight unresolved annotation-coverage issues for member5/team review. Do not auto-redraw or exclude.",
+  "data_modified": false
+}

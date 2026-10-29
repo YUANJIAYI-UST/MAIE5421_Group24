@@ -1,0 +1,111 @@
+Trans10K-v1 数据准备与审计记录
+日期：2026-10-22（Asia/Hong_Kong）
+结论：官方原始数据已完整下载、解压和全量扫描；严格数据验收未通过。
+阻塞项：18 对训练图片与标注宽高互换；11 组跨 split 完全相同图片。
+需要组内确认几何修复与跨 split 重复的实验处理方案；仅修复方向还不能通过验收。
+原始图片、标注、官方 split 均未修改；尚未生成可直接用于训练的正式清单。
+
+一、数据来源与完整性
+作者官网：https://xieenze.github.io/projects/TransLAB/TransLAB.html
+本地数据：data/Trans10K/
+原始下载包：data/archives/Trans10K_v1/
+总压缩包大小：9,457,038,981 bytes（约 9.46 GB）。
+解压后图片和标注：10,081,593,304 bytes。
+三个 ZIP 所有文件条目的 CRC 校验通过，下载与解压记录的 SHA256 一致。
+SHA256 是本次官方链接下载包的指纹；没有声称与作者发布的校验表进行比对。
+仅跳过 207 个 macOS 元数据条目（.DS_Store / __MACOSX / ._），未排除数据样本。
+来源、三个 SHA256 和元数据条目清单：reports/TRANS10K_V1_SOURCE_20261022.json
+
+二、全量诊断结果
+扫描总数：10428 对。
+  train: 5000 张；分组 {'train': 5000}
+  validation: 1000 张；分组 {'easy': 788, 'hard': 212}
+  test: 4428 张；分组 {'easy': 3491, 'hard': 937}
+异常类型计数：{'shape_mismatch': 18}
+缺失 mask：0；多余未配对 mask：0。
+不可读取图片/标注：0；严格标签解码错误：0。
+跨 split 完全相同 RGB 图像组：11；同 split 完全相同 RGB 图像组：8。
+空前景标注：1；全前景标注：0。
+空前景为 train/images/470.jpg：已查看原图，右侧瓶盖存在透明外观；是否按数据集
+规则应标注需进一步确认，不能仅凭此判为漏标，也未自行补画或排除。
+完整逐文件哈希、尺寸、前景像素数保存在 diagnostics/diagnostic_inventory.json。
+该文件显式标为 not_for_training，并验证现有训练数据读取器会拒绝它。
+这里的重复检查是解码 RGB + 尺寸的精确哈希，不是完整近重复/同场景检索。
+
+三、18 个几何异常及候选修复
+全部位于 train/images/，文件名（均为 .jpg）：
+  150, 1519, 1544, 1557, 2511, 2538, 2545, 2642, 2672, 2706, 2707, 3703, 3751, 3788, 3808, 467, 964, 981
+所有问题都是宽高互换；仅 resize 到同尺寸不能恢复正确方向。
+已逐一查看原图、原标注、标注顺时针/逆时针 90 度旋转的叠图。
+视觉建议：16 对标注顺时针旋转 90 度；3751、3788 两对标注逆时针旋转 90 度。
+逐文件原始哈希与建议：geometry_review/review_decisions.json。
+全部建议均未应用；需要你或组员复核后，在独立修正版中处理，并同时解决重复协议。
+保留原始 ZIP 和 data/Trans10K；不静默改写官方数据，也不直接删掉这 18 张。
+候选对照图不属于训练输入或模型预测。
+
+四、重复图片独立复核与实验协议
+11 组跨 split 重复：训练—验证 2 组；训练—测试 8 组；验证—测试 1 组。
+共涉及 22 个样本条目，分别为 train 10、validation 3、test 9。
+8 组同 split 重复：训练内 5 组；测试内 3 组。
+全部 19 组均为两成员，独立比较解码后的 RGB 数组，逐像素完全一致；
+同时原始 JPEG 文件 SHA256 也分别相同，证据不是仅由缩略图外观推断。
+19 组对应二值标注均存在差别；跨 split 各组差异占整幅图的 0.015%—1.445%。
+这是标签差异，不能据此把相同 RGB 图片视为相互独立的评估样本。
+跨 split 具体列表：
+  train/images/10137.jpg <=> validation/easy/images/9125.jpg
+  train/images/407.jpg <=> test/easy/images/4718.jpg
+  train/images/5322.jpg <=> test/easy/images/5308.jpg
+  train/images/5334.jpg <=> test/easy/images/5277.jpg
+  train/images/5387.jpg <=> validation/easy/images/5417.jpg
+  train/images/9060.jpg <=> test/easy/images/9832.jpg
+  train/images/9664.jpg <=> test/easy/images/9288.jpg
+  train/images/9871.jpg <=> test/easy/images/9322.jpg
+  train/images/9933.jpg <=> test/easy/images/9630.jpg
+  train/images/9985.jpg <=> test/easy/images/9274.jpg
+  validation/hard/images/10223.jpg <=> test/hard/images/9056.jpg
+逐组 RGB/GT 对照、像素差异与 IoU：duplicates_review/duplicate_verification.json。
+已查看全部对照图；组内对实验协议的确认仍为 pending。
+原始官方 split 作为可追溯基准保留；若建立排除重叠的派生实验版本，必须明确
+哪些 ID 被排除、各 split 有效数量、标签修复版本，以及与官方 benchmark 的可比性。
+不要把改动后的数据仍称为原封不动的官方划分，也不要删除测试项后隐瞒计数。
+本次没有选择某组的 GT 覆盖另一组，也没有执行删除、搬移、重新随机划分。
+仓库严格审计会拒绝跨 split 完全相同图片；不能把它改为忽略后便称验收通过。
+
+五、40 张常规视觉抽查
+seed=20261022；训练集随机 20 张，验证集 easy/hard 各 10 张。
+生成 40 张原图尺寸 GT 叠图、40 张三联图、8 页联系表。
+Codex 已查看这 40 个样本：未见明显整体错位或前背景反转。
+这些随机样本没有覆盖上述 18 个异常，不能据此推断整个数据集没有问题。
+组内人工复核仍为 pending；不将 AI 视觉检查写成已由同学人工验收。
+附注：验证集 5177 的反射区域也有镜片标注；8811 是接近全画幅的玻璃橱窗；
+部分不透明标签被剔除，附属部件/反射语义应在报告中如实描述并保留官方 GT。
+抽样发现两组同场景/近似外观候选：train/15 与 train/2368；
+train/3242 与 validation/easy/3118。这只是 D02 复核候选，不是重复泄漏结论。
+没有因这些观察删除或移动任何样本。
+
+六、文件位置（以下均相对仓库根目录；上文短路径均位于本次 runs 目录内）
+  runs/trans10k_data_audit_20261022/diagnostics/audit.json
+  runs/trans10k_data_audit_20261022/diagnostics/diagnostic_inventory.json
+  runs/trans10k_data_audit_20261022/train_review/
+  runs/trans10k_data_audit_20261022/validation_review/
+  runs/trans10k_data_audit_20261022/geometry_review/
+  runs/trans10k_data_audit_20261022/duplicates_review/
+  runs/trans10k_data_audit_20261022/visual_similarity_candidates.json
+  runs/trans10k_data_audit_20261022/strict_audit.log
+  runs/trans10k_data_audit_20261022/diagnostic_audit.log
+  manifests/trans10k/audit.json（状态 blocked；不是通过验收）
+复现命令：docs/09_TRANS10K_DATA_WORKFLOW.txt
+
+七、验证与范围
+原有单元测试再次运行：32 passed，0 failed，0 skipped，耗时 6.25 秒。
+严格审计的首次运行在 train/images/150.jpg 正确拦截了尺寸不匹配，随后用独立诊断
+模式收集全部问题。没有绕过训练检查，也没有将异常数据伪装成正式训练清单。
+未开始模型训练、未跑正式评估、未做 V2/GSD；未向 GitHub 推送或向组员发送消息。
+下一步：把报告与交接包给组员复核，统一 18 条方向修复和 11 组跨 split 重复的
+处理方案，完成派生版本的审计后再发布冻结的数据清单。近重复 D02 仍未完成。
+
+可发给组员的简短说明（草稿，尚未发送）：
+“官方 V1 数据已下载并完成全量检查，数量是 5000/1000/4428。
+发现训练集有 18 对图片和标注的方向不一致，还有 11 组跨训练/验证/测试集重复图片。
+我已整理逐文件名单、旋转候选图、重复对照及 40 张常规抽查图，原数据没有改动。
+建议我们先确认修复和重复样本的处理规则，再用统一版本开始正式训练。”

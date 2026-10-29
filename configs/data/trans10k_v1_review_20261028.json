@@ -1,0 +1,211 @@
+{
+  "schema": "trans10k_local_derivative_policy_v1",
+  "id": "trans10k_v1_review_20261028",
+  "authorization": "User requested local implementation of the documented correction/exclusion sequence",
+  "member5_review": "pending",
+  "source": {
+    "inventory_sha256": "ab5034562af8f3745321bf69b6355e013f64627945a7d429404085ced9d29447",
+    "audit_sha256": "d7fde60b6a1594b2581ea734b5afce2191631270199215e39a8a212e132b6091",
+    "official_counts": {
+      "train": 5000,
+      "validation": 1000,
+      "test": 4428
+    }
+  },
+  "corrected_masks_directory": "Trans10K_v1_review_20261028",
+  "mask_corrections": [
+    {
+      "id": "train/images/150.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "1f993566737f9a4b0fd867793d74e0a6ef1bb1c4ce4b90ac6ac82427dc5c86a1",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/1519.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "e93e10d26566659b962bf0287999574b4cb3d2f2217adb265fe1e629795ff5e2",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/1544.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "fa440dc8482b05bbb2b075c9d2cf9d66f8f1c5e2653b1da3779cef8dc9bcf1ee",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/1557.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "cc402523d0717597185088203ac10efac2231fe5fe9d9c81a81e79ee41d999d0",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2511.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "25426cb23d1c0e47d204a88da2ca7cde7818e1d2689ec30073f5cc982bee3fa3",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2538.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "aba75c264c834570a45ed3cc19bba4fdb5e1e7ee489ed61e087cfbc477ef6d5b",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2545.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "52a4b177cd21834aa76797af949425fca5ba22fa9d19d660cfc19b6499e2e9cf",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2642.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "b32022d8ef5d306f236847c2efc7b4e4ed687bd53d8a5d8758ff2735bef491e9",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2672.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "f9dad89ab0e44d344c2cd15da38a4df022727aa568de029a7b4a8714c3e94dae",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2706.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "e22ab6df811f2886755f467cc5bbf1f371a3f2b2e40cfb80da5b1306fb1ebcae",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/2707.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "a99ebb08eb0f601131f2803e6d1ec53a6b6cfbf17ddeb1b7310024fb4580489b",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/3703.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "a63c022836bd0c37f05a4c4f72735154a798ade9fcfcaeec16f0065843ec9ef6",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/3751.jpg",
+      "operation": "rotate_90_ccw",
+      "source_mask_sha256": "8be9e4f89673d2da7df3defa6adb59af0bd44af2001b49b6de1427efcc18101e",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/3788.jpg",
+      "operation": "rotate_90_ccw",
+      "source_mask_sha256": "c3368e3f824aa89ab5ba71e4fffb31865a5d143a20af517b4903b100b7391d8c",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/3808.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "30c3ac1f8e417ec2579243038cfb71142ffd5f049780ec12b292a53a5867fdd0",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/467.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "0d3fef64bdd484fb7fc3dc3c51fbc2ec9533a4c1aa7da85947a043c4729011c7",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/964.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "a3cd68fe7a5b61f52b5d831242cec26bd92eb2fc54a1c25666323454f85e08f5",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    },
+    {
+      "id": "train/images/981.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "d37d227621c182b382782ed70aa191521dc92fb772e45baa96c28e20d09ac819",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending"
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "train/images/10137.jpg",
+      "retained_id": "validation/easy/images/9125.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "ed44ba461ff82dad266602aa0aa18f40f690eb4ccfc9ac0473af97408f3e1064",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/407.jpg",
+      "retained_id": "test/easy/images/4718.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "039e012a0802f8dfd7eef9451365e5999d7de965ca28d7c5f7225acdcd7240b6",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/5322.jpg",
+      "retained_id": "test/easy/images/5308.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "8f50c16b78d784d16fb5c8adb952c6853956b122616cad97e8d829f59b395396",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/5334.jpg",
+      "retained_id": "test/easy/images/5277.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "35ebbf8b92e6eed18532dbe89b14420e3318510edd2c0bfa9a9996e175e99acd",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/5387.jpg",
+      "retained_id": "validation/easy/images/5417.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "fb1e2368b2464c60a1b0f013f9b04e85272b75dc6182772853868b80a8c8b864",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/9060.jpg",
+      "retained_id": "test/easy/images/9832.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "9c397ca65b197c4091a6a56aa6f5f0de544b37b74f7006cd7c5b99e56d1a361b",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/9664.jpg",
+      "retained_id": "test/easy/images/9288.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "17336de3724fb08921dc0a2737cfefab53ebe0b5b6d2cbc27ce68cbe308d458e",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/9871.jpg",
+      "retained_id": "test/easy/images/9322.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "77287e076a4ef59aa75380d748c5b093211d3f1ebc766989d71dc55b1979e0e5",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/9933.jpg",
+      "retained_id": "test/easy/images/9630.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "cdbf4a37af54cb3626b3047f40283dd1394704feea366f48af3a582eeb659c9f",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "train/images/9985.jpg",
+      "retained_id": "test/easy/images/9274.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "2bde95bfda20767e6e3ef69aa3cf1f0707bc2593e9e7636ccde430ea6ecf2510",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    },
+    {
+      "id": "validation/hard/images/10223.jpg",
+      "retained_id": "test/hard/images/9056.jpg",
+      "reason_code": "cross_split_exact_rgb_duplicate",
+      "evidence_pixel_sha256": "b94967248a9ea0c98156475fc2e98baf20cadd13efc64d93fa28a099f69c3824",
+      "reason": "Keep higher-priority test, then validation; exclude lower-priority entry only from derivative manifest"
+    }
+  ],
+  "other_cases": {
+    "within_split_duplicates": "retain and disclose; do not replace differing GT",
+    "empty_foreground_train_470": "retain official GT; semantic review pending",
+    "near_duplicates": "candidate retrieval only; no automatic exclusion"
+  },
+  "test_policy": "Preserve all 4428 original test images and masks with unchanged hashes"
+}

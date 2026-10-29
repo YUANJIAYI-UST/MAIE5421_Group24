@@ -1,0 +1,126 @@
+成员 1：D03 类别隔离技术交付（2026-10-28）
+
+当前状态：真实数据的对齐、选类、隔离代码、清单和泄漏检查已实现。
+这是一份待人工确认的候选协议，尚未代表成员 5 复核或正式实验已经完成。
+未发送组员消息、未推送 GitHub、未启动 A/D 正式训练。
+
+1. 这项工作做了什么
+V1 负责“透明／不透明”的二值标签；V2 只告诉我们图片里有哪些细类别。
+先从训练／验证数据选出两类，再把包含它们的整张图片从训练和验证中移除。
+训练后的模型用官方测试集中含这两类的图片检验泛化能力。
+“未见”只指本任务的训练数据；不声称 ImageNet 预训练没有见过这些语义类别。
+
+2. 数据来源与待确认事项
+作者仓库：https://github.com/xieenze/Trans2Seg
+固定作者代码 revision：3972916bba7f985ca1aabc047fea56bdec9e9e5d
+标签 ID 顺序取自 segmentron/data/dataloader/transparent11.py 的 classes。
+RGB 对照表取自 segmentron/utils/visualize.py 的 trans10kv2pallete。
+原 Google Drive 链接本次返回 404；上游 issue 19 也记录失效问题：
+https://github.com/xieenze/Trans2Seg/issues/19
+作者百度备用链接仍显示 trans12cls.zip，大小 1,172,033,952 字节：
+https://pan.baidu.com/s/1P-2l-Q2brbnwRd2kXi--Dg （公开提取码 oqms）
+本次没有取得这个作者原 ZIP，不能声称已证明镜像与原 ZIP 逐字节一致。
+
+实际使用的公开镜像：https://huggingface.co/datasets/rdyzakya/Trans10K-v2
+固定 revision：3445e93f1e507ea6c2dd36f06badfd5e818b699f
+四个 parquet 的大小和 SHA256 均与固定 revision 的 LFS 指纹一致。
+镜像卡说明做过一处红色到 cup 颜色的映射；本地没有再次重标、猜色或修正类别。
+该上游修正的具体文件 ID／与作者原包是否一致，仍需原包比对确认。
+这是需要你／成员 5 确认的数据来源选择，不把镜像发布者当作原作者。
+镜像卡提到的代码许可也不自动等于独立核实的数据许可。
+
+3. 对齐与编码审计
+官方 split 的 5000 train／1000 validation／4428 test 文件名全部一一对应。
+V2 有缩放和重新压缩，故不要求 V1/V2 的 JPEG 文件 SHA 相等。
+先核对同 split、原文件名，再比较长宽比、96x96 RGB 图像与 pHash。
+18 张旋转图片沿用 D01 的明确记录（16 顺时针、2 逆时针），把 V2 图像方向
+变换到 V1 坐标系后比较。只记录变换，不改写原 V1/V2 文件。
+10428 对均通过：最大相对长宽比差 0.001070 以内；缩略图 RMSE 最大 0.813；
+pHash 汉明距离最大 4。图像内容一致是这些检查支持的结论，不等于所有语义标注正确。
+全部 V2 mask 使用精确作者 RGB palette 解码；本镜像无未知颜色、缺失或无法对齐条目。
+代码也支持显式的原始 P/L 索引编码；不能把 RGB 图任意 convert('P') 后猜 ID。
+上游类别名 Floor Glass（ID 8）在论文中称 glass wall；Glass Bow（ID 9）
+在论文中为 glass bowl。保留代码原名和 ID，不偷偷重排 ID。
+论文：https://www.ijcai.org/proceedings/2021/0165.pdf
+
+4. 选类规则与真实计数
+规则文件：configs/data/trans10k_d03_rules_20261028.json
+选类只使用 D01 派生基础中的 train 4990／validation 999，不使用 test 类别统计。
+每个候选类别至少有 50 张训练、10 张验证；移除两类后两个 split 都至少保留 60%，
+且其余九类仍在训练和验证中出现。按“两类中较少的验证图片数”最大优先；
+依次以较少训练数、剩余训练数、剩余验证数、升序 ID 打破平局。
+完整候选组合、淘汰原因、类别图片数和像素数均保存在 selection/ 中。
+这是可复现的课程项目方案，不是老师指定的唯一选类方法，仍待你确认。
+
+选中 ID 5 Glass Door（玻璃门）和 ID 8 Floor Glass（论文称 glass wall）。
+选类前，ID 5：train 747／validation 161；ID 8：train 1489／validation 292。
+两类可能同图出现，不能将两个类别的图片数直接相加当作排除数。
+选类文件先固定哈希，再下载／解码测试标签；保留 selection_freeze_order.json。
+资料检索时镜像卡展示过全数据集汇总计数；这些汇总未输入选类函数。
+不能将本流程表述为从未看到过任何公开测试统计。
+
+                     D01 基础       D03 保留       本次移除
+train                4990           3261           1729
+validation            999            649            350
+test 全集             4428           4428              0
+test_heldout 子集        -           1493              -
+test_seen 子集           -           2935              -
+
+train 移除项包含 116 张 seen/held-out 混合图，validation 包含 18 张；全部整图移除。
+两个 test 子集互斥、并集等于 4428 张官方测试图；未重新随机划分、未删改官方 test。
+train/validation 的 ID 5 和 ID 8 图片数、像素数均为 0。
+官方原始数量、D01 去重数量、D03 隔离数量是三种不同统计，不混称官方完整训练集。
+
+5. 文件入口
+transparent_seg/data_v2.py：明确类别解码，不接管 V1 二值标签。
+transparent_seg/prepare_holdout.py：先 select 后 build，测试审计必须引用已冻结选择。
+scripts/audit_trans10k_v2.py：V2 导入、图像对齐、编码与类别计数。
+scripts/verify_holdout_release.py：直接读取真实标签，独立检查隔离和复现。
+tests/test_holdout_data.py：混合类别移除、测试隔离、V1 保留、篡改拒绝等测试。
+manifests/trans10k_d03_20261028/：5 个 manifest、audit.json、类别计数、排除理由、release.json。
+runs/trans10k_d03_20261028/selection/：只含 train/validation 的选类依据。
+runs/trans10k_d03_20261028/{train_val_aligned,test}/：全部逐图 V1/V2 对应与哈希。
+runs/trans10k_d03_20261028/human_review/：两类抽样图、18 张旋转对比、人工确认空表。
+runs/trans10k_d03_20261028/verification.json：最终真实数据检查结果。
+
+V1 manifest 中 image/mask 路径、hash、binary encoding 和 D01 mask_transform 都保留。
+V2 category mask 只作为额外字段，绝不将 V1 的 0/85/255 二值语义改成 V2 的类别含义。
+V2 原生分辨率的像素数不能与 V1 原分辨率像素数直接比较。
+如成员 5 计算类别 recall，应明确 V2 原生坐标系／v2_to_v1_orientation，
+在 V2 GT 的坐标系对齐预测再算 TP/GT；不要直接把不同尺寸的两个数组逐像素比较。
+二值 IoU/F1/Boundary IoU 仍对原尺寸 V1 GT 计算。类别 recall 聚合是成员 5 后续评估工作。
+
+6. 可复现命令（Mac，在仓库根目录，输出目录必须不存在）
+先完成 docs/10_MEMBER1_LOCAL_RELEASE.txt 的 V1 基础数据准备。
+  .venv/bin/python -m pip install -r requirements-data.txt
+  .venv/bin/python scripts/download_v2_mirror.py --split train validation
+  .venv/bin/python scripts/audit_trans10k_v2.py --split train validation --output runs/trans10k_d03_20261028/train_val_aligned
+  .venv/bin/python -m transparent_seg.prepare_holdout select --base manifests/trans10k_v1_review_20261028 --inventory runs/trans10k_d03_20261028/train_val_aligned/inventory.json --rules configs/data/trans10k_d03_rules_20261028.json --output runs/trans10k_d03_20261028/selection
+冻结 selection.json 后再进行：
+  .venv/bin/python scripts/download_v2_mirror.py --split test
+  .venv/bin/python scripts/audit_trans10k_v2.py --split test --selection runs/trans10k_d03_20261028/selection/selection.json --output runs/trans10k_d03_20261028/test
+  .venv/bin/python -m transparent_seg.prepare_holdout build --base manifests/trans10k_v1_review_20261028 --inventory runs/trans10k_d03_20261028/train_val_aligned/inventory.json --test-inventory runs/trans10k_d03_20261028/test/inventory.json --selection runs/trans10k_d03_20261028/selection/selection.json --rules configs/data/trans10k_d03_rules_20261028.json --output manifests/trans10k_d03_20261028
+  .venv/bin/python -m pytest -q -W error
+  .venv/bin/python scripts/verify_holdout_release.py --manifests manifests/trans10k_d03_20261028 --base manifests/trans10k_v1_review_20261028 --output runs/holdout_verified_new.json
+
+同机复现：将 build 的 --output 换成同层的新目录，再把该目录作为 verifier 的 --reproduced。
+检查全部 11 个交付 JSON 逐字节一致。保持目录层级、Python/Pillow/NumPy 版本相同。
+其他同学电脑上的实际复现仍需成员 5 执行，不能用本机重复运行代替该结论。
+
+7. 给成员 2/5 的接口
+pilot 配置：configs/pilot_holdout_A_20261028.json 与 configs/pilot_holdout_D_20261028.json。
+二者固定同一组 train/val 清单哈希，继承 ImageNet 初始化、新 decoder 和 CUDA pilot。
+本 Mac 没有运行 GPU pilot 或正式训练。当前 research 入口仍拒绝待人工审核的派生协议。
+正式协议批准后，由成员 2/5 对训练入口做明确的 held-out research 支持；
+不能把 complete_official_split 改成 true 或把 pilot 假报为正式实验来绕过检查。
+A/D 隔离实验必须重新从相同 ImageNet 编码器和新 decoder 训练，不能续训已见过两类的全类 checkpoint。
+主四组实验的数据配置未被这份隔离配置替换。
+
+8. 你需要人工确认什么
+第一，是否接受当前固定的第三方镜像作为候选数据来源；最好取得作者百度原 ZIP，
+核对其 V2 标签与镜像一致性，特别是镜像卡提到的一处颜色修正。
+第二，确认选择 ID 5 和 ID 8，并统一 ID 8 的报告名称；两张 class_*_contact 图可帮助理解类别。
+第三，结合 D01 的旧复核材料查看 18 张方向图；本次新增 V2 图像对齐证据不等于你已人工签字。
+D02 的 153 对近重复候选仍另需人工判断；之后若更改基础清单，应新建协议版本并重建 D03，
+旧清单与哈希应保留。选类后不得依据 test 效果偷偷换类或调规则。
+成员 5 最后复核数据来源、选类依据、排除理由、哈希、泄漏测试和复现。

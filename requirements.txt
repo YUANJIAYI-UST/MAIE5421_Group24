@@ -3,5 +3,7 @@ torch==2.7.1
 transformers==4.46.3
 numpy==2.2.6
 Pillow==11.3.0
-scipy==1.15.3
+# Newer macOS rejects the old PROPACK binary; retain the original non-Mac pin.
+scipy==1.15.3; sys_platform != "darwin" or python_version < "3.11"
+scipy==1.17.1; sys_platform == "darwin" and python_version >= "3.11"
 pytest==8.4.2

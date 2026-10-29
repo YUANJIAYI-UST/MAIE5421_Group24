@@ -1,0 +1,77 @@
+Trans10K-v1 数据准备与审计（Mac / Python）
+
+所有命令在仓库根目录执行。使用已有 .venv；数据与权重不提交 Git。
+作者来源：https://xieenze.github.io/projects/TransLAB/TransLAB.html
+保留官方 train/validation/test 和 easy/hard 划分，禁止重新随机切分。
+
+1. 下载作者官网链接的三个压缩包
+  .venv/bin/python scripts/download_trans10k_v1.py
+
+默认输出 data/archives/Trans10K_v1/。
+包含原始 train.zip、validation.zip、test.zip、作者页面快照与下载来源记录。
+脚本处理 Google Drive 大文件下载确认页并记录 SHA256；下载失败会保留 .part。
+已有 ZIP 不会被替换；下载结束后仍需完成 CRC 和数据审计。
+不需额外安装 gdown；requests 已包含在当前项目环境中。
+
+2. 解压新数据（只在目标 split 尚不存在时运行）
+  .venv/bin/python scripts/extract_trans10k_v1.py
+
+也可单独解压一个 split：
+  .venv/bin/python scripts/extract_trans10k_v1.py --split validation
+
+逐文件读取会校验 ZIP CRC；拒绝路径穿越、符号链接、重复条目和覆盖已有数据。
+仅跳过 .DS_Store / __MACOSX / ._ 资源文件，具体列表保存在 extraction_<split>.json。
+不删除、重标注或移动图片到其他 split。
+
+3. 运行仓库原有的严格审计
+  HF_HOME="$PWD/.cache/huggingface" .venv/bin/python -m transparent_seg.prepare --root data/Trans10K --output manifests/trans10k
+
+预期计数：train 5000，validation 1000，test 4428。
+该步骤检查配对、尺寸、严格标签编码、文件哈希和跨 split 完全相同的 RGB 图像。
+遇到异常应保留日志并调查，不要加 --allow-partial、忽略异常或擅自删除官方样本。
+完整通过才产生三个正式清单及 audit.json。
+
+若严格审计在首个异常处停止，可运行只收集问题的诊断模式：
+  HF_HOME="$PWD/.cache/huggingface" .venv/bin/python scripts/audit_trans10k_diagnostics.py --output runs/trans10k_diagnostics_new
+
+诊断模式扫描全部图片，保留尺寸异常、解码错误、缺失标注和精确重复记录。
+它不会修复数据，也不会生成可供训练程序接受的清单。
+diagnostic_inventory.json 明确标为 not_for_training；status=blocked 时需要先复核问题。
+
+对于宽高互换的问题，可生成两种 90 度旋转的候选对照图：
+  HF_HOME="$PWD/.cache/huggingface" .venv/bin/python scripts/visualize_geometry_issues.py --audit runs/trans10k_diagnostics_new/audit.json --output runs/geometry_review_new
+该命令只画诊断对照图，不改写原始图片/标注，也不自动批准修复。
+
+对于精确重复，可独立逐像素核对全部重复组，并比较对应二值 GT：
+  HF_HOME="$PWD/.cache/huggingface" .venv/bin/python scripts/verify_trans10k_duplicates.py --audit-dir runs/trans10k_diagnostics_new --output runs/duplicates_review_new
+输出 duplicate_verification.json 和对照浏览图；原始图片和标注保持不变。
+该配对对照脚本适用于本次发现的两成员重复组；若出现更大的组会明确报错。
+跨 split 重复处理属于实验方案：保留官方原始版本，组内统一并记录派生版本的
+过滤清单、有效计数与评估范围；不得悄悄移样本、删样本或混报不同版本结果。
+仅修复旋转问题仍不能通过当前仓库的跨 split 重复检查。
+
+V1 RGB 通道均值 0/85/255 对应二值 0/1/1；白色 255 是前景。
+禁止先 convert('L') 再阈值，也不要把未知颜色静默转换成前景。
+完全相同图像检查不等于近重复检查；裁剪、重编码、同场景不同照片需后续 D02 处理。
+
+4. 生成可复现的抽查叠图（输出目录必须是新的）
+  HF_HOME="$PWD/.cache/huggingface" .venv/bin/python scripts/visualize_trans10k_audit.py --output runs/trans10k_review_new
+
+默认 seed 20261022；训练集均匀随机抽 20 张，验证集 easy/hard 各抽 10 张。
+可用 --splits train 或 --splits validation 单独处理，--count 指每个 split 的样本数。
+overlays/ 为原图尺寸的 GT 叠图；panels/ 为原图/二值GT/叠图三联图；
+contact_*.jpg 为每页 5 张的浏览页；review_samples.json 记录样本 ID 和源文件哈希。
+绿色表示标注的透明区域，黄色表示标注边界；这些图不是模型预测。
+生成后的视觉复核状态初始为 pending；看过后记录真实观察与复核者。
+
+5. 与训练同学对接
+共享版本依据：三个原始 ZIP 的 SHA256、manifests 中各文件哈希及审计报告。
+原始图片、标注和 runs/ 仍保留在本地/组内约定的数据存储位置。
+清单中的 root 是生成机器的绝对路径，换电脑时用实际数据路径覆盖：
+  python -m transparent_seg.train --config configs/pilot.json --root /your/path/to/Trans10K --output runs/pilot_new
+该命令仅供训练负责人后续使用；本次数据准备不执行训练。
+Windows 的 --root 可传该电脑实际数据路径，且必须保留相同 split 内部结构。
+不要把源数据重新压缩后得到的 ZIP 哈希与作者原始下载包哈希直接比较。
+
+正式实验前还需由组员复核样本观察、处理记录及计算资源；V2 隔离/GSD 另行开展。
+本次实际检查的结论和证据入口：reports/TRANS10K_DATA_AUDIT_20261022.txt。

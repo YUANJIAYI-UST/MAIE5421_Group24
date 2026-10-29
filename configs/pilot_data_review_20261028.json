@@ -1,0 +1,10 @@
+{
+  "extends": "pilot.json",
+  "data_protocol_id": "trans10k_v1_review_20261028",
+  "train_manifest": "manifests/trans10k_v1_review_20261028/train.json",
+  "val_manifest": "manifests/trans10k_v1_review_20261028/validation.json",
+  "expected_manifest_sha256": {
+    "train": "31bc4078c9f8e548aa8bf8e867f19f073f171e19fc9dee9c8e57af4b86014a1b",
+    "validation": "f9424226a5ba9951c5ae76a04fefb0c654f11e69f25bf8662a9825a83f2dd1e7"
+  }
+}

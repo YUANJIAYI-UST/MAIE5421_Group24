@@ -1,0 +1,37 @@
+split,class_id,class_name,images,native_v2_pixels
+train,0,Background,4959,4406256263
+train,1,Shelf,137,44965184
+train,2,Jar or Tank,481,99639301
+train,3,Freezer,49,28206500
+train,4,Window,250,85106480
+train,5,Glass Door,747,185374704
+train,6,Eyeglass,188,15540978
+train,7,Cup,1525,291079681
+train,8,Floor Glass,1489,724498820
+train,9,Glass Bow,159,29691994
+train,10,Water Bottle,706,105373330
+train,11,Storage Box,296,60574207
+validation,0,Background,995,866949639
+validation,1,Shelf,28,12078883
+validation,2,Jar or Tank,99,22623408
+validation,3,Freezer,8,3149437
+validation,4,Window,34,9795276
+validation,5,Glass Door,161,36536496
+validation,6,Eyeglass,42,2771004
+validation,7,Cup,312,61326190
+validation,8,Floor Glass,291,142256493
+validation,9,Glass Bow,30,5449066
+validation,10,Water Bottle,132,20319860
+validation,11,Storage Box,58,11998461
+test,0,Background,4428,3904560986
+test,1,Shelf,113,46090689
+test,2,Jar or Tank,413,85651750
+test,3,Freezer,33,12288666
+test,4,Window,215,74443897
+test,5,Glass Door,662,160606083
+test,6,Eyeglass,180,13720024
+test,7,Cup,1444,274000861
+test,8,Floor Glass,1278,638420329
+test,9,Glass Bow,149,30158810
+test,10,Water Bottle,629,90359175
+test,11,Storage Box,247,53625589
