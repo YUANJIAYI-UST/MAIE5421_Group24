@@ -19,11 +19,19 @@ def sha256_file(path):
     return digest.hexdigest()
 
 
+# def write_json(path, value):
+#     path = Path(path)
+#     path.parent.mkdir(parents=True, exist_ok=True)
+#     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
-
+    path.write_text(
+        json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 def audit_trans10k(root, output, allow_partial=False, synthetic=False):
     root, output = Path(root).resolve(), Path(output)
