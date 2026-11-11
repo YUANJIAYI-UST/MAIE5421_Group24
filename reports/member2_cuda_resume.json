@@ -1,0 +1,23 @@
+{
+  "synthetic_only": true,
+  "device": "cuda",
+  "torch": "2.10.0.dev20251006+cu128",
+  "checks": {
+    "model": true,
+    "config": true,
+    "epoch": true,
+    "validation_foreground_iou": true,
+    "best_validation_foreground_iou": true,
+    "checkpoint_version": true,
+    "optimizer": true,
+    "scheduler": true,
+    "rng": true,
+    "global_step": true,
+    "manifest_sha256": true,
+    "torch_version": true,
+    "initial_shared_state_sha256": true,
+    "encoder_resolved_revision": true,
+    "inference_load_finite": true
+  },
+  "passed": true
+}

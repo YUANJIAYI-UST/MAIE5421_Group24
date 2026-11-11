@@ -7,6 +7,7 @@ Boundary-Aware Transparent Object Segmentation under Appearance Variation
 
 先读 docs/00_START_HERE.txt，再读 docs/05_VALIDATION_GUIDE.txt。
 五人分工与日期：docs/02_FIVE_MEMBER_DEVELOPMENT_PLAN.txt
+成员 2 续训、资源测量与当前交接：docs/14_MEMBER2_TRAINING_HANDOFF.txt
 待优化任务（TXT）：docs/03_OPTIMIZATION_BACKLOG.txt
 数据集与官方下载：docs/04_DATASETS_AND_DOWNLOAD.txt
 老师要求逐项验收：docs/01_REQUIREMENTS_AND_ACCEPTANCE.txt

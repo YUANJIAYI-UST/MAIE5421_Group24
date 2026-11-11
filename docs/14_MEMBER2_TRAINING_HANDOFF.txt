@@ -1,0 +1,69 @@
+成员 2：WANG Zenan —— 本地实现与交接（2026-11-11）
+
+基于 main 2c7c3c2（已合并成员 1 的 25f5fa7）。
+本地目录 D:\CV\project，工作分支 member2/training-resume-pilot。
+
+已完成的代码
+M03：epoch 边界恢复。last.pt/best.pt 包含 model、AdamW、LambdaLR、
+Python/NumPy/Torch/CUDA RNG、DataLoader generator、epoch 和 optimizer step。
+恢复核对完整配置、清单字节哈希、PyTorch 版本；沿用原始学习率总预算。
+支持 --stop-after-epoch 做计划内暂停，不修改 epochs。恢复到新目录，旧 run 保留。
+best.pt 也需一同保留，恢复后验证未改善时沿用旧 best。旧版只有模型的 checkpoint
+仍可推理，但不能声称支持精确续训。当前不支持 batch 中途恢复。
+BF16 不需要 scaler；未增加 FP16。未来加入 FP16 时必须同时保存/恢复 scaler。
+
+M04：可选 gradient_accumulation_steps，默认 1，现有配置行为保持不变。
+最后不足一组的 microbatch 仍更新；按实际样本数加权，clip/scheduler 仅在更新时执行。
+每 epoch optimizer steps = ceil(min(ceil(N/microbatch), max_steps或无限)/accumulation)。
+有效 batch = microbatch * accumulation（最后不足一组除外）。
+注意 BatchNorm、Dropout 和按 batch 平衡的边界损失意味着累计并不等价于大物理 batch。
+如果采用累计，A/B/C/D 应统一 microbatch、累计次数、数据、epoch 和精度；不可只改一组。
+
+M01：scripts/member2_pilot.py 接成员 1 最终 V1 哈希配置，分别跑 A 的 512/batch 4、8，
+每组最多 20 个 microbatch，并评估全部 validation；资源表在 resources.json。
+步时经过 CUDA 同步，steady_microbatch_seconds 丢弃前两步，不含 DataLoader 等待；
+train_seconds 包含数据加载，validation_seconds 单独记录。记录分配/保留显存峰值。
+OOM 明确记为失败；A 的显存测量不代表 B/D，可用其各自配置补测。
+
+M02：configs/member2_overfit.json 固定取最终 train 前 4 张，关闭增强/边界头，
+50 epochs/lr=0.001 仅用于诊断。日志同时给出训练子集分数与完整 validation 分数，
+best 仍只按 validation 选择。不能把这份诊断配置当作已冻结的正式基线协议。
+训练首步检查所有 requires_grad 参数确有梯度，损失/梯度出现非有限值时失败。
+
+运行（项目根目录；python 应指向安装了 requirements.txt 的环境）
+  python scripts/member2_pilot.py --output runs/member2_real_pilot
+  python -m transparent_seg.train --config configs/member2_overfit.json --output runs/member2_overfit
+  python -m transparent_seg.train --config <冻结配置.json> --output runs/A_part --stop-after-epoch 5
+  python -m transparent_seg.train --config <同一冻结配置.json> --output runs/A_resume --resume runs/A_part/last.pt
+新 run 的 history.jsonl 只含恢复后的 epoch；resume.json 记录源 checkpoint 路径/哈希，
+查看完整曲线需按 epoch 拼接父 run 和恢复 run 的 history，不重复计入恢复点之前的数据。
+epoch 的 seconds 包含存盘；资源估算请使用独立 train_seconds/validation_seconds。
+
+精确 GPU 复现
+配置加入 "deterministic": true，并在启动 Python 前设置：
+  $env:CUBLAS_WORKSPACE_CONFIG=':4096:8'
+此选项对全部消融一致使用。默认仍为原协议的非严格确定性模式，可能有微小 CUDA 差异。
+同硬件/软件的验证不保证跨 GPU 或跨依赖版本逐位一致。
+
+当前验证证据
+reports/member2_pytest.xml：完整回归测试结果。
+reports/member2_cuda_resume.json：真实 SegFormer、64 输入、合成数据、CUDA BF16、
+累计 2 的两 epoch 连续训练，对比一 epoch 后恢复，checkpoint 全部状态逐项一致，
+且 evaluate.load_checkpoint(weights_only=True) 能正常加载推理。
+复现命令（先用 make_smoke_data.py 生成一次合成 fixture）：
+  python scripts/verify_member2_resume.py --device cuda --output runs/member2_resume_new
+本机 GPU：RTX 5070 Ti 16 GB。
+验证借用 D:\CV\.venv，PyTorch 2.10.0.dev20251006+cu128、transformers 4.51.3、
+NumPy 2.3.1、SciPy 1.17.1，与仓库 requirements.txt 的固定版本不同。
+没有修改组内依赖版本；正式实验前应安装既定环境并重跑测试，或全组明确冻结新环境。
+测试依赖单独位于本仓库 .local_deps，没有改写共享环境。
+
+尚未完成及依赖
+仓库不含成员 1 最终交付 ZIP 的 manifests、修复副本及原始 Trans10K 图片/标签。
+因此真实 512 pilot、小样本过拟合结论、完整 A checkpoint/训练曲线和正式预算仍待运行。
+请将成员 1 交付包按 docs/12 的目录层级放入项目，并按说明验证实际源数据。
+最终派生 V1 是 4959 train / 995 validation，不能沿用 5000/1000 的步数估计。
+成员 1 最终派生协议目前仅允许 pilot，成员 5 独立复核及组内正式协议冻结仍待完成；
+不能通过修改 complete_official_split 或 purpose 绕过保护。
+尚未做成员 3 的人工交叉 review，未创建 PR，也未宣称完成正式实验。
+本次代码发布到 member2/training-resume-pilot 分支；正式实验待上述材料与复核到位。

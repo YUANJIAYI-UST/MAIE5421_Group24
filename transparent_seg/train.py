@@ -7,6 +7,7 @@ import random
 import subprocess
 import sys
 import time
+import shutil
 from pathlib import Path
 
 import numpy as np
@@ -18,6 +19,7 @@ from .evaluate import evaluate
 from .losses import segmentation_loss
 from .model import TransparentSegformer
 from .prepare import sha256_file, write_json
+from .checkpoint import capture_rng, restore_rng, atomic_save, validate_resume
 
 
 def load_config(path):
@@ -49,12 +51,17 @@ def shared_parameter_hash(model):
     return digest.hexdigest()
 
 
-def train(config, output):
+def train(config, output, resume=None, stop_after_epoch=None):
     output = Path(output)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Use a new run directory; existing experiments are never overwritten")
     if config["size"] < 32 or config["epochs"] < 1 or config["batch_size"] < 1:
         raise ValueError("Invalid training dimensions/budget")
+    if stop_after_epoch is not None and not 1 <= stop_after_epoch <= config["epochs"]:
+        raise ValueError("stop_after_epoch must be within the original epoch budget")
+    accumulation = config.get("gradient_accumulation_steps", 1)
+    if not isinstance(accumulation, int) or accumulation < 1:
+        raise ValueError("gradient_accumulation_steps must be a positive integer")
     if config.get("purpose") != "smoke" and not config["pretrained"]:
         raise ValueError("Research runs require ImageNet initialization per proposal")
     root = config.get("root")
@@ -70,19 +77,39 @@ def train(config, output):
     if training.meta["dataset"] != validation["dataset"]:
         raise ValueError("Training and validation datasets must match")
     validate_derivative_use(config, training.meta, validation)
+    subset = config.get("overfit_samples")
+    if subset is not None:
+        if config.get("purpose") not in ("pilot", "smoke") or not 2 <= subset <= len(training):
+            raise ValueError("overfit_samples requires a pilot/smoke training subset of at least two")
+        training.samples = training.samples[:subset]
     if config.get("purpose") != "smoke" and (training.meta.get("synthetic") or validation.get("synthetic")):
         raise ValueError("Synthetic smoke data cannot be used for a research run")
     if config.get("purpose") == "research" and not all(
             m.get("complete_official_split") for m in (training.meta, validation)):
         raise ValueError("Main research runs require complete official train/validation splits; use pilot for partial data")
     seed_everything(config["seed"])
+    torch.use_deterministic_algorithms(config.get("deterministic", False))
     torch.set_num_threads(config.get("cpu_threads", 4))
     device = config["device"]
     if device == "auto":
         device = "cuda" if torch.cuda.is_available() else "cpu"
     if device.startswith("cuda") and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable; install CUDA PyTorch via scripts/setup.ps1")
-    model = TransparentSegformer(config["boundary"], config["pretrained"],
+    manifests = {key: sha256_file(config[key + "_manifest"]) for key in ("train", "val")}
+    restored = torch.load(resume, map_location="cpu", weights_only=True) if resume else None
+    if restored is not None:
+        validate_resume(restored, config, manifests)
+        if restored["epoch"] >= (stop_after_epoch or config["epochs"]):
+            raise ValueError("Resume checkpoint has already reached the requested epoch")
+        if not (Path(resume).parent / "best.pt").is_file():
+            raise ValueError("Resume requires sibling best.pt to preserve prior model selection")
+        previous_best = torch.load(Path(resume).parent / "best.pt", map_location="cpu", weights_only=True)
+        validate_resume(previous_best, config, manifests)
+        if (previous_best["epoch"] > restored["epoch"] or
+                previous_best["validation_foreground_iou"] != restored["best_validation_foreground_iou"]):
+            raise ValueError("Sibling best.pt is inconsistent with resume checkpoint")
+        del previous_best
+    model = TransparentSegformer(config["boundary"], config["pretrained"] and restored is None,
                                  config.get("encoder_revision", "main"), ".cache/huggingface").to(device)
     initial_hash = shared_parameter_hash(model)
     # Optional head initialization must not shift the shared dropout/drop-path RNG.
@@ -93,7 +120,10 @@ def train(config, output):
                         pin_memory=device.startswith("cuda"))
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["lr"], weight_decay=config["weight_decay"])
     steps_per_epoch = min(len(loader), config.get("max_steps_per_epoch") or len(loader))
-    total_steps = steps_per_epoch * config["epochs"]
+    if steps_per_epoch < 1:
+        raise ValueError("Training requires at least one batch per epoch")
+    optimizer_steps_per_epoch = math.ceil(steps_per_epoch / accumulation)
+    total_steps = optimizer_steps_per_epoch * config["epochs"]
     warmup = max(1, int(total_steps * 0.05))
 
     def schedule(step):
@@ -107,8 +137,21 @@ def train(config, output):
     # weak-boundary batches. Disable AMP for GPUs without BF16 support.
     if amp and (config.get("amp_dtype", "bfloat16") != "bfloat16" or not torch.cuda.is_bf16_supported()):
         raise ValueError("This training protocol uses BF16 AMP; set amp=false for GPUs without BF16 support")
+    best, start_epoch, global_step = -1.0, 0, 0
+    if restored is not None:
+        model.load_state_dict(restored["model"])
+        optimizer.load_state_dict(restored["optimizer"])
+        scheduler.load_state_dict(restored["scheduler"])
+        best = restored["best_validation_foreground_iou"]
+        start_epoch, global_step = restored["epoch"], restored["global_step"]
+        initial_hash = restored["initial_shared_state_sha256"]
+        model.encoder_revision = restored["encoder_resolved_revision"]
     output.mkdir(parents=True, exist_ok=True)
     write_json(output / "config.json", config)
+    if subset is not None:
+        write_json(output / "overfit_train.json", {**training.meta,
+            "samples": training.samples, "root": str(training.root),
+            "root_relative_to_manifest": False, "complete_official_split": False})
     try:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL, text=True).strip()
         dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], text=True).strip())
@@ -123,20 +166,32 @@ def train(config, output):
         "synthetic": training.meta.get("synthetic", False),
         "data_protocol": training.meta.get("data_protocol"),
         "full_official_train": training.meta.get("complete_official_split", False)})
+    if restored is not None:
+        shutil.copy2(Path(resume).parent / "best.pt", output / "best.pt")
+        write_json(output / "resume.json", {"source": str(Path(resume).resolve()),
+            "source_sha256": sha256_file(resume), "start_epoch": start_epoch})
     (output / "pip_freeze.txt").write_text(subprocess.check_output(
         [sys.executable, "-m", "pip", "freeze"], text=True), encoding="utf-8")
-    best = -1.0
+    if restored is not None:
+        restore_rng(restored["rng"], generator)
     if device.startswith("cuda"):
         torch.cuda.reset_peak_memory_stats()
-    for epoch in range(config["epochs"]):
+    for epoch in range(start_epoch, stop_after_epoch or config["epochs"]):
+        if device.startswith("cuda"):
+            torch.cuda.synchronize()
+            torch.cuda.reset_peak_memory_stats()
         started = time.perf_counter()
         training.epoch = epoch
         model.train()
         totals = {key: 0.0 for key in ("total", "bce", "dice", "boundary")}
+        step_seconds = []
+        optimizer.zero_grad(set_to_none=True)
         for step, batch in enumerate(loader):
             if step >= steps_per_epoch:
                 break
-            optimizer.zero_grad(set_to_none=True)
+            if device.startswith("cuda"):
+                torch.cuda.synchronize()
+            step_started = time.perf_counter()
             x, y, valid = (batch[key].to(device) for key in ("image", "target", "valid"))
             with torch.autocast(device_type="cuda" if device.startswith("cuda") else "cpu",
                                 dtype=torch.bfloat16, enabled=amp):
@@ -144,26 +199,61 @@ def train(config, output):
                                             config["boundary_weight"], config["boundary_radius"])
             if not torch.isfinite(losses["total"]):
                 raise FloatingPointError("Non-finite loss")
-            losses["total"].backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0, error_if_nonfinite=True)
-            optimizer.step()
-            scheduler.step()
+            group_start = (step // accumulation) * accumulation
+            group_end = min(group_start + accumulation, steps_per_epoch)
+            # Weight the short last microbatch by its actual sample count.
+            group_samples = min(group_end * config["batch_size"], len(training)) - group_start * config["batch_size"]
+            (losses["total"] * x.shape[0] / group_samples).backward()
+            if step == 0:
+                missing = [name for name, p in model.named_parameters() if p.requires_grad and p.grad is None]
+                if missing:
+                    raise RuntimeError(f"Parameters without gradients: {missing}")
+            if step + 1 == group_end:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0, error_if_nonfinite=True)
+                optimizer.step()
+                scheduler.step()
+                global_step += 1
+                optimizer.zero_grad(set_to_none=True)
+            if device.startswith("cuda"):
+                torch.cuda.synchronize()
+            step_seconds.append(time.perf_counter() - step_started)
             for key, value in losses.items():
                 totals[key] += value.item()
+        train_seconds = time.perf_counter() - started
+        validation_started = time.perf_counter()
         scores = evaluate(model, config["val_manifest"], config["size"], device, root)["scores"]
+        if device.startswith("cuda"):
+            torch.cuda.synchronize()
+        validation_seconds = time.perf_counter() - validation_started
+        overfit_scores = (evaluate(model, output / "overfit_train.json", config["size"], device,
+                                  str(training.root))["scores"] if subset is not None else None)
         score = scores["all"]["foreground_iou"]
         if score is None or not math.isfinite(score):
             raise ValueError("Validation contains no valid pixels")
         selected = score > best
         best = max(best, score)
         checkpoint = {"model": model.state_dict(), "config": config, "epoch": epoch + 1,
-                      "validation_foreground_iou": score, "best_validation_foreground_iou": best}
-        torch.save(checkpoint, output / "last.pt")
+                      "validation_foreground_iou": score, "best_validation_foreground_iou": best,
+                      "checkpoint_version": 1, "optimizer": optimizer.state_dict(),
+                      "scheduler": scheduler.state_dict(), "rng": capture_rng(generator),
+                      "global_step": global_step, "manifest_sha256": manifests,
+                      "torch_version": str(torch.__version__),
+                      "initial_shared_state_sha256": initial_hash,
+                      "encoder_resolved_revision": model.encoder_revision}
+        atomic_save(checkpoint, output / "last.pt")
         if selected:
-            torch.save(checkpoint, output / "best.pt")
+            atomic_save(checkpoint, output / "best.pt")
         record = {"epoch": epoch + 1, "loss": {k: v / steps_per_epoch for k, v in totals.items()},
                   "validation": scores, "selected": selected, "lr": scheduler.get_last_lr()[0],
+                  "overfit_training": overfit_scores,
                   "seconds": time.perf_counter() - started,
+                  "train_seconds": train_seconds, "validation_seconds": validation_seconds,
+                  "microbatch_seconds": step_seconds,
+                  "steady_microbatch_seconds": float(np.mean(step_seconds[2:])) if len(step_seconds) > 2 else None,
+                  "global_optimizer_step": global_step,
+                  "optimizer_steps_per_epoch": optimizer_steps_per_epoch,
+                  "effective_batch_size": config["batch_size"] * accumulation,
+                  "peak_cuda_reserved_mb": torch.cuda.max_memory_reserved() / 2**20 if device.startswith("cuda") else None,
                   "peak_cuda_memory_mb": torch.cuda.max_memory_allocated() / 2**20 if device.startswith("cuda") else None}
         with (output / "history.jsonl").open("a", encoding="utf-8") as stream:
             stream.write(json.dumps(record, allow_nan=False) + "\n")
@@ -178,12 +268,14 @@ def main():
     parser.add_argument("--device")
     parser.add_argument("--seed", type=int)
     parser.add_argument("--root")
+    parser.add_argument("--resume", help="Resume a trusted epoch checkpoint into a NEW output directory")
+    parser.add_argument("--stop-after-epoch", type=int, help="Stop early without changing the planned LR schedule")
     args = parser.parse_args()
     config = load_config(args.config)
     for key in ("device", "seed", "root"):
         if getattr(args, key) is not None:
             config[key] = getattr(args, key)
-    train(config, args.output)
+    train(config, args.output, args.resume, args.stop_after_epoch)
 
 
 if __name__ == "__main__":
