@@ -1,0 +1,37 @@
+E01 metric verification 
+
+Branch: codex/member5-evaluation-reproducibility
+Baseline: 25f5fa7 (member 1 D01-D03 delivery)
+Changes prepared with Codex assistance; not a human data-review sign-off.
+
+Scope
+Reviewed transparent_seg/metrics.py against docs/07_EXPERIMENT_PROTOCOL.txt.
+Added tests/test_metrics_member5.py with independent, hand-calculated examples.
+No production metric formulas or experimental protocols changed.
+
+Verified examples
+1. TP=2, FP=1, FN=1, TN=2: IoU=1/2, F1=2/3, background FPR=1/3.
+2. Perfect 1-pixel image plus missed 9-pixel image: pooled IoU=1/10,
+   pooled F1=2/11, image-mean Boundary IoU=1/2 (not boundary-pooled 1/9).
+3. Full 3x3 foreground: eight inner-boundary pixels, center excluded.
+4. Two shifted 2x2 squares: boundary intersection=2, union=6, BIoU=1/3.
+5. Empty/empty scores 1; one false-positive pixel among nine background
+   pixels gives region/boundary scores 0 and FPR=1/9.
+6. All-void images are skipped, with undefined metrics reported as None.
+7. Changing predictions at void pixels does not alter scores.
+8. A valid pixel with no safe boundary neighborhood contributes to region
+   metrics but not the boundary mean.
+
+Execution
+Windows; isolated .venv-eval; Python 3.12.
+numpy 2.2.6, scipy 1.15.3, pytest 8.4.2 (repository pins).
+Run from repository root:
+  .venv-eval\Scripts\python.exe -m pytest tests/test_metrics_member5.py -q --junitxml=reports/member5_e01_metrics.xml
+Result: 8 passed in 9.65s. Machine-readable evidence: member5_e01_metrics.xml.
+
+Limits and next steps
+This is targeted metric verification, not the full repository test suite.
+It does not validate real masks, manifests, data leakage, GPU training,
+original-resolution inference, or agreement with an external benchmark implementation.
+Member 1 data handoff review and E02 category/held-out evaluation remain pending.
+No commits, pushes, PRs, or GitHub Project status updates were made.

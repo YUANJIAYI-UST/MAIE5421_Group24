@@ -1,4 +1,5 @@
 .venv/
+.venv-eval/
 .DS_Store
 .local_deps/
 .cache/
