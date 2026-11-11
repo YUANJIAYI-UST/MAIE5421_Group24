@@ -1,0 +1,6 @@
+{
+  "extends": "pilot_holdout_A_20261028.json",
+  "ablation": "D",
+  "boundary": true,
+  "augmentation": true
+}

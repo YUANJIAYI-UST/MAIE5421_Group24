@@ -1,0 +1,575 @@
+{
+  "reviewer": "Codex AI assistant",
+  "date": "2026-10-29",
+  "not_additional_human_signoff": true,
+  "sample_count": 40,
+  "seed": 20261022,
+  "records": [
+    {
+      "id": "train/images/10042.jpg",
+      "image_sha256": "5d7e2344f486a3830218af476a9167b80a34808f47ff0d3d1fed7fc5adfdbee4",
+      "mask_sha256": "6302e928d1c2af4efae925dc56368c0908508c3cddd73a2a3076985a1a5d60c0",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/01_10042.png",
+      "native_overlay_sha256": "edd0ad25ceb592d3a9f3daa6b2487e7f6e60a393d309fc873b9fee55961d27b3",
+      "native_overlay_size": [
+        435,
+        636
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/1314.jpg",
+      "image_sha256": "4658affdf177fb724ebbadfbf38409eece8548b90c62eeeb8a43310d6e2018e3",
+      "mask_sha256": "37c13336d7920d278b971159ee53c2bbcc19cc97f73f3e18fc0655b354ecdf40",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/02_1314.png",
+      "native_overlay_sha256": "e344a3bd6870b8354a53dd50badad69de8a69b5f1c8d7da35492d1a3c1ee860b",
+      "native_overlay_size": [
+        3016,
+        3662
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/15.jpg",
+      "image_sha256": "b7f3be839cdd8de4e757fe267926f1ff04ee713dd167c2cd1cf3f76bababeb79",
+      "mask_sha256": "537902acc62365a727926cd1bd18c74b3bb825604f1033a5c0ab56713b4327e6",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/03_15.png",
+      "native_overlay_sha256": "b96d4db53dbd2e71adc3786ed5471b3460dc72a3bd722f9ac235f669e5375404",
+      "native_overlay_size": [
+        3024,
+        4032
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "Visually similar white-framed eyeglasses/background to train/images/2368.jpg; same-scene candidate only, not an established duplicate."
+    },
+    {
+      "id": "train/images/2238.jpg",
+      "image_sha256": "faf67d4d58a1091db9515c00fbdbd24d77a1ccbe14baa78e24bb7c1e1210588b",
+      "mask_sha256": "84a57efdff52c010f62d3546abc0b24acc2d330d1090cc0047ff8601e127499b",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/04_2238.png",
+      "native_overlay_sha256": "d2b209b553e6664b268322b8022f410316e94cc745832562542c88b888cca987",
+      "native_overlay_size": [
+        3000,
+        4000
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "The opaque product label is excluded while adjacent visible glass is retained."
+    },
+    {
+      "id": "train/images/2368.jpg",
+      "image_sha256": "48fbdfb0313b1b767d50ef6107f3765ab57b4bcd3866ee285c6d0e86374e42e0",
+      "mask_sha256": "4d39ff39e2d51a238f29c9d4ca789f57352f8d7334544c1365bc232f6c851943",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/05_2368.png",
+      "native_overlay_sha256": "d2eac3adcb68b068aa878bd6346713dedd02ec71f7822a26eaa6a7be5d52f430",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "See train/images/15.jpg for a same-scene candidate with different framing."
+    },
+    {
+      "id": "train/images/2604.jpg",
+      "image_sha256": "2e034a125a0557eec59b0aa6a4eace1e09920fccb07681744186fa4c9e47cbc9",
+      "mask_sha256": "4bdd6b220071173ae1637599230b363311afa001cda17de0a9609ff22e3ca7be",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/06_2604.png",
+      "native_overlay_sha256": "1797b1c1ff09aec603942401b9ca1e0e977ae53f1e314b8d8c1030ce57f56768",
+      "native_overlay_size": [
+        3000,
+        4000
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/2892.jpg",
+      "image_sha256": "03bcd575fe72a3e35d2ace8fc28cbabb9b01fffac9650cd12b36ad1eb2205b2f",
+      "mask_sha256": "edf8266d709b6f7afe45be26ebc2b57181b0e5026fbc79994dc1c33b1ae7a346",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/07_2892.png",
+      "native_overlay_sha256": "1ac677032f7393d990f827e8c02999ecd4c7b9295a2487f968b7c65dd8591643",
+      "native_overlay_size": [
+        2976,
+        3968
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/3242.jpg",
+      "image_sha256": "6b721c4cc8358e5794b250d6f0c9a3e92069162590bb8aa1d4671e2704ba9fc1",
+      "mask_sha256": "4bdfbb28db3cb67ccea1078a84b9c4208e00b1d2ef0e17132e05c70eccc2eae6",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/08_3242.png",
+      "native_overlay_sha256": "56a8f0ad59df8162fa2ee2f3066f0102c4707682bec005fd0d8dbe262e7e9b92",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "Similar gridded cup and wood-table setting to validation/easy/images/3118.jpg; record for D02 scene/near-duplicate review, not a leakage conclusion."
+    },
+    {
+      "id": "train/images/3550.jpg",
+      "image_sha256": "8681319c3cca2fb50d7c62a953e1035562eec4619793f87e83e18cbdb1cc51b3",
+      "mask_sha256": "49ba6837e9ae7d1a6136ed7df0d483b4d01e1bc98e4d86ecf2a21337cb4749fb",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/09_3550.png",
+      "native_overlay_sha256": "fbba48994632e494b74ab50f9fb8d18cf1a5dc21c858b9cd19b386fe98512bad",
+      "native_overlay_size": [
+        1080,
+        1440
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/3636.jpg",
+      "image_sha256": "794ecf43688ded18c097eb6a2a3eeed384e009d700bb9386d9f151d8110d04f7",
+      "mask_sha256": "ad5a90eab31c294d11efd0d07d783ff2e552e1ec3c6cff5bfdd86e6a6eb32e17",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/10_3636.png",
+      "native_overlay_sha256": "b0102039c037b9bd684e9dee45e93ed68a82a646e2233c6dcbcbaed415a4d982",
+      "native_overlay_size": [
+        3016,
+        4032
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/389.jpg",
+      "image_sha256": "02c61c001a9a9314050a1a6212f09ca887ea881dd0473b9c16e5b4c0a3ca8bc6",
+      "mask_sha256": "a7a89058616085be552fbaf8672968bd7ad296b1a70cf654461f05b3cc7bd423",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/11_389.png",
+      "native_overlay_sha256": "883640ec95d0e20da552969728c59aca408eb6df52eba8bdb741fedaa3adb2ae",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/4078.jpg",
+      "image_sha256": "022848494d9e4cf1d589aa3f6c3e7bc446c08071c54b9f0be8debf3237e80e00",
+      "mask_sha256": "ac9fae14a9323220df15f804894803ca0b35d8749d917e0c7450127bc0264920",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/12_4078.png",
+      "native_overlay_sha256": "394a453f3ef921f8a62274e13d0faecd035be01a9236ddeddbe15b93ac618038",
+      "native_overlay_size": [
+        3000,
+        4000
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/4152.jpg",
+      "image_sha256": "447eabdda6fed7ebed50a565fc77c3185b6ab9f9528181a4d82983cbd0acf081",
+      "mask_sha256": "553a6ad4d0219c46a039f6c606efb42b894a437c732c4c032536b72323531c65",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/13_4152.png",
+      "native_overlay_sha256": "a4b03d8a38c5960e89efc982d8f3f12dbbe0e1c60b756582d712d2ecf330a5b5",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/4256.jpg",
+      "image_sha256": "b0c2315a8e7a643f77580b9aedb32f2772e015bbb6f2fabe4793100b156aa8b6",
+      "mask_sha256": "df139f9ca88151c99bc174dffe73148ebde9ea65e2099d8428c29a350a6859ea",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/14_4256.png",
+      "native_overlay_sha256": "320176285c5fd7fa06836fd4fb7712299bcba8328665a28b9ee09fc8fae29295",
+      "native_overlay_size": [
+        3024,
+        4032
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/4856.jpg",
+      "image_sha256": "9fc42b1802a1de44185b52aeb47c64c35b1b3933ff3afe0b32eaac96920bfc38",
+      "mask_sha256": "1628262b6e7029f16a9189353354ede90d251ca2f3ab2e33cec05f6985fcc803",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/15_4856.png",
+      "native_overlay_sha256": "49c9c9927a1476416ad3f88403546c5ebcc3b3c57dafd64d62e03ef9a5ea284e",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/5269.jpg",
+      "image_sha256": "b40c95731fd61ebbb6e8500efd40371207545d8c9d99ea03ff0cb3bcbe957ac6",
+      "mask_sha256": "d2686e2b3c28f6432aa93c61bcd32b4a7db9de63e6c81201adbed06436ebd079",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/16_5269.png",
+      "native_overlay_sha256": "38f9eb0bba9722ee8d9e87785e83696c4eef6192b98f33fc397f3d026326afb9",
+      "native_overlay_size": [
+        1023,
+        720
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/5938.jpg",
+      "image_sha256": "2971d01a2fcefb28fedbcd1167a7e8904d179111295e1cd95fed43af576db997",
+      "mask_sha256": "39a7d4a0ea6b2c9b838a124a7d4fbfc25bbf7ef0f730533866545b35283c3391",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/17_5938.png",
+      "native_overlay_sha256": "557f93a369e4bc651bf3f76a30ce69ffc63a137fe29ca3ef7b4a1f8cb4540f76",
+      "native_overlay_size": [
+        4000,
+        3000
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/833.jpg",
+      "image_sha256": "3ac70f19e441b1cef7c6293d8a3a01a681cea7e3677ea44533c482d6b031f322",
+      "mask_sha256": "0189333f0407a5cc8e4dc098beb3f34baef66138a3a25ddcdc5167ee0e796383",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/18_833.png",
+      "native_overlay_sha256": "621a314980c32f07821f34d4ea3b54cd1fca58b8921b32e12f2878f4a50f24e9",
+      "native_overlay_size": [
+        3014,
+        3580
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/8958.jpg",
+      "image_sha256": "953bd246dae377a61574321a389ca78c182a11ab9d87e989ca98cf716c8f265e",
+      "mask_sha256": "d27d97a7d1cd2eaed008a78280998bdd1f430c7b27befd8add3281dc493051b2",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/19_8958.png",
+      "native_overlay_sha256": "37d2f9e6337d4978da3a9ae8617de8059f24f634f7a613801b804ef4f05fbe55",
+      "native_overlay_size": [
+        535,
+        649
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "train/images/9466.jpg",
+      "image_sha256": "cc955f0560927aa2e125392751095a7a4900c8c2b7ea0e02e2d5fe666994e510",
+      "mask_sha256": "6d2a59ccaeb924dd9d00adfd348246bd818e4c20cac53b7232b1b82487a5459a",
+      "native_overlay": "runs/trans10k_data_audit_20261022/train_review/overlays/train/20_9466.png",
+      "native_overlay_sha256": "64fb76d6bfdea034db3a8398b45f2535b68f52c87f2194b3b47d3f4839cb0870",
+      "native_overlay_size": [
+        946,
+        1250
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/10009.jpg",
+      "image_sha256": "19b05bd9ad5f8e82583c607260b194a316278aa0f8f08f717ed355e336bd8c76",
+      "mask_sha256": "ddc29073ffde75dd93b5e274a227118993b984f4badbb1d55437688d16f48da0",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/01_10009.png",
+      "native_overlay_sha256": "84ce0fc6adb43f39d8f9bbf781d47cbc63ad383dfcf73172bce69d0cae1ba9e4",
+      "native_overlay_size": [
+        585,
+        638
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/1077.jpg",
+      "image_sha256": "bdb1a84e67ed0781d4f57204382054d3e10d6cb10d6e20a37b53934476fa224e",
+      "mask_sha256": "9fa4efbce171666504c6fdfc4e2faa6ccf91a2411b30023dd3588ea0a546274d",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/02_1077.png",
+      "native_overlay_sha256": "7ef1a32fa92a3aefb008ab8ab3bd19bf890f6c72b9bf0444cf70ca1cbc27148c",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/2375.jpg",
+      "image_sha256": "6633be59b09b273ccac838a37fd02544acc30cfcf871b57d919489c0841a29ca",
+      "mask_sha256": "f6e361ca5008fdc541c4a4704d5a6b56a0e1f8486b76994670947ddc1d68ccbf",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/03_2375.png",
+      "native_overlay_sha256": "7e865c52a418b72bdeaa5ddd268c64e2abc65c08814233caaf071d723fa8e2cc",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/3071.jpg",
+      "image_sha256": "9639d8fc8adbe314aedfc660297d1eb186563ddcbaac59ba69f2f256d2d38286",
+      "mask_sha256": "1268b3be685c88fcb5fbc0a42470e0198be04495e0f89a2d8bb0cdf705131d21",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/04_3071.png",
+      "native_overlay_sha256": "e4cff3dea5f3452ce15e7be429f1734d544449227fba8d2ccbff1e15b86ec945",
+      "native_overlay_size": [
+        2176,
+        4608
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/3118.jpg",
+      "image_sha256": "3d55de21d9025e6a3f6160b08ade074e75fd13859835e661b4285372b87dc800",
+      "mask_sha256": "5271e991ec3e53a1f3523b474d1aea602860e12233448b5b5b73529ea346524c",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/05_3118.png",
+      "native_overlay_sha256": "81240918346dbd4ae3877947d5ae24d8b90f737743a8277bae953de71551acda",
+      "native_overlay_size": [
+        4032,
+        3024
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/3172.jpg",
+      "image_sha256": "cb225546af6a12d0894c4d83e1e11f79f2c0de5096e52cc8694143d1ef6a3f00",
+      "mask_sha256": "1fed55abb47413599967e0a7036f16749352736349bbbe57817b9d8c8945c0c7",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/06_3172.png",
+      "native_overlay_sha256": "e4154fc8aca6d4ab4446853236f9054cd0032ba6d80eb00ab3d771bdfbf25fe0",
+      "native_overlay_size": [
+        3024,
+        4032
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/3702.jpg",
+      "image_sha256": "115cf7ba3478485975bfcf107f81bcb0508b83c4d937bcabbacfdd8e5da16075",
+      "mask_sha256": "dada595564358fbe46013bf1ad2da134252413b1d7a346f3483dc87474713c1f",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/07_3702.png",
+      "native_overlay_sha256": "82f1a437ea00b7c14a5da565858b267693f4a498090ce6fc2f424461ca0d3e75",
+      "native_overlay_size": [
+        3120,
+        4160
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "Pitcher lid/handle boundaries follow official object annotations; accessory opacity semantics should be reviewed by the team without automatic relabeling."
+    },
+    {
+      "id": "validation/easy/images/4821.jpg",
+      "image_sha256": "64440378537ab3b7b0591d7c566385777ead6bb23c597a396f0ed415f4b32711",
+      "mask_sha256": "0f1b444b93e0a22826a6e42078e763bc408337ed73337724f592e0ccc2924820",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/08_4821.png",
+      "native_overlay_sha256": "dc7953f6e4c089c32f1f3141dd7dfdbc40942b1c3f1e8b20b1a1da2c73362cb0",
+      "native_overlay_size": [
+        3024,
+        4032
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/7690.jpg",
+      "image_sha256": "fc602788e1dd8fde228664e4c9df74b95c5a79063d27018407a5eda81ee637af",
+      "mask_sha256": "3c8c5ef8de32ef78ba9548eeceb3110b3f6dc7a975d4db2733d0c10d10d5dc00",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/09_7690.png",
+      "native_overlay_sha256": "17273d67454e1789740a6cc50301dfbc1a368a1d296754295a29ef87fd36baf3",
+      "native_overlay_size": [
+        3456,
+        4608
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/easy/images/8891.jpg",
+      "image_sha256": "f65154555a10b8566a8231b28d0c178b1a9a3c03c3d8a4101b14e360a2a3e44e",
+      "mask_sha256": "1f2c680871e4fea9b9fbb462274fe2400d98cd947e9a2ac1c6921bcae4a2d1d9",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/10_8891.png",
+      "native_overlay_sha256": "5c492eebfaf539486ddc890a8ff0062b050f1edac8728ea91176fc41afadd7c3",
+      "native_overlay_size": [
+        4608,
+        3456
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/1514.jpg",
+      "image_sha256": "9ebe37ba73e6288c5efff84fdaf5972b89741363be89d902242142dd1ec4b953",
+      "mask_sha256": "6ddb7c5dbf96eeca35b5642b514c32eb7958ad43adf2293b00d9b7b10670d15d",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/11_1514.png",
+      "native_overlay_sha256": "0288fa053eff79ab4cf2d2a79d76e0f19c97eac98ee2dec179c58b6c631807d2",
+      "native_overlay_size": [
+        3016,
+        3649
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/2528.jpg",
+      "image_sha256": "31a0ea6c09316efa84de3ac65e18de19462e39c32c25bced6e138c650301c0b1",
+      "mask_sha256": "25168ca8c8b8a9a918c0fceb167b86bec7cdd9ac255541b33fb49a7251abfeb0",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/12_2528.png",
+      "native_overlay_sha256": "52a3fbea53ca56c85ac7b59fb1de73799f02d1716539ba17c24eb539fd171016",
+      "native_overlay_size": [
+        3024,
+        4032
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/3233.jpg",
+      "image_sha256": "a732d5a21758ed97648b6be88269b1377d8938af4458d0fd9dcd256c10193098",
+      "mask_sha256": "1434476c1ed3e1dfbad02f8ab56a17628d66ca9e64095718a9ef6fab6a9aeb9d",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/13_3233.png",
+      "native_overlay_sha256": "78b7776e967923b4a9facc9481bf3ee631c8f3a371dfe2d99ea9bfa808c4a239",
+      "native_overlay_size": [
+        3496,
+        4656
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/3264.jpg",
+      "image_sha256": "30f1b75ee330933a3d3df58798843cbe1338fbc98e0622d082921c1651f49e05",
+      "mask_sha256": "1e4fde14ca4c8ec782e26ecbb1b0888cc40f8bbaaa0bc5146e10f9af072e0bf4",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/14_3264.png",
+      "native_overlay_sha256": "1d61b6afcc3222b1f9afb75a472adbc79bb35b79cb6778b725c3c1100cca25f2",
+      "native_overlay_size": [
+        3000,
+        4000
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "Opaque product labels are excluded from the foreground while visible glass regions remain foreground."
+    },
+    {
+      "id": "validation/hard/images/5177.jpg",
+      "image_sha256": "e1026a8b7f5d0e3689d3a0c4a301c0c6f79c7ef259529ed631b274de7a2d6e1e",
+      "mask_sha256": "11e138cf4f8bb309862e08e662881d794f031a2415cd4a4ff1a653e643164070",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/15_5177.png",
+      "native_overlay_sha256": "95cdad8e2a04b70ec875704bcf44cb4dc31aa5ce646025d46b1e941911a9bbca",
+      "native_overlay_size": [
+        3496,
+        4656
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "Eyeglass lenses visible in the reflected lower region are also annotated. Record this when describing visible-region annotation semantics."
+    },
+    {
+      "id": "validation/hard/images/734.jpg",
+      "image_sha256": "4ada972982b9dd196e6f6be36669117f794d01fc4912318ad134aa03e26d27e7",
+      "mask_sha256": "251a9b9f68cdc44aa117f0f36717655512e88295ec766d731e38ccf7f502860b",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/16_734.png",
+      "native_overlay_sha256": "128b0a1d60a1aca2225b1c0b8e3b9d61af0af0dc320ef9b1c450de1d878278f3",
+      "native_overlay_size": [
+        3000,
+        4000
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/8475.jpg",
+      "image_sha256": "173a60b8be067d97a6bef16ed9b73509ae89581808f864aa713dd8e4beee5a54",
+      "mask_sha256": "c633dd993d10659049375dfb687d08141db8bb148582806b399517a3ef1a11a5",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/17_8475.png",
+      "native_overlay_sha256": "d690127d07921002e36dd90667de090e07ad25a41a44070434389b9fbdea670d",
+      "native_overlay_size": [
+        3456,
+        4608
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/8811.jpg",
+      "image_sha256": "ee498dfe9abb86d9b3af5219110ad81b450817c73dae3d72f1231dfa73c3b9fb",
+      "mask_sha256": "a9364ce1699bba815877984e0ac47995ce5db8472e8862e870ef2a8af7d85b64",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/18_8811.png",
+      "native_overlay_sha256": "1dca5081b308e18e411b3a71dd388112fc2db58fa3d688035e8cfcb4d00ebec8",
+      "native_overlay_size": [
+        4608,
+        3456
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": "Foreground fraction is about 94.6%; the glass storefront covers nearly the full frame. This sample alone is not evidence of an accidental border mask."
+    },
+    {
+      "id": "validation/hard/images/8845.jpg",
+      "image_sha256": "990ae413bfc2b982ca0af2277053e52a77a8d3f44b25d02141058ba81fff6ed0",
+      "mask_sha256": "c9a308ad52ce169633a0b564bb62581cc3531c322e74ec971a01da34b8da30cc",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/19_8845.png",
+      "native_overlay_sha256": "c61958712db37fa45d4e3a2a583b429f0b76e7714a82a677ca5c237304d82b2b",
+      "native_overlay_size": [
+        3456,
+        4608
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    },
+    {
+      "id": "validation/hard/images/988.jpg",
+      "image_sha256": "733dc5e918ac0d695dc6eeadb08ab52902836e379faf26b2822c787b9f9403bf",
+      "mask_sha256": "e05465c9a3da89f2848976f2437f211debb43881315d0a5fa90c42dcac614b72",
+      "native_overlay": "runs/trans10k_data_audit_20261022/validation_review/overlays/validation/20_988.png",
+      "native_overlay_sha256": "c033fc84281798e15a80de51ff67223ac9632bfcea90868745810003c8c78a9b",
+      "native_overlay_size": [
+        4608,
+        3456
+      ],
+      "method": "Codex visual inspection of original / binary / overlay contact panels; original-resolution overlay dimensions verified",
+      "finding": "No gross spatial mismatch or foreground/background inversion observed; not a pixel-perfect semantic certification",
+      "prior_observation": ""
+    }
+  ],
+  "empty_mask": {
+    "id": "train/images/470.jpg",
+    "foreground_pixels": 0,
+    "decision": "retain unchanged and disclose",
+    "observation": "Opaque pump bottles dominate the photo; a translucent-looking cap is visible. The empty source mask is preserved; annotation intent cannot be certified from appearance."
+  }
+}

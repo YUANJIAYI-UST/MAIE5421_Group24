@@ -1,0 +1,3 @@
+# Optional D03 mirror import dependency; core model requirements stay unchanged.
+# Install the normal project requirements first, then this file.
+pyarrow==20.0.0

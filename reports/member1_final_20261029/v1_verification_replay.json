@@ -1,0 +1,38 @@
+{
+  "source_files_unchanged": true,
+  "source_files_verified": 20856,
+  "all_distinct_source_and_effective_files_verified": 20866,
+  "official_test_membership_and_gt_unchanged": true,
+  "cross_split_exact_rgb_overlaps": 0,
+  "effective_counts": {
+    "train": 4959,
+    "validation": 995,
+    "test": 4428
+  },
+  "corrected_samples_loaded_at_512": 10,
+  "train_samples_loaded": 13,
+  "validation_samples_loaded": 3,
+  "byte_identical_regeneration": true,
+  "manifest_sha256": {
+    "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+    "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+    "test": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012"
+  },
+  "cpu_diagnostic": {
+    "input_size": 512,
+    "batch_size": 1,
+    "device": "cpu",
+    "sample_id": "train/images/150.jpg",
+    "loss": 1.6161878108978271,
+    "finite_gradients": true,
+    "seconds": 0.3749180409940891,
+    "initialization": "random; software diagnostic only; not a pretrained GPU pilot or benchmark"
+  },
+  "human_review": "18_geometry_and_153_candidate_pairs_complete",
+  "member5_review": "pending",
+  "environment": {
+    "python": "3.12.14",
+    "macOS": "27.0.1",
+    "torch": "2.7.1"
+  }
+}

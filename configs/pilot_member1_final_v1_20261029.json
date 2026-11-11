@@ -1,0 +1,10 @@
+{
+  "extends": "pilot.json",
+  "data_protocol_id": "member1_final_20261029_v1",
+  "train_manifest": "manifests/member1_final_20261029/v1/train.json",
+  "val_manifest": "manifests/member1_final_20261029/v1/validation.json",
+  "expected_manifest_sha256": {
+    "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+    "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+  }
+}

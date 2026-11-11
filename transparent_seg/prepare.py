@@ -89,7 +89,18 @@ def main():
     parser.add_argument("--root", required=True)
     parser.add_argument("--output", default="manifests/trans10k")
     parser.add_argument("--allow-partial", action="store_true", help="Pilot only; records incomplete split")
+    parser.add_argument("--review-policy", help="Explicit local derivative policy; source data stays immutable")
+    parser.add_argument("--source-inventory", help="Pinned full diagnostic inventory for a derivative")
+    parser.add_argument("--source-audit", help="Pinned original diagnostic audit for a derivative")
     args = parser.parse_args()
+    if args.review_policy:
+        if args.allow_partial or not args.source_inventory or not args.source_audit:
+            parser.error("A review policy needs --source-inventory and --source-audit; do not use --allow-partial")
+        from .prepare_reviewed import prepare_reviewed
+        prepare_reviewed(args.root, args.output, args.review_policy, args.source_inventory, args.source_audit)
+        return
+    if args.source_inventory or args.source_audit:
+        parser.error("Source evidence arguments require --review-policy")
     print(json.dumps(audit_trans10k(args.root, args.output, args.allow_partial), indent=2))
 
 

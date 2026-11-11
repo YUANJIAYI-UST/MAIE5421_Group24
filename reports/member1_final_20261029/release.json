@@ -1,0 +1,58 @@
+{
+  "schema": "member1_owner_final_release_v1",
+  "status": "owner_complete_pending_independent_review",
+  "summaries": {
+    "v1": {
+      "counts": {
+        "train": 4959,
+        "validation": 995,
+        "test": 4428
+      },
+      "protocol_id": "member1_final_20261029_v1",
+      "manifest_sha256": {
+        "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+        "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+        "test": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012"
+      },
+      "audit_sha256": "15b8e9da37ba36e894f2246917fcb58a3db58843b7a7ccda24158c4a5477c008",
+      "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac"
+    },
+    "d03": {
+      "counts": {
+        "train": 3230,
+        "validation": 646,
+        "test": 4428,
+        "test_heldout": 1493,
+        "test_seen": 2935
+      },
+      "protocol_id": "member1_final_20261029_d03",
+      "manifest_sha256": {
+        "train": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+        "validation": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f",
+        "test": "08d3e715f87586378d146bc4644f10a9bd4eb5b035d45d650b5e4d150c69a839",
+        "test_heldout": "df1187245aa50f2bd52accfdc71d2a25d173f87a2c7769c0a67a2a00390c3d49",
+        "test_seen": "7ff632c7f86b427e871f4fea94b0bec755affc743072bd3fcb44434879492c35"
+      },
+      "audit_sha256": "2ba0aa4e39a5ecb3e76328e4cba6807fc83ba6081bbe043c403bf201edeaa553",
+      "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac"
+    }
+  },
+  "owner_processing_complete": true,
+  "independent_review_completed": false,
+  "all_pair_handling_recorded": 153,
+  "unique_base_exclusions": 46,
+  "official_counts": {
+    "train": 5000,
+    "validation": 1000,
+    "test": 4428
+  },
+  "limitations": [
+    "Independent member-5 review is not yet performed; owner processing is complete.",
+    "V2 uses pinned third-party mirror 3445e93f1e507ea6c2dd36f06badfd5e818b699f; equivalence to author archive is unverified.",
+    "Held-out absence is verified against V2 annotations, not exhaustive real-world semantic absence.",
+    "B pairs and within-split duplicates are retained; no claim of scene-disjoint splits or exhaustive near-duplicate removal.",
+    "Pair 141 remains semantically uncertain but its test-only handling is settled.",
+    "Random-overlay review was AI-assisted; human signoff covers the recorded 18 geometry issues and 153 candidates.",
+    "This is a data release; GPU benchmark training and other members' GSD work are outside this delivery."
+  ]
+}

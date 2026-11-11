@@ -1,0 +1,372 @@
+{
+  "train": [
+    {
+      "class_id": 0,
+      "class_name": "Background",
+      "images": 3230,
+      "native_v2_pixels": 3045794714
+    },
+    {
+      "class_id": 1,
+      "class_name": "Shelf",
+      "images": 111,
+      "native_v2_pixels": 42247533
+    },
+    {
+      "class_id": 2,
+      "class_name": "Jar or Tank",
+      "images": 479,
+      "native_v2_pixels": 99637172
+    },
+    {
+      "class_id": 3,
+      "class_name": "Freezer",
+      "images": 47,
+      "native_v2_pixels": 27080379
+    },
+    {
+      "class_id": 4,
+      "class_name": "Window",
+      "images": 193,
+      "native_v2_pixels": 80149777
+    },
+    {
+      "class_id": 5,
+      "class_name": "Glass Door",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 6,
+      "class_name": "Eyeglass",
+      "images": 187,
+      "native_v2_pixels": 15534613
+    },
+    {
+      "class_id": 7,
+      "class_name": "Cup",
+      "images": 1523,
+      "native_v2_pixels": 290990052
+    },
+    {
+      "class_id": 8,
+      "class_name": "Floor Glass",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 9,
+      "class_name": "Glass Bow",
+      "images": 159,
+      "native_v2_pixels": 29691994
+    },
+    {
+      "class_id": 10,
+      "class_name": "Water Bottle",
+      "images": 698,
+      "native_v2_pixels": 104799083
+    },
+    {
+      "class_id": 11,
+      "class_name": "Storage Box",
+      "images": 268,
+      "native_v2_pixels": 58354723
+    }
+  ],
+  "validation": [
+    {
+      "class_id": 0,
+      "class_name": "Background",
+      "images": 646,
+      "native_v2_pixels": 590623382
+    },
+    {
+      "class_id": 1,
+      "class_name": "Shelf",
+      "images": 25,
+      "native_v2_pixels": 12016316
+    },
+    {
+      "class_id": 2,
+      "class_name": "Jar or Tank",
+      "images": 99,
+      "native_v2_pixels": 22623408
+    },
+    {
+      "class_id": 3,
+      "class_name": "Freezer",
+      "images": 8,
+      "native_v2_pixels": 3149437
+    },
+    {
+      "class_id": 4,
+      "class_name": "Window",
+      "images": 23,
+      "native_v2_pixels": 8266117
+    },
+    {
+      "class_id": 5,
+      "class_name": "Glass Door",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 6,
+      "class_name": "Eyeglass",
+      "images": 41,
+      "native_v2_pixels": 2770364
+    },
+    {
+      "class_id": 7,
+      "class_name": "Cup",
+      "images": 312,
+      "native_v2_pixels": 61326190
+    },
+    {
+      "class_id": 8,
+      "class_name": "Floor Glass",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 9,
+      "class_name": "Glass Bow",
+      "images": 30,
+      "native_v2_pixels": 5449066
+    },
+    {
+      "class_id": 10,
+      "class_name": "Water Bottle",
+      "images": 131,
+      "native_v2_pixels": 20318531
+    },
+    {
+      "class_id": 11,
+      "class_name": "Storage Box",
+      "images": 55,
+      "native_v2_pixels": 11670869
+    }
+  ],
+  "test": [
+    {
+      "class_id": 0,
+      "class_name": "Background",
+      "images": 4428,
+      "native_v2_pixels": 3904560986
+    },
+    {
+      "class_id": 1,
+      "class_name": "Shelf",
+      "images": 113,
+      "native_v2_pixels": 46090689
+    },
+    {
+      "class_id": 2,
+      "class_name": "Jar or Tank",
+      "images": 413,
+      "native_v2_pixels": 85651750
+    },
+    {
+      "class_id": 3,
+      "class_name": "Freezer",
+      "images": 33,
+      "native_v2_pixels": 12288666
+    },
+    {
+      "class_id": 4,
+      "class_name": "Window",
+      "images": 215,
+      "native_v2_pixels": 74443897
+    },
+    {
+      "class_id": 5,
+      "class_name": "Glass Door",
+      "images": 662,
+      "native_v2_pixels": 160606083
+    },
+    {
+      "class_id": 6,
+      "class_name": "Eyeglass",
+      "images": 180,
+      "native_v2_pixels": 13720024
+    },
+    {
+      "class_id": 7,
+      "class_name": "Cup",
+      "images": 1444,
+      "native_v2_pixels": 274000861
+    },
+    {
+      "class_id": 8,
+      "class_name": "Floor Glass",
+      "images": 1278,
+      "native_v2_pixels": 638420329
+    },
+    {
+      "class_id": 9,
+      "class_name": "Glass Bow",
+      "images": 149,
+      "native_v2_pixels": 30158810
+    },
+    {
+      "class_id": 10,
+      "class_name": "Water Bottle",
+      "images": 629,
+      "native_v2_pixels": 90359175
+    },
+    {
+      "class_id": 11,
+      "class_name": "Storage Box",
+      "images": 247,
+      "native_v2_pixels": 53625589
+    }
+  ],
+  "test_heldout": [
+    {
+      "class_id": 0,
+      "class_name": "Background",
+      "images": 1493,
+      "native_v2_pixels": 1188757201
+    },
+    {
+      "class_id": 1,
+      "class_name": "Shelf",
+      "images": 19,
+      "native_v2_pixels": 3892074
+    },
+    {
+      "class_id": 2,
+      "class_name": "Jar or Tank",
+      "images": 3,
+      "native_v2_pixels": 10701
+    },
+    {
+      "class_id": 3,
+      "class_name": "Freezer",
+      "images": 4,
+      "native_v2_pixels": 286541
+    },
+    {
+      "class_id": 4,
+      "class_name": "Window",
+      "images": 45,
+      "native_v2_pixels": 5314451
+    },
+    {
+      "class_id": 5,
+      "class_name": "Glass Door",
+      "images": 662,
+      "native_v2_pixels": 160606083
+    },
+    {
+      "class_id": 6,
+      "class_name": "Eyeglass",
+      "images": 3,
+      "native_v2_pixels": 10847
+    },
+    {
+      "class_id": 7,
+      "class_name": "Cup",
+      "images": 4,
+      "native_v2_pixels": 334729
+    },
+    {
+      "class_id": 8,
+      "class_name": "Floor Glass",
+      "images": 1278,
+      "native_v2_pixels": 638420329
+    },
+    {
+      "class_id": 9,
+      "class_name": "Glass Bow",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 10,
+      "class_name": "Water Bottle",
+      "images": 3,
+      "native_v2_pixels": 483391
+    },
+    {
+      "class_id": 11,
+      "class_name": "Storage Box",
+      "images": 17,
+      "native_v2_pixels": 673732
+    }
+  ],
+  "test_seen": [
+    {
+      "class_id": 0,
+      "class_name": "Background",
+      "images": 2935,
+      "native_v2_pixels": 2715803785
+    },
+    {
+      "class_id": 1,
+      "class_name": "Shelf",
+      "images": 94,
+      "native_v2_pixels": 42198615
+    },
+    {
+      "class_id": 2,
+      "class_name": "Jar or Tank",
+      "images": 410,
+      "native_v2_pixels": 85641049
+    },
+    {
+      "class_id": 3,
+      "class_name": "Freezer",
+      "images": 29,
+      "native_v2_pixels": 12002125
+    },
+    {
+      "class_id": 4,
+      "class_name": "Window",
+      "images": 170,
+      "native_v2_pixels": 69129446
+    },
+    {
+      "class_id": 5,
+      "class_name": "Glass Door",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 6,
+      "class_name": "Eyeglass",
+      "images": 177,
+      "native_v2_pixels": 13709177
+    },
+    {
+      "class_id": 7,
+      "class_name": "Cup",
+      "images": 1440,
+      "native_v2_pixels": 273666132
+    },
+    {
+      "class_id": 8,
+      "class_name": "Floor Glass",
+      "images": 0,
+      "native_v2_pixels": 0
+    },
+    {
+      "class_id": 9,
+      "class_name": "Glass Bow",
+      "images": 149,
+      "native_v2_pixels": 30158810
+    },
+    {
+      "class_id": 10,
+      "class_name": "Water Bottle",
+      "images": 626,
+      "native_v2_pixels": 89875784
+    },
+    {
+      "class_id": 11,
+      "class_name": "Storage Box",
+      "images": 230,
+      "native_v2_pixels": 52951857
+    }
+  ]
+}

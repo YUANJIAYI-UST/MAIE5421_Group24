@@ -1,0 +1,1896 @@
+{
+  "schema": "member1_owner_final_audit_v1",
+  "status": "owner_complete_pending_independent_review",
+  "data_protocol": {
+    "id": "member1_final_20261029_v1",
+    "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac",
+    "status": "owner_complete_pending_independent_review",
+    "source_dataset": "trans10k_v1",
+    "human_visual_review": "18_geometry_and_153_candidate_pairs_complete",
+    "perceptual_candidates_review": "owner_complete_with_one_recorded_test_only_uncertainty",
+    "member1_delivery": "complete",
+    "member5_review": "pending",
+    "official_test_membership_preserved": true
+  },
+  "counts": {
+    "train": 4959,
+    "validation": 995,
+    "test": 4428
+  },
+  "manifest_sha256": {
+    "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+    "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+    "test": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012"
+  },
+  "original_files_modified": false,
+  "official_test_membership_preserved": true,
+  "v1_binary_targets_preserved": true,
+  "review_counts": {
+    "A": 53,
+    "B": 98,
+    "C": 1,
+    "D": 1
+  },
+  "coverage_quarantine": [
+    "train/images/1544.jpg",
+    "train/images/2511.jpg",
+    "train/images/2706.jpg",
+    "train/images/3703.jpg",
+    "train/images/3808.jpg",
+    "train/images/467.jpg",
+    "train/images/964.jpg",
+    "train/images/981.jpg"
+  ],
+  "base_exclusions": [
+    {
+      "id": "train/images/10058.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9992.jpg",
+        "train/images/10058.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9992.jpg"
+      ],
+      "human_A_pair_numbers": [
+        16
+      ]
+    },
+    {
+      "id": "train/images/10137.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "train/images/10137.jpg",
+        "validation/easy/images/9125.jpg"
+      ],
+      "higher_priority_ids": [
+        "validation/easy/images/9125.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/10326.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/10234.jpg",
+        "train/images/10326.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/10234.jpg"
+      ],
+      "human_A_pair_numbers": [
+        53
+      ]
+    },
+    {
+      "id": "train/images/1544.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/2511.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/2706.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/3421.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/2504.jpg",
+        "train/images/3421.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/2504.jpg"
+      ],
+      "human_A_pair_numbers": [
+        31
+      ]
+    },
+    {
+      "id": "train/images/3703.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/3808.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/407.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/4718.jpg",
+        "train/images/407.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/4718.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/467.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/5322.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/5308.jpg",
+        "train/images/5322.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/5308.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/5334.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/5277.jpg",
+        "train/images/5334.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/5277.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/5387.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "train/images/5387.jpg",
+        "validation/easy/images/5417.jpg"
+      ],
+      "higher_priority_ids": [
+        "validation/easy/images/5417.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/5743.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/5731.jpg",
+        "train/images/5743.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/5731.jpg"
+      ],
+      "human_A_pair_numbers": [
+        2
+      ]
+    },
+    {
+      "id": "train/images/8913.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/hard/images/9261.jpg",
+        "train/images/8913.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/hard/images/9261.jpg"
+      ],
+      "human_A_pair_numbers": [
+        68
+      ]
+    },
+    {
+      "id": "train/images/9023.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/10281.jpg",
+        "train/images/9023.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/10281.jpg"
+      ],
+      "human_A_pair_numbers": [
+        28
+      ]
+    },
+    {
+      "id": "train/images/9059.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9123.jpg",
+        "test/easy/images/9950.jpg",
+        "train/images/9059.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9123.jpg",
+        "test/easy/images/9950.jpg"
+      ],
+      "human_A_pair_numbers": [
+        15,
+        149
+      ]
+    },
+    {
+      "id": "train/images/9060.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9832.jpg",
+        "train/images/9060.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9832.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/9106.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9678.jpg",
+        "train/images/9106.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9678.jpg"
+      ],
+      "human_A_pair_numbers": [
+        13
+      ]
+    },
+    {
+      "id": "train/images/9160.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9619.jpg",
+        "train/images/9160.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9619.jpg"
+      ],
+      "human_A_pair_numbers": [
+        11
+      ]
+    },
+    {
+      "id": "train/images/9168.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9594.jpg",
+        "train/images/9168.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9594.jpg"
+      ],
+      "human_A_pair_numbers": [
+        4
+      ]
+    },
+    {
+      "id": "train/images/9174.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/10025.jpg",
+        "train/images/9174.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/10025.jpg"
+      ],
+      "human_A_pair_numbers": [
+        48
+      ]
+    },
+    {
+      "id": "train/images/9207.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9167.jpg",
+        "train/images/9207.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9167.jpg"
+      ],
+      "human_A_pair_numbers": [
+        12
+      ]
+    },
+    {
+      "id": "train/images/9242.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9212.jpg",
+        "train/images/9242.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9212.jpg"
+      ],
+      "human_A_pair_numbers": [
+        26
+      ]
+    },
+    {
+      "id": "train/images/9243.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/8932.jpg",
+        "test/easy/images/9128.jpg",
+        "train/images/9243.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/8932.jpg",
+        "test/easy/images/9128.jpg"
+      ],
+      "human_A_pair_numbers": [
+        5,
+        25,
+        120
+      ]
+    },
+    {
+      "id": "train/images/9286.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/10110.jpg",
+        "test/easy/images/9093.jpg",
+        "train/images/9286.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/10110.jpg",
+        "test/easy/images/9093.jpg"
+      ],
+      "human_A_pair_numbers": [
+        30,
+        32,
+        81
+      ]
+    },
+    {
+      "id": "train/images/9411.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "train/images/9411.jpg",
+        "validation/easy/images/10228.jpg"
+      ],
+      "higher_priority_ids": [
+        "validation/easy/images/10228.jpg"
+      ],
+      "human_A_pair_numbers": [
+        27
+      ]
+    },
+    {
+      "id": "train/images/9430.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9295.jpg",
+        "train/images/9430.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9295.jpg"
+      ],
+      "human_A_pair_numbers": [
+        6
+      ]
+    },
+    {
+      "id": "train/images/9514.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "train/images/9514.jpg",
+        "validation/easy/images/10178.jpg"
+      ],
+      "higher_priority_ids": [
+        "validation/easy/images/10178.jpg"
+      ],
+      "human_A_pair_numbers": [
+        52
+      ]
+    },
+    {
+      "id": "train/images/9546.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "train/images/9546.jpg",
+        "validation/easy/images/10006.jpg"
+      ],
+      "higher_priority_ids": [
+        "validation/easy/images/10006.jpg"
+      ],
+      "human_A_pair_numbers": [
+        9
+      ]
+    },
+    {
+      "id": "train/images/964.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/9664.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9288.jpg",
+        "train/images/9664.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9288.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/9712.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9233.jpg",
+        "train/images/9712.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9233.jpg"
+      ],
+      "human_A_pair_numbers": [
+        64
+      ]
+    },
+    {
+      "id": "train/images/9760.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9064.jpg",
+        "train/images/9760.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9064.jpg"
+      ],
+      "human_A_pair_numbers": [
+        1
+      ]
+    },
+    {
+      "id": "train/images/981.jpg",
+      "split": "train",
+      "reason_codes": [
+        "owner_flagged_annotation_coverage"
+      ]
+    },
+    {
+      "id": "train/images/9870.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9840.jpg",
+        "train/images/9870.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9840.jpg"
+      ],
+      "human_A_pair_numbers": [
+        7
+      ]
+    },
+    {
+      "id": "train/images/9871.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9322.jpg",
+        "train/images/9871.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9322.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/9930.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9219.jpg",
+        "test/easy/images/9310.jpg",
+        "train/images/9930.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9219.jpg",
+        "test/easy/images/9310.jpg"
+      ],
+      "human_A_pair_numbers": [
+        39,
+        86
+      ]
+    },
+    {
+      "id": "train/images/9933.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9630.jpg",
+        "train/images/9933.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9630.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "train/images/9985.jpg",
+      "split": "train",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9274.jpg",
+        "train/images/9985.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9274.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "validation/easy/images/5815.jpg",
+      "split": "validation",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/5959.jpg",
+        "validation/easy/images/5815.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/5959.jpg"
+      ],
+      "human_A_pair_numbers": [
+        60
+      ]
+    },
+    {
+      "id": "validation/easy/images/9283.jpg",
+      "split": "validation",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/9897.jpg",
+        "validation/easy/images/9283.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/9897.jpg"
+      ],
+      "human_A_pair_numbers": [
+        57
+      ]
+    },
+    {
+      "id": "validation/easy/images/9629.jpg",
+      "split": "validation",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/easy/images/10333.jpg",
+        "validation/easy/images/9629.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/easy/images/10333.jpg"
+      ],
+      "human_A_pair_numbers": [
+        18
+      ]
+    },
+    {
+      "id": "validation/hard/images/10223.jpg",
+      "split": "validation",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/hard/images/9056.jpg",
+        "validation/hard/images/10223.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/hard/images/9056.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "id": "validation/hard/images/5688.jpg",
+      "split": "validation",
+      "reason_codes": [
+        "confirmed_same_source_across_splits"
+      ],
+      "component_ids": [
+        "test/hard/images/5911.jpg",
+        "validation/hard/images/5688.jpg"
+      ],
+      "higher_priority_ids": [
+        "test/hard/images/5911.jpg"
+      ],
+      "human_A_pair_numbers": [
+        17
+      ]
+    }
+  ],
+  "cross_split_exact_overlap": [],
+  "limitations": [
+    "Independent member-5 review is not yet performed; owner processing is complete.",
+    "V2 uses pinned third-party mirror 3445e93f1e507ea6c2dd36f06badfd5e818b699f; equivalence to author archive is unverified.",
+    "Held-out absence is verified against V2 annotations, not exhaustive real-world semantic absence.",
+    "B pairs and within-split duplicates are retained; no claim of scene-disjoint splits or exhaustive near-duplicate removal.",
+    "Pair 141 remains semantically uncertain but its test-only handling is settled.",
+    "Random-overlay review was AI-assisted; human signoff covers the recorded 18 geometry issues and 153 candidates.",
+    "This is a data release; GPU benchmark training and other members' GSD work are outside this delivery."
+  ],
+  "empty_foreground_policy": "Keep train/images/470.jpg with its original empty V1 mask and disclose uncertainty in annotation intent.",
+  "duplicate_components": [
+    {
+      "ids": [
+        "test/easy/images/10018.jpg",
+        "test/easy/images/9366.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10018.jpg",
+        "test/easy/images/9366.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        85
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10025.jpg",
+        "train/images/9174.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10025.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9174.jpg"
+      ],
+      "human_A_pair_numbers": [
+        48
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10109.jpg",
+        "test/easy/images/9470.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10109.jpg",
+        "test/easy/images/9470.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        136
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10110.jpg",
+        "test/easy/images/9093.jpg",
+        "train/images/9286.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10110.jpg",
+        "test/easy/images/9093.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9286.jpg"
+      ],
+      "human_A_pair_numbers": [
+        30,
+        32,
+        81
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10163.jpg",
+        "test/easy/images/9551.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10163.jpg",
+        "test/easy/images/9551.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        104
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10170.jpg",
+        "test/easy/images/9597.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10170.jpg",
+        "test/easy/images/9597.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        88
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10191.jpg",
+        "test/easy/images/9414.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10191.jpg",
+        "test/easy/images/9414.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/10202.jpg",
+        "test/easy/images/8965.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10202.jpg",
+        "test/easy/images/8965.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        143
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10234.jpg",
+        "train/images/10326.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10234.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/10326.jpg"
+      ],
+      "human_A_pair_numbers": [
+        53
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10281.jpg",
+        "train/images/9023.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10281.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9023.jpg"
+      ],
+      "human_A_pair_numbers": [
+        28
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10289.jpg",
+        "test/easy/images/9434.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10289.jpg",
+        "test/easy/images/9434.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        116
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/10333.jpg",
+        "validation/easy/images/9629.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/10333.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "validation/easy/images/9629.jpg"
+      ],
+      "human_A_pair_numbers": [
+        18
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/2504.jpg",
+        "train/images/3421.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/2504.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/3421.jpg"
+      ],
+      "human_A_pair_numbers": [
+        31
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/4718.jpg",
+        "train/images/407.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/4718.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/407.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/5277.jpg",
+        "train/images/5334.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/5277.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/5334.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/5308.jpg",
+        "train/images/5322.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/5308.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/5322.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/5731.jpg",
+        "train/images/5743.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/5731.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/5743.jpg"
+      ],
+      "human_A_pair_numbers": [
+        2
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/5959.jpg",
+        "validation/easy/images/5815.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/5959.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "validation/easy/images/5815.jpg"
+      ],
+      "human_A_pair_numbers": [
+        60
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/8932.jpg",
+        "test/easy/images/9128.jpg",
+        "train/images/9243.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/8932.jpg",
+        "test/easy/images/9128.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9243.jpg"
+      ],
+      "human_A_pair_numbers": [
+        5,
+        25,
+        120
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9064.jpg",
+        "train/images/9760.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9064.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9760.jpg"
+      ],
+      "human_A_pair_numbers": [
+        1
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9123.jpg",
+        "test/easy/images/9950.jpg",
+        "train/images/9059.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9123.jpg",
+        "test/easy/images/9950.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9059.jpg"
+      ],
+      "human_A_pair_numbers": [
+        15,
+        149
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9167.jpg",
+        "train/images/9207.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9167.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9207.jpg"
+      ],
+      "human_A_pair_numbers": [
+        12
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9212.jpg",
+        "train/images/9242.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9212.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9242.jpg"
+      ],
+      "human_A_pair_numbers": [
+        26
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9219.jpg",
+        "test/easy/images/9310.jpg",
+        "train/images/9930.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9219.jpg",
+        "test/easy/images/9310.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9930.jpg"
+      ],
+      "human_A_pair_numbers": [
+        39,
+        86
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9233.jpg",
+        "train/images/9712.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9233.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9712.jpg"
+      ],
+      "human_A_pair_numbers": [
+        64
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9274.jpg",
+        "train/images/9985.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9274.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9985.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/9288.jpg",
+        "train/images/9664.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9288.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9664.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/9295.jpg",
+        "train/images/9430.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9295.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9430.jpg"
+      ],
+      "human_A_pair_numbers": [
+        6
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9322.jpg",
+        "train/images/9871.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9322.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9871.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/9435.jpg",
+        "test/easy/images/9552.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9435.jpg",
+        "test/easy/images/9552.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        84
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9594.jpg",
+        "train/images/9168.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9594.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9168.jpg"
+      ],
+      "human_A_pair_numbers": [
+        4
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9619.jpg",
+        "train/images/9160.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9619.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9160.jpg"
+      ],
+      "human_A_pair_numbers": [
+        11
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9630.jpg",
+        "train/images/9933.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9630.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9933.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/9631.jpg",
+        "test/easy/images/9691.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9631.jpg",
+        "test/easy/images/9691.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/9678.jpg",
+        "train/images/9106.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9678.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9106.jpg"
+      ],
+      "human_A_pair_numbers": [
+        13
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9832.jpg",
+        "train/images/9060.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9832.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9060.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/easy/images/9840.jpg",
+        "train/images/9870.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9840.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9870.jpg"
+      ],
+      "human_A_pair_numbers": [
+        7
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9897.jpg",
+        "validation/easy/images/9283.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9897.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "validation/easy/images/9283.jpg"
+      ],
+      "human_A_pair_numbers": [
+        57
+      ]
+    },
+    {
+      "ids": [
+        "test/easy/images/9992.jpg",
+        "train/images/10058.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/easy/images/9992.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/10058.jpg"
+      ],
+      "human_A_pair_numbers": [
+        16
+      ]
+    },
+    {
+      "ids": [
+        "test/hard/images/10171.jpg",
+        "test/hard/images/9562.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/hard/images/10171.jpg",
+        "test/hard/images/9562.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        105
+      ]
+    },
+    {
+      "ids": [
+        "test/hard/images/10185.jpg",
+        "test/hard/images/9258.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/hard/images/10185.jpg",
+        "test/hard/images/9258.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        112
+      ]
+    },
+    {
+      "ids": [
+        "test/hard/images/5911.jpg",
+        "validation/hard/images/5688.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/hard/images/5911.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "validation/hard/images/5688.jpg"
+      ],
+      "human_A_pair_numbers": [
+        17
+      ]
+    },
+    {
+      "ids": [
+        "test/hard/images/8988.jpg",
+        "test/hard/images/9795.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/hard/images/8988.jpg",
+        "test/hard/images/9795.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/hard/images/9056.jpg",
+        "validation/hard/images/10223.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/hard/images/9056.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "validation/hard/images/10223.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "test/hard/images/9261.jpg",
+        "train/images/8913.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "test/hard/images/9261.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/8913.jpg"
+      ],
+      "human_A_pair_numbers": [
+        68
+      ]
+    },
+    {
+      "ids": [
+        "train/images/10046.jpg",
+        "train/images/9650.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/10046.jpg",
+        "train/images/9650.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/10060.jpg",
+        "train/images/9296.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/10060.jpg",
+        "train/images/9296.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        94
+      ]
+    },
+    {
+      "ids": [
+        "train/images/10137.jpg",
+        "validation/easy/images/9125.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "validation/easy/images/9125.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/10137.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/10245.jpg",
+        "train/images/9341.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/10245.jpg",
+        "train/images/9341.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/10287.jpg",
+        "train/images/9025.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/10287.jpg",
+        "train/images/9025.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/2214.jpg",
+        "train/images/3735.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/2214.jpg",
+        "train/images/3735.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/2954.jpg",
+        "train/images/865.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/2954.jpg",
+        "train/images/865.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/5304.jpg",
+        "train/images/5422.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/5304.jpg",
+        "train/images/5422.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        107
+      ]
+    },
+    {
+      "ids": [
+        "train/images/5363.jpg",
+        "train/images/5398.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/5363.jpg",
+        "train/images/5398.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        100
+      ]
+    },
+    {
+      "ids": [
+        "train/images/5387.jpg",
+        "validation/easy/images/5417.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "validation/easy/images/5417.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/5387.jpg"
+      ],
+      "human_A_pair_numbers": []
+    },
+    {
+      "ids": [
+        "train/images/8953.jpg",
+        "train/images/9800.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/8953.jpg",
+        "train/images/9800.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        118
+      ]
+    },
+    {
+      "ids": [
+        "train/images/8980.jpg",
+        "train/images/9893.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/8980.jpg",
+        "train/images/9893.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        82
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9082.jpg",
+        "train/images/9102.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/9082.jpg",
+        "train/images/9102.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        92
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9266.jpg",
+        "train/images/9777.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/9266.jpg",
+        "train/images/9777.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        110
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9318.jpg",
+        "train/images/9794.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/9318.jpg",
+        "train/images/9794.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        93
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9411.jpg",
+        "validation/easy/images/10228.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "validation/easy/images/10228.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9411.jpg"
+      ],
+      "human_A_pair_numbers": [
+        27
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9466.jpg",
+        "train/images/9948.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/9466.jpg",
+        "train/images/9948.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        98
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9514.jpg",
+        "validation/easy/images/10178.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "validation/easy/images/10178.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9514.jpg"
+      ],
+      "human_A_pair_numbers": [
+        52
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9522.jpg",
+        "train/images/9776.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "train/images/9522.jpg",
+        "train/images/9776.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        99
+      ]
+    },
+    {
+      "ids": [
+        "train/images/9546.jpg",
+        "validation/easy/images/10006.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "validation/easy/images/10006.jpg"
+      ],
+      "excluded_lower_split_ids": [
+        "train/images/9546.jpg"
+      ],
+      "human_A_pair_numbers": [
+        9
+      ]
+    },
+    {
+      "ids": [
+        "validation/easy/images/1663.jpg",
+        "validation/easy/images/3339.jpg"
+      ],
+      "retained_highest_split_ids": [
+        "validation/easy/images/1663.jpg",
+        "validation/easy/images/3339.jpg"
+      ],
+      "excluded_lower_split_ids": [],
+      "human_A_pair_numbers": [
+        101
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "id": "train/images/150.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "1f993566737f9a4b0fd867793d74e0a6ef1bb1c4ce4b90ac6ac82427dc5c86a1",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/150_mask.png",
+      "output_mask_sha256": "fcb4087c60b583786eff85a47b27781f3f9a04793e30f704fc622281acd94711",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/1519.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "e93e10d26566659b962bf0287999574b4cb3d2f2217adb265fe1e629795ff5e2",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/1519_mask.png",
+      "output_mask_sha256": "c46054381178936966a814f6bc1701139a7329941b10eca3aab866db3705e9c9",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/1544.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "fa440dc8482b05bbb2b075c9d2cf9d66f8f1c5e2653b1da3779cef8dc9bcf1ee",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/1544_mask.png",
+      "output_mask_sha256": "6a054e97afa8365e391bf5aa941fe9ebe1d7c5ba58f7a43a664559da19c2e90f",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/1557.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "cc402523d0717597185088203ac10efac2231fe5fe9d9c81a81e79ee41d999d0",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/1557_mask.png",
+      "output_mask_sha256": "b8d8a12a94fa3b79f720b07de345736585fe44bbaa9899cd1ef839485b3a257c",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2511.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "25426cb23d1c0e47d204a88da2ca7cde7818e1d2689ec30073f5cc982bee3fa3",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2511_mask.png",
+      "output_mask_sha256": "a892fa15df9090d1366aa0147b965e40179bbccd33dba679ccfd897b2f44230e",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2538.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "aba75c264c834570a45ed3cc19bba4fdb5e1e7ee489ed61e087cfbc477ef6d5b",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2538_mask.png",
+      "output_mask_sha256": "2b0996acf77809d88272247c8d732e63367d844c846b86578085c2042d24c129",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2545.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "52a4b177cd21834aa76797af949425fca5ba22fa9d19d660cfc19b6499e2e9cf",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2545_mask.png",
+      "output_mask_sha256": "8ce9ddb4603eb86f7971d517fff9e89f3f70062374a41af96bf18f37b08cc27e",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2642.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "b32022d8ef5d306f236847c2efc7b4e4ed687bd53d8a5d8758ff2735bef491e9",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2642_mask.png",
+      "output_mask_sha256": "0bccefb5b146fcae384c719adb077f3d184718abb0da17b5c0f444f1c961123f",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2672.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "f9dad89ab0e44d344c2cd15da38a4df022727aa568de029a7b4a8714c3e94dae",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2672_mask.png",
+      "output_mask_sha256": "95d3f3fb17f38fd53d4f1b199e253277e59a9c1c1e84c3ee26c65261a092fb11",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2706.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "e22ab6df811f2886755f467cc5bbf1f371a3f2b2e40cfb80da5b1306fb1ebcae",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2706_mask.png",
+      "output_mask_sha256": "92a871f31ee9d2373a1e202e43e48b02a7783d0d6994c8446999a1b4ac48801c",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/2707.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "a99ebb08eb0f601131f2803e6d1ec53a6b6cfbf17ddeb1b7310024fb4580489b",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/2707_mask.png",
+      "output_mask_sha256": "8a4659c9b5e980ba208c7f62dbf7ba3da50fc4903c9724eb1f29d071cff88bc2",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/3703.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "a63c022836bd0c37f05a4c4f72735154a798ade9fcfcaeec16f0065843ec9ef6",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/3703_mask.png",
+      "output_mask_sha256": "0d2e2b245adc6f037eb748ca0d56491d8d677a35217085816ca489f91f3bc8b1",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/3751.jpg",
+      "operation": "rotate_90_ccw",
+      "source_mask_sha256": "8be9e4f89673d2da7df3defa6adb59af0bd44af2001b49b6de1427efcc18101e",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/3751_mask.png",
+      "output_mask_sha256": "c9fa4079dc2c79a64f6b51216a3598eb77ca17d75197640f396fa756ca1ac1aa",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/3788.jpg",
+      "operation": "rotate_90_ccw",
+      "source_mask_sha256": "c3368e3f824aa89ab5ba71e4fffb31865a5d143a20af517b4903b100b7391d8c",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/3788_mask.png",
+      "output_mask_sha256": "3927ca0373160e9b700f9dca15f0176cedb209890f470bebe8790b497540e903",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/3808.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "30c3ac1f8e417ec2579243038cfb71142ffd5f049780ec12b292a53a5867fdd0",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/3808_mask.png",
+      "output_mask_sha256": "a180ce51903d50d2908557dc4a2cc143f1b5a4bcc0518e666fc97726535dea20",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/467.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "0d3fef64bdd484fb7fc3dc3c51fbc2ec9533a4c1aa7da85947a043c4729011c7",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/467_mask.png",
+      "output_mask_sha256": "67e58ca6cd59054b2da87b1f544a8b5e294b40afc73546f7458e26c0e23d4229",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/964.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "a3cd68fe7a5b61f52b5d831242cec26bd92eb2fc54a1c25666323454f85e08f5",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/964_mask.png",
+      "output_mask_sha256": "a92663e9bdfa395ec2055ce20cb2670f3c1746fba9475d88630397741ef03064",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    },
+    {
+      "id": "train/images/981.jpg",
+      "operation": "rotate_90_cw",
+      "source_mask_sha256": "d37d227621c182b382782ed70aa191521dc92fb772e45baa96c28e20d09ac819",
+      "reason": "Image/mask width-height transposition; Codex reviewed both rotation candidates; human review pending",
+      "output_mask": "Trans10K_v1_review_20261028/train/masks/981_mask.png",
+      "output_mask_sha256": "a3f65e5f71e8a8da5780eb8cd9b327b440f7ef55f5065baa8644e3e28e4f2225",
+      "pixels_preserved": true,
+      "applied_to_copy": true,
+      "human_visual_review": "pending"
+    }
+  ],
+  "correction_review": {
+    "aligned_and_retained": 10,
+    "flagged_and_quarantined": 8,
+    "original_correction_log_is_historical": true
+  }
+}

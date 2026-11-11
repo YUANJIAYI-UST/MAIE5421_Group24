@@ -1,0 +1,10 @@
+{
+  "protocol_id": "member1_final_20261029_v1",
+  "manifest_sha256": {
+    "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+    "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+    "test": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012"
+  },
+  "audit_sha256": "15b8e9da37ba36e894f2246917fcb58a3db58843b7a7ccda24158c4a5477c008",
+  "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac"
+}

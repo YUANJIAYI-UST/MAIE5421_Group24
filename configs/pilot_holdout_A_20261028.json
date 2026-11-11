@@ -1,0 +1,13 @@
+{
+  "extends": "pilot.json",
+  "ablation": "A",
+  "boundary": false,
+  "augmentation": false,
+  "data_protocol_id": "trans10k_d03_20261028",
+  "train_manifest": "manifests/trans10k_d03_20261028/train.json",
+  "val_manifest": "manifests/trans10k_d03_20261028/validation.json",
+  "expected_manifest_sha256": {
+    "train": "0d578d75d698b5ef57fa349768288dd8fb63aeb981302413c86795da607398e6",
+    "validation": "e3cade1be74632256fdbf43b6b621062ead501823d214529fec09e24996b63b0"
+  }
+}

@@ -1,0 +1,10 @@
+[
+  [
+    "train/images/15.jpg",
+    "train/images/2368.jpg"
+  ],
+  [
+    "train/images/3242.jpg",
+    "validation/easy/images/3118.jpg"
+  ]
+]

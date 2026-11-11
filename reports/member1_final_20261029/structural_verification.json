@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "pinned_inputs_unchanged": 28,
+  "owner_pair_counts": {
+    "A": 53,
+    "B": 98,
+    "C": 1,
+    "D": 1
+  },
+  "duplicate_components_checked": 66,
+  "cross_split_confirmed_source_components": 0,
+  "coverage_quarantine_count": 8,
+  "unique_base_exclusions": 46,
+  "excluded_by_split": {
+    "train": 41,
+    "validation": 5
+  },
+  "frozen_selection_unchanged": true,
+  "official_test_and_subsets_unchanged": true,
+  "holdout_filter_complete": true,
+  "v1_binary_fields_unchanged": true,
+  "class_tables_recounted": true,
+  "byte_identical_reproduction_files": 22,
+  "source_file_hashes_and_actual_category_masks": "See separate v1_verification.json and d03_verification.json",
+  "member1_processing": "complete",
+  "member5_review": "pending"
+}

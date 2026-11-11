@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "source": "git staged index exported to a clean temporary directory",
+  "same_local_interpreter_used": true,
+  "tests": 61,
+  "synthetic_training_epochs": 3,
+  "real_dataset_or_gpu_benchmark": false,
+  "checks": [
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0,
+      "stdout": ".............................................................            [100%]\n61 passed in 2.18s\n"
+    },
+    {
+      "command": "python scripts/make_smoke_data.py",
+      "exit_code": 0,
+      "stdout": "{'train': {'images': 12, 'complete': False, 'difficulty': {'train': 12}}, 'validation': {'images': 4, 'complete': False, 'difficulty': {'easy': 2, 'hard': 2}}, 'test': {'images': 4, 'complete': False, 'difficulty': {'easy': 2, 'hard': 2}}}\nSYNTHETIC FIXTURE ONLY: do not report these scores as Trans10K results.\n"
+    },
+    {
+      "command": "python -m transparent_seg.train --config configs/smoke.json --output runs/pr_check --device cpu",
+      "exit_code": 0,
+      "stdout": "ary_iou\": 0.5574218730886545, \"boundary_images\": 4, \"background_fpr\": 0.005634126710359894, \"tp\": 21061, \"fp\": 98, \"fn\": 1161, \"tn\": 17296}, \"easy\": {\"images\": 2, \"skipped_all_void\": 0, \"foreground_iou\": 0.943532016977302, \"region_f1\": 0.970945689327763, \"boundary_iou\": 0.5636769661135482, \"boundary_images\": 2, \"background_fpr\": 0.0061801758973140004, \"tp\": 10226, \"fp\": 52, \"fn\": 560, \"tn\": 8362}, \"hard\": {\"images\": 2, \"skipped_all_void\": 0, \"foreground_iou\": 0.9436509318933983, \"region_f1\": 0.9710086481157861, \"boundary_iou\": 0.5511667800637607, \"boundary_images\": 2, \"background_fpr\": 0.005122494432071269, \"tp\": 10835, \"fp\": 46, \"fn\": 601, \"tn\": 8934}}, \"selected\": true, \"lr\": 0.0004136453446582762, \"seconds\": 0.9627734999958193, \"peak_cuda_memory_mb\": null}\n{\"epoch\": 3, \"loss\": {\"total\": 0.1963331252336502, \"bce\": 0.08977670719226201, \"dice\": 0.0675505797068278, \"boundary\": 0.39005837837855023}, \"validation\": {\"all\": {\"images\": 4, \"skipped_all_void\": 0, \"foreground_iou\": 0.9508996508817473, \"region_f1\": 0.9748319453047927, \"boundary_iou\": 0.6045027210373143, \"boundary_images\": 4, \"background_fpr\": 0.006898930665746809, \"tp\": 21245, \"fp\": 120, \"fn\": 977, \"tn\": 17274}, \"easy\": {\"images\": 2, \"skipped_all_void\": 0, \"foreground_iou\": 0.9494102469590859, \"region_f1\": 0.974048688253368, \"boundary_iou\": 0.6043505148946744, \"boundary_images\": 2, \"background_fpr\": 0.007844069408129309, \"tp\": 10303, \"fp\": 66, \"fn\": 483, \"tn\": 8348}, \"hard\": {\"images\": 2, \"skipped_all_void\": 0, \"foreground_iou\": 0.9523063533507398, \"region_f1\": 0.9755706134094151, \"boundary_iou\": 0.6046549271799542, \"boundary_images\": 2, \"background_fpr\": 0.0060133630289532294, \"tp\": 10942, \"fp\": 54, \"fn\": 494, \"tn\": 8926}}, \"selected\": true, \"lr\": 0.0, \"seconds\": 0.9578638340026373, \"peak_cuda_memory_mb\": null}\n"
+    },
+    {
+      "command": "python -m transparent_seg.evaluate --checkpoint runs/pr_check/best.pt --manifest manifests/smoke/test.json --output runs/pr_check/evaluation --device cpu",
+      "exit_code": 0,
+      "stdout": "{'all': {'images': 4, 'skipped_all_void': 0, 'foreground_iou': 0.9512732146276086, 'region_f1': 0.975028209782662, 'boundary_iou': 0.6131434362068334, 'boundary_images': 4, 'background_fpr': 0.009207323526299079, 'tp': 19874, 'fp': 174, 'fn': 844, 'tn': 18724}, 'easy': {'images': 2, 'skipped_all_void': 0, 'foreground_iou': 0.9509983601813446, 'region_f1': 0.974883812914071, 'boundary_iou': 0.6136380628898572, 'boundary_images': 2, 'background_fpr': 0.008419398293668612, 'tp': 9859, 'fp': 75, 'fn': 433, 'tn': 8833}, 'hard': {'images': 2, 'skipped_all_void': 0, 'foreground_iou': 0.9515439429928741, 'region_f1': 0.9751703992210321, 'boundary_iou': 0.6126488095238095, 'boundary_images': 2, 'background_fpr': 0.00990990990990991, 'tp': 10015, 'fp': 99, 'fn': 411, 'tn': 9891}}\n"
+    },
+    {
+      "command": "python -m transparent_seg.predict --checkpoint runs/pr_check/best.pt --image data/smoke/test/easy/images/000.jpg --output runs/pr_check/prediction --device cpu",
+      "exit_code": 0,
+      "stdout": "Saved 112x80 mask and overlay to runs/pr_check/prediction\n"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+split,class_id,class_name,images,native_v2_pixels
+train,0,Background,3230,3045794714
+train,1,Shelf,111,42247533
+train,2,Jar or Tank,479,99637172
+train,3,Freezer,47,27080379
+train,4,Window,193,80149777
+train,5,Glass Door,0,0
+train,6,Eyeglass,187,15534613
+train,7,Cup,1523,290990052
+train,8,Floor Glass,0,0
+train,9,Glass Bow,159,29691994
+train,10,Water Bottle,698,104799083
+train,11,Storage Box,268,58354723
+validation,0,Background,646,590623382
+validation,1,Shelf,25,12016316
+validation,2,Jar or Tank,99,22623408
+validation,3,Freezer,8,3149437
+validation,4,Window,23,8266117
+validation,5,Glass Door,0,0
+validation,6,Eyeglass,41,2770364
+validation,7,Cup,312,61326190
+validation,8,Floor Glass,0,0
+validation,9,Glass Bow,30,5449066
+validation,10,Water Bottle,131,20318531
+validation,11,Storage Box,55,11670869
+test,0,Background,4428,3904560986
+test,1,Shelf,113,46090689
+test,2,Jar or Tank,413,85651750
+test,3,Freezer,33,12288666
+test,4,Window,215,74443897
+test,5,Glass Door,662,160606083
+test,6,Eyeglass,180,13720024
+test,7,Cup,1444,274000861
+test,8,Floor Glass,1278,638420329
+test,9,Glass Bow,149,30158810
+test,10,Water Bottle,629,90359175
+test,11,Storage Box,247,53625589
+test_heldout,0,Background,1493,1188757201
+test_heldout,1,Shelf,19,3892074
+test_heldout,2,Jar or Tank,3,10701
+test_heldout,3,Freezer,4,286541
+test_heldout,4,Window,45,5314451
+test_heldout,5,Glass Door,662,160606083
+test_heldout,6,Eyeglass,3,10847
+test_heldout,7,Cup,4,334729
+test_heldout,8,Floor Glass,1278,638420329
+test_heldout,9,Glass Bow,0,0
+test_heldout,10,Water Bottle,3,483391
+test_heldout,11,Storage Box,17,673732
+test_seen,0,Background,2935,2715803785
+test_seen,1,Shelf,94,42198615
+test_seen,2,Jar or Tank,410,85641049
+test_seen,3,Freezer,29,12002125
+test_seen,4,Window,170,69129446
+test_seen,5,Glass Door,0,0
+test_seen,6,Eyeglass,177,13709177
+test_seen,7,Cup,1440,273666132
+test_seen,8,Floor Glass,0,0
+test_seen,9,Glass Bow,149,30158810
+test_seen,10,Water Bottle,626,89875784
+test_seen,11,Storage Box,230,52951857
