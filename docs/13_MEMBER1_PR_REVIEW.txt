@@ -1,6 +1,13 @@
 成员 1 D01–D03：GitHub 评审入口
 负责人 CHOU Zhiyue；按 docs/02_FIVE_MEMBER_DEVELOPMENT_PLAN.txt 由成员 5 ZHANG Xinyu 独立复核。
 
+后续复核状态：
+成员 5 已完成自动核验，并提供有限范围的人工抽样反馈。
+逐项回应见 docs/14_MEMBER5_DATA_REVIEW.txt；
+详细证据见 reports/MEMBER5_D01_D03_REVIEW.md。
+下文未勾选清单及“尚未完成”等措辞保留成员 1 提交时的状态。
+Pair 141 的成员 5 后续判断见上述反馈，不覆盖成员 1 原始记录。
+
 这份 PR 提交什么
 - V1 原尺寸/编码/文件审计、旋转副本生成、精确和感知重复检索。
 - 153 对人工答案的记录与确定性处理，8 张覆盖存疑图的训练隔离。
