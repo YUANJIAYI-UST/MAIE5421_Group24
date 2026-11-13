@@ -1,0 +1,49 @@
+成员 2 真实数据运行记录（2026-11-14）
+
+数据：成员 1 最终 V1，训练 4959 / 验证 995 / 测试 4428。
+使用训练与验证划分进行 pilot/诊断，不运行测试集模型评估。
+源 ZIP 位于 D:\BaiduNetdiskDownload\cv，解压数据及运行产物位于 D:\CV\project。
+没有覆盖交付原文件，也没有用旧交付包的源码覆盖成员 2 工作分支。
+
+准备与核验
+- 交付 ZIP 的 SHA256 与发布记录一致，内部 240 个文件校验通过。
+- 三个官方 V1 ZIP 的 SHA256 一致，20,856 个原始图片/标签逐文件校验通过。
+- 解压时完整 CRC 验证，仅忽略 macOS 元数据。
+- 解压后重新核验 20,866 个不同原始/有效文件，包括保留的方向修复标签。
+- 最终清单哈希与 pilot 固定值一致，train/validation/test 无精确 RGB 跨划分重叠。
+- 真实样本 512 CPU 前向/反向正常；它只证明数据通路，不是 GPU 效果结果。
+- 69 项软件测试通过，报告为 reports/member2_pytest_20261114.xml。
+
+运行协议
+M01：scripts/member2_pilot.py，A 基线，512 输入，batch 4 与 8 各 20 个 microbatch。
+两组均从同一 seed=42 和固定 ImageNet MiT-B0 revision 初始化。
+CUDA BF16，AdamW lr=6e-5，weight_decay=0.01，累计次数 1。
+验证使用全部 995 张，按原图尺寸计算指标，共约 111.44 亿像素。
+完整验证耗时包含图片读取、GPU 推理及 CPU 原尺寸指标计算，不是纯 GPU 耗时。
+平均稳态步时排除前两步，也不包括 DataLoader 等待。
+此配置只有 20 个优化步骤，其分数不能充当完整 A 基线性能。
+
+M02 诊断：configs/member2_overfit_20261114.json，固定训练清单前 4 张。
+512 输入，batch 4，50 epochs，lr=0.001，关闭增强与边界头，确定性模式。
+仅第 1 和 50 epoch 做完整 validation，所有 epoch 记录原尺寸训练子集指标。
+这是为了检查能否拟合小样本；不能使用其配置、分数或 checkpoint 代替正式主实验。
+best.pt 按实际执行的 validation pooled IoU 选择，last.pt 是最终训练状态。
+
+环境与可复现边界
+本次使用现有 CUDA 环境 D:\CV\.venv：Python 3.11.13，
+torch 2.10.0.dev20251006+cu128，transformers 4.51.3；不是 requirements.txt 的锁定环境。
+GPU 为 RTX 5070 Ti 16 GB。每个 run 保存完整 pip freeze、实际配置与环境。
+ImageNet encoder revision: 80983a413c30d36a39c20203974ae7807835e2b4。
+后续正式实验应先统一锁定环境；本次结果只适用于当前记录的硬件/软件组合。
+数据包中的 member5_review=pending 是旧交付元数据，不代表否定成员 5 后来的复核报告。
+本次没有重做成员 5 的人工复核或 V2 标签核验，也没有修改 research 保护。
+
+命令（在项目根目录，python 指向上述环境）
+  python scripts/member2_pilot.py --output runs/member2_20261114/pilot
+  $env:CUBLAS_WORKSPACE_CONFIG=':4096:8'
+  python -m transparent_seg.train --config configs/member2_overfit_20261114.json --output runs/member2_20261114/overfit
+  python scripts/summarize_member2_runs.py --runs runs/member2_20261114 --output reports/member2_real_20261114
+缓存完固定版本权重后，本次设置 HF_HUB_OFFLINE=1 和 TRANSFORMERS_OFFLINE=1。
+
+结果汇总将在运行结束后补入本文件及 reports/member2_real_20261114/。
+尚未运行正式 30 epoch A 基线；D03 缺 V2 类别掩码，当前不运行。

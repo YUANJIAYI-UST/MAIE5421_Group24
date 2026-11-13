@@ -54,12 +54,20 @@ def evaluate(model, manifest_path, size, device, root=None, condition=None, outp
             image = im.convert("RGB")
         y, valid = decode_mask(base / sample["mask"], meta["encoding"], meta.get("void_values", []))
         p = predict(model, image, size, device, condition)
-        meters["all"].update(p, y, valid)
-        if sample.get("difficulty") in ("easy", "hard"):
-            meters[sample["difficulty"]].update(p, y, valid)
         single = SegmentationMetrics()
         single.update(p, y, valid)
-        per_image.append({"id": sample["id"], **single.compute()})
+        # Reuse the image's sufficient statistics. In particular, original-size
+        # boundary morphology must not run again for all/easy/hard aggregation.
+        groups = ["all"]
+        if sample.get("difficulty") in ("easy", "hard"):
+            groups.append(sample["difficulty"])
+        for group in groups:
+            meter = meters[group]
+            for key in ("tp", "fp", "fn", "tn", "images", "skipped"):
+                setattr(meter, key, getattr(meter, key) + getattr(single, key))
+            meter.boundaries.extend(single.boundaries)
+        if output:
+            per_image.append({"id": sample["id"], **single.compute()})
         if output and i < visuals:
             save_panel(image, y, p, Path(output) / "visuals" / f"{i:04d}.png")
     result = {"split": meta["split"], "dataset": meta["dataset"],
