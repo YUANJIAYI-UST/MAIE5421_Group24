@@ -9,7 +9,7 @@ import stat
 from zipfile import ZipFile
 
 
-def extract(split, archives, root):
+def extract(split, archives, root, reports=None):
     source = archives / f"{split}.zip"
     destination = root / split
     stage = root / f".extract_{split}"
@@ -67,7 +67,9 @@ def extract(split, archives, root):
               "data_files_extracted": total, "data_bytes": size, "extensions": dict(suffixes),
               "metadata_excluded": skipped,
               "data_exclusions": [], "official_split_preserved": True}
-    (archives / f"extraction_{split}.json").write_text(json.dumps(record, indent=2) + "\n")
+    reports = Path(reports) if reports is not None else archives
+    reports.mkdir(parents=True, exist_ok=True)
+    (reports / f"extraction_{split}.json").write_text(json.dumps(record, indent=2) + "\n")
     print(json.dumps({k: v for k, v in record.items() if k != "metadata_excluded"}), flush=True)
     print(f"{split}: excluded {len(skipped)} macOS metadata entries only", flush=True)
 
@@ -76,11 +78,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--archives", default="data/archives/Trans10K_v1")
     parser.add_argument("--root", default="data/Trans10K")
+    parser.add_argument("--reports", help="Write extraction records here, leaving archive directory read-only")
     parser.add_argument("--split", choices=("train", "validation", "test"), nargs="+",
                         default=["train", "validation", "test"])
     args = parser.parse_args()
     for split in args.split:
-        extract(split, Path(args.archives), Path(args.root))
+        extract(split, Path(args.archives), Path(args.root), args.reports)
 
 
 if __name__ == "__main__":

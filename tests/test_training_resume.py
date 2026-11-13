@@ -109,3 +109,14 @@ def test_overfit_subset_stays_training_only(run_config):
     record = json.loads(open("overfit/history.jsonl").readline())
     assert record["overfit_training"] is not None
     assert record["validation"]["all"]["images"] == 4
+
+
+def test_sparse_validation_is_diagnostic_only(run_config):
+    with pytest.raises(ValueError, match="only allowed"):
+        trainer.train({**run_config, "validation_interval": 2}, "bad")
+    trainer.train({**run_config, "overfit_samples": 2, "validation_interval": 3}, "sparse")
+    records = [json.loads(line) for line in open("sparse/history.jsonl")]
+    assert records[0]["validation"] is not None
+    assert records[1]["validation"] is None and records[1]["selected"] is False
+    assert records[2]["validation"] is not None
+    assert all(r["overfit_training"] is not None for r in records)

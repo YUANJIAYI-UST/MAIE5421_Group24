@@ -1,0 +1,5 @@
+{
+  "extends": "member2_overfit.json",
+  "validation_interval": 10,
+  "deterministic": true
+}

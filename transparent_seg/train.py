@@ -78,6 +78,11 @@ def train(config, output, resume=None, stop_after_epoch=None):
         raise ValueError("Training and validation datasets must match")
     validate_derivative_use(config, training.meta, validation)
     subset = config.get("overfit_samples")
+    validation_interval = config.get("validation_interval", 1)
+    if not isinstance(validation_interval, int) or validation_interval < 1:
+        raise ValueError("validation_interval must be a positive integer")
+    if validation_interval != 1 and (subset is None or config.get("purpose") not in ("pilot", "smoke")):
+        raise ValueError("Sparse validation is only allowed for overfit diagnostics")
     if subset is not None:
         if config.get("purpose") not in ("pilot", "smoke") or not 2 <= subset <= len(training):
             raise ValueError("overfit_samples requires a pilot/smoke training subset of at least two")
@@ -221,17 +226,19 @@ def train(config, output, resume=None, stop_after_epoch=None):
                 totals[key] += value.item()
         train_seconds = time.perf_counter() - started
         validation_started = time.perf_counter()
-        scores = evaluate(model, config["val_manifest"], config["size"], device, root)["scores"]
+        validate_now = epoch == 0 or (epoch + 1) % validation_interval == 0 or epoch + 1 == config["epochs"]
+        scores = (evaluate(model, config["val_manifest"], config["size"], device, root)["scores"]
+                  if validate_now else None)
         if device.startswith("cuda"):
             torch.cuda.synchronize()
         validation_seconds = time.perf_counter() - validation_started
         overfit_scores = (evaluate(model, output / "overfit_train.json", config["size"], device,
                                   str(training.root))["scores"] if subset is not None else None)
-        score = scores["all"]["foreground_iou"]
-        if score is None or not math.isfinite(score):
+        score = scores["all"]["foreground_iou"] if scores is not None else None
+        if scores is not None and (score is None or not math.isfinite(score)):
             raise ValueError("Validation contains no valid pixels")
-        selected = score > best
-        best = max(best, score)
+        selected = score is not None and score > best
+        best = max(best, score) if score is not None else best
         checkpoint = {"model": model.state_dict(), "config": config, "epoch": epoch + 1,
                       "validation_foreground_iou": score, "best_validation_foreground_iou": best,
                       "checkpoint_version": 1, "optimizer": optimizer.state_dict(),
