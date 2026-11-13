@@ -1,0 +1,40 @@
+{
+  "checkpoint_sha256": "2d62b8610be5c797b5b866b924c788899b8832e1cb6da3a8c3627dc4c1907054",
+  "training_config": {
+    "purpose": "pilot",
+    "train_manifest": "manifests/member1_final_20261029/v1/train.json",
+    "val_manifest": "manifests/member1_final_20261029/v1/validation.json",
+    "size": 512,
+    "pretrained": true,
+    "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "boundary": false,
+    "augmentation": false,
+    "boundary_radius": 1,
+    "boundary_weight": 0.1,
+    "seed": 42,
+    "batch_size": 4,
+    "epochs": 50,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "amp": true,
+    "amp_dtype": "bfloat16",
+    "device": "cuda",
+    "workers": 0,
+    "cpu_threads": 4,
+    "ablation": "D",
+    "max_steps_per_epoch": null,
+    "data_protocol_id": "member1_final_20261029_v1",
+    "expected_manifest_sha256": {
+      "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+      "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+    },
+    "gradient_accumulation_steps": 1,
+    "overfit_samples": 4,
+    "validation_interval": 50,
+    "eval_progress_every": 100,
+    "deterministic": true
+  },
+  "device": "cuda",
+  "epoch": 50,
+  "selection": "validation foreground IoU"
+}

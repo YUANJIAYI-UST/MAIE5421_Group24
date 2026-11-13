@@ -1,0 +1,51 @@
+{
+  "split": "train",
+  "dataset": "member1_final_20261029_v1",
+  "synthetic": false,
+  "complete_official_split": false,
+  "manifest_sha256": "ba693d6a98317475f2ae740a4bc3296a3fae3a5014588dfdbcb31951fd734110",
+  "condition": "clean",
+  "threshold": 0.5,
+  "resolution": "original",
+  "scores": {
+    "all": {
+      "images": 4,
+      "skipped_all_void": 0,
+      "foreground_iou": 0.9870310447025007,
+      "region_f1": 0.9934731994590246,
+      "boundary_iou": 0.879372611136479,
+      "boundary_images": 4,
+      "background_fpr": 0.004987994494133042,
+      "tp": 4178286,
+      "fp": 40405,
+      "fn": 14495,
+      "tn": 8060045
+    },
+    "easy": {
+      "images": 0,
+      "skipped_all_void": 0,
+      "foreground_iou": null,
+      "region_f1": null,
+      "boundary_iou": null,
+      "boundary_images": 0,
+      "background_fpr": null,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0
+    },
+    "hard": {
+      "images": 0,
+      "skipped_all_void": 0,
+      "foreground_iou": null,
+      "region_f1": null,
+      "boundary_iou": null,
+      "boundary_images": 0,
+      "background_fpr": null,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0
+    }
+  }
+}

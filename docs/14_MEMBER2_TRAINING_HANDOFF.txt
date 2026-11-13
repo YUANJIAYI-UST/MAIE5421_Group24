@@ -1,5 +1,8 @@
 成员 2：WANG Zenan —— 本地实现与交接（2026-11-11）
 
+2026-11-14 更新：已接入真实 V1 数据并完成 batch 4/8 pilot、50 epoch 四图诊断。
+最新结果见 docs/15_MEMBER2_REAL_RUNS_20261114.txt；下文缺少数据等描述为 11 月 11 日历史状态。
+
 基于 main 2c7c3c2（已合并成员 1 的 25f5fa7）。
 本地目录 D:\CV\project，工作分支 member2/training-resume-pilot。
 

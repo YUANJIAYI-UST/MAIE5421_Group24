@@ -12,7 +12,7 @@
 - 解压后重新核验 20,866 个不同原始/有效文件，包括保留的方向修复标签。
 - 最终清单哈希与 pilot 固定值一致，train/validation/test 无精确 RGB 跨划分重叠。
 - 真实样本 512 CPU 前向/反向正常；它只证明数据通路，不是 GPU 效果结果。
-- 69 项软件测试通过，报告为 reports/member2_pytest_20261114.xml。
+- 70 项软件测试通过，报告为 reports/member2_pytest_20261114.xml。
 
 运行协议
 M01：scripts/member2_pilot.py，A 基线，512 输入，batch 4 与 8 各 20 个 microbatch。
@@ -45,5 +45,42 @@ ImageNet encoder revision: 80983a413c30d36a39c20203974ae7807835e2b4。
   python scripts/summarize_member2_runs.py --runs runs/member2_20261114 --output reports/member2_real_20261114
 缓存完固定版本权重后，本次设置 HF_HUB_OFFLINE=1 和 TRANSFORMERS_OFFLINE=1。
 
-结果汇总将在运行结束后补入本文件及 reports/member2_real_20261114/。
-尚未运行正式 30 epoch A 基线；D03 缺 V2 类别掩码，当前不运行。
+完成结果（完整证据在 reports/member2_real_20261114/）
+batch | 稳态 GPU 步时 | 20步训练含IO | 完整验证 | 峰值分配显存 | 峰值保留显存
+4     | 37.82 ms     | 31.68 s      | 505.06 s | 1602.82 MiB | 1860 MiB
+8     | 53.46 ms     | 60.19 s      | 505.31 s | 3133.54 MiB | 3662 MiB
+两组无 OOM/NaN，共享初始化 hash 完全一致：
+fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835
+20 步后的 validation foreground IoU 分别为 0.488678 和 0.492659。
+这不是 batch 精度对比：两组见到的样本数不同，而且只跑了短 pilot。
+A 的 batch 8 可以在本机运行，无需启用梯度累计；B/D 需另外检查。
+
+50 epoch 四图诊断完成：
+- BCE + Dice 训练损失从 1.289944 降至 0.045883。
+- 原尺寸训练子集 pooled IoU 从 0.577876 升至 0.987031，F1=0.993473。
+- 最后四张图的 IoU 分别为 0.987061、0.992689、0.980870、0.981024。
+- 最后完整 validation IoU=0.357685，F1=0.526905；best.pt 选择 epoch 50。
+- 训练曲线有正常波动；没有 NaN 或全背景退化。只说明小样本可拟合，不能外推泛化。
+- validation 仅在 epoch 1/50 测量，图中两点连线不代表中间 epoch 的测量。
+训练曲线 PNG/CSV、资源 CSV、每个 run 的配置/环境/日志及 checkpoint SHA256 均已导出。
+overfit_training_per_image.csv 记录四图逐项指标，未将原图及预测叠图上传 Git。
+权重实际位于 runs/member2_20261114/{pilot/batch4,pilot/batch8,overfit}/{best,last}.pt。
+
+性能发现与预算边界
+完整验证约 8.4 分钟，数据读取也是主要瓶颈。仅用 GPU 步时会严重低估总预算。
+用这 20 步含 IO 的平均时间粗略外推，batch 8 的 30 epoch 约 19.8 小时，
+batch 4 约 20.6 小时；这不是完整训练实测，也未校正缓存、样本尺寸分布或后台负载。
+正式训练前应优化/测量 DataLoader workers，并由全组统一冻结环境与预算。
+
+实现与来源说明
+发现原 evaluate 对每图重复计算三次边界形态学，改为一次计算后复用统计量。
+独立分组更新对照测试验证 all/easy/hard 和逐图输出保持一致，未改变指标定义。
+旧未完成试跑保留在 runs/member2_20261114/pilot_original_incomplete，不纳入资源结果。
+两组正式 pilot 来自同一进程，启动代码为 225f95b；运行期间添加了可选进度日志，
+所以 batch8 environment.json 的 Git 分支指针记录为 21e711a，实际已加载模块未切换。
+50 epoch 诊断使用包含进度日志的版本；绘图依赖 matplotlib，本机为 3.11.2。
+
+当前交付状态
+M01 真实 V1 pilot 完成；M02 的小样本诊断完成；正式 30 epoch A 基线尚未运行。
+M03 续训实现及回归测试保留；M04 已有可选累计实现，本次 A pilot 不需要启用。
+正式 research 仍需派生协议/依赖环境冻结；D03 缺 V2 类别掩码，本次没有运行。

@@ -1,0 +1,32 @@
+{
+  "pilot/batch4": {
+    "best.pt": {
+      "sha256": "c777373c879189861739bcc743d038562cdf4024f70c7f5616f0a47671d3055b",
+      "bytes": 44850059
+    },
+    "last.pt": {
+      "sha256": "2720636aa8b660e275dc5eaa239d5a73e37caff95bdaa75e21b5a2bd7a7dc3b3",
+      "bytes": 44850059
+    }
+  },
+  "pilot/batch8": {
+    "best.pt": {
+      "sha256": "016454b9cd12ba1230f583a7ed7dda5d7b20a4088a60932587d8da6c4395c86a",
+      "bytes": 44850059
+    },
+    "last.pt": {
+      "sha256": "9b269c37bddf522ad0ac6f132629539fe01e8336752abb69066aec8467220a6a",
+      "bytes": 44850059
+    }
+  },
+  "overfit": {
+    "best.pt": {
+      "sha256": "de2e44feae7f53ef82f4f9cc195f189837c3886f6fc923b8af791729bd80657a",
+      "bytes": 44850187
+    },
+    "last.pt": {
+      "sha256": "2d62b8610be5c797b5b866b924c788899b8832e1cb6da3a8c3627dc4c1907054",
+      "bytes": 44850187
+    }
+  }
+}
