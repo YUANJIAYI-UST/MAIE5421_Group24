@@ -44,12 +44,14 @@ def save_panel(image, target, prediction, path):
     panel.save(path)
 
 
-def evaluate(model, manifest_path, size, device, root=None, condition=None, output=None, visuals=0):
+def evaluate(model, manifest_path, size, device, root=None, condition=None, output=None, visuals=0, progress_every=0):
     meta, base = read_manifest(manifest_path, root)
     model.eval()
     meters = {"all": SegmentationMetrics(), "easy": SegmentationMetrics(), "hard": SegmentationMetrics()}
     per_image = []
     for i, sample in enumerate(meta["samples"]):
+        if progress_every and i % progress_every == 0:
+            print(f"Evaluation {meta['split']}: {i}/{len(meta['samples'])}", flush=True)
         with Image.open(base / sample["image"]) as im:
             image = im.convert("RGB")
         y, valid = decode_mask(base / sample["mask"], meta["encoding"], meta.get("void_values", []))

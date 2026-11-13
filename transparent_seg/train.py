@@ -227,7 +227,8 @@ def train(config, output, resume=None, stop_after_epoch=None):
         train_seconds = time.perf_counter() - started
         validation_started = time.perf_counter()
         validate_now = epoch == 0 or (epoch + 1) % validation_interval == 0 or epoch + 1 == config["epochs"]
-        scores = (evaluate(model, config["val_manifest"], config["size"], device, root)["scores"]
+        scores = (evaluate(model, config["val_manifest"], config["size"], device, root,
+                           progress_every=config.get("eval_progress_every", 0))["scores"]
                   if validate_now else None)
         if device.startswith("cuda"):
             torch.cuda.synchronize()
