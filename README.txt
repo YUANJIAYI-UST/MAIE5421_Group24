@@ -9,6 +9,7 @@ Boundary-Aware Transparent Object Segmentation under Appearance Variation
 五人分工与日期：docs/02_FIVE_MEMBER_DEVELOPMENT_PLAN.txt
 成员 2 续训、资源测量与当前交接：docs/14_MEMBER2_TRAINING_HANDOFF.txt
 成员 2 真实 V1 GPU pilot 与四图过拟合结果：docs/15_MEMBER2_REAL_RUNS_20261114.txt
+成员 2 V2 掩码核验及 D03 A/D GPU pilot：docs/16_MEMBER2_D03_PILOT_20261114.txt
 待优化任务（TXT）：docs/03_OPTIMIZATION_BACKLOG.txt
 数据集与官方下载：docs/04_DATASETS_AND_DOWNLOAD.txt
 老师要求逐项验收：docs/01_REQUIREMENTS_AND_ACCEPTANCE.txt

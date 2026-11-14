@@ -32,5 +32,31 @@ D 增加边界 head 和 photometric augmentation；r=1、lambda=0.1 为已有 pi
 每组保存 config、environment、pip freeze、history 和 checkpoint。
 70 项软件测试通过：reports/member2_d03_pytest_20261114.xml。
 
-完整隔离核验及两组实测结果将在完成后写入本文件。
+完整核验结果
+通过 scripts/verify_holdout_release.py 重新解码 12,732 条清单引用的 V2 标签记录。
+最终 D03 为 train 3230 / validation 646 / test 4428。
+train 和 validation 中，类别 5、8 的标注像素数均为 0。
+test_heldout=1493，test_seen=2935，互斥且完整覆盖原始 test。
+V1 样本字段、实际二值标签哈希和官方测试集成员保持不变。
+这里只核验了类别/文件，没有用测试集模型分数作任何决策。
+原始核验 JSON 的 gpu_training=not_run 是核验阶段的记录；后续 pilot 结果见 summary.json。
+
+两组实测（各 20 步，batch 8；validation 是 D03 的 seen-class validation）
+模型 | 稳态 GPU 步时 | 20步训练含IO | 完整验证 | 峰值分配显存 | validation IoU
+A    | 54.76 ms     | 58.09 s      | 294.39 s | 3133.60 MiB | 0.413792
+D    | 61.86 ms     | 62.30 s      | 294.07 s | 3135.29 MiB | 0.413248
+A/D 的 validation F1 分别为 0.585365 / 0.584820；Boundary IoU 为 0.068523 / 0.068098。
+D 的平均未加权 boundary BCE=0.660403，正常参与 loss；无缺失梯度、NaN 或 OOM 报错。
+两组都完成了完整验证，checkpoint 可重载并对真实训练样本产生有限 logits。
+默认推理只返回 segmentation logits，不请求辅助边界输出。
+共享初始化 SHA256 完全一致：
+fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835
+两组运行代码均为 25bee7a，启动时工作区干净，配置差异仅为预定的三个开关/标识。
+该短试跑没有显示可用于方法优劣判断的证据，尤其不能当作未见类别测试结果。
+
+证据与状态
+reports/member2_d03_20261114/ 包含导入/隔离核验、各组实际配置、环境、日志、
+资源 CSV、checkpoint SHA256、重载检查和 summary.json；不上传原始掩码和权重。
+本地权重位于 runs/member2_d03_20261114/{A,D}/{best,last}.pt。
+V2 类别掩码缺口已补齐，D03 的 A/D GPU pilot 均完成。
 正式 30 epoch A/D 训练仍须冻结派生 research 协议、依赖环境及边界参数。

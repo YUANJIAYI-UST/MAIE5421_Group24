@@ -1,0 +1,31 @@
+{
+  "purpose": "pilot",
+  "train_manifest": "manifests/member1_final_20261029/d03/train.json",
+  "val_manifest": "manifests/member1_final_20261029/d03/validation.json",
+  "size": 512,
+  "pretrained": true,
+  "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+  "boundary": false,
+  "augmentation": false,
+  "boundary_radius": 1,
+  "boundary_weight": 0.1,
+  "seed": 42,
+  "batch_size": 8,
+  "epochs": 1,
+  "lr": 6e-05,
+  "weight_decay": 0.01,
+  "amp": true,
+  "amp_dtype": "bfloat16",
+  "device": "cuda",
+  "workers": 0,
+  "cpu_threads": 4,
+  "ablation": "A",
+  "max_steps_per_epoch": 20,
+  "data_protocol_id": "member1_final_20261029_d03",
+  "expected_manifest_sha256": {
+    "train": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+    "validation": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f"
+  },
+  "gradient_accumulation_steps": 1,
+  "eval_progress_every": 100
+}

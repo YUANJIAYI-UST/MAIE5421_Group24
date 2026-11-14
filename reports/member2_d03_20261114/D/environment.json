@@ -1,0 +1,33 @@
+{
+  "python": "3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]",
+  "torch": "2.10.0.dev20251006+cu128",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "git_commit": "25bee7a45ccee84b8587df02e8315b0751d6d818",
+  "git_dirty": false,
+  "initial_shared_state_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+  "encoder_resolved_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+  "train_manifest_sha256": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+  "val_manifest_sha256": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f",
+  "synthetic": false,
+  "data_protocol": {
+    "id": "member1_final_20261029_d03",
+    "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac",
+    "status": "owner_complete_pending_independent_review",
+    "source_dataset": "trans10k_v1",
+    "human_visual_review": "18_geometry_and_153_candidate_pairs_complete",
+    "perceptual_candidates_review": "owner_complete_with_one_recorded_test_only_uncertainty",
+    "member1_delivery": "complete",
+    "member5_review": "pending",
+    "official_test_membership_preserved": true,
+    "kind": "v2_category_holdout",
+    "held_out_class_ids": [
+      5,
+      8
+    ],
+    "selection_sha256": "518706353946a225e2cf4c396984cc283d4d002ab73e9318b1e2e3b2f0a96fee",
+    "rules_sha256": "db1abb473da5696309db6abe0cc3d7f98599eaf24c40e9af165e3cd42d0b790a",
+    "source_mirror_review": "owner_accepted_pinned_mirror_with_provenance_limitation"
+  },
+  "full_official_train": false
+}

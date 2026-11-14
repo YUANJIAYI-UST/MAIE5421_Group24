@@ -1,0 +1,28 @@
+{
+  "A": {
+    "checkpoint_epoch": 1,
+    "sample_id": "train/images/10.jpg",
+    "finite_logits": true,
+    "logits_shape": [
+      1,
+      1,
+      128,
+      128
+    ],
+    "auxiliary_logits_requested": false,
+    "auxiliary_logits_returned": false
+  },
+  "D": {
+    "checkpoint_epoch": 1,
+    "sample_id": "train/images/10.jpg",
+    "finite_logits": true,
+    "logits_shape": [
+      1,
+      1,
+      128,
+      128
+    ],
+    "auxiliary_logits_requested": false,
+    "auxiliary_logits_returned": false
+  }
+}
