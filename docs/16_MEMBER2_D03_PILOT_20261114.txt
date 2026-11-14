@@ -1,0 +1,36 @@
+成员 2：V2 掩码补充包与 D03 A/D pilot（2026-11-14）
+
+来源与校验
+补充目录：Member1_V2_Category_Masks_3445e93_20261114(1)。
+镜像 revision：3445e93f1e507ea6c2dd36f06badfd5e818b699f。
+10,428 张 PNG：train 5000、validation 1000、test 4428。
+逐文件 SHA256 同时匹配补充包清单和成员 1 已冻结的两份 inventory。
+导入前检查全部源文件及已有目标，已有目标不允许被不同内容覆盖；导入后再次核对哈希。
+V1 二值标签保持不变，V2 掩码只用于类别核验/过滤，不用作二值训练监督。
+镜像与作者原 ZIP 的等价性仍未证明。包内没有 V2 JPEG，未重新执行图像对齐审计。
+
+运行入口
+  python scripts/import_v2_masks.py --source <补充包目录> --output runs/member2_d03_20261114/v2_import.json
+  python scripts/verify_holdout_release.py --manifests manifests/member1_final_20261029/d03 --base manifests/member1_final_20261029/v1 --output runs/member2_d03_20261114/d03_verification.json
+  python -m transparent_seg.train --config configs/member2_d03_A_20261114.json --output runs/member2_d03_20261114/A
+  python -m transparent_seg.train --config configs/member2_d03_D_20261114.json --output runs/member2_d03_20261114/D
+  python scripts/summarize_d03_pilots.py --runs runs/member2_d03_20261114 --output reports/member2_d03_20261114
+运行目录必须为新目录，保留旧结果。
+
+一致预算
+A/D 都从固定 ImageNet MiT-B0 初始化；不沿用全类别 V1 pilot 的 checkpoint。
+512 输入、batch 8、seed 42、20 optimizer steps、1 epoch 的短 pilot。
+AdamW lr=6e-5、weight_decay=0.01、BF16、无梯度累计，验证完整 646 张原图。
+D 增加边界 head 和 photometric augmentation；r=1、lambda=0.1 为已有 pilot 默认值。
+两份实际配置除 ablation/boundary/augmentation 外完全相同；汇总时再次检查预算与共享初始化哈希。
+短 pilot 只验证隔离数据通路、优化与显存，不足以比较方法优劣或报告未见类别泛化性能。
+不对 test_heldout/test_seen 运行模型评分，不使用测试数据选模/调参。
+
+环境
+延续前次已记录的 RTX 5070 Ti / torch 2.10.0.dev20251006+cu128 环境。
+这是实际 pilot 环境，不冒称 requirements.txt 中的 torch 2.7.1 锁定环境。
+每组保存 config、environment、pip freeze、history 和 checkpoint。
+70 项软件测试通过：reports/member2_d03_pytest_20261114.xml。
+
+完整隔离核验及两组实测结果将在完成后写入本文件。
+正式 30 epoch A/D 训练仍须冻结派生 research 协议、依赖环境及边界参数。

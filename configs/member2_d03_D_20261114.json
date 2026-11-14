@@ -1,0 +1,8 @@
+{
+  "extends": "pilot_member1_final_D_20261029.json",
+  "batch_size": 8,
+  "gradient_accumulation_steps": 1,
+  "epochs": 1,
+  "max_steps_per_epoch": 20,
+  "eval_progress_every": 100
+}
