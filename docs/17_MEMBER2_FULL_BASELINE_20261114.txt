@@ -1,7 +1,7 @@
-成员 2 完整 A 基线：执行冻结与交接入口（2026-11-14）
+成员 2 完整 A 基线：已完成的运行与交接（2026-11-15）
 
-本文件描述运行协议，不凭配置存在宣称实验已经完成。
-完成状态与实际数值以 reports/member2_full_A_20261114/summary.json 为准。
+30 epoch 训练及最佳模型的 995 张 validation / 4428 张 test 原尺寸评估均已完成。
+以下结果来自真实运行；机器可读记录为 reports/member2_full_A_20261114/summary.json。
 成员 2 已明确要求跑完整基线并上传结果与后续所需数据。
 
 一、范围
@@ -69,3 +69,47 @@ V2 保留固定镜像来源说明；与原作者归档的等价性仍未核实�
 https://github.com/xieenze/Segment_Transparent_Objects
 https://github.com/xieenze/Trans2Seg
 用户本次明确要求上传数据，覆盖 docs/04 中默认仅保存链接的历史交付方式。
+
+六、已完成结果（2026-11-15）
+完整 30 epochs / 18600 optimizer steps；最佳 epoch 29，仅按验证集 pooled foreground IoU 选择。
+测试只评估该最佳模型一次，不据测试分数选择 checkpoint 或调整参数。
+划分 / 组别 / 图像数 / foreground IoU / Region F1 / Boundary IoU
+validation / all / 995 / 0.88212012 / 0.93736856 / 0.69200923
+validation / easy / 785 / 0.92466382 / 0.96085749 / 0.73448340
+validation / hard / 210 / 0.77242479 / 0.87160233 / 0.53323671
+test / all / 4428 / 0.87436391 / 0.93297135 / 0.68086975
+test / easy / 3491 / 0.91539859 / 0.95583091 / 0.72759585
+test / hard / 937 / 0.76829178 / 0.86896494 / 0.50678138
+IoU/F1 为全数据像素池化；Boundary IoU 按仓库评估定义，所有图像均已计算边界指标。
+验证集最终 TP/FP/FN/TN/IoU/F1 与第 29 轮选模记录逐项精确一致。
+训练 loop（含每轮区域验证）7731.67 秒；
+其中训练 5836.38 秒，每轮区域验证累计 1891.80 秒。
+这些时间不包含数据准备和最后的完整边界评估。
+峰值 CUDA allocated 2797.56 MiB，reserved 4042.00 MiB；RTX 5070 Ti。
+loss 从 0.83679552 降到 0.08033396；逐轮资源记录见 training_curve.csv。
+best.pt SHA256：3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a
+last.pt SHA256：48d5e19906a0e9944cc0a20d3a02cdd9d100ebe356ac36ff694fcd84eb4e25b8
+训练代码 7d4e391；最终评估代码 4ab9a1d（只新增进度显示与代码溯源，数值流程未改）。
+训练和最终评估开始时均记录 git_dirty=false；对应 environment/provenance 随报告归档。
+固定环境 77 项测试通过；GPU 真实网络在合成小样本上的连续/续训各状态逐项相等。
+该 resume 检查是软件验证，不冒充完整 A 中断续训的真实数据实验。
+样例图为 manifest 顺序前 12 张，未按效果挑选；逐图指标 CSV 保留全部验证和测试图。
+
+七、交付与使用
+模型、best/last、日志、配置、环境、完整指标与曲线：
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member2-a-baseline-20261114
+完整后续实验数据（23 个资产，逐项大小/SHA256 与 GitHub digest 一致）：
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/trans10k-course-data-20261114
+将 member2_A_seed42_full_run.zip 解压到 runs/，得到 member2_full_A_20261114/。
+单独下载的 best.pt 与完整归档内 best.pt 字节相同。校验见 model_assets.json。
+评估重跑使用第四节命令，但将 --output 改为新的空目录以保留原证据。
+训练重跑先按第三节生成缓存，再使用一个新的输出目录。
+已有 30 epoch 的 last.pt 表示预算已用完，不应靠提高 epochs 冒充原冻结协议续训。
+训练曲线可用独立绘图环境（matplotlib）重建：
+  python scripts/plot_full_baseline.py --report reports/member2_full_A_20261114 --pdf A_baseline_training_curves.pdf
+运行本次绘图的独立环境为 matplotlib 3.11.2，不改变训练环境。
+
+成员 2 的 M01/M02/M03 实现与测试/M04 已完成；resume PR 交付供人工复核。
+成员 3 的梯度与优化器人工 review 仍 pending，不能由自动测试替代签字。
+本次是单 seed A 基线；三种子、B/C/D、12 扰动、GSD 和 D03 held-out 正式训练是后续分工。
+数据上传包含这些后续实验所需的 V1、修正 mask、冻结清单与 V2 类别 mask，GSD 数据另行获取。

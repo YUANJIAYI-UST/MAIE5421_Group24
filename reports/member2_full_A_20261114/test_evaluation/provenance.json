@@ -1,0 +1,53 @@
+{
+  "checkpoint_sha256": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a",
+  "training_config": {
+    "purpose": "research",
+    "train_manifest": "manifests/member1_final_20261029/v1/train.json",
+    "val_manifest": "manifests/member1_final_20261029/v1/validation.json",
+    "size": 512,
+    "pretrained": true,
+    "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "boundary": false,
+    "augmentation": false,
+    "boundary_radius": 1,
+    "boundary_weight": 0.1,
+    "seed": 42,
+    "batch_size": 8,
+    "epochs": 30,
+    "lr": 6e-05,
+    "weight_decay": 0.01,
+    "amp": true,
+    "amp_dtype": "bfloat16",
+    "device": "cuda",
+    "workers": 0,
+    "cpu_threads": 4,
+    "ablation": "A",
+    "data_protocol_id": "member1_final_20261029_v1",
+    "expected_manifest_sha256": {
+      "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+      "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+    },
+    "deterministic": true,
+    "gradient_accumulation_steps": 1,
+    "validation_interval": 1,
+    "validation_metrics": "region_only",
+    "eval_progress_every": 200,
+    "train_cache": ".cache/member2_v1_512/train",
+    "validation_cache": ".cache/member2_v1_512/validation",
+    "expected_versions": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.46.3",
+      "numpy": "2.2.6",
+      "Pillow": "11.3.0",
+      "scipy": "1.15.3"
+    },
+    "train_progress_every": 100,
+    "frozen_protocol": "configs/member2_full_A_protocol_20261114.json",
+    "frozen_protocol_sha256": "baa62eb2c3ba5a7358caf0020a3740460ac5d885868acd113391d5bdb08e9eaf"
+  },
+  "device": "cuda",
+  "epoch": 29,
+  "selection": "validation foreground IoU",
+  "evaluation_git_commit": "4ab9a1d3aea32f01507a5b01de4a63d81356010d",
+  "evaluation_git_dirty": false
+}
