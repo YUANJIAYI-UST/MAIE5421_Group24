@@ -110,6 +110,9 @@ https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/trans10k-course-d
 运行本次绘图的独立环境为 matplotlib 3.11.2，不改变训练环境。
 
 成员 2 的 M01/M02/M03 实现与测试/M04 已完成；resume PR 交付供人工复核。
+草稿 PR：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/2
+报告提交 e7a6f2c 的 GitHub Python checks 已通过（包括 CPU smoke 训练/评估）：
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/actions/runs/43629449432
 成员 3 的梯度与优化器人工 review 仍 pending，不能由自动测试替代签字。
 本次是单 seed A 基线；三种子、B/C/D、12 扰动、GSD 和 D03 held-out 正式训练是后续分工。
 数据上传包含这些后续实验所需的 V1、修正 mask、冻结清单与 V2 类别 mask，GSD 数据另行获取。

@@ -9,161 +9,161 @@
       "name": "DATA_README.txt",
       "bytes": 1630,
       "sha256": "cc6eca6da2b09a70f0c64cd756bf95b2d4e9fa2b7f82c2f746ed77ea99432498",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/DATA_README.txt",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/DATA_README.txt",
       "github_digest": "sha256:cc6eca6da2b09a70f0c64cd756bf95b2d4e9fa2b7f82c2f746ed77ea99432498"
     },
     {
       "name": "dataset_assets.json",
       "bytes": 5229,
       "sha256": "7672cee2e9293dd21a3398819f435c4bd8a59f6ab33589cedace511fc07dffd9",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/dataset_assets.json",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/dataset_assets.json",
       "github_digest": "sha256:7672cee2e9293dd21a3398819f435c4bd8a59f6ab33589cedace511fc07dffd9"
     },
     {
       "name": "Member1_Final_D01_D02_D03_20261029.zip",
       "bytes": 35786279,
       "sha256": "b67ba5f5b8c3eccb3b65fe184af78bbf8febfddb6a9dafaf0f65fcef7a3521ba",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/Member1_Final_D01_D02_D03_20261029.zip",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/Member1_Final_D01_D02_D03_20261029.zip",
       "github_digest": "sha256:b67ba5f5b8c3eccb3b65fe184af78bbf8febfddb6a9dafaf0f65fcef7a3521ba"
     },
     {
       "name": "test.zip.part001",
       "bytes": 536870912,
       "sha256": "511ecddbfcee9422c7fea98baa445c39b37af50eabd7a4f083774f0695020b60",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part001",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part001",
       "github_digest": "sha256:511ecddbfcee9422c7fea98baa445c39b37af50eabd7a4f083774f0695020b60"
     },
     {
       "name": "test.zip.part002",
       "bytes": 536870912,
       "sha256": "fad72c5440327b61d4ff4bd86ecfc1da5aabc82b69d372a86212675f7b42293c",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part002",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part002",
       "github_digest": "sha256:fad72c5440327b61d4ff4bd86ecfc1da5aabc82b69d372a86212675f7b42293c"
     },
     {
       "name": "test.zip.part003",
       "bytes": 536870912,
       "sha256": "38e174deaf678cb0245c3753aec803adb8ed6f1c919ef8146ffa7bce0f527ac4",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part003",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part003",
       "github_digest": "sha256:38e174deaf678cb0245c3753aec803adb8ed6f1c919ef8146ffa7bce0f527ac4"
     },
     {
       "name": "test.zip.part004",
       "bytes": 536870912,
       "sha256": "6b64f304f9eb278477f2b93281eea73da4608989711b7503ae18f3c242b89013",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part004",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part004",
       "github_digest": "sha256:6b64f304f9eb278477f2b93281eea73da4608989711b7503ae18f3c242b89013"
     },
     {
       "name": "test.zip.part005",
       "bytes": 536870912,
       "sha256": "eae02a0883d08f6f55c6610ac4aba680ed0caa7516e1862218cb909101b3952b",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part005",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part005",
       "github_digest": "sha256:eae02a0883d08f6f55c6610ac4aba680ed0caa7516e1862218cb909101b3952b"
     },
     {
       "name": "test.zip.part006",
       "bytes": 536870912,
       "sha256": "8e00b9f63a5dfc8081999a44bfae5356f665eef247b7c9556b64c8fe68c2c03b",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part006",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part006",
       "github_digest": "sha256:8e00b9f63a5dfc8081999a44bfae5356f665eef247b7c9556b64c8fe68c2c03b"
     },
     {
       "name": "test.zip.part007",
       "bytes": 536870912,
       "sha256": "a0da89c9450877abbbd6b4b9816c6a64507bc29df0ae15d7afa027072a8ea0dc",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part007",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part007",
       "github_digest": "sha256:a0da89c9450877abbbd6b4b9816c6a64507bc29df0ae15d7afa027072a8ea0dc"
     },
     {
       "name": "test.zip.part008",
       "bytes": 239316497,
       "sha256": "9c64d7201e19c9d8611b133ff64a213acc2519ade81e7ac2776bd7fcc5ce3087",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/test.zip.part008",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/test.zip.part008",
       "github_digest": "sha256:9c64d7201e19c9d8611b133ff64a213acc2519ade81e7ac2776bd7fcc5ce3087"
     },
     {
       "name": "train.zip.part001",
       "bytes": 536870912,
       "sha256": "e89c9405cacba0c83a10de79a0e462be15ad9c51e66379d61bece5d292e113b1",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part001",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part001",
       "github_digest": "sha256:e89c9405cacba0c83a10de79a0e462be15ad9c51e66379d61bece5d292e113b1"
     },
     {
       "name": "train.zip.part002",
       "bytes": 536870912,
       "sha256": "5ca1636e40f8651f62f26167850b0b53c9fd5f85a7f9b183360ede02cdb615ce",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part002",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part002",
       "github_digest": "sha256:5ca1636e40f8651f62f26167850b0b53c9fd5f85a7f9b183360ede02cdb615ce"
     },
     {
       "name": "train.zip.part003",
       "bytes": 536870912,
       "sha256": "65b4ef106bad15b0d401b26d6031eafd72902abc09030af42f9f236321c11717",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part003",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part003",
       "github_digest": "sha256:65b4ef106bad15b0d401b26d6031eafd72902abc09030af42f9f236321c11717"
     },
     {
       "name": "train.zip.part004",
       "bytes": 536870912,
       "sha256": "9dbef49ca91f38d5843fd192ed296cbeb2dff2350aa5e61e445490fb7088c506",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part004",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part004",
       "github_digest": "sha256:9dbef49ca91f38d5843fd192ed296cbeb2dff2350aa5e61e445490fb7088c506"
     },
     {
       "name": "train.zip.part005",
       "bytes": 536870912,
       "sha256": "f6e70cea53e6677e639a106e6273e8705e24b12754e0e62c40781901c944bb10",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part005",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part005",
       "github_digest": "sha256:f6e70cea53e6677e639a106e6273e8705e24b12754e0e62c40781901c944bb10"
     },
     {
       "name": "train.zip.part006",
       "bytes": 536870912,
       "sha256": "1d7ee9e36b55f13442e8c9da18cba36494161119b65774e6818aa2ab7767d7e4",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part006",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part006",
       "github_digest": "sha256:1d7ee9e36b55f13442e8c9da18cba36494161119b65774e6818aa2ab7767d7e4"
     },
     {
       "name": "train.zip.part007",
       "bytes": 536870912,
       "sha256": "bcc8b7ae1d39433beab93697073236ea42dbf55d5029ffce90ee2b2c304554e0",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part007",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part007",
       "github_digest": "sha256:bcc8b7ae1d39433beab93697073236ea42dbf55d5029ffce90ee2b2c304554e0"
     },
     {
       "name": "train.zip.part008",
       "bytes": 536870912,
       "sha256": "12410418057ade3270ebd0d5e18a9549058f2bf6adcfbdd0cb2bd2a2f06465d8",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part008",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part008",
       "github_digest": "sha256:12410418057ade3270ebd0d5e18a9549058f2bf6adcfbdd0cb2bd2a2f06465d8"
     },
     {
       "name": "train.zip.part009",
       "bytes": 238557009,
       "sha256": "2ca0d55d6dbd2dc375296756eceb7340e299e6ccc8e6b7d07b367b91f2d3662f",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/train.zip.part009",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/train.zip.part009",
       "github_digest": "sha256:2ca0d55d6dbd2dc375296756eceb7340e299e6ccc8e6b7d07b367b91f2d3662f"
     },
     {
       "name": "Trans10K_v2_category_masks_3445e93.zip",
       "bytes": 101731420,
       "sha256": "ce1f0a06a8886a221604c55a42916fd9b176d099c59769855d537faef2c95754",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/Trans10K_v2_category_masks_3445e93.zip",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/Trans10K_v2_category_masks_3445e93.zip",
       "github_digest": "sha256:ce1f0a06a8886a221604c55a42916fd9b176d099c59769855d537faef2c95754"
     },
     {
       "name": "validation.zip.part001",
       "bytes": 536870912,
       "sha256": "2646c4917efd14c64cd787bfcdc13ebcea8384f954be339023bbe98b6164fd9d",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/validation.zip.part001",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/validation.zip.part001",
       "github_digest": "sha256:2646c4917efd14c64cd787bfcdc13ebcea8384f954be339023bbe98b6164fd9d"
     },
     {
       "name": "validation.zip.part002",
       "bytes": 389230883,
       "sha256": "09accc4a7b4b82ac097028966fe5c55052a4b4dd8328d085721d05c48cd9bccd",
-      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/untagged-3517e5906d7525b4fbe7/validation.zip.part002",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/trans10k-course-data-20261114/validation.zip.part002",
       "github_digest": "sha256:09accc4a7b4b82ac097028966fe5c55052a4b4dd8328d085721d05c48cd9bccd"
     }
   ]

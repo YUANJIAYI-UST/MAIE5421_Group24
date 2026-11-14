@@ -144,6 +144,11 @@ def main():
         raise ValueError("Final release asset inventory mismatch")
     if args.publish:
         release = call("PATCH", release["url"], json={"draft": False, "body": body, "name": args.title})
+        # GitHub replaces temporary untagged draft download URLs on publication.
+        # Record the published URLs, not the pre-publication asset snapshot.
+        remote = current_assets()
+        if set(remote) != {r["name"] for r in records} or not all(matches(remote[r["name"]], r) for r in records):
+            raise ValueError("Published release asset inventory mismatch")
     receipt = {"repository": args.repository, "tag": args.tag, "target": args.target,
         "url": release["html_url"], "draft": release["draft"], "assets": [
             {**record, "url": remote[record["name"]]["browser_download_url"],
