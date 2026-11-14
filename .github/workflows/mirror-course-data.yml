@@ -1,0 +1,33 @@
+name: Mirror verified public course archives
+on:
+  push:
+    branches: [member2/training-resume-pilot]
+    paths:
+      - .github/workflows/mirror-course-data.yml
+      - scripts/mirror_public_archives_to_release.py
+permissions:
+  contents: write
+concurrency:
+  group: trans10k-course-data-20261114
+  cancel-in-progress: false
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        split: [train, validation, test]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install requests==2.34.2
+      - name: Download public archive, verify frozen hashes, and upload exact parts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATA_SPLIT: ${{ matrix.split }}
+        run: python scripts/mirror_public_archives_to_release.py --split "$DATA_SPLIT" --output "$RUNNER_TEMP/trans10k-$DATA_SPLIT"
