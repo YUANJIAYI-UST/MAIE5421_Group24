@@ -1,6 +1,7 @@
 """Original-resolution evaluation and paired fixed photometric stress tests."""
 import argparse
 import csv
+import subprocess
 from pathlib import Path
 
 import numpy as np
@@ -122,6 +123,7 @@ def main():
     parser.add_argument("--device", default="auto")
     parser.add_argument("--robustness", action="store_true")
     parser.add_argument("--visuals", type=int, default=12)
+    parser.add_argument("--progress-every", type=int, default=100)
     args = parser.parse_args()
     device = ("cuda" if torch.cuda.is_available() else "cpu") if args.device == "auto" else args.device
     torch.set_num_threads(4)
@@ -129,22 +131,28 @@ def main():
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     torch.use_deterministic_algorithms(checkpoint["config"].get("deterministic", False))
+    try:
+        evaluation_commit = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True, stderr=subprocess.DEVNULL).strip()
+        evaluation_dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], text=True).strip())
+    except (OSError, subprocess.CalledProcessError):
+        evaluation_commit, evaluation_dirty = None, None
     output = Path(args.output)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Use a new evaluation directory to preserve previous evidence")
     size = checkpoint["config"]["size"]
     clean = evaluate(model, args.manifest, size, device, args.root,
-                     output=output / "clean", visuals=args.visuals)
+                     output=output / "clean", visuals=args.visuals, progress_every=args.progress_every)
     write_json(output / "provenance.json", {"checkpoint_sha256": sha256_file(args.checkpoint),
                "training_config": checkpoint["config"], "device": device,
-               "epoch": checkpoint["epoch"], "selection": "validation foreground IoU"})
+               "epoch": checkpoint["epoch"], "selection": "validation foreground IoU",
+               "evaluation_git_commit": evaluation_commit, "evaluation_git_dirty": evaluation_dirty})
     print(clean["scores"])
     if args.robustness:
         results = []
         for condition in PERTURBATIONS:
             folder = output / f"{condition[0]}_{condition[1]:g}"
             results.append(evaluate(model, args.manifest, size, device, args.root,
-                                    condition, output=folder))
+                                    condition, output=folder, progress_every=args.progress_every))
         summary = {}
         for subset in ("all", "easy", "hard"):
             summary[subset] = {}
