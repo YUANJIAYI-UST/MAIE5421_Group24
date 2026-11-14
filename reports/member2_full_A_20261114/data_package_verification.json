@@ -1,0 +1,32 @@
+{
+  "v2_archive_files": 10428,
+  "frozen_inventory_hashes_match": true,
+  "original_archive_restoration": "passed: every split part and reconstructed whole archive matched expected SHA256 and byte count",
+  "restored_archives": [
+    {
+      "name": "train.zip",
+      "bytes": 4533524305,
+      "sha256": "5c388786af167c640f472c455a7fd1851d591632f1d419873cf4a8070eb99869"
+    },
+    {
+      "name": "validation.zip",
+      "bytes": 926101795,
+      "sha256": "c2edba4ba966445272d245699848b16a1427ef5bc5140fbeb15c4fedf41a046c"
+    },
+    {
+      "name": "test.zip",
+      "bytes": 3997412881,
+      "sha256": "514d3788091058e41ad226a9d3a99ca29523150403f9e5a1efc99b23e1bd88bb"
+    },
+    {
+      "name": "Member1_Final_D01_D02_D03_20261029.zip",
+      "bytes": 35786279,
+      "sha256": "b67ba5f5b8c3eccb3b65fe184af78bbf8febfddb6a9dafaf0f65fcef7a3521ba"
+    },
+    {
+      "name": "Trans10K_v2_category_masks_3445e93.zip",
+      "bytes": 101731420,
+      "sha256": "ce1f0a06a8886a221604c55a42916fd9b176d099c59769855d537faef2c95754"
+    }
+  ]
+}

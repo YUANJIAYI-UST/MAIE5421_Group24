@@ -22,7 +22,9 @@ def sha256_file(path):
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    # Member 5's f66ad6c fix: portable manifest hashes require LF on Windows too.
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
+                    encoding="utf-8", newline="\n")
 
 
 def audit_trans10k(root, output, allow_partial=False, synthetic=False):

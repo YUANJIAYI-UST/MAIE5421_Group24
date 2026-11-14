@@ -1,0 +1,71 @@
+成员 2 完整 A 基线：执行冻结与交接入口（2026-11-14）
+
+本文件描述运行协议，不凭配置存在宣称实验已经完成。
+完成状态与实际数值以 reports/member2_full_A_20261114/summary.json 为准。
+成员 2 已明确要求跑完整基线并上传结果与后续所需数据。
+
+一、范围
+M01：真实 batch 4/8 pilot 见 docs/15；D03 A/D pilot 见 docs/16。
+M02：4 图过拟合诊断已完成；本次执行全部 4959 train / 995 validation 的 30 epoch A。
+M03：保存 model/optimizer/scheduler/RNG/loader generator 的 epoch 续训；
+     固定环境下真实 GPU 模型的连续训练/续训逐状态一致；人工交叉 review 仍由成员 3 完成。
+M04：可选梯度累计已实现；本 A 使用物理 batch 8、累计 1。
+B/C/D 完整训练、三种子、12 扰动、GSD、held-out A/D 是后续分工，不由 A 的完成替代。
+
+二、执行冻结
+configs/member2_full_A_20261114.json：完整展开配置。
+configs/member2_full_A_protocol_20261114.json：协议、数据哈希、预算、授权范围。
+配置引用协议 SHA256；改数据、预算或软件版本会拒绝启动。
+冻结仅代表成员 2 执行当前完整 A；不伪造全组或成员 3/5 的签字。
+成员 5 分支 60dee7b 已有独立自动复核通过、有限人工抽查和 pair 141 补充记录：
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/blob/member5-evaluation-reproducibility/reports/MEMBER5_D01_D03_REVIEW.md
+同步其 f66ad6c 中 write_json 的 LF 修复；不重写已交付的冻结 manifest。
+
+正式 A 使用项目 requirements：torch 2.7.1+cu128 / transformers 4.46.3 /
+numpy 2.2.6 / Pillow 11.3.0 / scipy 1.15.3；完整 pip freeze 随实验归档。
+此前 pilot 使用旧环境，其性能数值不能混作这个环境的正式训练耗时。
+MiT-B0 ImageNet revision 80983a413c30d36a39c20203974ae7807835e2b4。
+seed 42，512，AdamW lr 6e-5，weight_decay 0.01，BF16，clip 1。
+30 epochs，每轮 620 optimizer steps，共 18600，warmup 930，随后 polynomial power 0.9。
+不裁掉末 batch；完整验证每轮执行；测试不参与调参或选模。
+成员 1 派生数据仍保留 complete_official_split=false，不冒充未过滤官方训练划分。
+
+三、等价加速与验证
+python -m transparent_seg.cache --manifest manifests/member1_final_20261029/v1/train.json --output .cache/member2_v1_512/train --training
+python -m transparent_seg.cache --manifest manifests/member1_final_20261029/v1/validation.json --output .cache/member2_v1_512/validation
+缓存逐文件核对原始 image/mask SHA256；保存原流程 PIL resize 后 RGB 和二值 target/valid。
+验证 GT 保持原尺寸；packbits 仅无损存储。缓存索引绑定 manifest、Pillow/NumPy 版本与大小。
+训练启动核对全部缓存 SHA256。随机增强仍在 resize 后按 seed/epoch/id 计算。
+tests/test_full_baseline.py 检查含 void、不同 epoch 增强、CPU/CUDA 区域计数的一致性和损坏拒绝。
+每轮只需选模的原尺寸 pooled 区域指标；Boundary IoU 明确为 null，不填假数值。
+最佳模型之后重新从原图完整评估 validation/test，补齐 Boundary IoU、逐图 CSV、示例图。
+汇总脚本逐项比较最终 validation 的 TP/FP/FN/TN/IoU/F1 与选模轮记录，必须精确一致。
+
+四、运行
+PowerShell，从仓库根目录：
+  $env:CUBLAS_WORKSPACE_CONFIG=':4096:8'
+  $env:GIT_CONFIG_COUNT='1'
+  $env:GIT_CONFIG_KEY_0='safe.directory'
+  $env:GIT_CONFIG_VALUE_0=(Get-Location).Path.Replace('\','/')
+  .\.venv\Scripts\python.exe -m transparent_seg.train --config configs/member2_full_A_20261114.json --output runs/member2_full_A_20261114
+离线时另设置 HF_HUB_OFFLINE=1、TRANSFORMERS_OFFLINE=1，并先缓存固定 ImageNet revision。
+中断后按 docs/14 的 --resume 启动新目录，保持冻结配置不变。
+
+最佳权重冻结后：
+  .\.venv\Scripts\python.exe -m transparent_seg.evaluate --checkpoint runs/member2_full_A_20261114/best.pt --manifest manifests/member1_final_20261029/v1/validation.json --output runs/member2_full_A_20261114/validation_evaluation --device cuda
+  .\.venv\Scripts\python.exe -m transparent_seg.evaluate --checkpoint runs/member2_full_A_20261114/best.pt --manifest manifests/member1_final_20261029/v1/test.json --output runs/member2_full_A_20261114/test_evaluation --device cuda
+  .\.venv\Scripts\python.exe scripts/summarize_full_baseline.py --run runs/member2_full_A_20261114 --output reports/member2_full_A_20261114
+
+五、数据和权重发布
+大文件使用 GitHub Release；代码仓库保存配置、日志、汇总、校验清单和还原脚本。
+dataset_assets.json 记录原归档和每个分卷的字节数/SHA256；单分卷最大 512 MiB。
+下载全部资产后：
+  python scripts/restore_release_archives.py --assets <下载目录> --output <新的归档目录>
+原始 train/validation/test ZIP 解压参照 scripts/extract_trans10k_v1.py。
+Member1_Final ZIP 仅导入 data/、manifests/、runs/ 等数据证据，不用包内旧代码覆盖当前仓库。
+V2 ZIP 已包含 data/Trans10K_v2_mirror_3445e93 路径，从项目根目录解压。
+V2 保留固定镜像来源说明；与原作者归档的等价性仍未核实。
+原作者保留数据权利；课程复现请引用 Trans10K/TransLAB 和 Trans2Seg。
+https://github.com/xieenze/Segment_Transparent_Objects
+https://github.com/xieenze/Trans2Seg
+用户本次明确要求上传数据，覆盖 docs/04 中默认仅保存链接的历史交付方式。

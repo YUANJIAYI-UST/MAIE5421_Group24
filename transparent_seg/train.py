@@ -8,6 +8,7 @@ import subprocess
 import sys
 import time
 import shutil
+from importlib.metadata import version
 from pathlib import Path
 
 import numpy as np
@@ -15,7 +16,8 @@ import torch
 from torch.utils.data import DataLoader
 
 from .data import SegmentationDataset, read_manifest, validate_derivative_use
-from .evaluate import evaluate
+from .evaluate import evaluate, evaluate_selection
+from .protocol import validate_frozen_protocol
 from .losses import segmentation_loss
 from .model import TransparentSegformer
 from .prepare import sha256_file, write_json
@@ -64,9 +66,13 @@ def train(config, output, resume=None, stop_after_epoch=None):
         raise ValueError("gradient_accumulation_steps must be a positive integer")
     if config.get("purpose") != "smoke" and not config["pretrained"]:
         raise ValueError("Research runs require ImageNet initialization per proposal")
+    for package, expected in config.get("expected_versions", {}).items():
+        if version(package) != expected:
+            raise ValueError(f"Frozen software version mismatch: {package}; expected {expected}")
     root = config.get("root")
     training = SegmentationDataset(config["train_manifest"], config["size"], True,
-                                   config["augmentation"], config["seed"], root)
+                                   config["augmentation"], config["seed"], root,
+                                   cache_dir=config.get("train_cache"))
     validation, _ = read_manifest(config["val_manifest"], root)
     if validation["split"] != "validation":
         raise ValueError("Model selection requires validation split, never test")
@@ -91,7 +97,12 @@ def train(config, output, resume=None, stop_after_epoch=None):
         raise ValueError("Synthetic smoke data cannot be used for a research run")
     if config.get("purpose") == "research" and not all(
             m.get("complete_official_split") for m in (training.meta, validation)):
-        raise ValueError("Main research runs require complete official train/validation splits; use pilot for partial data")
+        if not config.get("frozen_protocol"):
+            raise ValueError("Main research runs require complete official train/validation splits; use pilot for partial data")
+        validate_frozen_protocol(config, training.meta, validation)
+    selection_data = (SegmentationDataset(config["val_manifest"], config["size"], root=root,
+                      cache_dir=config.get("validation_cache"))
+                      if config.get("validation_metrics") == "region_only" else None)
     seed_everything(config["seed"])
     torch.use_deterministic_algorithms(config.get("deterministic", False))
     torch.set_num_threads(config.get("cpu_threads", 4))
@@ -224,12 +235,17 @@ def train(config, output, resume=None, stop_after_epoch=None):
             step_seconds.append(time.perf_counter() - step_started)
             for key, value in losses.items():
                 totals[key] += value.item()
+            progress = config.get("train_progress_every", 0)
+            if progress and (step + 1) % progress == 0:
+                print(f"Training epoch {epoch + 1}/{config['epochs']}: {step + 1}/{steps_per_epoch} batches", flush=True)
         train_seconds = time.perf_counter() - started
         validation_started = time.perf_counter()
         validate_now = epoch == 0 or (epoch + 1) % validation_interval == 0 or epoch + 1 == config["epochs"]
-        scores = (evaluate(model, config["val_manifest"], config["size"], device, root,
-                           progress_every=config.get("eval_progress_every", 0))["scores"]
-                  if validate_now else None)
+        scores = None
+        if validate_now:
+            scores = (evaluate_selection(model, selection_data, device, config.get("eval_progress_every", 0))
+                      if selection_data is not None else evaluate(model, config["val_manifest"],
+                      config["size"], device, root, progress_every=config.get("eval_progress_every", 0)))["scores"]
         if device.startswith("cuda"):
             torch.cuda.synchronize()
         validation_seconds = time.perf_counter() - validation_started

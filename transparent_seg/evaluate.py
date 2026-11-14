@@ -44,6 +44,32 @@ def save_panel(image, target, prediction, path):
     panel.save(path)
 
 
+def evaluate_selection(model, dataset, device, progress_every=0):
+    """Original-size region counts; boundary metrics deferred to final evaluation."""
+    model.eval()
+    meters = {k: SegmentationMetrics() for k in ("all", "easy", "hard")}
+    for i in range(len(dataset)):
+        if progress_every and i % progress_every == 0:
+            print(f"Validation selection: {i}/{len(dataset)}", flush=True)
+        sample = dataset[i]
+        y, v = sample["target"][0].to(device).bool(), sample["valid"][0].to(device)
+        logits = model(sample["image"][None].to(device))["logits"]
+        logits = F.interpolate(logits.float(), size=y.shape, mode="bilinear", align_corners=False)
+        p = logits.sigmoid()[0, 0] >= 0.5
+        counts = [int(x.item()) for x in ((p & y & v).sum(), (p & ~y & v).sum(),
+                                          (~p & y & v).sum(), (~p & ~y & v).sum())]
+        groups = ["all"] + ([sample["difficulty"]] if sample["difficulty"] in ("easy", "hard") else [])
+        for group in groups:
+            meter = meters[group]
+            meter.images += int(sum(counts) > 0)
+            meter.skipped += int(sum(counts) == 0)
+            for key, value in zip(("tp", "fp", "fn", "tn"), counts):
+                setattr(meter, key, getattr(meter, key) + value)
+    return {"scores": {k: v.compute() for k, v in meters.items()},
+            "resolution": "original", "boundary_metrics": "deferred_to_selected_checkpoint"}
+
+
+@torch.inference_mode()
 def evaluate(model, manifest_path, size, device, root=None, condition=None, output=None, visuals=0, progress_every=0):
     meta, base = read_manifest(manifest_path, root)
     model.eval()
@@ -100,6 +126,9 @@ def main():
     device = ("cuda" if torch.cuda.is_available() else "cpu") if args.device == "auto" else args.device
     torch.set_num_threads(4)
     model, checkpoint = load_checkpoint(args.checkpoint, device)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    torch.use_deterministic_algorithms(checkpoint["config"].get("deterministic", False))
     output = Path(args.output)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Use a new evaluation directory to preserve previous evidence")
