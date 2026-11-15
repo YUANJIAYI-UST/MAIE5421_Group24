@@ -1,0 +1,51 @@
+{
+  "split": "test",
+  "dataset": "member1_final_20261029_v1",
+  "synthetic": false,
+  "complete_official_split": true,
+  "manifest_sha256": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012",
+  "condition": "clean",
+  "threshold": 0.5,
+  "resolution": "original",
+  "scores": {
+    "all": {
+      "images": 4428,
+      "skipped_all_void": 0,
+      "foreground_iou": 0.8743639135151272,
+      "region_f1": 0.9329713479975943,
+      "boundary_iou": 0.6808697543119069,
+      "boundary_images": 4428,
+      "background_fpr": 0.028342740705891583,
+      "tp": 12617312718,
+      "fp": 992085427,
+      "fn": 820877994,
+      "tn": 34011072429
+    },
+    "easy": {
+      "images": 3491,
+      "skipped_all_void": 0,
+      "foreground_iou": 0.9153985870842082,
+      "region_f1": 0.9558309098240593,
+      "boundary_iou": 0.727595852383967,
+      "boundary_images": 3491,
+      "background_fpr": 0.018147328709902134,
+      "tp": 9524746261,
+      "fp": 505859470,
+      "fn": 374420446,
+      "tn": 27369288332
+    },
+    "hard": {
+      "images": 937,
+      "skipped_all_void": 0,
+      "foreground_iou": 0.768291779689482,
+      "region_f1": 0.8689649395128632,
+      "boundary_iou": 0.5067813782504753,
+      "boundary_images": 937,
+      "background_fpr": 0.0682134218830326,
+      "tp": 3092566457,
+      "fp": 486225957,
+      "fn": 446457548,
+      "tn": 6641784097
+    }
+  }
+}

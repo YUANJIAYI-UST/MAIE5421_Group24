@@ -1,0 +1,44 @@
+{
+  "repository": "YUANJIAYI-UST/MAIE5421_Group24",
+  "tag": "member2-a-baseline-20261114",
+  "target": "e7a6f2ca5e5c3614e823bbc18fe27586b415c521",
+  "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member2-a-baseline-20261114",
+  "draft": false,
+  "assets": [
+    {
+      "name": "A_baseline_training_curves.pdf",
+      "bytes": 21196,
+      "sha256": "7be95dc12fb4a871490c4a35a1f0f168a3a3c8ba724424bbdb9f9de621b20a4b",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member2-a-baseline-20261114/A_baseline_training_curves.pdf",
+      "github_digest": "sha256:7be95dc12fb4a871490c4a35a1f0f168a3a3c8ba724424bbdb9f9de621b20a4b"
+    },
+    {
+      "name": "best.pt",
+      "bytes": 44850699,
+      "sha256": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member2-a-baseline-20261114/best.pt",
+      "github_digest": "sha256:3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a"
+    },
+    {
+      "name": "member2_A_seed42_full_run.zip",
+      "bytes": 99142144,
+      "sha256": "99e28bd65827b98882f3d77da72238c7205f17045d2a65bfc844dbf18aa7ec05",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member2-a-baseline-20261114/member2_A_seed42_full_run.zip",
+      "github_digest": "sha256:99e28bd65827b98882f3d77da72238c7205f17045d2a65bfc844dbf18aa7ec05"
+    },
+    {
+      "name": "model_assets.json",
+      "bytes": 878,
+      "sha256": "a4051cfe1115442733f1519b16e3b19520167759474bea7d0674e3f77cbfb3cf",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member2-a-baseline-20261114/model_assets.json",
+      "github_digest": "sha256:a4051cfe1115442733f1519b16e3b19520167759474bea7d0674e3f77cbfb3cf"
+    },
+    {
+      "name": "MODEL_README.txt",
+      "bytes": 1557,
+      "sha256": "6ee9b74a05d9a34007f7931dd321b7f13f0ad89f3ecc60b5ff812c6b59e40700",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member2-a-baseline-20261114/MODEL_README.txt",
+      "github_digest": "sha256:6ee9b74a05d9a34007f7931dd321b7f13f0ad89f3ecc60b5ff812c6b59e40700"
+    }
+  ]
+}

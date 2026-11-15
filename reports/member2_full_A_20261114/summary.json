@@ -1,0 +1,129 @@
+{
+  "status": "completed",
+  "scope": "member2_full_A_baseline",
+  "epochs": 30,
+  "optimizer_steps": 18600,
+  "selected_epoch": 29,
+  "selection": "full validation pooled foreground IoU; earliest tie",
+  "train_seconds": 5836.382738099666,
+  "validation_seconds": 1891.7993155005388,
+  "training_loop_seconds": 7731.6676425002515,
+  "peak_cuda_memory_mb": 2797.55517578125,
+  "peak_cuda_reserved_mb": 4042.0,
+  "first_loss": 0.8367955163121223,
+  "last_loss": 0.08033395681169725,
+  "checkpoint_sha256": {
+    "best.pt": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a",
+    "last.pt": "48d5e19906a0e9944cc0a20d3a02cdd9d100ebe356ac36ff694fcd84eb4e25b8"
+  },
+  "evaluations": {
+    "validation": {
+      "split": "validation",
+      "dataset": "member1_final_20261029_v1",
+      "synthetic": false,
+      "complete_official_split": false,
+      "manifest_sha256": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+      "condition": "clean",
+      "threshold": 0.5,
+      "resolution": "original",
+      "scores": {
+        "all": {
+          "images": 995,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.8821201157714387,
+          "region_f1": 0.9373685647155177,
+          "boundary_iou": 0.6920092267610567,
+          "boundary_images": 995,
+          "background_fpr": 0.025268183956221282,
+          "tp": 2873026694,
+          "fp": 204458306,
+          "fn": 179471329,
+          "tn": 7887073177
+        },
+        "easy": {
+          "images": 785,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.924663823545543,
+          "region_f1": 0.9608574881842609,
+          "boundary_iou": 0.7344834039095287,
+          "boundary_images": 785,
+          "background_fpr": 0.015459234168268401,
+          "tp": 2169990875,
+          "fp": 98901195,
+          "fn": 77896914,
+          "tn": 6298646958
+        },
+        "hard": {
+          "images": 210,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.7724247885425949,
+          "region_f1": 0.8716023309262491,
+          "boundary_iou": 0.5332367074203396,
+          "boundary_images": 210,
+          "background_fpr": 0.0623129573536004,
+          "tp": 703035819,
+          "fp": 105557111,
+          "fn": 101574415,
+          "tn": 1588426219
+        }
+      }
+    },
+    "test": {
+      "split": "test",
+      "dataset": "member1_final_20261029_v1",
+      "synthetic": false,
+      "complete_official_split": true,
+      "manifest_sha256": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012",
+      "condition": "clean",
+      "threshold": 0.5,
+      "resolution": "original",
+      "scores": {
+        "all": {
+          "images": 4428,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.8743639135151272,
+          "region_f1": 0.9329713479975943,
+          "boundary_iou": 0.6808697543119069,
+          "boundary_images": 4428,
+          "background_fpr": 0.028342740705891583,
+          "tp": 12617312718,
+          "fp": 992085427,
+          "fn": 820877994,
+          "tn": 34011072429
+        },
+        "easy": {
+          "images": 3491,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.9153985870842082,
+          "region_f1": 0.9558309098240593,
+          "boundary_iou": 0.727595852383967,
+          "boundary_images": 3491,
+          "background_fpr": 0.018147328709902134,
+          "tp": 9524746261,
+          "fp": 505859470,
+          "fn": 374420446,
+          "tn": 27369288332
+        },
+        "hard": {
+          "images": 937,
+          "skipped_all_void": 0,
+          "foreground_iou": 0.768291779689482,
+          "region_f1": 0.8689649395128632,
+          "boundary_iou": 0.5067813782504753,
+          "boundary_images": 937,
+          "background_fpr": 0.0682134218830326,
+          "tp": 3092566457,
+          "fp": 486225957,
+          "fn": 446457548,
+          "tn": 6641784097
+        }
+      }
+    }
+  },
+  "member3_human_review": "pending",
+  "limitations": [
+    "single seed",
+    "member1 reviewed derivative, not unfiltered official train/val",
+    "B/C/D and robustness/transfer experiments are separate team tasks"
+  ]
+}

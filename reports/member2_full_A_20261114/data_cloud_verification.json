@@ -1,0 +1,53 @@
+{
+  "workflow_url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/actions/runs/43627747817",
+  "workflow_commit": "7a031c15239ef291cfdce1d763a54a4f2571db0a",
+  "scope": "Copy original public author archives to the course data draft; full source SHA256 plus all uploaded part digests verified",
+  "jobs": [
+    {
+      "split": "train",
+      "id": 132547329049,
+      "conclusion": "success",
+      "verification_lines": [
+        "2026-11-14T18:40:00.2128628Z Author archive SHA256 matches frozen delivery: train",
+        "2026-11-14T18:40:14.0530525Z Verified public-to-release copy: train.zip.part001",
+        "2026-11-14T18:40:31.0140680Z Verified public-to-release copy: train.zip.part002",
+        "2026-11-14T18:40:47.6749724Z Verified public-to-release copy: train.zip.part003",
+        "2026-11-14T18:41:02.0166527Z Verified public-to-release copy: train.zip.part004",
+        "2026-11-14T18:41:17.4489112Z Verified public-to-release copy: train.zip.part005",
+        "2026-11-14T18:41:29.5852718Z Verified public-to-release copy: train.zip.part006",
+        "2026-11-14T18:41:41.7413442Z Verified public-to-release copy: train.zip.part007",
+        "2026-11-14T18:42:00.0184955Z Verified public-to-release copy: train.zip.part008",
+        "2026-11-14T18:42:07.6250883Z Verified public-to-release copy: train.zip.part009",
+        "2026-11-14T18:42:07.6346094Z Completed train: 9 exact parts"
+      ]
+    },
+    {
+      "split": "validation",
+      "id": 132547328931,
+      "conclusion": "success",
+      "verification_lines": [
+        "2026-11-14T18:39:04.7927758Z Author archive SHA256 matches frozen delivery: validation",
+        "2026-11-14T18:39:17.1865340Z Verified public-to-release copy: validation.zip.part001",
+        "2026-11-14T18:39:27.6946812Z Verified public-to-release copy: validation.zip.part002",
+        "2026-11-14T18:39:27.7097269Z Completed validation: 2 exact parts"
+      ]
+    },
+    {
+      "split": "test",
+      "id": 132547328706,
+      "conclusion": "success",
+      "verification_lines": [
+        "2026-11-14T18:39:32.6289098Z Author archive SHA256 matches frozen delivery: test",
+        "2026-11-14T18:39:57.1259942Z Verified public-to-release copy: test.zip.part001",
+        "2026-11-14T18:40:23.2935421Z Verified public-to-release copy: test.zip.part002",
+        "2026-11-14T18:40:43.9219205Z Verified public-to-release copy: test.zip.part003",
+        "2026-11-14T18:41:03.7984745Z Verified public-to-release copy: test.zip.part004",
+        "2026-11-14T18:41:25.6376172Z Verified public-to-release copy: test.zip.part005",
+        "2026-11-14T18:41:48.1358083Z Verified public-to-release copy: test.zip.part006",
+        "2026-11-14T18:42:09.5011742Z Verified public-to-release copy: test.zip.part007",
+        "2026-11-14T18:42:19.2735062Z Verified public-to-release copy: test.zip.part008",
+        "2026-11-14T18:42:19.2891448Z Completed test: 8 exact parts"
+      ]
+    }
+  ]
+}

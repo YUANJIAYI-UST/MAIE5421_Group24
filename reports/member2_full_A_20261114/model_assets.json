@@ -1,0 +1,28 @@
+{
+  "checkpoint_sha256": {
+    "best.pt": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a",
+    "last.pt": "48d5e19906a0e9944cc0a20d3a02cdd9d100ebe356ac36ff694fcd84eb4e25b8"
+  },
+  "artifacts": [
+    {
+      "name": "A_baseline_training_curves.pdf",
+      "bytes": 21196,
+      "sha256": "7be95dc12fb4a871490c4a35a1f0f168a3a3c8ba724424bbdb9f9de621b20a4b"
+    },
+    {
+      "name": "best.pt",
+      "bytes": 44850699,
+      "sha256": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a"
+    },
+    {
+      "name": "member2_A_seed42_full_run.zip",
+      "bytes": 99142144,
+      "sha256": "99e28bd65827b98882f3d77da72238c7205f17045d2a65bfc844dbf18aa7ec05"
+    },
+    {
+      "name": "MODEL_README.txt",
+      "bytes": 1557,
+      "sha256": "6ee9b74a05d9a34007f7931dd321b7f13f0ad89f3ecc60b5ff812c6b59e40700"
+    }
+  ]
+}

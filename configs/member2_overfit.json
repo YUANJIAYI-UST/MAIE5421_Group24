@@ -1,0 +1,11 @@
+{
+  "extends": "pilot_member1_final_v1_20261029.json",
+  "boundary": false,
+  "augmentation": false,
+  "batch_size": 4,
+  "gradient_accumulation_steps": 1,
+  "overfit_samples": 4,
+  "epochs": 50,
+  "max_steps_per_epoch": null,
+  "lr": 0.001
+}

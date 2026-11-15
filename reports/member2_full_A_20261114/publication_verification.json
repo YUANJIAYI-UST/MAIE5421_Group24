@@ -1,0 +1,56 @@
+{
+  "head": "e7a6f2ca5e5c3614e823bbc18fe27586b415c521",
+  "releases": [
+    {
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/trans10k-course-data-20261114",
+      "draft": false,
+      "assets": 23,
+      "bytes": 9594563539,
+      "all_digests_match": true,
+      "public_index_download": "verified"
+    },
+    {
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member2-a-baseline-20261114",
+      "draft": false,
+      "assets": 5,
+      "bytes": 144016474,
+      "all_digests_match": true,
+      "public_index_download": "verified"
+    }
+  ],
+  "pull_requests": [
+    {
+      "number": 2,
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/2",
+      "draft": true,
+      "head": "e7a6f2ca5e5c3614e823bbc18fe27586b415c521",
+      "base": "main"
+    }
+  ],
+  "checks": [
+    {
+      "id": 43629628280,
+      "name": "Python checks",
+      "event": "push",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/actions/runs/43629628280"
+    },
+    {
+      "id": 43629449432,
+      "name": "Python checks",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/actions/runs/43629449432"
+    },
+    {
+      "id": 43629358341,
+      "name": "Python checks",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/actions/runs/43629358341"
+    }
+  ]
+}

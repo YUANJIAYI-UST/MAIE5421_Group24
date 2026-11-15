@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "source_package": "Member1_V2_Category_Masks_3445e93_20261114(1)",
+  "mirror_revision": "3445e93f1e507ea6c2dd36f06badfd5e818b699f",
+  "counts": {
+    "train": 5000,
+    "validation": 1000,
+    "test": 4428
+  },
+  "files_verified": 10428,
+  "files_copied": 10428,
+  "matched_frozen_inventories": true,
+  "supplement_checksum_file_sha256": "1845ad9c2acda6a0d1956cad462af33096447b88af3f04b0301e9b59483030e7",
+  "v1_binary_targets_modified": false,
+  "author_archive_equivalence": "not_verified"
+}

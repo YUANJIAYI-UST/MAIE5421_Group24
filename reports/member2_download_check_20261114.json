@@ -1,0 +1,59 @@
+{
+  "source": "D:\\BaiduNetdiskDownload\\cv",
+  "checked_date": "2026-11-14",
+  "archives": [
+    {
+      "file": "train.zip",
+      "sha256": "5c388786af167c640f472c455a7fd1851d591632f1d419873cf4a8070eb99869",
+      "image_count": 5000,
+      "image_and_mask_files_hash_verified": 10000,
+      "passed": true
+    },
+    {
+      "file": "validation.zip",
+      "sha256": "c2edba4ba966445272d245699848b16a1427ef5bc5140fbeb15c4fedf41a046c",
+      "image_count": 1000,
+      "image_and_mask_files_hash_verified": 2000,
+      "passed": true
+    },
+    {
+      "file": "test.zip",
+      "sha256": "514d3788091058e41ad226a9d3a99ca29523150403f9e5a1efc99b23e1bd88bb",
+      "image_count": 4428,
+      "image_and_mask_files_hash_verified": 8856,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "handoff": {
+    "sha256": "b67ba5f5b8c3eccb3b65fe184af78bbf8febfddb6a9dafaf0f65fcef7a3521ba",
+    "checked_files": 240,
+    "passed": true
+  },
+  "manifest_checks": {
+    "v1": {
+      "counts": {
+        "train": 4959,
+        "validation": 995,
+        "test": 4428
+      },
+      "missing_paths": 0,
+      "missing_examples": []
+    },
+    "d03": {
+      "counts": {
+        "train": 3230,
+        "validation": 646,
+        "test": 4428
+      },
+      "missing_paths": 8304,
+      "missing_examples": [
+        "Trans10K_v2_mirror_3445e93/test/masks_12/10003_mask.png",
+        "Trans10K_v2_mirror_3445e93/test/masks_12/10008_mask.png",
+        "Trans10K_v2_mirror_3445e93/test/masks_12/1000_mask.png"
+      ]
+    }
+  },
+  "v1_pilot_data_ready_to_extract": true,
+  "d03_actual_v2_masks_available": false
+}

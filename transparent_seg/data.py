@@ -109,7 +109,10 @@ def validate_derivative_use(config, training, validation):
     protocol = protocols[0]
     if config.get('data_protocol_id') != protocol['id']:
         raise ValueError('Explicit data_protocol_id is required for a derivative')
-    if config.get('purpose') != 'pilot':
+    if config.get('purpose') == 'research' and config.get('frozen_protocol'):
+        from .protocol import validate_frozen_protocol
+        validate_frozen_protocol(config, training, validation)
+    elif config.get('purpose') != 'pilot':
         raise ValueError('This local derivative is pilot-only pending human/member-5 review; research protocol must be frozen separately')
     if protocol.get('kind') == 'v2_category_holdout':
         held = set(protocol.get('held_out_class_ids', []))
@@ -131,25 +134,32 @@ def validate_derivative_use(config, training, validation):
 
 class SegmentationDataset(Dataset):
     def __init__(self, manifest, size=512, training=False, augmentation=False,
-                 seed=42, root=None):
+                 seed=42, root=None, cache_dir=None):
         self.meta, self.root = read_manifest(manifest, root)
         if training and self.meta["split"] != "train":
             raise ValueError("Training requires a train manifest")
         self.samples = self.meta["samples"]
         self.size, self.training, self.augmentation = size, training, augmentation
         self.seed, self.epoch = seed, 0
+        self.cache = None
+        if cache_dir:
+            from .cache import PreprocessingCache
+            self.cache = PreprocessingCache(cache_dir, manifest, size, training, self.samples)
 
     def __len__(self):
         return len(self.samples)
 
     def __getitem__(self, index):
         item = self.samples[index]
-        with Image.open(self.root / item["image"]) as im:
-            image = im.convert("RGB")
-        target, valid = decode_mask(self.root / item["mask"], self.meta["encoding"],
-                                    self.meta.get("void_values", []))
-        if image.size != (target.shape[1], target.shape[0]):
-            raise ValueError(f"Image/mask geometry differs: {item['id']}")
+        if self.cache:
+            image, target, valid = self.cache.read(index)
+        else:
+            with Image.open(self.root / item["image"]) as im:
+                image = im.convert("RGB")
+            target, valid = decode_mask(self.root / item["mask"], self.meta["encoding"],
+                                        self.meta.get("void_values", []))
+            if image.size != (target.shape[1], target.shape[0]):
+                raise ValueError(f"Image/mask geometry differs: {item['id']}")
         # Stateless augmentation: independent of loader workers and model RNG.
         token = f"{self.seed}/{self.epoch}/{item['id']}".encode()
         rng = np.random.default_rng(int.from_bytes(hashlib.sha256(token).digest()[:8], "big"))
@@ -157,7 +167,7 @@ class SegmentationDataset(Dataset):
         if self.training and self.augmentation and rng.random() < 0.5:
             condition = (rng.choice(["brightness", "contrast", "gamma"]), rng.uniform(0.8, 1.2))
         tensor = image_tensor(image, self.size, condition)
-        if self.training:
+        if self.training and not self.cache:
             target = np.asarray(Image.fromarray(target).resize(
                 (self.size, self.size), Image.Resampling.NEAREST)).copy()
             valid = np.asarray(Image.fromarray(valid.astype(np.uint8)).resize(

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "scope": "member2_full_A_baseline",
+  "frozen_date": "2026-11-14",
+  "authorization": "Member 2 requested completion of full training and upload in this session.",
+  "data_protocol_id": "member1_final_20261029_v1",
+  "approval_scope": "Member 2 execution freeze; does not assert independent member 3/5 or whole-team sign-off.",
+  "member3_review": "pending",
+  "member5_review": {
+    "commit": "60dee7b",
+    "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/blob/member5-evaluation-reproducibility/reports/MEMBER5_D01_D03_REVIEW.md",
+    "status": "Automated real-data and byte-reproduction verification passed after LF fix; human spot-checks and pair-141 follow-up documented; not whole-team sign-off."
+  },
+  "config": {
+    "purpose": "research",
+    "train_manifest": "manifests/member1_final_20261029/v1/train.json",
+    "val_manifest": "manifests/member1_final_20261029/v1/validation.json",
+    "size": 512,
+    "pretrained": true,
+    "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "boundary": false,
+    "augmentation": false,
+    "boundary_radius": 1,
+    "boundary_weight": 0.1,
+    "seed": 42,
+    "batch_size": 8,
+    "epochs": 30,
+    "lr": 6e-05,
+    "weight_decay": 0.01,
+    "amp": true,
+    "amp_dtype": "bfloat16",
+    "device": "cuda",
+    "workers": 0,
+    "cpu_threads": 4,
+    "ablation": "A",
+    "data_protocol_id": "member1_final_20261029_v1",
+    "expected_manifest_sha256": {
+      "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+      "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+    },
+    "deterministic": true,
+    "gradient_accumulation_steps": 1,
+    "validation_interval": 1,
+    "validation_metrics": "region_only",
+    "eval_progress_every": 200,
+    "train_cache": ".cache/member2_v1_512/train",
+    "validation_cache": ".cache/member2_v1_512/validation",
+    "expected_versions": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.46.3",
+      "numpy": "2.2.6",
+      "Pillow": "11.3.0",
+      "scipy": "1.15.3"
+    },
+    "train_progress_every": 100
+  },
+  "data": {
+    "train": {
+      "count": 4959,
+      "sha256": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2"
+    },
+    "validation": {
+      "count": 995,
+      "sha256": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+    }
+  },
+  "selection": "Every epoch: all 995 validation images, original-resolution pooled foreground IoU, threshold 0.5; strict improvement; earliest tie.",
+  "final_evaluation": "Selected best only: full clean validation and 4428-image official-membership test, including Boundary IoU. No test feedback to training.",
+  "budget": {
+    "epochs": 30,
+    "batches_per_epoch": 620,
+    "optimizer_steps": 18600,
+    "warmup_steps": 930
+  },
+  "cache": "Lossless PIL resize/decode cache; source and cache SHA256 verified. No data subset or precision reduction.",
+  "comparability": "B/C/D must use this same data, initialization, software and budget before claiming a fair comparison; earlier pilots used a different software environment."
+}
