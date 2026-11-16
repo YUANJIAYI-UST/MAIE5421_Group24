@@ -1,0 +1,10 @@
+{
+  "B_D_status": "pending_delivery",
+  "ended_at": "2026-11-16T11:15:31.148317+00:00",
+  "log": "runs\\member4_stage6_20261116\\logs\\A_1794827702152472500.log",
+  "status": "A_delivered_waiting_B_D",
+  "wall_seconds": 28.996169799997006,
+  "updated_at": "2026-11-16T11:19:27.950821+00:00",
+  "stage6_complete": false,
+  "user_confirmed_B_D_not_delivered": true
+}

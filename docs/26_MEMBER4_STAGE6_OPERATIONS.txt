@@ -1,0 +1,62 @@
+成员4 阶段6：GSD迁移评估与接续说明（2026-11-16）
+
+当前结果
+阶段5已经完成并冻结。阶段6的A模型813条GSD评估已完成，完整集和补充集共享相同预测。
+用户确认成员3尚未交付正式B/D，先保留A结果；完整阶段6仍待A/D迁移和B/D扰动评估。
+本次没有进入阶段7，也没有重新训练、微调或选择阈值。
+
+最快验收
+Git分支内可直接查看的冻结/评估归档及恢复方法见docs/27_MEMBER4_STAGE5_6_BRANCH_DELIVERY.txt。
+1. 读 reports/MEMBER4_STAGE6_20261116.txt。
+2. 打开 runs/member4_stage6_20261116/results/gallery/index.html，看固定样本和失败案例。
+3. 表格 reports/member4_stage6_20261116/GSD_transfer_results.csv：A完成，D待交付。
+4. 机器核验：同目录verification.json、gallery_verification.json；原始逐图记录见下方。
+
+冻结输入
+manifests/member4_gsd_reviewed_v2_20261116/test_full.json
+manifests/member4_gsd_reviewed_v2_20261116/test_supplementary.json
+runs/member2_full_A_20261114/best.pt
+这两份清单的813个sample对象逐项相同，不能把两个表格行当作两次独立实验。
+GSD没有easy/hard分类；原评估器的空分组保留为内部输出，报告不把它们作为有效结果。
+
+运行命令（项目根目录PowerShell）
+本机已完成，无需重跑。以下组织脚本用于保有本机前置审计材料的工作副本：除冻结数据/清单和A权重外，
+还需要原runs/member4_stage5_20261116/审计与单人复核材料、runs/member4_stage4_20261115/source_sha256.json。
+它会核对这些历史输入；单独clone本分支没有全部runs材料。新工作副本只想独立复算A时，
+请使用docs/27_MEMBER4_STAGE5_6_BRANCH_DELIVERY.txt中的evaluate_resumable命令。
+前置材料齐全且目标运行目录尚不存在时，组织脚本命令为：
+.\.venv\Scripts\python.exe -X utf8 -u -B scripts/member4_stage6_gsd.py run
+.\.venv\Scripts\python.exe -X utf8 -u -B scripts/member4_stage6_gsd.py summarize
+.\.venv\Scripts\python.exe -X utf8 -u -B scripts/member4_stage6_gsd.py gallery
+脚本使用本次固定版本的目录；正式已有成果不覆盖。图像输出已存在时gallery会拒绝覆盖。
+run仅调用已有评估器，不训练；每25张写入校验分块，共33块。
+固定20张预览及低分案例选择规则在评分前写入qualitative_selection.json。
+summarize核对分块、清单、模型、像素计数及独立指标汇总；D缺失时明确写pending。
+gallery用原预测入口重算展示图并与全量逐图预测哈希核对，输出原尺寸mask和overlay。
+
+恢复（仅限中断且保持原代码/环境/模型/数据不变）
+.\.venv\Scripts\python.exe -X utf8 -u -B scripts/member4_stage6_gsd.py run --resume
+评估身份包括Git HEAD、核心源文件哈希、数据、模型及运行环境。
+如果之后已经提交新commit，不能直接把旧运行接到新身份上；使用原版本及源文件快照，或新建评估版本。
+本次源码快照在runs/member4_stage6_20261116/source_snapshot/，文件哈希见source_sha256.json。
+
+原始记录
+runs/member4_stage6_20261116/authorization.json：本次阶段6指令。
+stage5_gate.json：阶段5进入条件核查。
+protocol.json：模型、清单、FP32/原尺寸/0.5阈值及同成员清单复用规则。
+A_full/identity.json：实际代码与环境身份。
+A_full/chunks/：33个完整分块；A_full/clean/per_image.csv：813行逐图分数/预测哈希。
+A_full/clean/metrics.json、A_full/result.json：正式指标及实际耗时。
+logs/：命令日志；team_dependencies.json：B/D未交付的用户确认。
+results/：结果表、汇总、核验与24组预测图。
+阶段5冻结记录中的evaluation_authorized=false保持原样，本次后续授权单独记录，不重写清单改变哈希。
+
+B/D到位后需要核对的内容
+成员3只需提供已有正式运行目录/下载链接及代码commit，不需要另写多份表。
+检查best.pt、实际配置、完整训练日志、最佳轮次和验证选模记录、公共初始化与环境。
+主实验数据须与A/C一致，核对30轮/18600更新、seed42、512、batch8等公共设置。
+B/D共享边界头及所选边界参数；B关闭增强，D与C共享现有p=0.5单一[0.8,1.2]光度增强。
+若存在差异，应如实记录并判断可比性；pilot或类别隔离模型不能代替主实验正式B/D。
+核验后在同一GSD清单上运行D，补A/D表；在全部4428张Trans10K测试图上补B/D的clean和12扰动。
+沿用同一0.5阈值、原尺寸评分与统计规则，不能用GSD表现重新选模型或调整超参数。
+当前D未知，不能把A结果描述为已完成A/D迁移，也不能用GSD代替未见类别隔离实验。

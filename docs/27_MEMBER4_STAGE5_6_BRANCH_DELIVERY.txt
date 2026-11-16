@@ -1,0 +1,61 @@
+成员4阶段5/6分支交付入口（2026-11-16）
+
+当前状态
+阶段5：完成，Yuan Jiayi的真实单人抽查记录已核验，GSD清单已冻结。
+阶段6：A的全部813条GSD评估和可视化已完成；B/D正式模型待交付。
+完整A/D迁移对比和B/D全量扰动结果尚未完成。阶段7未开始。
+本次仅发布已有阶段5/6成果，没有新增训练、重新选模或改变测试清单。
+
+组员先看这几处（均可在member4/augmentation-gsd分支查看）
+1. reports/MEMBER4_GSD_FREEZE_20261116.txt：冻结时的验收报告。
+2. reports/member4_gsd_freeze_20261116/frozen_release/：原字节的冻结清单、真实复核JSON、版本及哈希。
+3. reports/MEMBER4_STAGE6_20261116.txt：A结果、失败案例与结论限制。
+4. reports/member4_stage6_20261116/GSD_transfer_results.csv：结果表；D行明确为pending_formal_model。
+5. reports/member4_stage6_20261116/run_records/team_dependencies.json：B、D分别为pending_formal_delivery。
+6. reports/member4_stage6_20261116/gallery/：24张对照预览。GitHub直接点击01.png至24.png；
+   下载仓库后可用浏览器打开index.html。图像从左到右为原图、原标签、A预测、预测叠图。
+
+已完成的A结果
+完整集/补充集均813行，成员和标签完全相同，共享同一批预测，不是独立的两次实验。
+前景IoU 68.127327%；F1/Dice 81.042538%；Boundary IoU 44.210861%；背景误报率11.418990%。
+FP32推理，原尺寸评分，阈值0.5，没有在GSD训练或调参。
+目前只有A，不能据此声称边界模块/增强在GSD有效，也不能称为完整A/D比较。
+GSD玻璃场景迁移不代替未见类别隔离实验；保留的内部重复和标注差异已披露。
+
+每个数字怎样追溯
+reports/member4_stage6_20261116/A_full/clean/per_image.csv：全部813条逐图分数和预测哈希。
+A_full/chunks/：33个完整校验分块；identity.json、source_inventory.json：模型、数据、代码和环境身份。
+A_full/clean/metrics.json及result.json：正式聚合指标和耗时；run_records/logs/：原始命令日志。
+verification.json和gallery_verification.json：指标独立回算、完整成员、24张展示图一致性检查。
+gallery_selection.json：20张评分前固定样本及4张补充失败案例的选择规则。
+publication_verification.json：发布前的源文件/清单/分块/汇总/待交付状态核对。
+publication_files_sha256.json：本次完整发布内容的哈希；原files_sha256.json保持原范围和字节不变。
+GSD图像来源与固定版本许可说明位于gallery/GSD_source_README.txt。
+
+历史状态如何理解
+冻结报告和release.json中“阶段6未开始/未授权”描述冻结当时的状态，保留原文与哈希。
+随后用户授权阶段6，见run_records/authorization.json；A完成及B/D待交付见run_records/state.json。
+当前状态以本文件和team_dependencies.json为准，不把历史状态改写成事前已经完成。
+本次代码提交发生在实验之后；实际运行的Git HEAD为8919be1，另有工作区源码哈希记录。
+
+冻结清单归档的使用方式
+frozen_release目录是供Git审阅的字节归档，内部root相对路径仍对应原来的manifests目录。
+不能直接把reports目录里的test_full.json交给数据读取器；需先按原位置恢复。
+如已有manifests/member4_gsd_reviewed_v2_20261116，不覆盖它，核对files_sha256.json即可。
+仅在目标不存在的新工作副本中，项目根目录PowerShell执行：
+  if (Test-Path -LiteralPath 'manifests/member4_gsd_reviewed_v2_20261116') { throw '目标已存在，请核对哈希，不覆盖' }
+  New-Item -ItemType Directory -Path manifests -Force | Out-Null
+  Copy-Item -LiteralPath 'reports/member4_gsd_freeze_20261116/frozen_release' -Destination 'manifests/member4_gsd_reviewed_v2_20261116' -Recurse
+数据仍须位于data/GSD_member4_f8897574_test；原始数据与模型权重没有进入本次普通Git提交。
+只看报告和预览不需要下载完整数据或安装Python。
+
+独立重跑A（可选；已有结果无需再跑）
+准备同一GSD数据、恢复的清单和成员2已发布A权重后，可直接调用已验证的评估器：
+  .\.venv\Scripts\python.exe -X utf8 -u -B -m transparent_seg.evaluate_resumable --checkpoint runs/member2_full_A_20261114/best.pt --manifest manifests/member4_gsd_reviewed_v2_20261116/test_full.json --output runs/gsd_A_independent_new --device cuda --conditions clean --chunk-size 25
+用新输出目录保留原记录。新提交下的运行身份不同，不能直接接续旧分块；同一运行的中断恢复才使用--resume。
+阶段6完整组织脚本和其全部前置材料见docs/26_MEMBER4_STAGE6_OPERATIONS.txt。
+
+B/D交付后再做什么
+成员3提供已有正式主实验B/D运行目录或权重下载链接及代码commit，包含实际配置、日志、选模依据和环境。
+接收方核对数据、训练预算、公共初始化、边界参数及D增强策略后，补A/D迁移和B/D扰动。
+不要求成员1、2、5重新填写复核表。当前不进入阶段7。

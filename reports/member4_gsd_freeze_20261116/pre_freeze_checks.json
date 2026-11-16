@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-16T11:08:49.341918+00:00",
+  "source_export": "C:\\Users\\Polaris\\Downloads\\member4_gsd_review_v2.json",
+  "source_export_sha256": "a4b7fbf2577c3b822a046014f625bde0f803a522a9c7657e6764861ac1493031",
+  "archived_export_sha256": "a4b7fbf2577c3b822a046014f625bde0f803a522a9c7657e6764861ac1493031",
+  "source_code_commit": "8919be134940b3735e090efc7dde0ef8f6318cf2",
+  "review_validation": "passed",
+  "owner": "Yuan Jiayi",
+  "reviewed_on": "2026-11-16",
+  "images_and_masks_hashes_verified": 1626,
+  "decoded_pairs_checked": 813,
+  "unique_ids": 813,
+  "unresolved_questions": 0,
+  "cross_candidates": 0,
+  "old_audit_artifacts_preserved": 75,
+  "stage6_started": false,
+  "evaluation_authorized": false
+}

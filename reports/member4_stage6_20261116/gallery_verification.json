@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "fixed_before_scoring": 20,
+  "additional_ranked_failure_cases": 4,
+  "total_panels": 24,
+  "original_resolution_prediction_masks_verified": 24,
+  "legacy_prediction_hashes_match_complete_run": 24,
+  "legacy_metric_values_match_saved_run": 24,
+  "failure_selection_rule": "three lowest IoU and three lowest BIoU; tie by ID; deduplicate only for display",
+  "visually_inspected_panels": [
+    "01.png",
+    "13.png",
+    "21.png",
+    "24.png"
+  ],
+  "model_D": "pending_delivery",
+  "user_confirmed_B_D_not_delivered": true,
+  "stage6_complete": false,
+  "checked_at": "2026-11-16T11:19:27.947827+00:00"
+}

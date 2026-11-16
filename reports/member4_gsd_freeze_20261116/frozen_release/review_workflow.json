@@ -1,0 +1,24 @@
+{
+  "id": "gsd_single_owner_v2",
+  "authorized_change": "User requested single-owner review and reduced team handoff before stage6.",
+  "required": [
+    "one named owner",
+    "all fixed label samples viewed",
+    "internal duplicate policy acknowledged",
+    "questions resolved or investigated",
+    "explicit stage5 acceptance"
+  ],
+  "optional": [
+    "nearest-neighbour diagnostic browsing",
+    "teammate help on specific questions"
+  ],
+  "unchanged": [
+    "source bytes and membership",
+    "retrieval algorithm and thresholds",
+    "retain internal duplicates and original labels",
+    "exclude same-source and unresolved cross candidates from supplementary set",
+    "no GSD score-based selection",
+    "stage6 requires a separate instruction"
+  ],
+  "supersedes": "Mandatory member1/member5 sign-offs and per-normal-image written reasons."
+}

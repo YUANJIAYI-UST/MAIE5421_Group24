@@ -1,0 +1,15 @@
+{
+  "frozen_release/exclusions.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "frozen_release/files_sha256.json": "cbbbddd9e238725ae87b6ebaba02668f76f3166b1f6a8a1ff0754c1a1c635a02",
+  "frozen_release/freeze_provenance.json": "96fc15ff26da4b89a9b8f8f3b3738fc228a5b1547f9cc4fff976d1444572041c",
+  "frozen_release/human_review_record.json": "a4b7fbf2577c3b822a046014f625bde0f803a522a9c7657e6764861ac1493031",
+  "frozen_release/pair_decisions.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "frozen_release/release.json": "78e02bf33cc3f08271601a672c01b3a6bdc454d079549ee8fec5d94c18c00e57",
+  "frozen_release/review_workflow.json": "85821278c0ac46b59fb5d54db9ed69141ea52fea5f48d9d43ba0896fd3583753",
+  "frozen_release/same_scene_different_capture.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "frozen_release/submitted_review_original.json": "a4b7fbf2577c3b822a046014f625bde0f803a522a9c7657e6764861ac1493031",
+  "frozen_release/test_full.json": "cf33e8de136c5fd0be03c1e4ed70c0a6c866e734df5ca3cf1a5b5b8f6c767d82",
+  "frozen_release/test_supplementary.json": "29a75ebbf98b5aa019ad4f08a544ffbb36056cdefc512676a0f2bfad2b54b60a",
+  "post_freeze_verification.json": "d9ebac18f26fef82242619000af2b8700ffd380dbce26ec259407f09ed47b26e",
+  "pre_freeze_checks.json": "9a50ddc0f58af36df50609999213a4320b492b0b269bf3e2138dd04b1965795c"
+}
