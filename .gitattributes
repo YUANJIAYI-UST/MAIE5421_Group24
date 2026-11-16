@@ -6,3 +6,8 @@
 *.txt text eol=lf
 *.md text eol=lf
 *.ps1 text eol=crlf
+
+# Preserve the recorded bytes of member4 experiment artifacts across checkouts.
+reports/member4_stage3_20261115/*.csv -text
+reports/member4_stage4_20261115/*.csv -text
+scripts/run_member4_C.ps1 text eol=lf

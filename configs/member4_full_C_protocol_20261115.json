@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "scope": "member4_full_C_augmentation",
+  "frozen_date": "2026-11-15",
+  "authorization": "User accepted stages 1 and 2 and requested stage3 implementation; stage4 execution remains pending user acceptance.",
+  "approval_scope": "Member4 configuration freeze, not independent member2/3/5 sign-off; does not authorize starting formal training.",
+  "member2_review": "pending",
+  "member3_review": "pending",
+  "member5_review": "pending",
+  "data_protocol_id": "member1_final_20261029_v1",
+  "config": {
+    "purpose": "research",
+    "train_manifest": "manifests/member1_final_20261029/v1/train.json",
+    "val_manifest": "manifests/member1_final_20261029/v1/validation.json",
+    "size": 512,
+    "pretrained": true,
+    "encoder_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "boundary": false,
+    "augmentation": true,
+    "boundary_radius": 1,
+    "boundary_weight": 0.1,
+    "seed": 42,
+    "batch_size": 8,
+    "epochs": 30,
+    "lr": 6e-05,
+    "weight_decay": 0.01,
+    "amp": true,
+    "amp_dtype": "bfloat16",
+    "device": "cuda",
+    "workers": 0,
+    "cpu_threads": 4,
+    "ablation": "C",
+    "data_protocol_id": "member1_final_20261029_v1",
+    "expected_manifest_sha256": {
+      "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+      "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+    },
+    "deterministic": true,
+    "gradient_accumulation_steps": 1,
+    "validation_interval": 1,
+    "validation_metrics": "region_only",
+    "eval_progress_every": 200,
+    "train_cache": ".cache/member2_v1_512/train",
+    "validation_cache": ".cache/member2_v1_512/validation",
+    "expected_versions": {
+      "torch": "2.7.1+cu128",
+      "transformers": "4.46.3",
+      "numpy": "2.2.6",
+      "Pillow": "11.3.0",
+      "scipy": "1.15.3"
+    },
+    "train_progress_every": 100
+  },
+  "data": {
+    "train": {
+      "count": 4959,
+      "sha256": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2"
+    },
+    "validation": {
+      "count": 995,
+      "sha256": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+    }
+  },
+  "selection": "Every epoch: all 995 validation images, original-resolution pooled foreground IoU, threshold 0.5; strict improvement; earliest tie.",
+  "budget": {
+    "epochs": 30,
+    "batches_per_epoch": 620,
+    "optimizer_steps": 18600,
+    "warmup_steps": 930
+  },
+  "initial_shared_state_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+  "reference_A": {
+    "config_path": "configs/member2_full_A_20261114.json",
+    "config_sha256": "5205af206df59eb2a436d46e8b24883be24be4296adf067f480fbd3f0eb9b9bc",
+    "protocol_path": "configs/member2_full_A_protocol_20261114.json",
+    "protocol_sha256": "baa62eb2c3ba5a7358caf0020a3740460ac5d885868acd113391d5bdb08e9eaf"
+  },
+  "augmentation": "Existing implementation: probability 0.5; uniformly choose brightness/contrast/gamma, parameter uniform [0.8,1.2]; after resize and before normalization; no geometric transforms.",
+  "training_start": "Fresh pinned ImageNet encoder and freshly initialized decoder; never warm-start from A.",
+  "final_evaluation": "Best selected by complete validation only; all 4428 test images, clean plus 12 independently applied fixed conditions. No test feedback."
+}

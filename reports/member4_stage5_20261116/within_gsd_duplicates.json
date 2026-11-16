@@ -1,0 +1,22 @@
+[
+  {
+    "issue_id": "GSD_INTERNAL_001",
+    "ids": [
+      "gsd/test/sun_bgsisetzvbqurena",
+      "gsd/test/sun_bvyighnqkfrezdbf"
+    ],
+    "comparisons": [
+      {
+        "ids": [
+          "gsd/test/sun_bgsisetzvbqurena",
+          "gsd/test/sun_bvyighnqkfrezdbf"
+        ],
+        "image_bytes_equal": true,
+        "mask_different_pixels": 8811,
+        "pixels": 240600
+      }
+    ],
+    "full_test_action": "retain_all_original_members_and_masks",
+    "human_review": "pending"
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-11-15T19:25:29.776697+08:00",
+  "phase4_started": false,
+  "measured": {
+    "training_20_steps_seconds": 7.540808100020513,
+    "steady_gpu_step_seconds_excluding_data": 0.24934543333559608,
+    "full_995_validation_seconds_isolated": 74.65071130002616,
+    "40_images_13_conditions_processing_seconds": 94.65806149999844,
+    "40_images_13_conditions_total_seconds": 94.98641549999593,
+    "40_images_clean_total_seconds": 24.202306299994234,
+    "peak_cuda_allocated_mb": 2797.55517578125,
+    "peak_cuda_reserved_mb": 4040.0,
+    "cache_build_seconds_already_completed": 646.885195299983
+  },
+  "estimated_seconds": {
+    "C_training_including_30_full_validations": 9269.985928720795,
+    "C_best_full_clean_validation": 592.9539005998449,
+    "A_and_C_4428_images_each_13_conditions": 20957.796931099692,
+    "phase4_total": 30820.736760420332,
+    "planning_allowance_25_percent": 38525.92095052541,
+    "planning_allowance_50_percent": 46231.1051406305
+  },
+  "evaluation_estimation_crosschecks_seconds": {
+    "same_mean_per_image": 20957.294816099653,
+    "difficulty_weighted": 20434.495148428665,
+    "pixel_count_fit": 19683.672594489864
+  },
+  "pixel_fit": {
+    "seconds_intercept": 0.23391625255209897,
+    "seconds_per_megapixel": 0.18178798467145607,
+    "rmse_seconds": 0.09273775337437262
+  },
+  "test_counts_from_manifest_only": {
+    "easy": 3491,
+    "hard": 937
+  },
+  "method": "Training uses measured wall time including loading, not GPU-only step time. A/C estimate takes the largest of sample-mean, difficulty-weighted and nonnegative pixel-fit estimates. Adds one full best-model validation.",
+  "limits": [
+    "25%-50% is an engineering planning allowance, not a statistical confidence interval.",
+    "Timing pilot is 20 steps and validation sample is 40 images; full execution has not occurred.",
+    "Laptop temperature, power, competing processes, I/O and C's predicted mask density can change throughput.",
+    "Pilot uses a separate short LR schedule; formal C uses the frozen 18600-step schedule.",
+    "Excludes GSD audit/evaluation, B/D, report authoring and any user acceptance delay.",
+    "Full cache construction is already completed and is not charged again in phase4."
+  ]
+}

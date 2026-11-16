@@ -1,0 +1,82 @@
+成员4 阶段4交付：正式C训练及全量A/C对比
+状态：实验与自动核验完成；等待用户验收；阶段5未开始。
+
+你现在拿到了什么
+C是与A结构相同的SegFormer / MiT-B0模型。两者从相同的ImageNet编码器和新初始化分割头开始，C只在训练时开启已核验的光照增强，没有接着A的成品权重训练。
+正式训练和全部测试已完成，结果保存在本机。当前分支为member4/augmentation-gsd；本阶段没有提交或推送GitHub。
+
+最快验收：按下面三个步骤看
+1. 打开 reports/member4_stage4_20261115/验收说明.txt 和 A_C_comparison.csv，先看subset=all的三行，再看easy/hard。
+2. 打开 runs/member4_stage4_20261115/figures/training_curves.png 和 results/robustness_all.png，确认30轮训练，以及三种扰动下的A/C曲线。
+3. 打开 runs/member4_stage4_20261115/results/gallery/01.png、02.png、13.png、16.png，同时参考gallery_index.json中的选择依据。这里既有固定样本，也有明确筛选的失败/退步案例。
+所有路径都以项目根目录 D:/桌面/cv_group 为起点。
+
+正式训练与覆盖检查
+设备：本机 NVIDIA GeForce RTX 5090 Laptop GPU。
+配置：seed 42，512×512，batch 8，AdamW 6e-5，BF16，30 epochs，18,600次更新；不启用边界辅助头。
+数据：4959张训练图、995张验证图、4428张测试图；测试分组easy 3491张、hard 937张。
+每轮使用全部995张验证图，仅用验证集前景IoU选模，同分保留较早轮次。C最佳权重来自第30轮，验证IoU为88.1321%。
+共享初始参数哈希与A一致；最佳权重重载后995张验证图的区域统计与训练选模记录完全一致。
+A/C各13个条件全部完成，共26组、115128次图像-条件评估。每组均覆盖同样4428个图片ID，无漏图或重复。
+IoU/F1由累计像素统计计算；Boundary IoU为逐图平均。测试保持FP32、原尺寸logits插值、阈值0.5。
+A/C的评估身份记录只有权重哈希不同；数据文件、代码、条件、设备和推理规则均相同。
+A的clean复查通过预设阈值；与成员2原记录存在极小数值差异，具体记录见A_baseline_recheck.json，不能称为逐像素完全一致。
+18组案例图含固定12张及按预先规则选出的6张诊断案例；4个条件×2个模型，共144次重载预测的哈希均与全量评估记录一致。
+
+全体测试结果（分数单位为%；下降单位为百分点）
+指标                 A clean     C clean     A 12条件均分  C 12条件均分  A下降    C下降
+前景IoU               87.4364     87.5004     86.7838       86.9604       0.6526   0.5401
+区域F1                93.2971     93.3336     92.9235       93.0248       0.3737   0.3088
+Boundary IoU          68.0870     68.0586     66.8749       67.0003       1.2121   1.0584
+下降 = clean分数 - 12个扰动条件分数的算术平均；没有把clean混入扰动均分。
+
+这些结果支持什么
+本次实验中，C的正常图片前景IoU提高0.0640个百分点，扰动平均前景IoU提高0.1766个百分点，下降幅度减少0.1125个百分点，属于小幅改善。
+全体测试集的12/12个扰动条件中，C的前景IoU和区域F1高于A；Boundary IoU为11/12个条件更高，gamma=1.2时反而低0.0554个百分点。
+hard子集的扰动平均前景IoU从75.9338%提高到76.3329%（+0.3990个百分点）；easy子集从90.9869%提高到91.0794%（+0.0924个百分点）。
+正常图片的全体Boundary IoU略降0.0283个百分点；不能说所有指标、所有图片都改善。
+这是单seed实验，未进行多次训练重复或统计显著性检验；A/C训练GPU、Python小版本及部分辅助依赖不同。因此不能把这次小幅差异写成“显著提升”或普遍结论。
+曲线采用局部纵轴范围，便于看清小差异；幅度应以百分点表为准。
+
+案例怎么解释
+01.png为训练前固定的窗户样本：C在这张图的四个展示条件中都低于A，说明平均提升不保证每张图提升。
+02.png为训练前固定的透明杯样本：两者区域IoU都约0.98，差异很小。
+13.png按“C clean IoU最低”规则选出：两者几乎都未覆盖标签标出的前景区域，存在明显误检/漏检。不能仅靠光照增强解决所有场景识别问题。
+16.png按“gamma=1.6下C减A的IoU最小”规则选出：A为0.6906，C为0.0643；图中C出现明显背景误检，且镜片预测不完整。
+这些案例用于解释局限，没有删除困难图片，也没有据此调参或覆盖本轮结果。
+
+可复核的原始材料
+runs/member4_stage4_20261115/training_verification.json：30轮、18600次更新、选模及初始化检查。
+runs/member4_stage4_20261115/validation_verification.json：C最佳权重重载验证。
+runs/member4_stage4_20261115/A_complete_statistics_audit.json：A的完整逐条件统计检查。
+runs/member4_stage4_20261115/A_baseline_recheck.json：A与成员2原记录的复查差异。
+runs/member4_stage4_20261115/evaluation_identity_comparison.json：A/C测试身份一致性。
+runs/member4_stage4_20261115/results/summary.json：全部26组检查、结果汇总和模型哈希。
+runs/member4_stage4_20261115/results/final_integrity_check.json：最终文件及来源校验。
+runs/member4_stage4_20261115/results/environment_comparison.json：实际环境差异。
+runs/member4_stage4_20261115/results/files_sha256.json：交付文件哈希。
+runs/member4_A_full_test_20261115/ 与 runs/member4_C_full_test_20261115/：每条件的metrics.json、per_image.csv及178个完整分块。
+runs/member4_stage4_20261115/logs/：训练、验证及两组测试的完整控制台日志。
+
+模型和复现入口
+C最佳权重：runs/member4_full_C_seed42_20261115/best.pt
+C最后权重及续训状态：runs/member4_full_C_seed42_20261115/last.pt
+C训练记录：同目录的config.json、environment.json、pip_freeze.txt、history.jsonl。
+A沿用成员2的runs/member2_full_A_20261114/best.pt，原始A成果未覆盖。
+运行命令与恢复规则见 runs/member4_stage4_20261115/运行与恢复说明.txt 和 docs/22_MEMBER4_STAGE3_OPERATIONS.txt。
+日常预测（替换图片路径和新输出目录）：
+.\.venv\Scripts\python.exe -X utf8 -B -m transparent_seg.predict --checkpoint runs/member4_full_C_seed42_20261115/best.pt --image 图片路径 --output 新预测目录 --device cuda
+验收现有结果无需重新训练或重新跑全量测试。
+
+实际耗时（不含最终说明整理）
+C训练：2小时27分57秒；C最佳权重全量验证：8分29秒。
+A全量13条件测试：2小时12分33秒；C全量13条件测试：2小时40分19秒。
+正式队列总计约7小时29分；北京时间2026-11-15 21:35开始，2026-11-16 05:04完成。
+
+仍未完成、不能混入本阶段结论的事项
+GSD准备、重叠审计和迁移评估尚未开始，需要阶段4验收后进入阶段5。
+B/D正式结果不包含在本次A/C对比中，等待成员3的正式模型及配套记录。
+当前数据协议中成员5的独立复核状态仍为pending；自动检查不代表组员已经签字确认。
+后续如需改进，应按新验证实验研究增强范围、边界方案和多seed稳定性，保留本轮完整记录；不根据上述测试案例调参覆盖本轮结果。
+
+请验收：预算、完整覆盖、指标口径、结果图及局限均已交付。用户确认阶段4通过后，再开始阶段5。

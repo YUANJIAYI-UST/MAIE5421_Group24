@@ -1,0 +1,59 @@
+{
+  "stage": 3,
+  "automatic_checks": "passed",
+  "human_acceptance": "pending",
+  "phase4_started": false,
+  "core_and_regression_tests": 105,
+  "test_failures": 0,
+  "formal_data_counts": [
+    4959,
+    995,
+    4428
+  ],
+  "initialization_matches_A": true,
+  "full_caches_verified": true,
+  "pilot_steps": 20,
+  "pilot_gradients_and_bf16_passed": true,
+  "pilot_reloaded_995_validation_exact": true,
+  "legacy_equivalence": {
+    "images": 8,
+    "conditions": 13,
+    "every_pixel_and_metric_exact": true
+  },
+  "hard_crash_recovery": {
+    "images": 40,
+    "conditions": 13,
+    "exit_code": 86,
+    "reused_images": 25,
+    "remaining_images": 15,
+    "all_per_image_csv_bytes_exact": true
+  },
+  "runtime_budget": "runtime_budget.json",
+  "source_snapshot": "source_snapshot/",
+  "code_identity": {
+    "commit": "9cfc5436bdf5c4a7b0da899c1a57450ccaed96d7",
+    "files": {
+      "transparent_seg/__init__.py": "706ba6a2cb91730ef3b375c4f10b2c0b5412affa87aef5228bb01935105eb570",
+      "transparent_seg/cache.py": "ba3698a5088da3c135b6741170254c3314960fcda635dfd955ff7117f8cab1e0",
+      "transparent_seg/checkpoint.py": "764937cb2acf5254cf7fab560d27ffebd1aedcaa7545c3749f0a4b6364a16dc5",
+      "transparent_seg/data.py": "a1499c32ad15b5c4aed43b21cef4b5a25a700cd1e3de4382caa03eb4f786c59e",
+      "transparent_seg/data_v2.py": "8fd12d95f7fa2863f404c0a43dd48b814e2732a6edb90b8d416497a6b611fe11",
+      "transparent_seg/evaluate.py": "576bbcbb206ad3866bc978dd4be2832c43713a98d3354e7dbbbbbe2faa673c8e",
+      "transparent_seg/evaluate_resumable.py": "b1366ee543968adff0d5801a61e39bc46babe16f8e685e1a4b786ac01a60ec15",
+      "transparent_seg/losses.py": "dabd7f46e52c9ef0c7ebf277b57259a2452ceeb3558749a0d5c3fd9e0ced2ef6",
+      "transparent_seg/metrics.py": "dc660649e222e4b8d20c43f20d32c686e9f00bef06935467066a13d1d7f4ed5b",
+      "transparent_seg/model.py": "8d989733294ef7c7e5a53c44d5885da66c23459101e9f6d9be233f783b2e73a6",
+      "transparent_seg/near_duplicates.py": "1ac3cc7d08c9e10fa2188f710c4ba1e7e191162fe8fbbfcf4fb95a392271dd7e",
+      "transparent_seg/predict.py": "9fdfae39cd24dd0167882801636058656d2aeb7ebcdb05ebe499a749b8831a08",
+      "transparent_seg/prepare.py": "e4a70cea1ca96b016b423d6ee7b7cef00deb7f331030ec4085dce2389c881795",
+      "transparent_seg/prepare_final.py": "53120a4de8185a3a8ca9af000a4de9eaa06d32870a4b51014b89ea42b4099597",
+      "transparent_seg/prepare_holdout.py": "86206085ce7bfc3f48dfd4868c3cbaeb67af43268c53857be9d8da87ea00deb7",
+      "transparent_seg/prepare_reviewed.py": "a042b65d6cfb4e72797a85b9ea709c814e3df8e0f67441a18b7eb15819c7d995",
+      "transparent_seg/protocol.py": "dc6843ec54c7d9886a88c6e3e6c17f76a51e0017c520d9e017cb25cd64e3cfb6",
+      "transparent_seg/train.py": "277c5e604dbb91e8fbaf5bff97f86b367fb23dc480693a5c6c60b92ca6d8fadd"
+    }
+  },
+  "formal_C_config_sha256": "2ff73ca919dc5c38a717392ec8d4bdb1f508701b2a0733014146ee68de5122d9",
+  "A_original_artifacts_preserved": true,
+  "formal_model_scores_produced": false
+}

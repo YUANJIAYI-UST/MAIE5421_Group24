@@ -17,7 +17,7 @@ from torch.utils.data import DataLoader
 
 from .data import SegmentationDataset, read_manifest, validate_derivative_use
 from .evaluate import evaluate, evaluate_selection
-from .protocol import validate_frozen_protocol
+from .protocol import validate_frozen_protocol, validate_initialization
 from .losses import segmentation_loss
 from .model import TransparentSegformer
 from .prepare import sha256_file, write_json
@@ -162,6 +162,7 @@ def train(config, output, resume=None, stop_after_epoch=None):
         start_epoch, global_step = restored["epoch"], restored["global_step"]
         initial_hash = restored["initial_shared_state_sha256"]
         model.encoder_revision = restored["encoder_resolved_revision"]
+    validate_initialization(config, initial_hash)
     output.mkdir(parents=True, exist_ok=True)
     write_json(output / "config.json", config)
     if subset is not None:

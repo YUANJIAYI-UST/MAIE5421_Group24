@@ -1,0 +1,143 @@
+YUAN Jiayi（成员 4）今日开工清单
+检查日期：2026-11-14。此文件是行动建议，不代表全组已经冻结正式实验协议。
+
+一、现在可以开始吗？
+可以开始增强核验、GSD 标注检查及数据准备；正式 C 训练还需要共享协议和真实数据。
+本机 RTX 5090 Laptop GPU 已通过 512x512、batch 2、BF16 的预训练模型前向/反向检查。
+本机代码仍为 51b389e；远端 main 为 2c7c3c2，落后 2 个提交。
+成员 2 分支最新 60d0c36、成员 5 分支最新 60dee7b；两者均尚未进入 main。
+本次没有合并、切换分支、提交或推送。检查结果只覆盖明确注明的版本。
+
+已经替你完成的开工检查：
+1. 本机已有 32 项测试全部通过；默认临时目录过长的问题通过指定短目录避开。
+2. 12 张合成训练图、20 个 epoch，共 240 次增强检查通过：同 seed/epoch/id 可复现，
+   target 和 valid 保持不变、输入无非有限值。133 次图像发生变化；不要求小样本恰好 50%。
+3. 既有合成 checkpoint 跑通 clean + 12 种固定扰动，输出完整。
+4. GSD 固定版本 test parquet 已下载且 SHA256 匹配，实际解码 813 对图片/掩码。
+以上增强/模型检查属于软件核验，不是正式 Trans10K 或 GSD 效果结果。
+
+二、今天按这个顺序做
+
+第 1 步（10 分钟）：发送本文末尾的群消息，并向成员 1/2 索取真实数据交付。
+需要：Member1_Final_D01_D02_D03_20261029.zip、最终 v1 清单、数据 inventory、
+原始 V1 图片与标签、交付中的方向修复副本。ZIP 不包含全部原始大数据。
+最终主实验 V1 数量应为 train 4959 / validation 995 / test 4428。
+当前本机还没有上述真实数据；git pull 不会下载被忽略的 data/manifests/runs。
+为了先做增强核验，可请成员 1 同时提供 20 张已保留的训练图及其对应标签、ID、哈希。
+GSD 重叠审计最终仍需完整 Trans10K 图片或完整可匹配 inventory 及近重复复核材料。
+
+第 2 步（约 30 分钟）：确认增强核验结果并固定自己的验收标准。
+已有结果目录：runs/member4_readiness_20261114/。
+augmentation_check.json：240 次检查；pytest.xml：32 项测试；
+robustness_smoke/robustness.json：12 条件和均值/drop。
+GPU 检查见 gpu_check.json。不要把这些合成分数填进论文结果表。
+
+拿到真实训练样本后，再核验这 5 点并保存真实图片预览/日志：
+  [ ] brightness / contrast / gamma 各自生效，图像无 NaN/越界。
+  [ ] 增强前后 mask 和 valid 逐像素不变，图像与标签的几何关系不变。
+  [ ] 同 seed、epoch、样本 ID 重复读取结果相同；不同 epoch 会出现不同扰动。
+  [ ] validation 默认没有随机增强；测试 12 个条件分别独立施加。
+  [ ] C/D 使用同一增强设置，A/B 关闭增强；不能为每组偷偷增加其他处理。
+当前方案：resize 后、归一化前，以 p=0.5 三选一，强度均匀 [0.8,1.2]。
+brightness=c*I；contrast=mean_c+c*(I-mean_c)；gamma=I^gamma，均 clip 到 [0,1]。
+固定测试条件：brightness 0.6/0.8/1.2/1.4；contrast 0.5/0.75/1.25/1.5；
+gamma 0.6/0.8/1.2/1.6。drop=clean-12条件算术均值；乘100才是百分点。
+GSD test 不参与增强强度选择、训练、阈值调整或 checkpoint 选择。
+
+第 3 步（约 45 分钟）：完成 GSD 的 20 张人工标注检查。
+打开 runs/member4_readiness_20261114/gsd_annotation_preview_01.png 和 _02.png。
+每个小格从左到右：原图 / GT / GT 叠图，不是模型预测。
+填写 docs/18_MEMBER4_GSD_REVIEW_20261114.txt 中的空白记录。
+检查白色是否对应玻璃区域、遮挡/边框是否合理、是否存在明显漏标或错位；
+记录疑点、样本 ID 和复核人，不自动将“有文件且可解码”等同于人工验收。
+GSD 聚焦玻璃表面，和 Trans10K 的所有透明物体并非完全同一标注范围；报告说明差异。
+完整测试集保持 813 张。本次发现的内部重复对先保留并单独注明，不据模型分数筛样本。
+
+第 4 步（拿到成员 1 的材料后开展）：GSD 导入及跨数据集重叠审计。
+当前下载文件：
+data/GSD_source/f8897574bbc2632a440efa1de021fd2b02f89f51/data/test-00000-of-00001.parquet
+来源、版本、哈希见 runs/member4_readiness_20261114/gsd_source.json。
+审计结果见 gsd_audit.json，逐图记录见 gsd_inventory.json。
+813 个唯一 ID；掩码均为单通道 L，像素只有 0/255，255 是玻璃前景，非 void。
+
+建议由你继续完成的导入要求：
+  [ ] 从 parquet 原样导出内嵌 image/mask 字节，避免再次 JPEG 压缩或缩放 GT。
+  [ ] 生成 schema_version=1、split=test、encoding=binary_0255 的项目 manifest；
+      保存来源 revision、输入文件哈希、样本 ID、图片/标签哈希、原图尺寸。
+  [ ] 不给 GSD 编造 easy/hard 标签；不将该镜像标成未经证明的“原始官方归档”。
+  [ ] 和 Trans10K train/validation/test 做文件哈希、解码 RGB 哈希及近重复候选排查；
+      候选交成员 1/5 人工复核，记录对应的两边 ID、判定及理由。
+  [ ] 全量 GSD test 保持原成员；若与训练/选模数据重叠，明确披露，另冻结无重叠子集。
+      重叠排除规则在模型评分之前固定；不能仅凭精确 hash 无重复宣称无泄漏。
+  [ ] 导入和审计完成后，才将 manifest 从“准备中”升级为组内接受的评估清单。
+本次未生成最终 GSD manifest，也未进行 Trans10K 重叠核验或 GSD 模型评分。
+
+注意：该版本自带 parquet_to_raw.py 没有 revision 参数，且会重新保存 JPEG。
+建议借鉴字段结构，不直接用默认运行结果替代固定版本/原字节导入。
+作者项目：https://jiaying.link/cvpr2021-gsd/
+作者项目链接的数据集：https://huggingface.co/datasets/garrying/GSD
+固定版本：https://huggingface.co/datasets/garrying/GSD/tree/f8897574bbc2632a440efa1de021fd2b02f89f51
+许可：数据卡 CC BY-NC 4.0；论文引用 Lin, He, Lau, CVPR 2021。
+
+第 5 步（今天协调，建议 24 小时内达成）：冻结正式协议。
+负责人建议如下；这是分工建议，需要组员实际确认，不能替他们签字。
+
+成员 2：
+  合并/集成自己的训练恢复改进与成员 5 的 LF 修复，提供全组共同使用的 commit。
+  固定 Python/Torch/Transformers/CUDA 版本；本机 2.7.1/4.46.3 与其 pilot
+  的 Torch 2.10.0.dev/Transformers 4.51.3 不同，不能默认已统一。
+  冻结 size、batch、累计步数、精度、workers、lr、epochs、scheduler、验证频率和选模规则。
+  给出 A/B/C/D 以及独立 D03 A/D 的 GPU 排期；先安排主实验 A/B/C/D。
+  正式派生数据 research 入口仍缺失，需要在保留 manifest 哈希与隔离检查的前提下接入。
+  不能把 complete_official_split 改成 true，也不能用长 pilot 冒称冻结的正式研究实验。
+
+成员 3：
+  尽快报告边界模块当前状态；确认 B/D 的相同 r、lambda 和边界 loss 定义。
+  若做 r in {1,2}、lambda in {0.1,0.3} 选择，只使用预先规定的 validation 方案和预算。
+  来不及时，可明确接受设计默认值 r=1、lambda=0.1，并记录“未调参”，不要声称最优。
+  提交边界监督/梯度检查和 B/D 训练安排，不用 test 挑参数。
+
+成员 5：
+  将已有数据复核与 Windows LF 修复集成；对批准使用的派生版本、清单哈希给出明确反馈。
+  复核主表指标、边界宽度、original-resolution 推理、0.5 阈值和 12 条件/drop 统计。
+  共同检查 GSD 重复/标注疑点及重叠处理原则；确认 E02 等尚未完成工作的安排。
+  在集成后的共同 commit 上重新测试；分支各自通过不能替代集成验证。
+
+成员 4（你）：
+  交付增强核验记录、真实训练样本预览、GSD 准备/标注检查/重叠记录。
+  将 C/D 统一增强方案写入协议；冻结后承担 C 正式训练。
+  等正式 A/D 的 best.pt（仅由 validation 选出）及配置/哈希交付后，运行 GSD 零微调评估。
+  主实验和 D03 的 checkpoint 必须区分；GSD 采用哪组 A/D 也要提前写明。
+
+冻结文件必须至少包含：共同代码 commit、模型/预训练权重 revision、数据版本及哈希、
+A/B/C/D 的唯一变量、边界与增强参数、完整训练预算、环境、选模/评估规则、运行负责人、
+组员的实际确认记录。现有 starter 配置不能仅改个文件名就算已经冻结。
+若截止确为 11 月 21 日，建议今天完成确认，优先主 A/B/C/D 与可信评估；
+额外多种子/扩展实验按算力排期，不牺牲主实验可比性。成员 2 的每组约20小时只是估算。
+
+三、同步代码和复查的建议命令（本次未替你执行）
+先在 D:\桌面\cv_group 打开 PowerShell，确认 git status 中没有其他未处理改动。
+  git pull --ff-only origin main
+  git switch -c member4/augmentation-gsd
+本次新增的 docs/17、docs/18、reports/MEMBER4_READINESS_20261114.txt 是本地交付文件，
+可跟随你的分支一起检查。不要盲目复制成员 2/5 的文件覆盖或改写他们的提交历史。
+后续正式实验在共同集成版本上开展，而不是各自一直停留在不同旧分支。
+
+复跑测试时用新短目录，避免 Windows 长路径问题及覆盖历史证据：
+  .\.venv\Scripts\python.exe -m pytest -q tests/test_core.py tests/test_data_protocol.py --basetemp=tmp/member4_check_02
+本次证据在 runs 下被 Git 忽略；准备 PR 时选择小型 JSON/XML/核验说明复制到 reports，
+不要将 GSD 原图、parquet、巨型权重加入 Git。
+
+四、可直接发送到组群的消息（草稿，尚未发送）
+
+大家辛苦了，我检查了一下目前进度，准备今天开始负责增强核验和 GSD 准备。
+本机增强与基础测试已经跑通，GSD 测试集也已经下载并核对了 813 对图片和标签；
+接下来我会做人工标注检查，并和成员 1 一起确认与 Trans10K 的重叠情况。
+麻烦成员 1/2 给我最终 V1 数据清单、数据包和审计 inventory，最好先给一小批训练图做核验。
+为了我们之后的结果能够放在一起比较，想请大家尽量在 24 小时内一起确定正式实验协议：
+成员 2 帮忙统一训练代码、环境、预算和 GPU 排期，并接好正式派生数据入口；
+成员 3 帮忙确认 B/D 的边界参数和运行安排；
+成员 5 帮忙合入复核修复，确认清单哈希及评估口径。
+我这边负责把 C/D 的增强设置、GSD 审计和后续评估流程补齐。统一版本和配置确定后，
+我就可以接 C 组正式训练，不需要大家等我做完 GSD 才开始主实验。
+也请大家告诉我还有哪些未 push 的进展或实际困难，我们一起调整排期，避免重复工作。

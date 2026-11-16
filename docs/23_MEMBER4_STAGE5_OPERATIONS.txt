@@ -1,0 +1,43 @@
+成员4 阶段5操作与恢复说明
+
+当前准备已完成，无需为了验收重新运行。浏览器打开 runs/member4_stage5_20261116/review.html。
+源parquet固定版本及完整性信息见同目录audit.json和policy_before_retrieval.json。
+数据导出仅写入新的data/GSD_member4_f8897574_test目录，Trans10K和A/C成果均保持原样。
+
+本次执行顺序（项目根目录PowerShell；在同路径已有成果时会拒绝覆盖）
+1. .\.venv\Scripts\python.exe -X utf8 -B scripts/member4_gsd_prepare.py --workers 4
+2. .\.venv\Scripts\python.exe -X utf8 -B scripts/member4_gsd_diagnostics.py
+3. .\.venv\Scripts\python.exe -X utf8 -B scripts/member4_gsd_review.py render
+
+依赖
+沿用训练环境NumPy/Pillow/Torch及既有读取器。
+PyArrow 20.0.0位于tmp/member4_data_deps，仅用于读取parquet；没有更改训练.venv或requirements。
+Windows预览字体使用系统微软雅黑。项目已有近重复特征函数与阈值保持不变。
+
+复现与中断
+原始来源、数据版本和脚本哈希都已记录；在新的工作副本、相同依赖及输入下可按上述顺序复现。
+脚本使用本次版本的固定输出目录，不提供原地覆盖或拼接未完成审计的选项。
+如需重做新的审计版本，应使用新的工作副本或明确更新三处输出目录版本；保留旧清单、政策与记录。
+审计失败不能宣称已经扫描完全部图片；只有audit.json中的完整计数和通过状态才表示自动准备完成。
+这组导入脚本没有运行训练或模型推理。
+
+人工填写
+成员4与成员1各自从空白页面独立填写，导出自己的JSON；成员5复核规则部分。请把文件位置交回汇总。
+存在“存疑”时先调查，必要时增加人工提名候选；不能简单放宽阈值后把近邻都当成同源。
+冻结器会检查来源绑定、完整条目、两位独立检查人的姓名/理由、成员5意见和用户阶段5验收。
+阈值内近重复候选如有分歧或无法确定，补充集继续排除；同场景不同拍摄单独记录。
+本次零候选不免除成员4/1对检索范围、诊断图和局限的复核。
+
+只有实际复核完成后，才使用（当前未执行）：
+.\.venv\Scripts\python.exe -X utf8 -B scripts/member4_gsd_review.py freeze --review 合并后的真实复核JSON --output manifests/member4_gsd_reviewed_新版本
+输出为新目录中的test_full.json、test_supplementary.json、逐对判定、排除记录和哈希。
+即使清单冻结，也不会自动启动阶段6；还需要用户的阶段6指令。
+
+软件检查
+.\.venv\Scripts\python.exe -X utf8 -B -m pytest -q --basetemp tmp/stage5_new_check
+本次最终全套结果：117 passed，见runs/member4_stage5_20261116/software_checks_final.xml。
+首次编写新增测试时修正了一处括号语法错误；该错误未进入数据扫描。全部最终测试已通过。
+
+交付包
+GSD_stage5_review_packet.zip包含本地复核网页、预览图、检查JSON和说明，不包含完整Trans10K、原始parquet或模型权重。
+不会自动发送给组员。请自行传阅，或继续用本机页面填写。

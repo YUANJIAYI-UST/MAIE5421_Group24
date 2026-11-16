@@ -1,0 +1,11 @@
+{
+  "scripts/member4_gsd_prepare.py": "ad60c3a577cbe98df91bc0f0e1642cc40398f20a73677966d058265003adfac1",
+  "scripts/member4_gsd_diagnostics.py": "3b8e138fe2b60be543bc812b95ff1c29aa44f3a4d4f471d38df402fc6a208757",
+  "scripts/member4_gsd_review.py": "49183c991a6f743aca7a7cba7a3641bf9e396b50e55d868e3887e3047455c9f0",
+  "tests/test_gsd_preparation.py": "8abb512f56bc48681728095d5c992663c538c50f40de39de0eeb2e1760e5f652",
+  "transparent_seg/near_duplicates.py": "1ac3cc7d08c9e10fa2188f710c4ba1e7e191162fe8fbbfcf4fb95a392271dd7e",
+  "transparent_seg/data.py": "a1499c32ad15b5c4aed43b21cef4b5a25a700cd1e3de4382caa03eb4f786c59e",
+  "transparent_seg/prepare.py": "e4a70cea1ca96b016b423d6ee7b7cef00deb7f331030ec4085dce2389c881795",
+  "docs/23_MEMBER4_STAGE5_OPERATIONS.txt": "2c54cbe8ae7db47e11059d7bf3e05ab976850841d8d6c4b5c4c2cb3caa9e26d1",
+  "reports/MEMBER4_STAGE5_20261116.txt": "d46d21feaba341c3ef2b6bcd051af7722645720cf008169ff6412d8cdddfe424"
+}

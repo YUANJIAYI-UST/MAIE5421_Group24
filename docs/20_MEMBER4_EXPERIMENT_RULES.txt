@@ -1,0 +1,66 @@
+成员 4 阶段 1：实验规则与验收界限
+
+基点：main 9cfc5436bdf5c4a7b0da899c1a57450ccaed96d7。
+开发分支：member4/augmentation-gsd。
+状态：阶段1自动核验后仍需用户验收；不代表其他成员签字。
+
+数据
+沿用 member1_final_20261029_v1：4959 train / 995 validation / 4428 test。
+过滤后的train/validation仍声明complete_official_split=false，不伪装原始官方训练划分。
+V1二值标签为监督来源；RGB均值0/85/255合并成0/1/1，255不是void。
+保留已有修正标签和数据选择，不重新随机分组。
+
+模型与训练
+MiT-B0编码器使用ImageNet预训练。
+revision：80983a413c30d36a39c20203974ae7807835e2b4。
+分割头全新初始化；C不从已训练完成的A继续学习。
+公共初始参数预期SHA256：
+fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835
+seed42；输入512；batch8；梯度累计1；30epochs；每轮620次更新，共18600次。
+AdamW lr=0.00006；weight_decay=0.01；clip=1。
+warmup930次更新，之后polynomial power0.9；BF16训练。
+每轮完整995张validation，按pooled foreground IoU严格改善选best，同分留较早轮。
+不通过测试集或GSD调参/选模。
+
+A与C
+ablation：A -> C（实验名称）。
+augmentation：false -> true（唯一的研究处理差异）。
+boundary：都为false；其他公共训练、数据、版本设置保持一致。
+阶段1的C_design_only.json仅作设计记录，不能用作训练命令的配置。
+正式C协议与启动检查要在阶段3建立，不修改成员2的原A协议。
+
+增强
+每次以0.5概率，从brightness/contrast/gamma均匀选择一种；
+参数均匀[0.8,1.2]，resize之后、归一化之前应用，clip到[0,1]。
+brightness=c*I；contrast=mean_c+c*(I-mean_c)；gamma=I^gamma。
+mask/valid不随光度变化；不增加crop/flip/其他隐藏处理。
+
+评估
+FP32推理；logits先插值回原图，sigmoid>=0.5；不做额外后处理。
+IoU/F1用全体有效像素累计；Boundary IoU逐图平均并沿用原始内边界定义。
+测试条件：clean；brightness 0.6/0.8/1.2/1.4；
+contrast 0.5/0.75/1.25/1.5；gamma 0.6/0.8/1.2/1.6。
+各条件独立作用于原输入，A/C都评估同一4428张test。
+
+环境
+核心依赖固定为Torch2.7.1+cu128、Transformers4.46.3、NumPy2.2.6、
+Pillow11.3.0、SciPy1.15.3。
+本机Python3.10.11、RTX5090 Laptop；成员2记录Python3.11.13、RTX5070 Ti。
+不能把不同机器的浮点计算无条件承诺为逐位一致；本阶段记录差异并检查数值。
+同机新旧评估加速路径的逐像素一致性属于阶段3的更严格验收。
+
+阶段1固定样本与复查规则（运行之前指定）
+对validation按SHA256("member4-stage1/42/"+id)排序，easy/hard各取前10。
+所有20个ID在预测前保存；不根据效果挑选或替换样本。
+逐图以及20张的all/easy/hard聚合，与成员2同ID逐图记录比较：
+IoU、F1绝对差<=0.0001；Boundary IoU绝对差<=0.0005。
+上述是fraction，对应0.01和0.05个百分点，不是允许改变公式或挑结果。
+任一超限则本阶段未通过，保留记录排查，不能为通过而事后放宽阈值。
+单独记录TP/FP/FN/TN是否完全一致。
+这20张故意平衡难度，仅验证运行一致性，不代表完整995张验证集成绩。
+
+已完成基础与待办
+接入证据：runs/local_setup_20261115/setup_summary.json。
+成员1/2交付已到手；不重复下载原始数据或重新训练A。
+阶段2增强核验、阶段3C入口与缓存、阶段4正式实验、阶段5-7仍按验收顺序推进。
+用户验收阶段1后才继续阶段2；本文件不自动批准后续阶段。
