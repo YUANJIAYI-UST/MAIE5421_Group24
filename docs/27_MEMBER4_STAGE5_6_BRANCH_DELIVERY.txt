@@ -5,6 +5,7 @@
 阶段6：A的全部813条GSD评估和可视化已完成；B/D正式模型待交付。
 完整A/D迁移对比和B/D全量扰动结果尚未完成。阶段7未开始。
 本次仅发布已有阶段5/6成果，没有新增训练、重新选模或改变测试清单。
+补充交付：正式C权重及A/C必要运行记录已发布到GitHub Release，下载链接、哈希和两步验收见docs/28_MEMBER4_C_RELEASE_HANDOFF.txt。
 
 组员先看这几处（均可在member4/augmentation-gsd分支查看）
 1. reports/MEMBER4_GSD_FREEZE_20261116.txt：冻结时的验收报告。

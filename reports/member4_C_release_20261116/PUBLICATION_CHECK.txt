@@ -1,0 +1,18 @@
+正式C模型发布核验（2026-11-16）
+
+已发布GitHub Release：member4-c-augmentation-20261116。
+5个附件均经GitHub上传状态、文件长度及服务器SHA256核验。
+已使用组员下载入口从公开URL重新下载best.pt、MODEL_README.txt和运行记录ZIP。
+下载长度/哈希符合分支内model_assets.json；解压后578个文件逐项符合包内哈希清单。
+下载后的C在本机5090上离线加载并预测固定验证示例，输出444×613的mask与overlay。
+预测mask逐像素哈希与原995张验证评估中的对应记录一致。
+下载工具验证了同内容复用、不同已有文件不覆盖、越界ZIP成员拒绝提取。
+
+软件回归：142 passed，详见tests.xml。
+首次默认临时目录受Windows沙箱长路径影响，创建fixture时报WinError 206。
+改用新的短目录tmp/pytest_C_release_20261116后全部通过；没有修改算法或实验参数。
+原失败XML保存在本机tmp/member4_C_release_tests_initial_long_path.xml，未作为通过记录。
+
+原正式实验代码、权重、训练预算和历史环境记录保持不变。
+此次仅补充模型交付、下载工具和接手说明；没有新训练或正式评估，没有进入阶段7。
+正式B/D仍待交付，完整阶段6尚未完成。

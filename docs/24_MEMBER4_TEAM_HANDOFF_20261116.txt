@@ -6,6 +6,7 @@ GSD 813行已经过成员4单人抽查并冻结；阶段6的A模型GSD评估已�
 完整集与补充集成员相同，A结果对应两者。用户确认B/D尚未交付，完整阶段6仍等待后续对比。
 当前结果见reports/MEMBER4_STAGE6_20261116.txt；复现与接续见docs/26_MEMBER4_STAGE6_OPERATIONS.txt。
 本次Git分支归档入口及文件映射：docs/27_MEMBER4_STAGE5_6_BRANCH_DELIVERY.txt。
+C最佳权重和必要运行记录现由GitHub Release补充，下载及接手步骤见docs/28_MEMBER4_C_RELEASE_HANDOFF.txt。
 本版取代此前“成员1/5必须另交复核JSON、成员2必须再写配置复核TXT”的安排。
 旧报告及ZIP保留为历史记录，当前操作以本文件及docs/23、25为准。
 
@@ -57,4 +58,5 @@ reports/MEMBER4_STAGE5_REVIEW_V2_20261116.txt：本次流程变更与验证记�
 原审计、旧模板、旧ZIP及源文件快照保持原样；新复核明确标记gsd_single_owner_v2。
 普通Git放代码、配置、冻结清单字节归档、A的逐图/分块评分记录及24张对照预览。
 原始数据、权重、完整runs工作目录及ZIP继续单独交付；reports中的归档入口见docs/27。
+C权重与正式A/C实验必要运行记录的固定下载链接及哈希见docs/28；不要求组员重新训练C。
 原实验执行时的源文件哈希记录保留，不把新commit追写成旧运行时版本。

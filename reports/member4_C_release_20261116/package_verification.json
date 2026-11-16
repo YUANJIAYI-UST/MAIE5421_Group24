@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-16T11:55:55.082793+00:00",
+  "passed": true,
+  "archive_member_hashes_verified": 578,
+  "original_source_files": 575,
+  "frozen_source_files_verified": 27,
+  "checkpoint_sha256": {
+    "best.pt": "69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d",
+    "last.pt": "65c41e721fd86b4b79bae621556d0ed0f61df46479ad7831c5abccb15b9b7582"
+  },
+  "epochs": 30,
+  "optimizer_steps": 18600,
+  "best_epoch": 30,
+  "demo_id": "validation/easy/images/10000.jpg",
+  "publication_target": "b69951a69e830637ee27c717251760c09b68d43e",
+  "original_experiment_files_unchanged": true,
+  "stage7_started": false,
+  "artifacts": [
+    {
+      "name": "best.pt",
+      "bytes": 44850699,
+      "sha256": "69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/best.pt"
+    },
+    {
+      "name": "member4_C_seed42_records.zip",
+      "bytes": 84634586,
+      "sha256": "43c670eec496addbd7bbc7ca3436e44c4d2f020eb9f3348c4bc3d39ce0fb1403",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/member4_C_seed42_records.zip"
+    },
+    {
+      "name": "MODEL_README.txt",
+      "bytes": 3689,
+      "sha256": "093657797fece909dc015d3e7c146b5a54a83088bc09d45e5ba0bf82e2cfa82a",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/MODEL_README.txt"
+    }
+  ]
+}

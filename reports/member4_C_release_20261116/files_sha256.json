@@ -1,0 +1,9 @@
+{
+  "download_verification.json": "166445dd132e9b3fc6bba44d3dd92c29a126fc90e2c5db33cacd9666c7dc7ef3",
+  "model_assets.json": "9b7c540a5c7cf985821cb966ef210f0a7c804e76c787ca9d1113db66ca0db4b5",
+  "package_verification.json": "99486643d4b6c2bece6ac467ec699812ea2cbcfaee81564bf068ee7ab7c36831",
+  "PUBLICATION_CHECK.txt": "5ed08a6eb8d465f9e76d3b61520ff8f47620afc90ace2430b2d8af570c9cdd02",
+  "release_receipt.json": "50faad02422c7651e536d006d490911dcb8e8594070dc35784629eeee134f4fe",
+  "SHA256SUMS.txt": "acfd10ae3950043d0aa9ec734f9d37c4bb6bbef3345bb4e227b296852ee6b77d",
+  "tests.xml": "3d328e05f1bfc44bb15fb2474b5f9b884382079172682f4e34d2933b67063be3"
+}
