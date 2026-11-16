@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-16T11:20:47.543276+00:00",
+  "stage5_complete": true,
+  "A_GSD_complete": true,
+  "stage6_complete": false,
+  "B_D_pending_user_confirmed": true,
+  "frozen_data_release_and_original_audit_preserved": true,
+  "checkpoint_and_experiment_source_hashes_match": true,
+  "raw_and_report_tables_match": true,
+  "images": 813,
+  "conditions": 1,
+  "chunks": 33,
+  "gallery_panels": 24,
+  "stage7_started": false
+}

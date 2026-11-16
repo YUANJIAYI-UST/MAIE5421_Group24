@@ -1,0 +1,63 @@
+Photometric robustness and transfer to glass scenes
+Member 4 contribution draft for Group 24
+Results snapshot 16 November 2026
+
+Integration note
+Insert the following material into the team's Methodology, Experiments and Discussion sections. This is a contribution to the six-page CVPR report, not a complete team report. References follow the supplied proposal and must be merged with the team's bibliography. B/D results remain pending. Do not remove the pending labels until the formal models and comparable evaluations are available.
+
+1  Photometric augmentation and controlled comparison
+
+We investigate whether modest appearance changes during training improve transparent-object segmentation under controlled photometric shifts. Model C uses the same ImageNet-initialized MiT-B0 encoder and randomly initialized SegFormer-style decoder as baseline A [1]. It starts from the shared initialization rather than the trained A checkpoint. With probability 0.5, training applies one uniformly selected operation: brightness scaling, contrast scaling or gamma correction. The operation parameter is sampled uniformly from [0.8, 1.2]. Transformations act after resizing and before ImageNet normalization, clip intensities to [0, 1], and leave the target mask and valid-pixel mask unchanged. Contrast uses each image's per-channel mean. These are controlled appearance perturbations, not a physical model of refraction.
+
+We checked the implementation on 20 fixed training images. Target and valid masks remained identical, augmentation was reproducible for a fixed seed, epoch and image ID, and cached and uncached inputs agreed. Validation used no random augmentation. C disables the boundary auxiliary head and uses the same BCE-plus-Dice segmentation objective as A. B denotes boundary supervision only and D combines boundary supervision with augmentation; their formal results are pending.
+
+2  Experimental protocol
+
+The reviewed Trans10K-v1 split [2] contains 4,959 training, 995 validation and 4,428 test images. The reduction from the proposal's nominal 5,000/1,000 training/validation counts follows the documented data audit; official test membership remains unchanged. A and C use seed 42, 512 x 512 inputs, batch size 8, AdamW with initial learning rate 6e-5, BF16 training and 30 epochs, totaling 18,600 optimizer updates. Shared initial parameter hashes match. C selects its epoch-30 checkpoint using foreground IoU on all 995 validation images. Test scores never guide checkpoint selection or parameter changes.
+
+Evaluation uses FP32 inference, bilinear interpolation of logits to the original image size, a fixed sigmoid threshold of 0.5 and no post-processing. Foreground IoU and region F1 pool pixel counts across images. Boundary IoU [3] averages per-image scores. A and C each cover all 4,428 test images under clean inputs and 12 independent conditions: brightness {0.6, 0.8, 1.2, 1.4}, contrast {0.5, 0.75, 1.25, 1.5}, and gamma {0.6, 0.8, 1.2, 1.6}. Each condition starts from the original input. The perturbation mean excludes clean inputs; the drop equals clean score minus this 12-condition mean. Differences and drops below are percentage points (pp).
+
+Table 1. Full-test A/C results. Scores are percentages; drop is in pp.
+Metric             A clean   C clean   A perturb mean   C perturb mean   A drop   C drop
+Foreground IoU      87.4364   87.5004   86.7838          86.9604          0.6526   0.5401
+Region F1           93.2971   93.3336   92.9235          93.0248          0.3737   0.3088
+Boundary IoU        68.0870   68.0586   66.8749          67.0003          1.2121   1.0584
+Pending: formal B/D rows and the complete four-model comparison.
+
+3  Robustness results and limitations
+
+C increases mean perturbed foreground IoU by 0.1766 pp and reduces the clean-to-perturbed drop by 0.1125 pp. Its foreground IoU exceeds A in all 12 perturbation conditions. The improvement is larger on the hard subset: mean perturbed IoU rises from 75.9338% to 76.3329% (+0.3990 pp across 937 images), compared with +0.0924 pp on the 3,491 easy images. Clean foreground IoU improves by 0.0640 pp, while clean Boundary IoU decreases by 0.0283 pp. Therefore, the result supports a small aggregate robustness benefit, with a trade-off in clean boundary accuracy.
+
+Average gains do not imply uniform improvement. For the diagnostic example test/hard/images/765.jpg under gamma 1.6, A reaches IoU 0.6906 while C reaches 0.0643. This case was selected by the predefined rule of the three smallest C-minus-A IoU differences under gamma 1.6. It illustrates a regression, not the frequency of that error type. All difficult samples remain in evaluation. These are single-seed results without significance testing, and the recorded A/C training hardware and some auxiliary dependencies differ. We do not claim statistically significant or universal gains.
+
+4  Transfer to GSD
+
+We evaluate transfer to glass scenes using 813 test records from the fixed GSD mirror revision f8897574bbc2632a440efa1de021fd2b02f89f51 [4]. Images and masks retain their source bytes; single-channel mask value 255 denotes glass. Fixed full-image and center-crop duplicate searches against the reviewed Trans10K train, validation and test sets produced no cross-dataset candidates at the recorded thresholds. This limited search cannot establish complete absence of overlap. A 20-image label spot check and the recorded review preceded scoring. The release retains all 813 records, including 812 distinct decoded images and one duplicate photograph with differing masks. The full and supplementary manifests have identical ordered members and share one prediction run.
+
+The validation-selected A checkpoint is evaluated without GSD training, target-set tuning or threshold changes. It obtains foreground IoU 68.1273%, region F1 81.0425%, Boundary IoU 44.2109% and background false-positive rate 11.4190%. A low-score example, gsd/test/122355684_81bf2b3d28, predicts the central open window area as glass while the annotation marks the side panes. The gallery includes 20 samples fixed before scoring and four additional cases selected by the predefined lowest-IoU/Boundary-IoU rule. D and the A/D transfer comparison are pending. These results describe glass-scene transfer and do not establish generalization to held-out object categories, which requires the separate category-isolation experiment.
+
+Table 2. GSD full-cohort results. All scores are percentages; FPR is lower-is-better.
+Model   Records   Foreground IoU   Region F1   Boundary IoU   Background FPR
+A       813       68.1273          81.0425     44.2109        11.4190
+D       Pending   Pending          Pending     Pending        Pending
+The supplementary cohort is identical and is not an independent second experiment.
+
+5  Contribution and remaining comparison
+
+Member 4 verified photometric augmentation, completed C training and full A/C robustness evaluation, imported and audited GSD, froze its reviewed manifests, and completed A's transfer evaluation. The released C checkpoint, configuration, logs, source hashes and per-image results support reproduction. After formal B/D delivery, the remaining work is to verify comparability, complete B/D perturbation evaluation and D's GSD evaluation, and update the four-model and A/D conclusions. The present evidence does not establish the benefit of the boundary module or its interaction with augmentation.
+
+References reused from the proposal
+[1] Enze Xie et al. SegFormer: Simple and Efficient Design for Semantic Segmentation with Transformers. NeurIPS, 2021.
+[2] Enze Xie et al. Segmenting Transparent Objects in the Wild. ECCV, 2020.
+[3] Bowen Cheng et al. Boundary IoU: Improving Object-Centric Image Segmentation Evaluation. CVPR, 2021.
+[4] Jiaying Lin, Zebang He, and Rynson W. H. Lau. Rich Context Aggregation with Reflection Prior for Glass Surface Detection. CVPR, 2021.
+
+Internal evidence for the report editor
+Table 1 and hard/easy differences: reports/member4_stage4_20261115/A_C_comparison.csv.
+Condition-level scores: reports/member4_stage4_20261115/condition_results.csv.
+Regression case selection: reports/member4_stage4_20261115/failure_selection.csv.
+GSD freeze and audit: reports/member4_gsd_freeze_20261116/ and reports/member4_stage5_20261116/.
+Table 2: reports/member4_stage6_20261116/summary.json.
+GSD case selection: reports/member4_stage6_20261116/gallery/index.json and gallery_selection.json.
+Release and download verification: reports/member4_C_release_20261116/.
+These internal paths are traceability notes, not additional scientific references for the final bibliography.

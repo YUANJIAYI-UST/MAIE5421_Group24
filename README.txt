@@ -16,7 +16,11 @@ Boundary-Aware Transparent Object Segmentation under Appearance Variation
 机器可读结果、逐图指标、训练曲线与资源记录：reports/member2_full_A_20261114/
 模型/日志：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member2-a-baseline-20261114
 后续实验数据：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/trans10k-course-data-20261114
-成员 3 对训练/优化器的人工 review 仍待完成；B/C/D、三种子、扰动、GSD 和 held-out 正式实验另行完成。
+成员4已完成正式C、全量A/C正常及12条件扰动对比、GSD冻结及A迁移评估；正式B/D和完整A/D比较仍待补充。
+成员4报告、3页PPT和中英文讲稿（2026-11-17分支交付）：docs/29_MEMBER4_STAGE7_REPORT_PRESENTATION.txt
+交付目录：deliverables/member4_stage7_partial_20261116/；同名ZIP可整体下载后直接交给报告/展示整合者。
+C模型下载和单图验收：docs/28_MEMBER4_C_RELEASE_HANDOFF.txt
+成员3训练/优化器独立review、三种子和held-out正式实验以各自后续交付为准，不视为已完成。
 待优化任务（TXT）：docs/03_OPTIMIZATION_BACKLOG.txt
 数据集与官方下载：docs/04_DATASETS_AND_DOWNLOAD.txt
 老师要求逐项验收：docs/01_REQUIREMENTS_AND_ACCEPTANCE.txt
@@ -41,6 +45,7 @@ Windows 快速验证（在项目根目录的 PowerShell 执行）：
   scripts/          安装、合成数据、端到端检查、顺序运行消融
   docs/             中文 TXT 计划、验收、数据来源和优化任务
   reports/          已执行的检查记录及注明协议范围的真实实验结果
+  deliverables/     成员4报告、展示稿、讲稿和可追溯的配套资料
   .github/          自动检查与 PR 模板
 
 正式数据、权重、环境、原始课程 PDF 不进入 Git 历史；由 .gitignore 排除。

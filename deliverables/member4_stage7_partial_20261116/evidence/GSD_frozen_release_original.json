@@ -1,0 +1,19 @@
+{
+  "workflow": "gsd_single_owner_v2",
+  "full_count": 813,
+  "supplementary_count": 813,
+  "same_membership": true,
+  "owner": "Yuan Jiayi",
+  "label_samples_viewed": 20,
+  "diagnostic_review": {
+    "status": "viewed_no_concern",
+    "note": ""
+  },
+  "independent_team_signoffs_required": false,
+  "stage6_started": false,
+  "evaluation_authorized": false,
+  "manifest_sha256": {
+    "test_full.json": "cf33e8de136c5fd0be03c1e4ed70c0a6c866e734df5ca3cf1a5b5b8f6c767d82",
+    "test_supplementary.json": "29a75ebbf98b5aa019ad4f08a544ffbb36056cdefc512676a0f2bfad2b54b60a"
+  }
+}

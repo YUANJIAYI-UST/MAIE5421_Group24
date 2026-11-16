@@ -1,0 +1,5 @@
+﻿model,cohort,status,images,foreground_iou_percent,region_f1_percent,boundary_iou_percent,background_fpr_percent,manifest_sha256,shared_prediction_run
+A,full,complete,813,68.12732668934956,81.04253845090757,44.21086061077238,11.418990112882463,cf33e8de136c5fd0be03c1e4ed70c0a6c866e734df5ca3cf1a5b5b8f6c767d82,runs\member4_stage6_20261116\A_full
+D,full,pending_formal_model,,,,,,cf33e8de136c5fd0be03c1e4ed70c0a6c866e734df5ca3cf1a5b5b8f6c767d82,
+A,supplementary,complete,813,68.12732668934956,81.04253845090757,44.21086061077238,11.418990112882463,29a75ebbf98b5aa019ad4f08a544ffbb36056cdefc512676a0f2bfad2b54b60a,runs\member4_stage6_20261116\A_full
+D,supplementary,pending_formal_model,,,,,,29a75ebbf98b5aa019ad4f08a544ffbb36056cdefc512676a0f2bfad2b54b60a,

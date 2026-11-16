@@ -1,0 +1,28 @@
+{
+  "stage": 2,
+  "package_checks": "passed",
+  "human_acceptance": "pending",
+  "stage3_started": false,
+  "targeted_existing_tests": {
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 4.589,
+    "report": "supporting_checks/pytest_passed.xml"
+  },
+  "audit_report_sha256": "ce54de442bc01e73614e2c69f00f64fd8f36d276c9318b193225a586939202a9",
+  "history": {
+    "first_run": "runs\\member4_stage2_20261115",
+    "first_audit_issue": "Audit reference used float64 mean; production contrast uses float32 mean. Reference corrected; production code unchanged; tolerance tightened from 2e-5 to 2e-7.",
+    "first_pytest_issue": "Windows temporary path exceeded length limit; rerun using a new short project-local temp path passed all 18 tests."
+  },
+  "checks": [
+    "600 unique epoch/image pairs",
+    "20 individual previews and 4 overview pages readable",
+    "script hash matches completed run",
+    "protected production files unchanged",
+    "120 natural cache pairs and 120 endpoint cache pairs",
+    "18 existing focused tests passed"
+  ],
+  "no_model_training": true
+}

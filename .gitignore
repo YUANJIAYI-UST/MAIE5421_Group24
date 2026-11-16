@@ -22,3 +22,7 @@ tmp/
 .env.*
 *.pdf
 !docs/*.pdf
+
+# Member 4 report/presentation handoff package (small, versioned deliverables).
+!/deliverables/member4_stage7_partial_20261116.zip
+!/deliverables/member4_stage7_partial_20261116/figures/*.pdf

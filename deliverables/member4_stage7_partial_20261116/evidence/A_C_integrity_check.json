@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-15T21:08:46.433364+00:00",
+  "frozen_source_and_configuration_hashes_match": true,
+  "reporting_source_hashes_match": true,
+  "original_generated_artifact_hashes_match": true,
+  "A_original_best_and_last_hashes_preserved": true,
+  "C_best_and_last_hashes_match_training_record": true,
+  "evaluation_identity_only_differs_in_checkpoint": true,
+  "C_epochs": 30,
+  "C_optimizer_steps": 18600,
+  "full_test_conditions": 26,
+  "images_per_condition": 4428,
+  "total_image_conditions": 115128,
+  "gallery_cases": 18,
+  "gallery_prediction_hash_checks": 144,
+  "inspected_figures": [
+    "figures/training_curves.png",
+    "results/robustness_all.png",
+    "results/robustness_hard.png",
+    "results/gallery/01.png",
+    "results/gallery/02.png",
+    "results/gallery/13.png",
+    "results/gallery/16.png"
+  ],
+  "inspection_note": "Plots readable; selected cases include small differences and regressions. Axis ranges are zoomed; magnitude must be interpreted from percentage-point tables.",
+  "experimental_job_seconds": {
+    "training_C": 8877.381605600007,
+    "validation_C": 508.56411330000265,
+    "test_A": 7953.499422299967,
+    "test_C": 9619.210472300008
+  },
+  "human_acceptance": "pending",
+  "stage5_started": false,
+  "publication": "local branch only; no commit or push in stage4"
+}

@@ -1,0 +1,46 @@
+{
+  "status": "existing_results_materials_complete_B_D_pending",
+  "stage7_complete": false,
+  "stage6_complete": false,
+  "ready": [
+    "English report content",
+    "LaTeX section and bibliography",
+    "exactly 3 editable PPTX slides",
+    "Chinese and English speaking notes",
+    "source-backed tables and figures",
+    "handoff and acceptance instructions"
+  ],
+  "pending": [
+    "formal comparable B/D delivery",
+    "B/D full robustness results",
+    "D GSD and A/D comparison",
+    "final four-model conclusions",
+    "teammate independent handoff acceptance",
+    "team report layout and rehearsal"
+  ],
+  "checks": {
+    "source_copies_match_sha256": 31,
+    "full_AC_condition_rows": 26,
+    "images_each_AC_condition": 4428,
+    "GSD_A_records": 813,
+    "C_epochs": 30,
+    "C_optimizer_updates": 18600,
+    "report_numbers_match_source": true,
+    "presentation_tables_match_source_at_display_precision": true,
+    "slide_count": 3,
+    "speaker_note_count": 3,
+    "editable_native_tables": 2,
+    "embedded_picture_objects": 8,
+    "PPTX_package_and_geometry_validation": "passed",
+    "PPTX_first_party_import": "passed",
+    "three_slide_render_visual_inspection": "passed",
+    "native_PowerPoint_application_test": "not_run",
+    "LaTeX_compilation": "not_run_no_team_template_or_TeX_engine"
+  },
+  "experiments_modified": false,
+  "PR_merged": false,
+  "draft_creation_git_push_performed": false,
+  "publication_target_branch": "member4/augmentation-gsd",
+  "publication_date": "2026-11-17",
+  "pptx_sha256": "65599bb3824bc47dda25b19805fd341bfca71cb0a954728fa17e456ec8864a65"
+}

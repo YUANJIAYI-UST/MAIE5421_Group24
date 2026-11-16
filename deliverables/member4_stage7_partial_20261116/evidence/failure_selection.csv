@@ -1,0 +1,7 @@
+﻿id,selection_reason,condition,A_iou,C_iou
+test/hard/images/3789.jpg,three lowest C clean IoU,clean,0.0,0.00011901704449358247
+test/hard/images/6049.jpg,three lowest C clean IoU,clean,0.0011591719962939688,0.019471018704750476
+test/hard/images/5898.jpg,three lowest C clean IoU,clean,0.026094698489555073,0.021342532573671743
+test/hard/images/765.jpg,three smallest C-minus-A IoU under gamma_1.6,gamma_1.6,0.690622215233003,0.06431253205603261
+test/hard/images/5124.jpg,three smallest C-minus-A IoU under gamma_1.6,gamma_1.6,0.9189199213679018,0.4268680425813483
+test/easy/images/2019.jpg,three smallest C-minus-A IoU under gamma_1.6,gamma_1.6,0.9854563998513524,0.5893899441892081

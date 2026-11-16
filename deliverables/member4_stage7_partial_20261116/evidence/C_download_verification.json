@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-16T12:00:56.482594+00:00",
+  "passed": true,
+  "public_release_download": true,
+  "downloaded_assets": [
+    "best.pt",
+    "MODEL_README.txt",
+    "member4_C_seed42_records.zip"
+  ],
+  "asset_bytes_and_sha256_match_catalog": true,
+  "archive_files_verified_after_extraction": 578,
+  "checkpoint_epoch": 30,
+  "checkpoint_optimizer_steps": 18600,
+  "checkpoint_sha256": "69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d",
+  "image_id": "validation/easy/images/10000.jpg",
+  "image_dimensions": [
+    444,
+    613
+  ],
+  "downloaded_model_prediction_hash": "4fafaad67be1b132d5579c7b70dcf3e0e4a22fe19eebf352ae63f662d4437dad",
+  "matches_original_validation_prediction": true,
+  "offline_model_load_and_prediction": true,
+  "device": "NVIDIA GeForce RTX 5090 Laptop GPU",
+  "download_guard_checks": {
+    "same_file_reused": true,
+    "different_existing_file_preserved": true,
+    "unsafe_zip_path_rejected": true
+  },
+  "pytest": {
+    "tests": 142,
+    "passed": 142,
+    "seconds": 29.845,
+    "command": "python -m pytest -q --basetemp tmp/pytest_C_release_20261116 --junitxml=reports/member4_C_release_20261116/tests.xml",
+    "initial_default_temp_attempt": "Windows sandbox path exceeded filename length; retried using a fresh short project-local temporary directory; no algorithm changes."
+  },
+  "B_D": "pending_formal_delivery",
+  "stage7_started": false
+}
