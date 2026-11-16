@@ -11,3 +11,4 @@
 reports/member4_stage3_20261115/*.csv -text
 reports/member4_stage4_20261115/*.csv -text
 scripts/run_member4_C.ps1 text eol=lf
+scripts/templates/gsd_single_owner_review.html text eol=lf

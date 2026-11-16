@@ -130,6 +130,9 @@ def validate_decisions(review, template):
 
 
 def freeze_review(review_path, output):
+    if read(review_path).get('schema') == 2:
+        from scripts.member4_gsd_review_simple import freeze_review as freeze_single_owner
+        return freeze_single_owner(review_path, output)
     output=Path(output)
     if output.exists():
         raise FileExistsError('Freeze into a new directory; do not overwrite prior review versions')
@@ -282,7 +285,12 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest='command',required=True)
     sub.add_parser('render')
+    p=sub.add_parser('render-simple', help='Build the current single-owner review package in a new directory')
+    p.add_argument('--output', default=str(ROOT/'review_single_owner_v2'))
     p=sub.add_parser('freeze'); p.add_argument('--review',required=True); p.add_argument('--output',required=True)
     args=parser.parse_args()
     if args.command=='render': render()
+    elif args.command=='render-simple':
+        from scripts.member4_gsd_review_simple import build_packet
+        build_packet(args.output)
     else: freeze_review(args.review,args.output)

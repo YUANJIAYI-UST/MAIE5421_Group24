@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "blank_initial_fields",
+    "20_label_sample_ids",
+    "optional_diagnostics_not_viewed_allowed",
+    "single_owner_ready",
+    "JSON_and_TXT_downloads",
+    "import_round_trip",
+    "tampered_record_rejected",
+    "question_blocks_ready",
+    "no_javascript_errors"
+  ],
+  "test_record_location": "tmp/gsd_review_v2_ui_test_downloads only; never used to freeze actual manifests",
+  "human_review": "pending",
+  "stage6_started": false
+}

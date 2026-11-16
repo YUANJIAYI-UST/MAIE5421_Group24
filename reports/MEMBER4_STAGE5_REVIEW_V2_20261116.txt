@@ -1,0 +1,49 @@
+阶段5复核流程修订 v2（2026-11-16）
+
+状态
+用户明确要求采用单人抽查，修改流程和交付说明并推送成员4分支。
+本次实现、软件验证和页面验证完成；实际人工复核待用户填写。
+没有冻结正式GSD新清单，没有启动阶段6，也没有读取GSD模型评分。
+
+变更
+1. 新增schema=2单人复核流程；原schema=1及旧复核包保留为历史版本。
+2. 必看固定20张标签和1组内部同图异标，只填写一次姓名/实际日期、总体结论。
+   正常样本不用逐项理由；有疑点才列ID、观察及处理依据。
+3. 12组跨库最近邻诊断可选浏览，可真实记录not_viewed；不要求成员1/5签字。
+4. 仍核验来源/清单/样本绑定，处理未解决问题，保留原始数据和内部重复并披露。
+   实际近重复候选若无法确定，仍从补充集排除；精确匹配不能改判成不同来源。
+   新增跨库疑点需要调查并补充审计，不能在页面中直接当作已解决。
+5. 页面提供JSON和简短TXT导出、JSON导入；空白字段不自动批准任何事项。
+6. 冻结器按schema路由；新记录输出single_owner_spot_check_recorded，evaluation_authorized=false。
+   取消其他组员重复交表：成员1按具体疑点协助、成员2无新增必交、成员5在报告阶段复核结论。
+   成员3直接交已有正式B/D运行目录、权重链接及代码版本；信息从已有记录提取核验。
+
+验证
+新旧GSD流程针对性测试：37 passed。
+全仓库测试：142 passed，0失败，约32.48秒。
+覆盖单人完成、可选诊断未查看、篡改/缺失证据拒绝、标签疑点、新增跨库疑点、精确匹配保护、
+候选排除规则、原清单不覆盖、临时夹具冻结和阶段6始终未授权。
+真实Edge浏览器验证：页面初始为空；20个固定样本；单人填写；JSON/TXT下载；导入恢复；
+被修改的记录拒绝；疑点不会显示为已就绪；无JavaScript错误。
+浏览器测试填写的内容明确标注UI TEST ONLY，仅保存在tmp测试目录，不用于真实清单冻结。
+页面截图已查看，文字和图片可读；总览可点击放大或展开单图。
+原阶段5 files_sha256.json列出的75份证据全部保持原字节；原始模板、旧ZIP及源文件快照不变。
+数据、检索阈值、A/C冻结训练及评估代码和结果均未修改。
+旧source_sha256.json描述原执行版本；本次修改的复核脚本/操作说明另存新版源文件哈希，不覆盖旧记录。
+
+本机使用
+浏览器：runs/member4_stage5_20261116/review_single_owner_v2/review.html
+看图步骤：docs/25_MEMBER4_SIMPLE_REVIEW_GUIDE.txt
+组员交付：docs/24_MEMBER4_TEAM_HANDOFF_20261116.txt
+新版包：runs/member4_stage5_20261116/review_single_owner_v2/GSD_single_owner_review_v2.zip
+压缩包大小：9471735 bytes（约9.5 MB），单独交付，未加入普通Git提交。
+压缩包SHA256：83e5584dff1cccb89b12bbb47321377c347a4f9f4909f87c46e8ddf3d1e34e16
+机器检查：reports/member4_stage5_review_v2_20261116/verification.json
+完整测试及浏览器记录：runs/member4_stage5_review_v2_checks/。
+
+复现命令（项目根目录PowerShell）
+.\.venv\Scripts\python.exe -X utf8 -B scripts/member4_gsd_review.py render-simple --output runs/你的新复核包目录
+.\.venv\Scripts\python.exe -X utf8 -B -m pytest -q --basetemp tmp/你的新测试目录
+仅在真实复核完成后：
+.\.venv\Scripts\python.exe -X utf8 -B scripts/member4_gsd_review.py freeze --review 你的member4_gsd_review_v2.json路径 --output manifests/新的复核清单目录
+冻结也不会启动阶段6；本次没有执行这条真实冻结命令。
