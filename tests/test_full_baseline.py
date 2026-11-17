@@ -82,7 +82,7 @@ def test_selection_exact_original_region_counts(tmp_path, device):
 
 def test_frozen_derivative_guard(tmp_path):
     train, val = {}, {}
-    config = {"purpose": "research", "data_protocol_id": "reviewed", "boundary": False,
+    config = {"purpose": "research", "data_protocol_id": "reviewed", "ablation": "A", "boundary": False,
               "augmentation": False, "epochs": 30, "expected_manifest_sha256": {}}
     for split, meta, key in (("train", train, "train_manifest"), ("validation", val, "val_manifest")):
         meta.update(split=split, samples=[{"id": "a"}], data_protocol={"id": "reviewed"})
