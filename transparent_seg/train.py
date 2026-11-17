@@ -148,11 +148,17 @@ def train(config, output, resume=None, stop_after_epoch=None):
         return max(0.0, 1 - (step - warmup) / max(1, total_steps - warmup)) ** 0.9
 
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, schedule)
-    amp = bool(config.get("amp")) and device.startswith("cuda")
+    device_type = ("cuda" if device.startswith("cuda") else
+                   "mps" if device == "mps" else "cpu")
+    amp = bool(config.get("amp")) and device_type in ("cuda", "mps")
     # BF16 retains the FP32 exponent range; avoids FP16 loss-scale overflow on
     # weak-boundary batches. Disable AMP for GPUs without BF16 support.
-    if amp and (config.get("amp_dtype", "bfloat16") != "bfloat16" or not torch.cuda.is_bf16_supported()):
-        raise ValueError("This training protocol uses BF16 AMP; set amp=false for GPUs without BF16 support")
+    if amp and config.get("amp_dtype", "bfloat16") != "bfloat16":
+        raise ValueError("This training protocol uses BF16 autocast")
+    if amp and device_type == "cuda" and not torch.cuda.is_bf16_supported():
+        raise ValueError("CUDA device does not support BF16 autocast; use a supported GPU")
+    if amp and device_type == "mps" and not torch.backends.mps.is_available():
+        raise RuntimeError("MPS requested but no Apple GPU is available")
     best, start_epoch, global_step = -1.0, 0, 0
     if restored is not None:
         model.load_state_dict(restored["model"])
@@ -209,7 +215,7 @@ def train(config, output, resume=None, stop_after_epoch=None):
                 torch.cuda.synchronize()
             step_started = time.perf_counter()
             x, y, valid = (batch[key].to(device) for key in ("image", "target", "valid"))
-            with torch.autocast(device_type="cuda" if device.startswith("cuda") else "cpu",
+            with torch.autocast(device_type=device_type,
                                 dtype=torch.bfloat16, enabled=amp):
                 losses = segmentation_loss(model(x, return_boundary=config["boundary"]), y, valid,
                                             config["boundary_weight"], config["boundary_radius"])
