@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "training_environment_git_commit": null,
+  "training_environment_git_metadata_available": false,
+  "postrun_source_commit": "64d437ff6d5bb70ee1a36240b37a07fa4bda8004",
+  "postrun_source_commit_created": true,
+  "source_snapshot_original_bundle_sha256": "c6902a104df380ca9afffd5055c024994b71eee88f9121aa785cd8cac0b7ee5b",
+  "source_snapshot_checksum_manifest_sha256": "cc40b78afb9e367a2a30b46b9d5acc4097b59a6879d543a2c3fe4ab476b4ba0b",
+  "source_files_verified_against_snapshot": 31,
+  "source_files_mismatched": 0,
+  "appledouble_metadata_excluded_from_commit": true,
+  "note": "The AutoDL training environment was deployed without .git metadata. This commit was created after training from the exact source_snapshot files in the downloaded delivery bundle. All 31 non-AppleDouble source files match the archive bytes. This is source provenance, not a claim that the training process recorded this commit at runtime."
+}
