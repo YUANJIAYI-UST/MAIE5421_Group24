@@ -6,6 +6,7 @@ Empty/empty mask union scores 1; all-void images are excluded explicitly.
 import math
 import numpy as np
 from scipy.ndimage import minimum_filter
+from .data_v2 import CLASS_NAMES
 
 
 def inner_boundary(mask, width):
@@ -62,3 +63,37 @@ class SegmentationMetrics:
             "background_fpr": self.fp / (self.fp + self.tn) if self.fp + self.tn else None,
             "tp": self.tp, "fp": self.fp, "fn": self.fn, "tn": self.tn,
         }
+
+class CategoryRecall:
+    def __init__(self):
+        self.total = np.zeros(len(CLASS_NAMES), dtype=np.int64)
+        self.hits = np.zeros(len(CLASS_NAMES), dtype=np.int64)
+
+    def update(self, prediction, category_ids):
+        prediction = np.asarray(prediction)
+        category_ids = np.asarray(category_ids)
+
+        if category_ids.ndim != 2 or prediction.shape != category_ids.shape:
+            raise ValueError("Expected aligned HxW prediction and category masks")
+        if prediction.dtype != np.bool_:
+            raise ValueError("Expected a boolean foreground prediction")
+        if not np.issubdtype(category_ids.dtype, np.integer):
+            raise ValueError("Expected integer V2 category IDs")
+        if np.any((category_ids < 0) | (category_ids >= len(CLASS_NAMES))):
+            raise ValueError("Unknown V2 category ID")
+
+        self.total += np.bincount(category_ids.ravel(), minlength=len(CLASS_NAMES))
+        self.hits += np.bincount(category_ids[prediction], minlength=len(CLASS_NAMES))
+
+    def compute(self):
+        result = {}
+        for class_id in range(1, len(CLASS_NAMES)):
+            total = int(self.total[class_id])
+            hits = int(self.hits[class_id])
+            result[class_id] = {
+                "class_name": CLASS_NAMES[class_id],
+                "hits": hits,
+                "total": total,
+                "recall": hits / total if total else None,
+            }
+        return result

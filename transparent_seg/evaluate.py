@@ -32,6 +32,20 @@ def predict(model, image, size, device, condition=None):
                            mode="bilinear", align_corners=False)
     return logits.sigmoid()[0, 0].cpu().numpy() >= 0.5
 
+def predict_in_v2_frame(logits, v2_shape, v2_to_v1_orientation):
+    """Map one image's foreground logits to the native V2 mask grid."""
+    if logits.ndim != 4 or logits.shape[:2] != (1, 1):
+        raise ValueError("Expected foreground logits with shape [1, 1, H, W]")
+
+    # torch.rot90: k=1 is counterclockwise, k=-1 is clockwise.
+    inverse_turns = {"none": 0, "rotate_90_cw": 1, "rotate_90_ccw": -1}
+    if v2_to_v1_orientation not in inverse_turns:
+        raise ValueError(f"Unknown orientation: {v2_to_v1_orientation}")
+
+    aligned = torch.rot90(logits.float(), inverse_turns[v2_to_v1_orientation], (-2, -1))
+    aligned = F.interpolate(aligned, size=v2_shape, mode="bilinear", align_corners=False)
+    return (aligned[0, 0].sigmoid() >= 0.5).detach().cpu().numpy()
+
 
 def save_panel(image, target, prediction, path):
     base = np.asarray(image.convert("RGB"))
