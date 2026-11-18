@@ -15,9 +15,9 @@ from transparent_seg.metrics import SegmentationMetrics
 from transparent_seg.prepare import sha256_file
 
 CASES = {
-    'test/hard/Images/178.jpg': 'Thin spectacle lenses',
-    'test/hard/Images/5835.jpg': 'Window occluded by office furniture',
-    'test/easy/Images/6459.jpg': 'Large storefront glazing',
+    'test/hard/images/178.jpg': 'Thin spectacle lenses',
+    'test/hard/images/5835.jpg': 'Window occluded by office furniture',
+    'test/easy/images/6459.jpg': 'Large storefront glazing',
 }
 KNOWN_BASELINES = {'A': '3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a',
                    'C': '69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d'}
