@@ -1,0 +1,8 @@
+{
+  "status": "paused_for_original_queue",
+  "time": "2026-11-18T17:44:59.233880+00:00",
+  "reason": "Return exclusive D ownership before the original queue reaches D",
+  "complete_chunk_images": 2400,
+  "unfinished_chunk_recomputed_on_resume": true,
+  "exit_code": 1
+}

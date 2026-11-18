@@ -1,0 +1,105 @@
+{
+  "source_sha256": "3b2b8a5151494f531c6737a3d00600963f2e00b800d9a66610e2d5766d918879",
+  "matplotlib": "3.9.0",
+  "clean_plotted": false,
+  "identity_guide_is_not_a_measured_point": true,
+  "figures": [
+    {
+      "figure": "ABCD_robustness_all",
+      "models": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "subset": "all",
+      "images": 4428,
+      "mean_percent": {
+        "A": 86.78380313416731,
+        "B": 86.88882022042576,
+        "C": 86.96036490223808,
+        "D": 86.90682888927434
+      },
+      "y_axis_percent": [
+        85,
+        88
+      ]
+    },
+    {
+      "figure": "AC_robustness_all",
+      "models": [
+        "A",
+        "C"
+      ],
+      "subset": "all",
+      "images": 4428,
+      "mean_percent": {
+        "A": 86.78380313416731,
+        "C": 86.96036490223808
+      },
+      "y_axis_percent": [
+        85,
+        88
+      ]
+    },
+    {
+      "figure": "BD_robustness_all",
+      "models": [
+        "B",
+        "D"
+      ],
+      "subset": "all",
+      "images": 4428,
+      "mean_percent": {
+        "B": 86.88882022042576,
+        "D": 86.90682888927434
+      },
+      "y_axis_percent": [
+        85,
+        88
+      ]
+    },
+    {
+      "figure": "ABCD_robustness_easy",
+      "models": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "subset": "easy",
+      "images": 3491,
+      "mean_percent": {
+        "A": 90.98691638230395,
+        "B": 91.09622812117368,
+        "C": 91.07936574295417,
+        "D": 91.09776086807129
+      },
+      "y_axis_percent": [
+        89,
+        92
+      ]
+    },
+    {
+      "figure": "ABCD_robustness_hard",
+      "models": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "subset": "hard",
+      "images": 937,
+      "mean_percent": {
+        "A": 75.9338470951494,
+        "B": 76.03756174061816,
+        "C": 76.33287053316742,
+        "D": 76.01869440847027
+      },
+      "y_axis_percent": [
+        74,
+        78
+      ]
+    }
+  ]
+}

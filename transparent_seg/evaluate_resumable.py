@@ -73,19 +73,41 @@ def exclusive_run(directory):
         stream.close()
 
 
+def erosion_backend(name):
+    if name == "scipy":
+        return None
+    if name != "opencv":
+        raise ValueError(f"Unknown boundary backend: {name}")
+    import cv2
+
+    def erode(mask, width, border):
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2 * width + 1, 2 * width + 1))
+        return cv2.erode(mask.astype(np.uint8), kernel, borderType=cv2.BORDER_CONSTANT,
+                         borderValue=border).astype(bool)
+
+    return erode
+
+
 class PreparedTarget:
     """Reuse target-only work; preserve the original void/border conventions."""
-    def __init__(self, target, valid):
+    def __init__(self, target, valid, erode=None):
         self.y, self.v = np.asarray(target, bool), np.asarray(valid, bool)
         if self.y.shape != self.v.shape or self.y.ndim != 2:
             raise ValueError("Expected equal HxW target and validity")
         self.valid_count = int(np.count_nonzero(self.v))
         self.foreground = int(np.count_nonzero(self.y & self.v))
         self.width = max(1, int(round(0.02 * math.hypot(*self.y.shape))))
-        self.safe = (self.v if self.v.all() else minimum_filter(
-            self.v, size=2 * self.width + 1, mode="constant", cval=1))
+        self.erode = erode
+        self.safe = self.v if self.v.all() else (
+            erode(self.v, self.width, 1) if erode else minimum_filter(
+                self.v, size=2 * self.width + 1, mode="constant", cval=1))
         self.has_boundary = bool(self.safe.any()) and self.valid_count > 0
-        self.boundary = inner_boundary(self.y & self.v, self.width) & self.safe if self.has_boundary else None
+        self.boundary = self.inner(self.y & self.v) & self.safe if self.has_boundary else None
+
+    def inner(self, mask):
+        if self.erode is None:
+            return inner_boundary(mask, self.width)
+        return mask & ~self.erode(mask, self.width, 0)
 
     def score(self, prediction):
         p = np.asarray(prediction, bool)
@@ -101,7 +123,7 @@ class PreparedTarget:
         meter.fn = self.foreground - meter.tp
         meter.tn = self.valid_count - meter.tp - meter.fp - meter.fn
         if self.has_boundary:
-            pb = inner_boundary(p & self.v, self.width) & self.safe
+            pb = self.inner(p & self.v) & self.safe
             union = np.count_nonzero(pb | self.boundary)
             meter.boundaries.append(float(np.count_nonzero(pb & self.boundary) / union) if union else 1.0)
         return meter.compute()
@@ -228,7 +250,7 @@ def write_results(output, meta, manifest_hash, names, rows, identity_hash):
 
 
 def run(checkpoint, manifest, output, device="cuda", names=None, root=None, resume=False,
-        chunk_size=25, stop_after_chunks=None, verify_legacy=False):
+        chunk_size=25, stop_after_chunks=None, verify_legacy=False, boundary_backend="scipy"):
     if chunk_size < 1 or (stop_after_chunks is not None and stop_after_chunks < 1):
         raise ValueError("Chunk size and diagnostic stop must be positive")
     names = list(CONDITIONS) if names is None else list(names)
@@ -242,12 +264,14 @@ def run(checkpoint, manifest, output, device="cuda", names=None, root=None, resu
     output.mkdir(parents=True, exist_ok=True)
     with exclusive_run(output):
         return _run(checkpoint, manifest, output, device, names, root, resume,
-                    chunk_size, stop_after_chunks, verify_legacy)
+                    chunk_size, stop_after_chunks, verify_legacy, boundary_backend)
 
 
-def _run(checkpoint, manifest, output, device, names, root, resume, chunk_size, stop_after_chunks, verify_legacy):
+def _run(checkpoint, manifest, output, device, names, root, resume, chunk_size, stop_after_chunks, verify_legacy,
+         boundary_backend):
     started = time.perf_counter()
     torch.set_num_threads(4)
+    erode = erosion_backend(boundary_backend)
     model, ckpt = load_checkpoint(checkpoint, device)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
@@ -273,6 +297,10 @@ def _run(checkpoint, manifest, output, device, names, root, resume, chunk_size, 
             "matmul_tf32": torch.backends.cuda.matmul.allow_tf32,
             "cudnn_tf32": torch.backends.cudnn.allow_tf32, "cpu_threads": 4}}
     identity_hash = digest(identity)
+    if erode is not None:
+        import cv2
+        identity["runtime"]["boundary_backend"] = {"opencv": cv2.__version__}
+        identity_hash = digest(identity)
     if resume:
         existing = json.loads((output / "identity.json").read_text(encoding="utf-8"))
         if canonical(existing) != canonical(identity):
@@ -312,7 +340,7 @@ def _run(checkpoint, manifest, output, device, names, root, resume, chunk_size, 
                     target, valid = decode_mask(io.BytesIO(buffers["mask"]), meta["encoding"], meta.get("void_values", []))
                     if target.shape != (image.height, image.width):
                         raise ValueError("Image/mask geometry differs")
-                    prepared = PreparedTarget(target, valid)
+                    prepared = PreparedTarget(target, valid, erode)
                     resized = image.resize((size, size), Image.Resampling.BILINEAR)
                     item = {"id": sample["id"], "difficulty": sample.get("difficulty", "unspecified"),
                             "pixels": image.width * image.height, "conditions": {}}
@@ -381,10 +409,11 @@ def main():
     parser.add_argument("--chunk-size", type=int, default=25)
     parser.add_argument("--stop-after-chunks", type=int, help="Diagnostic pause after complete newly computed chunks")
     parser.add_argument("--verify-legacy", action="store_true", help="Diagnostic exact pixel/metric comparison; not for timing")
+    parser.add_argument("--boundary-backend", choices=("scipy", "opencv"), default="scipy")
     args = parser.parse_args()
     names = None if args.conditions == "all" else args.conditions.split(",")
     result = run(args.checkpoint, args.manifest, args.output, args.device, names, args.root,
-                 args.resume, args.chunk_size, args.stop_after_chunks, args.verify_legacy)
+                 args.resume, args.chunk_size, args.stop_after_chunks, args.verify_legacy, args.boundary_backend)
     print(json.dumps({k: v for k, v in result.items() if k != "scores"}, ensure_ascii=False), flush=True)
 
 

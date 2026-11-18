@@ -19,7 +19,10 @@ class PixelModel(torch.nn.Module):
 
 
 @pytest.mark.parametrize("case", ["empty", "full", "random", "void_band", "all_void", "no_safe"])
-def test_prepared_target_matches_original(case):
+@pytest.mark.parametrize("backend", ["scipy", "opencv"])
+def test_prepared_target_matches_original(case, backend):
+    if backend == "opencv":
+        pytest.importorskip("cv2")
     rng = np.random.default_rng(123)
     y = rng.random((61, 87)) > 0.4
     v = np.ones_like(y)
@@ -28,7 +31,7 @@ def test_prepared_target_matches_original(case):
     if case == "void_band": v[12:30] = False
     if case == "all_void": v[:] = False
     if case == "no_safe": v[:] = False; v[20, 20] = True
-    prepared = runner.PreparedTarget(y, v)
+    prepared = runner.PreparedTarget(y, v, runner.erosion_backend(backend))
     for p in (y, ~y, rng.random(y.shape) > 0.5):
         original = SegmentationMetrics()
         original.update(p, y, v)
@@ -75,21 +78,24 @@ def strip_timing(path):
     return [{k: v for k, v in row.items() if k != "seconds"} for row in rows]
 
 
-def test_resume_matches_continuous_and_legacy(tmp_path, experiment):
+@pytest.mark.parametrize("backend", ["scipy", "opencv"])
+def test_resume_matches_continuous_and_legacy(tmp_path, experiment, backend):
+    if backend == "opencv":
+        pytest.importorskip("cv2")
     checkpoint, manifest = experiment
     full, resumed = tmp_path / "full", tmp_path / "resumed"
-    a = runner.run(checkpoint, manifest, full, "cpu")
-    paused = runner.run(checkpoint, manifest, resumed, "cpu", stop_after_chunks=1)
+    a = runner.run(checkpoint, manifest, full, "cpu", boundary_backend=backend)
+    paused = runner.run(checkpoint, manifest, resumed, "cpu", stop_after_chunks=1, boundary_backend=backend)
     assert paused["image_count"] == 25 and not paused["complete"]
     assert not (resumed / "clean/metrics.json").exists()
     (resumed / "chunks/000025.json.tmp").write_text('{"unfinished":')
-    b = runner.run(checkpoint, manifest, resumed, "cpu", resume=True)
+    b = runner.run(checkpoint, manifest, resumed, "cpu", resume=True, boundary_backend=backend)
     assert a["scores"] == b["scores"] and strip_timing(full) == strip_timing(resumed)
     assert b["reused_chunks"] == 1 and b["computed_chunks"] == 1 and b["image_count"] == 27
     for name, condition in runner.CONDITIONS.items():
         reference = evaluate(PixelModel().eval(), manifest, 32, "cpu", condition=condition)
         assert a["scores"][name] == reference["scores"]
-    again = runner.run(checkpoint, manifest, resumed, "cpu", resume=True)
+    again = runner.run(checkpoint, manifest, resumed, "cpu", resume=True, boundary_backend=backend)
     assert again["computed_chunks"] == 0 and again["scores"] == a["scores"]
 
 
@@ -149,3 +155,13 @@ def test_repair_pause_does_not_leave_stale_complete_exports(tmp_path, experiment
     assert list((out / "previous_exports").glob("*/clean/metrics.json"))
     recovered = runner.run(checkpoint, manifest, out, "cpu", names=["clean"], resume=True)
     assert recovered["scores"] == original["scores"]
+
+
+def test_resume_refuses_changed_boundary_backend(tmp_path, experiment):
+    pytest.importorskip("cv2")
+    checkpoint, manifest = experiment
+    out = tmp_path / "backend_identity"
+    runner.run(checkpoint, manifest, out, "cpu", names=["clean"], stop_after_chunks=1)
+    with pytest.raises(ValueError, match="identity mismatch"):
+        runner.run(checkpoint, manifest, out, "cpu", names=["clean"], resume=True,
+                   boundary_backend="opencv")

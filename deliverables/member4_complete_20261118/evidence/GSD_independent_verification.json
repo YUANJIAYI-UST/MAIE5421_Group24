@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "A": [
+    {
+      "model": "A",
+      "condition": "clean",
+      "subset": "all",
+      "background_fpr": 0.11418990112882463,
+      "boundary_images": 813,
+      "boundary_iou": 0.4421086061077238,
+      "fn": 11196831,
+      "foreground_iou": 0.6812732668934955,
+      "fp": 15344702,
+      "images": 813,
+      "region_f1": 0.8104253845090758,
+      "skipped_all_void": 0,
+      "tn": 119034099,
+      "tp": 56732100
+    }
+  ],
+  "D": [
+    {
+      "model": "D",
+      "condition": "clean",
+      "subset": "all",
+      "background_fpr": 0.10350707028558769,
+      "boundary_images": 813,
+      "boundary_iou": 0.4418096493918145,
+      "fn": 12301279,
+      "foreground_iou": 0.6797281564022873,
+      "fp": 13909156,
+      "images": 813,
+      "region_f1": 0.8093311454136219,
+      "skipped_all_void": 0,
+      "tn": 120469645,
+      "tp": 55627652
+    }
+  ],
+  "audits": [
+    {
+      "model": "A",
+      "condition": "clean",
+      "images": 813,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "D",
+      "condition": "clean",
+      "images": 813,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    }
+  ]
+}

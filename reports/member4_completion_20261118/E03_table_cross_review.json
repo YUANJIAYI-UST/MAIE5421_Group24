@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "scope": "Read-only E03 table arithmetic, membership and recorded category denominators.",
+  "member2_commit": "224d008c6b3a2ac27403ec86a0e71b972bcb5da2",
+  "source_directory": "tmp\\member4_completion_20261118\\member2_source\\reports\\group24_b03_b04_e03_20261118",
+  "checks": [
+    {
+      "model": "A",
+      "subset": "all",
+      "images": 4428,
+      "passed": true
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "images": 2935,
+      "passed": true
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "images": 1493,
+      "passed": true
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "images": 4428,
+      "passed": true
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "images": 2935,
+      "passed": true
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "images": 1493,
+      "passed": true
+    }
+  ],
+  "category_rows": 66,
+  "train_validation_heldout_counts_zero": true,
+  "test_partition_exact": true,
+  "source_files_sha256": {
+    "E03_category_recall.csv": "43cd6db0e30c17a80121a9db37236abea9154297cc072c210b320a63d58bb51b",
+    "E03_A\\result.json": "d0d6b245a333c19dde4162144afd90f2b81cd29e1a5e275028750202b56d0efd",
+    "E03_A\\per_image.csv": "bb5a6f4f285364d765da840db9c838ebea4103275846947f17d70ba3d947e7ea",
+    "E03_D\\result.json": "e7274b095652de298707df660a3ee44fe6ac8c244b80c56d2c5c08bf8c1c8a48",
+    "E03_D\\per_image.csv": "8d2757ce0e2b6ccb4f47782e72c0742ab9d7ea5dc6c310b2da16e2265ead7853"
+  },
+  "limitations": [
+    "No E03 model download, inference rerun, or independent mask decoding in this review.",
+    "Recorded original-coordinate denominators checked against the frozen manifest.",
+    "This review does not turn GSD scene transfer into an unseen-category experiment."
+  ]
+}

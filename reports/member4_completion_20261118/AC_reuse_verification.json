@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "conditions": {
+    "A": 13,
+    "C": 13
+  },
+  "audits": [
+    {
+      "model": "A",
+      "condition": "clean",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "brightness_0.6",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "brightness_0.8",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "brightness_1.2",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "brightness_1.4",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "contrast_0.5",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "contrast_0.75",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "contrast_1.25",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "contrast_1.5",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "gamma_0.6",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "gamma_0.8",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "gamma_1.2",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "A",
+      "condition": "gamma_1.6",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "clean",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "brightness_0.6",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "brightness_0.8",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "brightness_1.2",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "brightness_1.4",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "contrast_0.5",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "contrast_0.75",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "contrast_1.25",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "contrast_1.5",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "gamma_0.6",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "gamma_0.8",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "gamma_1.2",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    },
+    {
+      "model": "C",
+      "condition": "gamma_1.6",
+      "images": 4428,
+      "membership_exact": true,
+      "counts_and_metrics_verified": true
+    }
+  ]
+}

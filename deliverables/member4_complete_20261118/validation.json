@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-18T18:55:13.805975+00:00",
+  "slides": 4,
+  "speaker_note_sections": 4,
+  "visual_review_all_four_slides": true,
+  "formal_results_verified": true,
+  "gallery_prediction_hashes_verified": true,
+  "presentation_numbers_match_source": true,
+  "native_tables_on_slides": [
+    2,
+    4
+  ],
+  "scientific_plot_generated_with_python": true,
+  "stage7_complete": true,
+  "limitations": [
+    "Not tested in the desktop Microsoft PowerPoint application.",
+    "Team report assembly, final PR merges and rehearsal remain team responsibilities."
+  ]
+}

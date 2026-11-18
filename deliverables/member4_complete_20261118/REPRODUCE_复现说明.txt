@@ -1,0 +1,45 @@
+在仓库根目录运行，使用项目.venv Python；模型/data不包含在文稿包。
+GPU实测：NVIDIA GeForce RTX 5090 Laptop GPU，24GB。
+推理环境与源代码哈希：evidence/protocol.json和原始运行identity.json；完整模型哈希见下方。
+先按现有项目的数据导入说明恢复固定清单，禁止更换样本、阈值或分辨率。
+安装可选边界计算依赖（不替换numpy）：
+.\.venv\Scripts\python.exe -m pip install --no-deps --target .local_deps/member4_opencv_4_12 opencv-python-headless==4.12.0.88
+$env:PYTHONPATH=(Resolve-Path .local_deps/member4_opencv_4_12).Path
+
+独立重跑示例（用新的输出目录，不覆盖正式记录）：
+.\.venv\Scripts\python.exe -m transparent_seg.evaluate_resumable --checkpoint runs/member4_BD_delivery_20261118/full_runs/B03_D/best.pt --manifest manifests/member1_final_20261029/v1/test.json --output runs/my_D_recheck --device cuda --conditions all --chunk-size 25 --boundary-backend opencv
+中断后仅在代码版本、依赖、模型和清单不变时添加 --resume。
+GSD命令将manifest改为manifests/member4_gsd_reviewed_v2_20261116/test_full.json，conditions改为clean，使用独立输出目录。
+主实验D不得替换为E03 D。A/C和GSD原始A可直接复用已核验记录，无需重训。
+
+在项目仓库中重新生成曲线（普通Python，matplotlib 3.9.0）：
+python scripts/plot_member4_completion.py --report reports/member4_completion_20261118
+在本交付目录中独立生成：
+python plot_member4_completion.py --report evidence
+此操作在evidence/figures另存曲线，不读取模型或运行训练。
+
+直接取得B/D推理权重：
+在正式B/D Release下载B03_B_best.pt、B03_D_best.pt，分别保存为
+runs/member4_BD_delivery_20261118/full_runs/B03_B/best.pt和B03_D/best.pt。
+加载器从checkpoint读取实际配置；只做推理不必下载完整训练归档。
+要复查完整训练记录，再取group24_B03_seed42_full_runs.zip；其原始内部前缀为
+runs/member2_b03_e03_20261118/，按前缀恢复到新目录，勿覆盖本机正式运行。
+
+完整运行结果本机路径：
+A测试：runs/member4_A_full_test_20261115
+C测试：runs/member4_C_full_test_20261115
+B/D测试：runs/member4_completion_20261118/B_test、D_test
+A GSD：runs/member4_stage6_20261116/A_full
+D GSD：runs/member4_completion_20261118/D_GSD
+本轮源代码快照及日志：runs/member4_completion_20261118/source_snapshot、logs
+为利用同一GPU的余量，部分D分块在B评估期间提前计算；B接近完成前受控暂停辅助D进程树，
+由原队列恢复完整分块。详情见scheduling_appendix.json及D_parallel_state.json。
+计算配置未改；不要把最后一次续跑的elapsed_seconds误写为整个D模型的完整评估耗时。
+启动时Git HEAD为3d11d48397840443d7274d65dd03c44c7b73a0bf，未提交的已核验后端扩展以源文件哈希/快照固定。
+后续提交文稿后的Git HEAD不同；旧分块拒绝跨版本续跑是预期保护，请保留原始快照。
+
+模型SHA256
+A 3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a
+B e219d6bf2f7f7cc57711d8df7354202efd81360108247f16dd4cc72765549d81
+C 69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d
+D 49498d53b63b13368ceafa5200842a7136c41172c9decad6000c23d1c22b93a4

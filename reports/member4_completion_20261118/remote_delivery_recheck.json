@@ -1,0 +1,67 @@
+{
+  "open_pulls": [
+    {
+      "number": 4,
+      "head": "member3/b02-run-provenance",
+      "sha": "812fdb92a75a7bc2bde20bccd122a4d8abffcfa8",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/4"
+    },
+    {
+      "number": 3,
+      "head": "member4/augmentation-gsd",
+      "sha": "3d11d48397840443d7274d65dd03c44c7b73a0bf",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/3"
+    }
+  ],
+  "branches": {
+    "main": "9cfc5436bdf5c4a7b0da899c1a57450ccaed96d7",
+    "member4/augmentation-gsd": "3d11d48397840443d7274d65dd03c44c7b73a0bf",
+    "member2/b03-b04-e03": "224d008c6b3a2ac27403ec86a0e71b972bcb5da2"
+  },
+  "BD_assets": [
+    {
+      "id": 762679557,
+      "name": "B03_B04_summary.json",
+      "bytes": 10809,
+      "digest": "sha256:7975cbe479762bd44c7a03d7ac16c5343eb9dee39dc949cdfc69bc0932c9171f"
+    },
+    {
+      "id": 762679530,
+      "name": "B03_B_best.pt",
+      "bytes": 46626475,
+      "digest": "sha256:e219d6bf2f7f7cc57711d8df7354202efd81360108247f16dd4cc72765549d81"
+    },
+    {
+      "id": 762679531,
+      "name": "B03_D_best.pt",
+      "bytes": 46626475,
+      "digest": "sha256:49498d53b63b13368ceafa5200842a7136c41172c9decad6000c23d1c22b93a4"
+    },
+    {
+      "id": 762679533,
+      "name": "B04_analysis.md",
+      "bytes": 3104,
+      "digest": "sha256:97fb5a0d76c1a7d886423c6c302208a13e7f66f242f1b391f90c6146c12dc3c1"
+    },
+    {
+      "id": 762679613,
+      "name": "B04_failure_cases.png",
+      "bytes": 452185,
+      "digest": "sha256:5860c05f0044b78459a53a1b897b134ffcf67ab8e9af74a5171c4b8d88ce527b"
+    },
+    {
+      "id": 762679608,
+      "name": "group24_B03_seed42_full_runs.zip",
+      "bytes": 175989185,
+      "digest": "sha256:d4efbb7eeefec5c4435b58cf74e68a8dbbf6c81def44514b2e93f12bd30a1e27"
+    },
+    {
+      "id": 762680072,
+      "name": "model_assets.json",
+      "bytes": 995,
+      "digest": "sha256:7fb6a2b39a3d352765d4f7c78c88b85c20534191785827a315509876a92cf499"
+    }
+  ],
+  "passed": true,
+  "checked_at": "2026-11-18T17:51:12.664842+00:00"
+}
