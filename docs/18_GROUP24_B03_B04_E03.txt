@@ -1,0 +1,47 @@
+Group 24 B03 / B04 / E03 reproduction
+
+Sources
+- PR #3, 3d11d48: member 4's C and paired A/C results. The C checkpoint SHA256 is
+  69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d.
+- PR #4, 812fdb9: full validation grid selected radius 2 and weight 0.1. The selected
+  run reached 0.8848859646 validation IoU on all 995 images. Its initialization hash
+  starts 5c4d30b; A and C share fd505592. Preserve the grid result and use its selected
+  settings in a fresh B run with the common initialization for the B04 main table.
+- Member 5's E02 commit fecc901 supplies the original-resolution V2 recall definition
+  and orientation mapping. The isolated experiments retain V1 binary training labels.
+
+Main B/D
+Use the frozen configs/group24_b03_{B,D}_seed42.json settings. B uses the boundary head;
+D adds the same photometric augmentation as C. Both use full 4,959/995 reviewed V1,
+batch 8, seed 42, 30 epochs and 18,600 updates. Select strictly on full original-size
+validation IoU before evaluating the common 4,428-image clean test. Match common
+ImageNet revision, initialization hash, BF16 training and other controls to A/C.
+
+Isolated E03 A/D
+Use configs/group24_e03_{A,D}_seed42.json with the frozen 3,230/646 D03 split.
+Verify masks with scripts/verify_holdout_release.py and build separate train and
+validation caches with transparent_seg.cache. Both models start from ImageNet plus
+the same seeded decoder, use 30 epochs and 12,120 updates, and select on D03 validation.
+The 4,428 test images partition into 2,935 seen and 1,493 held-out images. Report
+V1 original-resolution region/Boundary IoU and background FPR, plus V2 native-frame
+recall including class 5 Glass Door and class 8 Floor Glass.
+
+Entry points (PowerShell, project root)
+  .\scripts\run_group24_followup.ps1 -Stage B03_B
+  .\scripts\run_group24_followup.ps1 -Stage B03_D
+  .\scripts\run_group24_followup.ps1 -Stage E03_A
+  .\scripts\run_group24_followup.ps1 -Stage E03_D
+
+Training uses the pinned project environment and cached MiT-B0 weights. See docs/17
+for setup and the V1 cache instructions; replace the V1 manifest/cache path with
+its D03 counterpart when building the isolated cache. Use a new -RunRoot for
+reproduction. Use -EvaluateOnly to recover an interrupted evaluation with the same
+checkpoint, data, code and runtime. Default boundary morphology is SciPy. The
+optional -EvalDeps path supplies OpenCV from a separate dependency directory.
+
+The B04 summary takes member 4's published condition_results.csv and compares
+B−A and D−C on all/easy/hard, with the boundary × augmentation interaction.
+The fixed visual examples show thin spectacle lenses, furniture occlusion and a
+large shop window. The clean-test study reports single-seed effects; C ran on a
+different GPU/Python environment. Run the summary and rendering scripts after
+both checkpoint evaluations complete. E03 has separate comparison and recall tables.
