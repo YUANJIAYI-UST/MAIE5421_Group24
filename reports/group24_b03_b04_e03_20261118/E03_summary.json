@@ -1,0 +1,786 @@
+{
+  "training": {
+    "A": {
+      "selected_epoch": 29,
+      "selected_validation_iou": 0.8945052192690343,
+      "optimizer_steps": 12120,
+      "train_count": 3230,
+      "validation_count": 646,
+      "training_loop_seconds": 4490.904755700012,
+      "peak_allocated_mib": 2797.55517578125,
+      "environment": {
+        "python": "3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]",
+        "torch": "2.7.1+cu128",
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 5070 Ti",
+        "git_commit": "b27c05aee368abe8070c2147678faa204f4a9559",
+        "git_dirty": false,
+        "initial_shared_state_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+        "encoder_resolved_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+        "train_manifest_sha256": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+        "val_manifest_sha256": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f",
+        "synthetic": false,
+        "data_protocol": {
+          "id": "member1_final_20261029_d03",
+          "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac",
+          "status": "owner_complete_pending_independent_review",
+          "source_dataset": "trans10k_v1",
+          "human_visual_review": "18_geometry_and_153_candidate_pairs_complete",
+          "perceptual_candidates_review": "owner_complete_with_one_recorded_test_only_uncertainty",
+          "member1_delivery": "complete",
+          "member5_review": "pending",
+          "official_test_membership_preserved": true,
+          "kind": "v2_category_holdout",
+          "held_out_class_ids": [
+            5,
+            8
+          ],
+          "selection_sha256": "518706353946a225e2cf4c396984cc283d4d002ab73e9318b1e2e3b2f0a96fee",
+          "rules_sha256": "db1abb473da5696309db6abe0cc3d7f98599eaf24c40e9af165e3cd42d0b790a",
+          "source_mirror_review": "owner_accepted_pinned_mirror_with_provenance_limitation"
+        },
+        "full_official_train": false
+      },
+      "best_sha256": "a2de25f110caf3d10b48642e30bb33646dadb186b33997ca137612d6855c0f9a",
+      "last_sha256": "f6302e81c04ece29fecde3cec24bdf393176032134da6cb78ec506cb2a4b4383",
+      "boundary_nonzero_gradient_evidence": false
+    },
+    "D": {
+      "selected_epoch": 28,
+      "selected_validation_iou": 0.8974850223726815,
+      "optimizer_steps": 12120,
+      "train_count": 3230,
+      "validation_count": 646,
+      "training_loop_seconds": 5012.682725000002,
+      "peak_allocated_mib": 2799.2470703125,
+      "environment": {
+        "python": "3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]",
+        "torch": "2.7.1+cu128",
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 5070 Ti",
+        "git_commit": "b27c05aee368abe8070c2147678faa204f4a9559",
+        "git_dirty": false,
+        "initial_shared_state_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+        "encoder_resolved_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+        "train_manifest_sha256": "73bda9250625d74eebcc6c2bb21b35652e5c84c1435591dc0776a62422549ce6",
+        "val_manifest_sha256": "77841abe665891f53a3c11e652abcdd85d6fc6986a618dc14969c4c35ad8da6f",
+        "synthetic": false,
+        "data_protocol": {
+          "id": "member1_final_20261029_d03",
+          "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac",
+          "status": "owner_complete_pending_independent_review",
+          "source_dataset": "trans10k_v1",
+          "human_visual_review": "18_geometry_and_153_candidate_pairs_complete",
+          "perceptual_candidates_review": "owner_complete_with_one_recorded_test_only_uncertainty",
+          "member1_delivery": "complete",
+          "member5_review": "pending",
+          "official_test_membership_preserved": true,
+          "kind": "v2_category_holdout",
+          "held_out_class_ids": [
+            5,
+            8
+          ],
+          "selection_sha256": "518706353946a225e2cf4c396984cc283d4d002ab73e9318b1e2e3b2f0a96fee",
+          "rules_sha256": "db1abb473da5696309db6abe0cc3d7f98599eaf24c40e9af165e3cd42d0b790a",
+          "source_mirror_review": "owner_accepted_pinned_mirror_with_provenance_limitation"
+        },
+        "full_official_train": false
+      },
+      "best_sha256": "f0915d5204e918c5964b08964ab850eaab71a91b3a3ddca168dc37bb125b9818",
+      "last_sha256": "30ee16e452e6925c8adf231cbaac3e8b91436384ccb2e7d36b99301546f8feb4",
+      "boundary_nonzero_gradient_evidence": true
+    }
+  },
+  "metrics": [
+    {
+      "model": "A",
+      "subset": "all",
+      "background_fpr": 0.03570993237645101,
+      "boundary_images": 4428,
+      "boundary_iou": 0.608690910367887,
+      "fn": 2602816907,
+      "foreground_iou": 0.7376948754392689,
+      "fp": 1249960400,
+      "images": 4428,
+      "region_f1": 0.8490499521704445,
+      "skipped_all_void": 0,
+      "tn": 33753197456,
+      "tp": 10835373805
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "background_fpr": 0.012134827498573012,
+      "boundary_images": 2935,
+      "boundary_iou": 0.7277142098676325,
+      "fn": 294723549,
+      "foreground_iou": 0.8894837306328627,
+      "fp": 272001668,
+      "images": 2935,
+      "region_f1": 0.941509806316183,
+      "skipped_all_void": 0,
+      "tn": 22142957921,
+      "tp": 4561254765
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "background_fpr": 0.07768853899955816,
+      "boundary_images": 1493,
+      "boundary_iou": 0.3747100771249181,
+      "fn": 2308093358,
+      "foreground_iou": 0.6562768547428711,
+      "fp": 977958732,
+      "images": 1493,
+      "region_f1": 0.7924724092636733,
+      "skipped_all_void": 0,
+      "tn": 11610239535,
+      "tp": 6274119040
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "background_fpr": 0.038256635058726854,
+      "boundary_images": 4428,
+      "boundary_iou": 0.6144141576584682,
+      "fn": 2311912555,
+      "foreground_iou": 0.7529307021122092,
+      "fp": 1339103036,
+      "images": 4428,
+      "region_f1": 0.8590535851816148,
+      "skipped_all_void": 0,
+      "tn": 33664054820,
+      "tp": 11126278157
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "background_fpr": 0.012627311768114918,
+      "boundary_images": 2935,
+      "boundary_iou": 0.7296582187377046,
+      "fn": 279813811,
+      "foreground_iou": 0.8904743309319197,
+      "fp": 283040683,
+      "images": 2935,
+      "region_f1": 0.9420644505582422,
+      "skipped_all_void": 0,
+      "tn": 22131918906,
+      "tp": 4576164503
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "background_fpr": 0.08389305050655825,
+      "boundary_images": 1493,
+      "boundary_iou": 0.38786270469962114,
+      "fn": 2032098744,
+      "foreground_iou": 0.6795939961475373,
+      "fp": 1056062353,
+      "images": 1493,
+      "region_f1": 0.8092360388359486,
+      "skipped_all_void": 0,
+      "tn": 11532135914,
+      "tp": 6550113654
+    }
+  ],
+  "category_recall": [
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 1,
+      "class_name": "Shelf",
+      "hits": 36105334,
+      "recall": 0.7833541824466976,
+      "total": 46090689
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 2,
+      "class_name": "Jar or Tank",
+      "hits": 80805958,
+      "recall": 0.9434244834460475,
+      "total": 85651750
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 3,
+      "class_name": "Freezer",
+      "hits": 11854114,
+      "recall": 0.9646379843019576,
+      "total": 12288666
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 4,
+      "class_name": "Window",
+      "hits": 67286020,
+      "recall": 0.903848706362054,
+      "total": 74443897
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 5,
+      "class_name": "Glass Door",
+      "hits": 128007665,
+      "recall": 0.7970287464142937,
+      "total": 160606083
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 6,
+      "class_name": "Eyeglass",
+      "hits": 12778248,
+      "recall": 0.9313575544765811,
+      "total": 13720024
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 7,
+      "class_name": "Cup",
+      "hits": 266635062,
+      "recall": 0.9731176063713172,
+      "total": 274000861
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 8,
+      "class_name": "Floor Glass",
+      "hits": 457775250,
+      "recall": 0.7170436610579799,
+      "total": 638420329
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 9,
+      "class_name": "Glass Bow",
+      "hits": 29199759,
+      "recall": 0.9681999720811265,
+      "total": 30158810
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 10,
+      "class_name": "Water Bottle",
+      "hits": 85611874,
+      "recall": 0.9474618819837609,
+      "total": 90359175
+    },
+    {
+      "model": "A",
+      "subset": "all",
+      "category_id": 11,
+      "class_name": "Storage Box",
+      "hits": 46890973,
+      "recall": 0.8744141346400875,
+      "total": 53625589
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 1,
+      "class_name": "Shelf",
+      "hits": 33482052,
+      "recall": 0.7934395951146738,
+      "total": 42198615
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 2,
+      "class_name": "Jar or Tank",
+      "hits": 80803960,
+      "recall": 0.9435190360641192,
+      "total": 85641049
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 3,
+      "class_name": "Freezer",
+      "hits": 11586984,
+      "recall": 0.9654110417946822,
+      "total": 12002125
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 4,
+      "class_name": "Window",
+      "hits": 62706169,
+      "recall": 0.9070833433266628,
+      "total": 69129446
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 5,
+      "class_name": "Glass Door",
+      "hits": 0,
+      "recall": null,
+      "total": 0
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 6,
+      "class_name": "Eyeglass",
+      "hits": 12770685,
+      "recall": 0.9315427906430853,
+      "total": 13709177
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 7,
+      "class_name": "Cup",
+      "hits": 266309477,
+      "recall": 0.973118138710712,
+      "total": 273666132
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 8,
+      "class_name": "Floor Glass",
+      "hits": 0,
+      "recall": null,
+      "total": 0
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 9,
+      "class_name": "Glass Bow",
+      "hits": 29199759,
+      "recall": 0.9681999720811265,
+      "total": 30158810
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 10,
+      "class_name": "Water Bottle",
+      "hits": 85133172,
+      "recall": 0.9472314811740613,
+      "total": 89875784
+    },
+    {
+      "model": "A",
+      "subset": "seen",
+      "category_id": 11,
+      "class_name": "Storage Box",
+      "hits": 46555989,
+      "recall": 0.87921352786551,
+      "total": 52951857
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 1,
+      "class_name": "Shelf",
+      "hits": 2623282,
+      "recall": 0.6740061982377519,
+      "total": 3892074
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 2,
+      "class_name": "Jar or Tank",
+      "hits": 1998,
+      "recall": 0.18671152228763668,
+      "total": 10701
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 3,
+      "class_name": "Freezer",
+      "hits": 267130,
+      "recall": 0.932257512886463,
+      "total": 286541
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 4,
+      "class_name": "Window",
+      "hits": 4579851,
+      "recall": 0.8617731163576444,
+      "total": 5314451
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 5,
+      "class_name": "Glass Door",
+      "hits": 128007665,
+      "recall": 0.7970287464142937,
+      "total": 160606083
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 6,
+      "class_name": "Eyeglass",
+      "hits": 7563,
+      "recall": 0.6972434774592053,
+      "total": 10847
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 7,
+      "class_name": "Cup",
+      "hits": 325585,
+      "recall": 0.9726823788796309,
+      "total": 334729
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 8,
+      "class_name": "Floor Glass",
+      "hits": 457775250,
+      "recall": 0.7170436610579799,
+      "total": 638420329
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 9,
+      "class_name": "Glass Bow",
+      "hits": 0,
+      "recall": null,
+      "total": 0
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 10,
+      "class_name": "Water Bottle",
+      "hits": 478702,
+      "recall": 0.9902997780264837,
+      "total": 483391
+    },
+    {
+      "model": "A",
+      "subset": "heldout",
+      "category_id": 11,
+      "class_name": "Storage Box",
+      "hits": 334984,
+      "recall": 0.49720660440649994,
+      "total": 673732
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 1,
+      "class_name": "Shelf",
+      "hits": 36497735,
+      "recall": 0.7918678542644481,
+      "total": 46090689
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 2,
+      "class_name": "Jar or Tank",
+      "hits": 80803152,
+      "recall": 0.9433917228778163,
+      "total": 85651750
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 3,
+      "class_name": "Freezer",
+      "hits": 11872424,
+      "recall": 0.9661279751602004,
+      "total": 12288666
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 4,
+      "class_name": "Window",
+      "hits": 67831947,
+      "recall": 0.911182108051114,
+      "total": 74443897
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 5,
+      "class_name": "Glass Door",
+      "hits": 132092468,
+      "recall": 0.8224624219245793,
+      "total": 160606083
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 6,
+      "class_name": "Eyeglass",
+      "hits": 12794908,
+      "recall": 0.9325718380667556,
+      "total": 13720024
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 7,
+      "class_name": "Cup",
+      "hits": 266666364,
+      "recall": 0.9732318468882476,
+      "total": 274000861
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 8,
+      "class_name": "Floor Glass",
+      "hits": 479497016,
+      "recall": 0.7510679002829811,
+      "total": 638420329
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 9,
+      "class_name": "Glass Bow",
+      "hits": 29259801,
+      "recall": 0.9701908331263733,
+      "total": 30158810
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 10,
+      "class_name": "Water Bottle",
+      "hits": 85839805,
+      "recall": 0.9499843817741807,
+      "total": 90359175
+    },
+    {
+      "model": "D",
+      "subset": "all",
+      "category_id": 11,
+      "class_name": "Storage Box",
+      "hits": 47297462,
+      "recall": 0.881994265834544,
+      "total": 53625589
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 1,
+      "class_name": "Shelf",
+      "hits": 33973374,
+      "recall": 0.8050826786613732,
+      "total": 42198615
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 2,
+      "class_name": "Jar or Tank",
+      "hits": 80801045,
+      "recall": 0.9434849986482534,
+      "total": 85641049
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 3,
+      "class_name": "Freezer",
+      "hits": 11597812,
+      "recall": 0.9663132153681119,
+      "total": 12002125
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 4,
+      "class_name": "Window",
+      "hits": 63311095,
+      "recall": 0.9158339703749397,
+      "total": 69129446
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 5,
+      "class_name": "Glass Door",
+      "hits": 0,
+      "recall": null,
+      "total": 0
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 6,
+      "class_name": "Eyeglass",
+      "hits": 12786898,
+      "recall": 0.9327254291048981,
+      "total": 13709177
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 7,
+      "class_name": "Cup",
+      "hits": 266341488,
+      "recall": 0.9732351097065968,
+      "total": 273666132
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 8,
+      "class_name": "Floor Glass",
+      "hits": 0,
+      "recall": null,
+      "total": 0
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 9,
+      "class_name": "Glass Bow",
+      "hits": 29259801,
+      "recall": 0.9701908331263733,
+      "total": 30158810
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 10,
+      "class_name": "Water Bottle",
+      "hits": 85362079,
+      "recall": 0.949778407496284,
+      "total": 89875784
+    },
+    {
+      "model": "D",
+      "subset": "seen",
+      "category_id": 11,
+      "class_name": "Storage Box",
+      "hits": 46959376,
+      "recall": 0.8868315232079585,
+      "total": 52951857
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 1,
+      "class_name": "Shelf",
+      "hits": 2524361,
+      "recall": 0.6485901861064307,
+      "total": 3892074
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 2,
+      "class_name": "Jar or Tank",
+      "hits": 2107,
+      "recall": 0.19689748621624148,
+      "total": 10701
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 3,
+      "class_name": "Freezer",
+      "hits": 274612,
+      "recall": 0.95836895941593,
+      "total": 286541
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 4,
+      "class_name": "Window",
+      "hits": 4520852,
+      "recall": 0.8506714992762188,
+      "total": 5314451
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 5,
+      "class_name": "Glass Door",
+      "hits": 132092468,
+      "recall": 0.8224624219245793,
+      "total": 160606083
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 6,
+      "class_name": "Eyeglass",
+      "hits": 8010,
+      "recall": 0.7384530284871393,
+      "total": 10847
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 7,
+      "class_name": "Cup",
+      "hits": 324876,
+      "recall": 0.9705642474957353,
+      "total": 334729
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 8,
+      "class_name": "Floor Glass",
+      "hits": 479497016,
+      "recall": 0.7510679002829811,
+      "total": 638420329
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 9,
+      "class_name": "Glass Bow",
+      "hits": 0,
+      "recall": null,
+      "total": 0
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 10,
+      "class_name": "Water Bottle",
+      "hits": 477726,
+      "recall": 0.9882807085775284,
+      "total": 483391
+    },
+    {
+      "model": "D",
+      "subset": "heldout",
+      "category_id": 11,
+      "class_name": "Storage Box",
+      "hits": 338086,
+      "recall": 0.5018108090457333,
+      "total": 673732
+    }
+  ],
+  "heldout_class_ids": [
+    5,
+    8
+  ]
+}

@@ -45,3 +45,10 @@ The fixed visual examples show thin spectacle lenses, furniture occlusion and a
 large shop window. The clean-test study reports single-seed effects; C ran on a
 different GPU/Python environment. Run the summary and rendering scripts after
 both checkpoint evaluations complete. E03 has separate comparison and recall tables.
+
+Completed artifacts
+- The matched B/D and isolated A/D runs all completed on the local RTX 5070 Ti.
+- See reports/group24_b03_b04_e03_20261118/B04_analysis.md and E03_analysis.md
+  for results, limitations, qualitative cases, and links via the report directory.
+- Main B/D release: https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/group24-b03-b04-20261118
+- Isolated A/D release: https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/group24-e03-20261118
