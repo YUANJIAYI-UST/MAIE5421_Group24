@@ -5,6 +5,7 @@ from pathlib import Path
 from .prepare import sha256_file
 
 FOLLOWUP_SCOPES = {
+    "group24_b03_full_B": ("B", "member1_final_20261029_v1", 4959, 995),
     "group24_b03_full_D": ("D", "member1_final_20261029_v1", 4959, 995),
     "group24_e03_isolated_A": ("A", "member1_final_20261029_d03", 3230, 646),
     "group24_e03_isolated_D": ("D", "member1_final_20261029_d03", 3230, 646),
@@ -29,8 +30,7 @@ def validate_frozen_protocol(config, training, validation):
             raise ValueError("Frozen A protocol requires both ablation switches off")
     else:
         ablation, protocol_id, train_count, val_count = FOLLOWUP_SCOPES[scope]
-        enabled = ablation == "D"
-        fixed = {"ablation": ablation, "boundary": enabled, "augmentation": enabled,
+        fixed = {"ablation": ablation, "boundary": ablation in {"B", "D"}, "augmentation": ablation == "D",
                  "boundary_radius": 2, "boundary_weight": 0.1, "pretrained": True,
                  "size": 512, "seed": 42, "batch_size": 8, "epochs": 30, "lr": 6e-5,
                  "weight_decay": 0.01, "gradient_accumulation_steps": 1, "amp": True,
