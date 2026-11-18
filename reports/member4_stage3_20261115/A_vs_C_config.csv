@@ -1,0 +1,35 @@
+﻿setting,A,C,changed
+ablation,A,C,True
+amp,True,True,False
+amp_dtype,bfloat16,bfloat16,False
+augmentation,False,True,True
+batch_size,8,8,False
+boundary,False,False,False
+boundary_radius,1,1,False
+boundary_weight,0.1,0.1,False
+cpu_threads,4,4,False
+data_protocol_id,member1_final_20261029_v1,member1_final_20261029_v1,False
+deterministic,True,True,False
+device,cuda,cuda,False
+encoder_revision,80983a413c30d36a39c20203974ae7807835e2b4,80983a413c30d36a39c20203974ae7807835e2b4,False
+epochs,30,30,False
+eval_progress_every,200,200,False
+expected_manifest_sha256,"{""train"": ""7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2"", ""validation"": ""861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497""}","{""train"": ""7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2"", ""validation"": ""861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497""}",False
+expected_versions,"{""Pillow"": ""11.3.0"", ""numpy"": ""2.2.6"", ""scipy"": ""1.15.3"", ""torch"": ""2.7.1+cu128"", ""transformers"": ""4.46.3""}","{""Pillow"": ""11.3.0"", ""numpy"": ""2.2.6"", ""scipy"": ""1.15.3"", ""torch"": ""2.7.1+cu128"", ""transformers"": ""4.46.3""}",False
+frozen_protocol,configs/member2_full_A_protocol_20261114.json,configs/member4_full_C_protocol_20261115.json,True
+frozen_protocol_sha256,baa62eb2c3ba5a7358caf0020a3740460ac5d885868acd113391d5bdb08e9eaf,b5865fb9dec70958273ff98b96749ba0a163138db39d9842685fc629cb962fe4,True
+gradient_accumulation_steps,1,1,False
+lr,6e-05,6e-05,False
+pretrained,True,True,False
+purpose,research,research,False
+seed,42,42,False
+size,512,512,False
+train_cache,.cache/member2_v1_512/train,.cache/member2_v1_512/train,False
+train_manifest,manifests/member1_final_20261029/v1/train.json,manifests/member1_final_20261029/v1/train.json,False
+train_progress_every,100,100,False
+val_manifest,manifests/member1_final_20261029/v1/validation.json,manifests/member1_final_20261029/v1/validation.json,False
+validation_cache,.cache/member2_v1_512/validation,.cache/member2_v1_512/validation,False
+validation_interval,1,1,False
+validation_metrics,region_only,region_only,False
+weight_decay,0.01,0.01,False
+workers,0,0,False

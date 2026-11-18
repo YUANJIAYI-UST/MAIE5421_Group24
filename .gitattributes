@@ -6,3 +6,17 @@
 *.txt text eol=lf
 *.md text eol=lf
 *.ps1 text eol=crlf
+
+# Preserve the recorded bytes of member4 experiment artifacts across checkouts.
+reports/member4_stage3_20261115/*.csv -text
+reports/member4_stage4_20261115/*.csv -text
+scripts/run_member4_C.ps1 text eol=lf
+scripts/templates/gsd_single_owner_review.html text eol=lf
+reports/member4_stage6_20261116/*.csv -text
+reports/member4_stage6_20261116/A_full/clean/*.csv -text
+reports/member4_stage6_20261116/gallery/index.html text eol=lf
+reports/member4_stage6_20261116/run_records/logs/*.log -text
+
+# Preserve hashes inside the report/presentation handoff package on every OS.
+deliverables/member4_stage7_partial_20261116/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+deliverables/member4_stage7_partial_20261116.zip -text

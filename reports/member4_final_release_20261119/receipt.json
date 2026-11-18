@@ -1,0 +1,33 @@
+{
+  "release": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-final-evaluation-20261119",
+  "tag": "member4-final-evaluation-20261119",
+  "target_commit": "1bb550f9c1e1cc5f011781ab8fad089432c9654c",
+  "assets": [
+    {
+      "id": 764595826,
+      "name": "member4_complete_20261118.zip",
+      "bytes": 45816130,
+      "sha256": "8049a335c6af4c95de424c44517a212d5a259fb6f7bef21fb6ff62292f97473e",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-final-evaluation-20261119/member4_complete_20261118.zip",
+      "remote_digest_verified": true
+    },
+    {
+      "id": 764598964,
+      "name": "member4_final_evaluation_records_20261118.zip",
+      "bytes": 52892843,
+      "sha256": "0a0a1be4cf7104e27b30c32e3372df6dcc7e3c71c718f2366f8483485215193c",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-final-evaluation-20261119/member4_final_evaluation_records_20261118.zip",
+      "remote_digest_verified": true
+    },
+    {
+      "id": 764602095,
+      "name": "SHA256SUMS.txt",
+      "bytes": 210,
+      "sha256": "0306ae7f9f113a353bb64e6fa2df95af8f8f0373940c91a03960be583a8ced41",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-final-evaluation-20261119/SHA256SUMS.txt",
+      "remote_digest_verified": true
+    }
+  ],
+  "published": true,
+  "main_merged": false
+}

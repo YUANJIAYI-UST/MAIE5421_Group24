@@ -1,0 +1,72 @@
+% Member 4 contribution fragment; merge into the team's CVPR document.
+% Requires booktabs and the supplied bibliography keys. Not a standalone paper.
+% Check the final six-page limit after integration; no team-template compilation claimed.
+\subsection{Photometric robustness and scene transfer}
+\paragraph{Augmentation and controls.}
+C adds photometric augmentation to the SegFormer-style baseline~\cite{xie2021segformer}.
+With probability 0.5, one uniformly selected brightness, contrast or gamma operation
+uses a parameter in $[0.8,1.2]$. It follows resizing and precedes normalization;
+target and valid-pixel masks are unchanged. B adds boundary supervision; D adds
+the same augmentation to B. All four main runs share initialization, seed 42,
+$512\times512$ inputs, batch 8, AdamW learning rate $6\times10^{-5}$ and 30 epochs
+(18,600 updates). The reviewed Trans10K split~\cite{xie2020transparent} has
+4,959/995/4,428 training/validation/test images. Checkpoint selection uses only
+validation IoU. Inference is FP32 at original image resolution with threshold 0.5.
+IoU/F1 pool pixels; Boundary IoU~\cite{cheng2021boundary} averages images.
+
+\paragraph{Photometric evaluation.}
+Every model covers all 4,428 test images under 12 independent conditions:
+brightness $\{0.6,0.8,1.2,1.4\}$, contrast $\{0.5,0.75,1.25,1.5\}$ and gamma
+$\{0.6,0.8,1.2,1.6\}$. Each starts from the original input. Table~\ref{tab:m4-final-robust}
+equally averages the 12 aggregate IoUs, excluding clean inputs. Drop is clean minus
+this mean; differences use percentage points (pp).
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Clean IoU & Clean BIoU & Mean IoU & Drop\\
+\midrule
+A & 87.436 & 68.087 & 86.784 & 0.653 \\
+B & 87.530 & 68.238 & 86.889 & 0.641 \\
+C & 87.500 & 68.059 & 86.960 & 0.540 \\
+D & 87.465 & 68.021 & 86.907 & 0.558 \\
+\bottomrule
+\end{tabular}
+\caption{Full-test percentages; IoU drop in pp. One training seed.}
+\label{tab:m4-final-robust}
+\end{table}
+C--A changes mean perturbed IoU by +0.1766 pp; D--B changes it by +0.0180 pp.
+C exceeds A in 12/12 conditions and D exceeds B in 6/12.
+The descriptive difference $(D-B)-(C-A)$ is -0.1586 pp, not a significance
+test. Average effects do not imply uniform improvements: the declared gamma-1.6
+failure case 765.jpg has A IoU 69.06\% and C IoU 6.43\%. Additional failures follow
+the predeclared ranking in the released evidence; no test images were removed.
+
+\paragraph{GSD scene transfer.}
+The reviewed GSD mirror~\cite{lin2021glass} contributes 813 fixed records, retaining
+812 unique decoded photographs and one repeated photograph with different masks.
+Limited duplicate searches found no cross-dataset candidates at the recorded
+thresholds; this does not prove zero overlap. Full and supplementary manifests
+have identical members and share predictions. A/D use their main-experiment
+checkpoints without GSD training, model selection or threshold tuning.
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Model & IoU & F1 & BIoU & BG FPR\\
+\midrule
+A & 68.127 & 81.043 & 44.211 & 11.419 \\
+D & 67.973 & 80.933 & 44.181 & 10.351 \\
+\bottomrule
+\end{tabular}
+\caption{GSD percentages, 813 records per model; BG FPR is lower-is-better.}
+\label{tab:m4-final-gsd}
+\end{table}
+D--A changes IoU by -0.1545 pp and reduces background false positives,
+while missing more glass pixels. It does not improve overall GSD IoU. This
+comparison changes both boundary supervision and augmentation; it does not
+isolate their transfer effects. GSD scene transfer is distinct from held-out
+category evaluation. All results use one seed; training hardware/Python versions
+differ. We retain regressions and make no significance or universal-gain claim.
+GSD glass surfaces and the broader Trans10K transparent foreground also differ
+in coverage, limiting direct score comparisons across datasets.

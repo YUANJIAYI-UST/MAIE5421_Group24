@@ -1,0 +1,39 @@
+GSD清单冻结完成（2026-11-16，单人抽查v2）
+
+结论：真实复核记录校验通过；GSD完整集和补充集已在新目录冻结。阶段6未开始、未授权。
+复核人：Yuan Jiayi；实际查看日期：2026-11-16。
+20张固定标签图的统一结论：未发现明显问题。
+内部同图异标：已选择保留两份原标签并披露差异。
+可选跨库诊断：记录为已浏览，无新增疑点。
+待处理疑点：0；处理规则确认及阶段5验收均为true。
+不将单人20张抽查表述为全量人工审核，也不声称其他组员已独立签字。
+
+冻结结果
+完整集813行；补充集813行；样本ID、顺序和原标签相同；排除0行。
+共有812张不同的解码图像，保留已知的一组重复照片及其两份标签。
+两份清单成员相同，后续不需要重复推理两遍。
+零候选只是本次固定方法的检索结果，不能证明绝对无重叠。
+
+核验
+用户导出JSON与当前流程、审计文件、固定样本和原清单哈希完全对应。
+所有1626个图片/标签文件哈希正确；813对实际解码通过，尺寸对应，mask为L模式0/255。
+冻结后原有813个sample对象逐项不变；相对数据根目录可正确解析。
+清单哈希与release.json一致；用户原始导出字节保存在两个归档位置。
+没有修改模型、训练配置、原始数据或历史审计；没有执行GSD推理。
+
+入口（相对项目根目录）
+冻结目录：manifests/member4_gsd_reviewed_v2_20261116/
+  test_full.json：完整集。
+  test_supplementary.json：补充集（与完整集成员相同）。
+  human_review_record.json：实际复核记录的规范化副本。
+  submitted_review_original.json：用户原始导出字节。
+  release.json、freeze_provenance.json、files_sha256.json：版本、来源及哈希。
+  exclusions.json、pair_decisions.json、same_scene_different_capture.json：本次均为空。
+检查归档：runs/member4_gsd_freeze_20261116_v2/
+  pre_freeze_checks.json、post_freeze_verification.json、member4_gsd_review_v2_original.json。
+
+用户原始导出SHA256：a4b7fbf2577c3b822a046014f625bde0f803a522a9c7657e6764861ac1493031
+完整清单SHA256：cf33e8de136c5fd0be03c1e4ed70c0a6c866e734df5ca3cf1a5b5b8f6c767d82
+补充清单SHA256：29a75ebbf98b5aa019ad4f08a544ffbb36056cdefc512676a0f2bfad2b54b60a
+
+下一步保持等待：只有收到单独的阶段6指令才开始A的GSD评估。

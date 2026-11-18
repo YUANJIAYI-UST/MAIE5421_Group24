@@ -1,0 +1,116 @@
+Photometric robustness and transfer to glass scenes
+Member 4 contribution for the Group 24 report
+Final evaluation snapshot: 2026-11-19T02:54:34+08:00
+
+Integration: use this text in the team's Methods, Experiments and Discussion sections.
+It is a contribution to the team report, not a replacement for the complete report.
+The formal main-experiment B/D models are now available and evaluated. The earlier
+B02 grid and the separate E03 category-isolation checkpoints are not used here.
+
+Photometric augmentation and controls
+We test whether modest appearance changes improve transparent-object segmentation
+under photometric shifts. C uses the ImageNet-initialized MiT-B0 encoder and
+SegFormer-style decoder of A [1], with probability 0.5 of applying one uniformly
+selected brightness, contrast or gamma operation. Its parameter is sampled from
+[0.8, 1.2]. Augmentation follows resizing and precedes normalization; contrast uses
+the per-channel image mean. Targets and valid-pixel masks remain unchanged. Checks
+on 20 fixed training images verified label invariance, deterministic sampling,
+cache equivalence and augmentation-free validation. These appearance changes do
+not physically simulate refraction. B adds boundary supervision, while D combines
+boundary supervision with exactly the same augmentation as C (radius 2, weight 0.1).
+
+The reviewed Trans10K-v1 split [2] contains 4,959/995/4,428 training/validation/test
+images. All four main runs share seed 42, common initial parameter hashes,
+512-by-512 inputs, batch size 8, AdamW learning rate 6e-5 and 30 epochs with
+18,600 updates. C starts from the common initialization, not trained A weights.
+Checkpoints are selected solely by foreground IoU on all 995 validation images;
+the delivered B, C and D checkpoints come from epochs 29, 30 and 28. Training uses
+BF16. Evaluation uses FP32, logits interpolated to original resolution and a fixed
+0.5 sigmoid threshold. IoU/F1 pool pixel counts; Boundary IoU [3] averages images.
+The optional OpenCV boundary implementation was checked against the original
+evaluator: B/D predictions and metrics matched on fixed validation samples under
+all 13 conditions; A's 813-image GSD recheck matched every saved prediction hash
+and metric. All completed chunks and image memberships were independently audited.
+
+Full-test photometric robustness
+Every model is evaluated on all 4,428 images for clean inputs and 12 independent
+perturbations: brightness {0.6,0.8,1.2,1.4}, contrast {0.5,0.75,1.25,1.5} and
+gamma {0.6,0.8,1.2,1.6}. Each condition starts from the original image. The
+perturbed mean equally weights these 12 aggregate scores; clean is excluded.
+The drop is clean minus this mean. Differences below are percentage points (pp).
+
+Table 1. Full-test scores (%), foreground-IoU perturbation mean (%) and drop (pp).
+Model  Clean IoU   Clean F1   Boundary IoU   Perturb mean   IoU drop
+A       87.4364    93.2971      68.0870       86.7838    0.6526
+B       87.5300    93.3504      68.2383       86.8888    0.6412
+C       87.5004    93.3336      68.0586       86.9604    0.5401
+D       87.4653    93.3136      68.0207       86.9068    0.5585
+
+C minus A gives a clean IoU difference of +0.0640 pp and a
+mean-perturbed IoU difference of +0.1766 pp. C exceeds A in 12/12
+conditions. D minus B gives -0.0647 pp on clean inputs and
++0.0180 pp for the perturbation mean, exceeding B in 6/12
+conditions. The descriptive difference between these augmentation effects,
+(D-B)-(C-A), is -0.1586 pp. This single-seed difference is not an
+interaction significance test. Easy/hard tables and all metric-specific effects
+are provided in evidence/ABCD_effects_percentage_points.csv; no subgroup replaces
+the full-test conclusion. Clean Boundary IoU changes by
+-0.0283 pp for C-A and
+-0.2177 pp for D-B.
+
+Mean improvements do not imply that every image improves. The previously declared
+gamma-1.6 regression case test/hard/images/765.jpg has A IoU 69.06% and C IoU 6.43%
+(not 64.30%). Additional B/D failures are chosen by the three lowest per-image
+D-minus-B IoU differences at gamma 1.6. Their selection rules and exact scores
+are recorded in evidence/failure_selection.csv. These cases diagnose possible
+errors; they do not estimate their frequency. No difficult images were removed.
+
+Transfer to GSD glass scenes
+We use the previously reviewed and frozen 813 test records from GSD [4], mirror
+revision f8897574bbc2632a440efa1de021fd2b02f89f51. Original image and mask bytes
+are preserved; 255 denotes glass. Fixed full-image and center-crop searches found
+no cross-dataset duplicate candidates at the recorded thresholds. A 20-image
+label review preceded scoring. Limited search cannot prove zero overlap. The
+cohort retains 812 distinct decoded photographs, including one repeated photograph
+with different masks. Full and supplementary manifests have identical ordered
+members and share predictions; they are not independent experiments.
+
+A and D are evaluated without GSD training, checkpoint selection or threshold
+tuning. These are main-experiment checkpoints, not E03 category-isolation models.
+
+Table 2. GSD scores (%); background FPR is lower-is-better. 813 records per model.
+Model   FG IoU    Region F1   Boundary IoU   Background FPR
+A       68.1273    81.0425      44.2109      11.4190
+D       67.9728    80.9331      44.1810      10.3507
+
+D-A changes foreground IoU by -0.1545 pp
+and background FPR by -1.0683 pp.
+Thus fewer background false positives coexist with slightly lower foreground
+overlap. D does not improve aggregate GSD segmentation IoU in this experiment.
+Foreground recall, derived from the same pooled TP/FN counts, changes from
+83.5168% to
+81.8910%: D also misses more true glass
+pixels. This A/D comparison changes both boundary supervision and augmentation,
+so it does not isolate either component's contribution to scene transfer.
+The open-window failure, gsd/test/122355684_81bf2b3d28, remains available for both
+models, with ground truth and exact prediction masks. GSD tests scene transfer;
+it cannot replace the separate experiment on held-out object categories.
+GSD emphasizes glass surfaces, whereas the Trans10K foreground includes a broader
+set of transparent objects. Scene and foreground-definition differences limit
+direct comparisons between scores on the two datasets.
+
+Limitations and contribution
+All main comparisons use one seed. Training hardware and Python environments
+differ (C: RTX 5090 Laptop; delivered B/D: RTX 5070 Ti), although common settings
+and initialization are verified. No statistical significance or universal gain
+is claimed. The current complete results supersede the earlier pending-B/D draft.
+Member 4 verified augmentation, trained C, completed all four models' full
+photometric comparisons, audited/froze GSD, completed A/D scene-transfer evaluation
+and packaged traceable results. B/D training belongs to the delivering members.
+
+References (merge keys with the team's bibliography)
+[1] Xie et al. SegFormer. NeurIPS 2021.
+[2] Xie et al. Segmenting Transparent Objects in the Wild. ECCV 2020.
+[3] Cheng et al. Boundary IoU. CVPR 2021.
+[4] Lin, He and Lau. Rich Context Aggregation with Reflection Prior for Glass
+Surface Detection. CVPR 2021.

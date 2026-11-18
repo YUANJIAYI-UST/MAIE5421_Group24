@@ -1,0 +1,23 @@
+Optional report figures and captions
+The team's six-page limit may require selecting only one or two figures. All files are existing experiment outputs; no new predictions were selected for this report draft.
+
+figures/augmentation_fixed_sample.png
+Photometric augmentation on a fixed training example (train/images/3075.jpg). The panel shows the original image, brightness/contrast/gamma transformations at fixed illustrative strengths, and the unchanged target mask. Actual training applies at most one uniformly selected operation with probability 0.5, sampling its strength from [0.8, 1.2]. These changes do not simulate physical refraction.
+Presentation slide 1 crops the original, three 0.8-strength examples and the mask from this diagnostic panel; it does not alter their pixels.
+
+figures/robustness_all.pdf or .png
+A/C robustness on the complete 4,428-image Trans10K-v1 test split under the frozen brightness, contrast and gamma conditions. Every condition starts independently from the original input. Foreground IoU and F1 pool pixel counts; Boundary IoU averages image scores. Mean perturbation scores exclude the clean condition. Scores come from evidence/condition_results.csv. A/C are single-seed runs; the plotted gains do not establish statistical significance.
+
+figures/robustness_hard.pdf or .png
+The same protocol evaluated on all 937 official hard-subset images. Mean perturbed foreground IoU is 75.9338% for A and 76.3329% for C. This subset is part of the full test cohort, not an independent experiment.
+
+figures/robustness_easy.pdf or .png
+The same protocol evaluated on all 3,491 easy-subset images. Mean perturbed foreground IoU is 90.9869% for A and 91.0794% for C. Clean IoU slightly decreases on this subset, so the result should not be described as an improvement in every setting.
+
+figures/A_C_regression_gamma_1p6.png
+Selected regression under gamma 1.6 for test/hard/images/765.jpg: foreground IoU is 0.6906 for A and 0.0643 for C. This image follows the predefined selection of the three smallest C-minus-A IoU differences under gamma 1.6. It illustrates a limitation and does not estimate how frequently that error occurs. Source and selection values are recorded in evidence/failure_selection.csv.
+
+figures/A_GSD_failure_case_21.png
+A transfer failure on GSD sample gsd/test/122355684_81bf2b3d28: the prediction labels the central open window area as glass, whereas the ground truth marks the side panes. This case follows the predefined lowest-IoU/Boundary-IoU rule; the complete gallery also contains 20 samples fixed before scoring. GSD images originate from Lin et al., CVPR 2021; the imported mirror revision and licensing record are retained in provenance.json and the original data audit. White denotes glass in the masks. This figure reports A only; D is pending.
+
+For final submission, choose figures based on explanatory value and retain their selection descriptions. Do not treat a failure illustration as a population-wide error rate or replace full-test scores with selected examples.

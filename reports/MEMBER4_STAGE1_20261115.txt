@@ -1,0 +1,57 @@
+成员 4 阶段 1 交付记录
+生成日期：2026-11-15，Asia/Shanghai
+状态：自动检查通过；用户人工验收待确认；阶段 2 尚未开始。
+
+一、可以直接查看什么
+验收入口：runs/member4_stage1_20261115/验收说明.txt
+图片：同目录 preview_01.png 至 preview_04.png，每页 5 张；visuals/ 中有 20 张单独对照图。
+每行从左到右：原图、人工标签、A 预测、预测叠图。
+白色代表透明物体前景，黑色代表背景；绿色叠层表示模型预测区域。
+规则差异：同目录 A_vs_C_config.csv。
+逐图复查：同目录 A_recheck.csv。
+机器证据：同目录 stage1_report.json、selection.json。
+完整操作清单：docs/19_MEMBER4_IMPLEMENTATION_PLAN.txt。
+实验固定规则：docs/20_MEMBER4_EXPERIMENT_RULES.txt。
+
+二、已核验的结果
+本地工作分支：member4/augmentation-gsd。
+基点：9cfc5436bdf5c4a7b0da899c1a57450ccaed96d7。
+正式数据清单数量：train 4959、validation 995、test 4428；三个清单的 SHA256 均匹配。
+A best 权重 SHA256：3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a。
+相同 seed 下重新初始化的共享参数 SHA256：
+fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835，匹配 A 原记录。
+核心依赖版本匹配 A 的冻结配置；本机 Python 和 GPU 型号不同，详情已记录。
+
+固定验证样本共 20 张，10 easy + 10 hard。
+采用预先固定的图片 ID 哈希排序选取，不按模型分数选图。
+20 张的 TP/FP/FN/TN、IoU、F1、Boundary IoU 与 A 发布记录中相同 ID 的结果全部一致。
+三类指标逐图及 all/easy/hard 分组的差值均为 0，失败项为 0。
+本批汇总：IoU 0.8299791323709867，F1 0.9070913626163988，Boundary IoU 0.591574162932098。
+这只是实现复查的 20 张验证样本成绩，不是完整 995 张验证或 4428 张测试成绩。
+
+三、C 的设计边界
+C 与 A 的公共参数一致：seed42、512、batch8、30 epochs、18600 次更新、
+AdamW lr=6e-5、BF16、每轮完整验证，关闭边界辅助头。
+唯一方法变化：augmentation false -> true；ablation A -> C 是名称变化。
+光照增强概率 0.5，每次最多一种，参数范围 [0.8,1.2]。
+冻结协议文件及其哈希需在阶段 3 新建，未列为上述公共参数差异。
+C_design_only.json 明确标记为设计记录，不能当作正式训练入口。
+尚未训练 C，也未开始全量扰动或 GSD 模型评分。
+
+四、本阶段文件改动与保护
+新增诊断入口 scripts/member4_stage1.py，新增两份计划/规则 TXT 和本记录。
+.gitignore 增加 /data1/，防止原始数据包误入代码提交。
+A 配置、A 冻结协议和模型/训练/数据/损失/指标/评估/协议源码与基点逐文件核对一致。
+成员 1/2 原始成果、历史结果和原始数据保留。
+本阶段变更目前在本地工作区，尚未提交或推送。
+
+五、如何验收与继续
+打开验收说明，检查 4 页图片及 A/C 差异表，然后确认阶段 1 是否通过。
+预测存在错误是正常的，本阶段不要求 A 的所有预测都正确。
+重点确认图片与标签对应、数值能复现，以及只增加指定增强的实验规则。
+按用户计划“每阶段确认后再进入下一阶段”，收到确认后才执行阶段 2。
+阶段 2 将交付 20 张真实训练图的增强对照和标签不变/确定性检查。
+
+需要重跑本阶段时，在项目根目录使用新输出目录，例如：
+.\.venv\Scripts\python.exe -X utf8 -B scripts/member4_stage1.py --output runs/member4_stage1_recheck_02
+禁止覆盖现有验收包；本脚本会拒绝已经存在的输出目录。

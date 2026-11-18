@@ -1,0 +1,10 @@
+{
+  "scripts/member4_gsd_review.py": "1dd3e25758e68695d8e91b6457939af510156d9ecccdd2baf02a37ccfef3eae8",
+  "scripts/member4_gsd_review_simple.py": "9da208b2b435fc23c773a087cabb3e8993dabbe6b2c363e4efb66f668b317b5d",
+  "scripts/templates/gsd_single_owner_review.html": "9f4cf3842e6bcf9d42ae24daaead95b3e748556c3e45d72dd2a5cc5504e12314",
+  "tests/test_gsd_single_owner_review.py": "4ea03a7415196fdf78f5c8c3288713d588aa6d99f76987a96206330ef3e7452a",
+  "docs/23_MEMBER4_STAGE5_OPERATIONS.txt": "bb7104db9189e21d9099858496b1d96e7f44c02c7f2db919829f211b49b0f98d",
+  "docs/24_MEMBER4_TEAM_HANDOFF_20261116.txt": "61451446aa5ceb1529cc0944d92f4f54a933a29c7a6c6d70f4fe1930b4794d93",
+  "docs/25_MEMBER4_SIMPLE_REVIEW_GUIDE.txt": "77f1e2f46b82bb254aa5e9e7fa28cbb177da2689c3feeff58e151a9f7cc464a6",
+  "reports/MEMBER4_STAGE5_REVIEW_V2_20261116.txt": "5637b987c4e909c90243526b9bdfb14757b6c9229ae018aa47bb15908607f368"
+}

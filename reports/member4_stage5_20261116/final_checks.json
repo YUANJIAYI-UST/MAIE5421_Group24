@@ -1,0 +1,47 @@
+{
+  "automatic_checks": "passed",
+  "human_review": "pending",
+  "stage6_started": false,
+  "model_evaluation": "not_run",
+  "gsd_rows": 813,
+  "unique_source_ids": 813,
+  "unique_decoded_rgb_images": 812,
+  "native_image_mask_hashes_verified": 813,
+  "project_reader_masks_verified": 813,
+  "dataset_interface_samples_checked": 20,
+  "default_group": "unspecified",
+  "trans10k_images_verified": 10382,
+  "cross_exact_pairs": 0,
+  "cross_near_candidates": 0,
+  "independent_distance_implementation_agrees": true,
+  "known_positive_controls_passed": 3,
+  "internal_duplicate_groups": 1,
+  "internal_label_difference_pixels": 8811,
+  "full_and_provisional_subset_members_identical": true,
+  "provisional_subset_rows": 813,
+  "exclusions": 0,
+  "software_tests": 117,
+  "software_failures": 0,
+  "label_previews": 20,
+  "nearest_pair_diagnostics": 12,
+  "browser_render_checked": true,
+  "javascript_syntax_checked": true,
+  "human_approvals_prepopulated": false,
+  "stage4_frozen_source_and_model_hashes_preserved": true,
+  "source_revision": "f8897574bbc2632a440efa1de021fd2b02f89f51",
+  "manifest_sha256": {
+    "test_full.json": "ee54d72d23e56ab4c8a098366bc8164516ea06696731e75f8bec4361cde5ed61",
+    "test_supplementary_pending_review.json": "6b8480b12f475089170c57d3d6aae500f38d3d74e57cc91577289cef638a77a1"
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "numpy": "2.2.6",
+    "torch": "2.7.1+cu128",
+    "pyarrow": "20.0.0 (existing isolated data dependency)"
+  },
+  "checked_at": "2026-11-15T22:41:12.027481+00:00",
+  "limits": [
+    "Fixed hash thresholds do not prove no overlap.",
+    "Human review and final cohort freeze are pending."
+  ]
+}

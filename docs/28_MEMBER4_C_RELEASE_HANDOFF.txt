@@ -1,0 +1,56 @@
+成员4正式C模型：下载、验收与接手（2026-11-16）
+
+发布入口
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-c-augmentation-20261116
+代码、配置及本说明仍统一维护在member4/augmentation-gsd分支。
+这是既有C成果的发布；B/D仍待交付，没有进入阶段7。
+
+最快接手
+在已安装项目依赖、已切换到最新member4/augmentation-gsd分支的项目根目录执行：
+  python scripts/download_member4_C.py --output runs/member4_C_release_20261116 --records
+  python -m transparent_seg.predict --checkpoint runs/member4_C_release_20261116/best.pt --image runs/member4_C_release_20261116/records/demo/input.jpg --output runs/member4_C_release_demo --device auto
+若用本项目Windows虚拟环境，把python替换为.\.venv\Scripts\python.exe即可。
+查看runs/member4_C_release_demo/mask.png和overlay.png：分别为0/255分割图和绿色预测叠图。
+输出尺寸应与示例原图一致，为444×613；加载时无需下载ImageNet权重，无需完整训练数据。
+使用自己的RGB图片时，把--image改成自己的路径，--output改成尚不存在的新目录。
+只想下载模型、不需要原始评分和示例图，可去掉第一条命令的--records。
+
+新电脑
+先取得本分支：
+  git clone --branch member4/augmentation-gsd https://github.com/YUANJIAYI-UST/MAIE5421_Group24.git
+  cd MAIE5421_Group24
+再按项目README和scripts/setup.ps1准备依赖。正式环境为Python3.10.11、torch2.7.1+cu128、
+transformers4.46.3、numpy2.2.6、Pillow11.3.0、scipy1.15.3。
+仅做单图展示可用CPU（--device cpu）；正式分数复核应使用记录中的评估设置和兼容环境。
+不同硬件的细小浮点差异不能用来推断模型文件有损坏；文件完整性以SHA256为准。
+
+附件及哈希
+best.pt（44,850,699字节）：
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/best.pt
+SHA256：69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d
+member4_C_seed42_records.zip（84,634,586字节）：
+https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/member4_C_seed42_records.zip
+SHA256：43c670eec496addbd7bbc7ca3436e44c4d2f020eb9f3348c4bc3d39ce0fb1403
+其余附件为MODEL_README.txt、model_assets.json和SHA256SUMS.txt。
+完整清单、发布回执和下载验收证据在reports/member4_C_release_20261116/。
+下载脚本先核对文件长度与SHA256，再验证ZIP内部578个文件的哈希；已有不同内容的文件不覆盖。
+手动下载时可用Get-FileHash -Algorithm SHA256 文件路径核对同一清单。
+
+运行记录怎么用
+解压后的records目录保留原相对路径。原始best.pt单独放在下载目录，不在ZIP内重复保存。
+records/runs/member4_full_C_seed42_20261115/：实际config、30轮history、environment、pip_freeze和last.pt。
+records/runs/member4_stage4_20261115/：训练/验证/测试日志、选模与预算核验、曲线、18组对照图。
+records/runs/member4_C_full_validation_20261115/：995张最佳模型验证记录。
+records/runs/member4_A_full_test_20261115/和member4_C_full_test_20261115/：每模型4428张×13条件的逐图评分及可校验分块。
+records/manifests/member1_final_20261029/v1/：原字节数据清单；原始大数据复用成员2现有数据Release。
+records/snapshots/frozen_source/：正式实验冻结时的源码和配置，按原source_sha256.json核验。
+records/demo/：固定的首张验证图、原标签、来源与原评估预测哈希。
+完整重跑还需数据和新运行目录；不要把records整个覆盖到现有runs，不要跨代码版本复用旧分块。
+last.pt已完成30轮；追加训练属于新实验，不能改写原30轮结论。
+
+版本与状态
+Release标签固定到b69951a69e830637ee27c717251760c09b68d43e，它包含实际C训练/评估代码。
+本下载脚本、发布回执和当前接手说明在该标签之后的成员4分支提交中。
+C训练时记录的HEAD为9cfc543且git_dirty=true；旧日志、配置和源文件哈希均保持真实状态。
+所有阶段的已提交工作仍在同一个member4/augmentation-gsd分支；模型附件由此Release补充。
+本次PR申请合入main，是否合并由后续审阅决定；B/D与阶段7不在本次已完成范围。

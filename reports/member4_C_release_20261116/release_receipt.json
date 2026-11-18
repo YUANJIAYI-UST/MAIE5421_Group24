@@ -1,0 +1,44 @@
+{
+  "repository": "YUANJIAYI-UST/MAIE5421_Group24",
+  "tag": "member4-c-augmentation-20261116",
+  "target": "b69951a69e830637ee27c717251760c09b68d43e",
+  "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-c-augmentation-20261116",
+  "draft": false,
+  "assets": [
+    {
+      "name": "best.pt",
+      "bytes": 44850699,
+      "sha256": "69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/best.pt",
+      "github_digest": "sha256:69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d"
+    },
+    {
+      "name": "member4_C_seed42_records.zip",
+      "bytes": 84634586,
+      "sha256": "43c670eec496addbd7bbc7ca3436e44c4d2f020eb9f3348c4bc3d39ce0fb1403",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/member4_C_seed42_records.zip",
+      "github_digest": "sha256:43c670eec496addbd7bbc7ca3436e44c4d2f020eb9f3348c4bc3d39ce0fb1403"
+    },
+    {
+      "name": "model_assets.json",
+      "bytes": 1390,
+      "sha256": "9b7c540a5c7cf985821cb966ef210f0a7c804e76c787ca9d1113db66ca0db4b5",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/model_assets.json",
+      "github_digest": "sha256:9b7c540a5c7cf985821cb966ef210f0a7c804e76c787ca9d1113db66ca0db4b5"
+    },
+    {
+      "name": "MODEL_README.txt",
+      "bytes": 3689,
+      "sha256": "093657797fece909dc015d3e7c146b5a54a83088bc09d45e5ba0bf82e2cfa82a",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/MODEL_README.txt",
+      "github_digest": "sha256:093657797fece909dc015d3e7c146b5a54a83088bc09d45e5ba0bf82e2cfa82a"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 336,
+      "sha256": "acfd10ae3950043d0aa9ec734f9d37c4bb6bbef3345bb4e227b296852ee6b77d",
+      "url": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/download/member4-c-augmentation-20261116/SHA256SUMS.txt",
+      "github_digest": "sha256:acfd10ae3950043d0aa9ec734f9d37c4bb6bbef3345bb4e227b296852ee6b77d"
+    }
+  ]
+}

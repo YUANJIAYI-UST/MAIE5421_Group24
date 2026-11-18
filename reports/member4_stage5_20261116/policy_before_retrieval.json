@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "prepared_at": "2026-11-15T22:20:08.694710+00:00",
+  "scope": "data preparation and review only; no model inference",
+  "source_revision": "f8897574bbc2632a440efa1de021fd2b02f89f51",
+  "parquet_sha256": "c1ea301305f04d9d05ef09dbf2982e4ce188fb8d779c85095017c54c3a688963",
+  "trans10k_manifest_sha256": {
+    "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+    "validation": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+    "test": "ecf3ad309423aa0247183cfc1e315921a7666c47d10700f381199a7dcfb41012"
+  },
+  "retrieval_method": {
+    "version": 1,
+    "phash_bits": 63,
+    "dhash_bits": 64,
+    "global_phash_distance": 8,
+    "center_to_global_phash_distance": 6,
+    "maximum_dhash_distance": 12,
+    "center_crop_fraction": 0.8,
+    "views": [
+      "whole_image",
+      "center_80_percent"
+    ],
+    "decision": "candidate_only_no_automatic_exclusion"
+  },
+  "cross_only": true,
+  "top_k_truncation": false,
+  "exact_rule": "image-byte SHA256 and shape-prefixed decoded RGB SHA256",
+  "full_set_rule": "preserve all 813 source rows including internal duplicates and differing labels",
+  "supplementary_rule": "exclude exact matches, confirmed same-source photographs, and unresolved candidates against train/validation/test; keep confirmed different captures with a separate same-scene flag",
+  "internal_duplicate_rule": "retain both source members and original labels; disclose the discrepancy in both full and supplementary reports",
+  "near_candidate_decision": "not automatic; member4 and member1 must independently review",
+  "member5_rule_review": "pending",
+  "evaluation_authorized": false,
+  "limitations": [
+    "Finite full-image/center-crop hashes can miss strong crops, rotations, and viewpoint changes.",
+    "No candidate is not proof of no overlap.",
+    "Same scene with a different capture is not equivalent to the same source photograph.",
+    "GSD glass-surface and Trans10K transparent-object targets differ."
+  ]
+}

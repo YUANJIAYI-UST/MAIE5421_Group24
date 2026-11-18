@@ -1,0 +1,4 @@
+大家好，成员4这边已接入成员2发布的正式B/D，补齐四模型全量扰动和A/D的GSD评估，报告段落、4页PPT和约3分钟讲稿也已更新。C-A的扰动平均IoU差为+0.177个百分点，D-B为+0.018个百分点；GSD的A/D IoU分别是68.13%和67.97%，D背景误报更少，但整体IoU略降，相关限制已写清。谢谢大家前面的配合！现有B/D文件已足够，不需要再重训或重复上传，GSD也不用重做人工复核。请报告/展示整合者直接取最终包；合并代码时请同时保留C和B/D/E03的协议入口，成员5帮忙核对最终表述即可。
+分支：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/tree/member4/augmentation-gsd
+最终交付：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-final-evaluation-20261119
+PR（尚未合并）：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/3

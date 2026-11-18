@@ -1,0 +1,121 @@
+% Member 4 contribution; insert into the team's CVPR template.
+% This is a section fragment, not a standalone document.
+% Merge member4_references.bib with the team bibliography.
+% Snapshot: 2026-11-16. Formal B/D results remain pending.
+
+\subsection{Photometric augmentation}
+We investigate whether modest appearance changes during training improve
+transparent-object segmentation under controlled photometric shifts.
+Model C uses the same ImageNet-initialized MiT-B0 encoder and newly initialized
+SegFormer-style decoder as A~\cite{xie2021segformer}; it does not fine-tune A's
+trained checkpoint. With probability 0.5, we uniformly select one operation
+from brightness scaling, contrast scaling and gamma correction, with its
+parameter sampled uniformly from $[0.8,1.2]$. Operations follow resizing and
+precede ImageNet normalization, clip intensities to $[0,1]$, and leave target
+and valid-pixel masks unchanged. Contrast uses each image's per-channel mean.
+These perturbations change appearance rather than physically simulate refraction.
+Checks on 20 fixed training images verified mask invariance, reproducibility
+for a fixed seed/epoch/image ID, and agreement between cached and uncached
+inputs. Validation receives no random augmentation. C retains A's
+BCE-plus-Dice objective with the boundary auxiliary head disabled.
+
+\subsection{Controlled A/C experiment}
+The reviewed Trans10K-v1 split~\cite{xie2020transparent} contains 4,959 training,
+995 validation and 4,428 test images. Training/validation reductions from the
+nominal split follow the documented data audit; official test membership is
+unchanged. A/C share initial parameters, seed 42, $512\times512$ inputs,
+batch size 8, AdamW with initial learning rate $6\times10^{-5}$, BF16 training,
+30 epochs and 18,600 updates. C's epoch-30 checkpoint is selected by foreground
+IoU on all validation images, without using test scores for selection.
+Inference uses FP32, original-size bilinear logit interpolation, a fixed
+sigmoid threshold of 0.5 and no post-processing. Foreground IoU and region F1
+pool pixel counts; Boundary IoU~\cite{cheng2021boundary} averages image scores.
+
+Both models evaluate every test image under clean inputs and 12 independent
+perturbations: brightness $\{0.6,0.8,1.2,1.4\}$, contrast
+$\{0.5,0.75,1.25,1.5\}$, and gamma $\{0.6,0.8,1.2,1.6\}$.
+Each condition starts from the original input. The perturbation mean excludes
+clean inputs, and the drop equals the clean score minus that mean.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\hline
+ & \multicolumn{2}{c}{Clean} & \multicolumn{2}{c}{Perturbed mean} \\
+Metric & A & C & A & C \\
+\hline
+IoU & 87.4364 & 87.5004 & 86.7838 & 86.9604 \\
+F1 & 93.2971 & 93.3336 & 92.9235 & 93.0248 \\
+Boundary IoU & 68.0870 & 68.0586 & 66.8749 & 67.0003 \\
+\hline
+\end{tabular}
+\caption{Full-test A/C scores (\%). Each condition covers 4,428 images;
+the mean includes 12 perturbations. Formal B/D results are pending.}
+\label{tab:member4-ac}
+\end{table}
+
+C improves mean perturbed IoU by 0.1766 percentage points (pp), with the
+clean-to-perturbed drop decreasing from 0.6526 to 0.5401 pp
+(Table~\ref{tab:member4-ac}). IoU is higher in all 12 perturbation conditions.
+The mean gain is 0.3990 pp on the 937 hard images (75.9338\% to 76.3329\%),
+versus 0.0924 pp on the 3,491 easy images. Clean IoU improves by 0.0640 pp,
+but clean Boundary IoU decreases by 0.0283 pp. Thus the observed average
+robustness benefit is small and involves a clean-boundary trade-off.
+
+Individual regressions remain: for test/hard/images/765.jpg under gamma 1.6,
+A/C IoU is 0.6906/0.0643. This case follows the predefined selection rule of
+the three smallest C-minus-A differences under gamma 1.6; it does not
+estimate error frequency. These are single-seed results without significance
+testing. Training hardware and some auxiliary dependencies differ, as recorded
+in the environment comparison. We do not infer universal or statistically
+significant gains.
+
+\subsection{Transfer to GSD glass scenes}
+We freeze 813 GSD test records~\cite{lin2021glass} from mirror revision
+\texttt{f8897574} (full revision in the accompanying provenance file),
+preserving source image and mask bytes. A single-channel mask value of 255
+denotes glass. Exact and near-duplicate searches against all reviewed
+Trans10K splits found no cross-dataset candidates at the recorded thresholds;
+the limited search cannot prove complete separation. A 20-image label spot
+check and review preceded scoring. We retain all records, including one
+duplicate photograph with differing masks (812 distinct decoded images).
+The full and supplementary manifests have identical ordered members, sharing
+one prediction run rather than constituting independent experiments.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\hline
+Model & IoU & F1 & Boundary IoU & Bg. FPR \\
+\hline
+A & 68.1273 & 81.0425 & 44.2109 & 11.4190 \\
+D & \multicolumn{4}{c}{Pending formal model and evaluation} \\
+\hline
+\end{tabular}
+\caption{GSD scores (\%) on 813 frozen records. Background false-positive
+rate (Bg. FPR) is lower-is-better. No GSD training or tuning is performed.}
+\label{tab:member4-gsd}
+\end{table}
+
+The validation-selected A checkpoint obtains the scores in
+Table~\ref{tab:member4-gsd} without GSD training, target-set tuning or threshold
+changes. In a selected low-score example, A predicts the central open window
+area as glass while the annotation marks the side panes. The gallery contains
+20 preselected samples and four additional cases from the predefined
+lowest-IoU/Boundary-IoU rule. This experiment measures glass-scene transfer;
+it does not replace the separate held-out-category experiment.
+
+\paragraph{Pending comparisons.}
+Formal B/D models are still pending. Their delivery and comparability checks
+are required before full B/D perturbation evaluation, D's GSD evaluation,
+and the four-model and A/D conclusions. The current evidence does not
+establish the effect of boundary supervision or its interaction with augmentation.
+
+% Optional contribution statement for the team's required responsibility list:
+% Member 4: photometric augmentation verification; formal C training;
+% full A/C robustness evaluation; GSD import, audit, manifest freezing and
+% A transfer evaluation; reproducible release and report/presentation materials.

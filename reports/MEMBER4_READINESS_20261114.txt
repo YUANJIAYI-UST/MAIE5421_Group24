@@ -1,0 +1,56 @@
+成员 4 开工检查记录 — 2026-11-14
+
+结论：可以开展增强核验和 GSD 准备；正式 C 训练的共享协议及本机真实 V1 数据尚未就绪。
+
+版本范围
+本地 main: 51b389e2b19b0c696bd2fc3037492021b7478ba0。
+远端 main: 2c7c3c2；成员2: 60d0c36；成员5: 60dee7b。
+已 fetch 最新分支；本次没有 checkout、合并、提交或推送。
+本次实际执行的模型/增强测试覆盖本地版本，不宣称已测试尚未集成的成员2+5版本。
+
+环境及模型工程检查
+Python 3.10.11 / Torch 2.7.1+cu128 / Transformers 4.46.3。
+NVIDIA GeForce RTX 5090 Laptop GPU；CUDA 和 BF16 可用。
+固定 ImageNet 权重缓存离线加载；512x512、batch 2、BF16，4 步前向/反向均有限。
+首次在线权重检查受沙箱网络限制，之后使用已有缓存离线成功，不是 GPU 失效。
+完整记录：runs/member4_readiness_20261114/gpu_check.json。
+
+软件和增强检查
+32 passed in 4.16s。首次 5 项因沙箱默认临时路径过长失败，采用项目内短 basetemp 后全部通过。
+证据：runs/member4_readiness_20261114/pytest.xml。
+合成训练图 12 张 x 20 epoch = 240 次，mask/valid 全部不变，同 seed/epoch/id 可复现。
+图像变化 133/240，无 NaN/Inf。这不是增强概率的统计验收或真实图像视觉验收。
+既有 quick_check/best.pt + 4 张合成 test，clean 和全部 12 条固定扰动输出成功。
+证据：augmentation_check.json、robustness_smoke/robustness.json（均位于上述 runs 目录）。
+这些结果不构成真实 Trans10K/GSD 模型性能证据。
+
+GSD 准备
+作者项目链接到 garrying/GSD；固定 revision f8897574bbc2632a440efa1de021fd2b02f89f51。
+下载 test parquet 33,686,132 bytes；同时保存数据卡及源仓库导出脚本，但未执行该导出脚本。
+test parquet SHA256: c1ea301305f04d9d05ef09dbf2982e4ce188fb8d779c85095017c54c3a688963。
+核对该值与源仓库 LFS SHA256 一致；不等于证明与早期作者 ZIP 字节一致。
+PyArrow 20.0.0 临时安装于 tmp/member4_data_deps；没有更改训练 .venv 或 requirements。
+实际读取 813 条、813 个唯一 ID；全部图片/掩码尺寸一致、可解码。
+掩码均为 L，值只有 0/255；数据卡说明白色为玻璃。未默认将255当void。
+全测试集有 1 组完全相同 RGB 图片（共2张）：
+  sun_bgsisetzvbqurena
+  sun_bvyighnqkfrezdbf
+图片字节一致、尺寸600x401；mask像素有8811/240600不同。
+保留测试集813个成员，记录该标注差异，未自行删除、修补或选其中一个标签。
+20张固定等间隔样本预览已经生成；不替代成员4的人工检查记录。
+尚未：跨 Trans10K 重叠/近重复核验、原字节导出和最终manifest、人工语义兼容性验收、模型评分。
+
+GSD 本地证据
+data/GSD_source/f8897574bbc2632a440efa1de021fd2b02f89f51/。
+runs/member4_readiness_20261114/gsd_source.json、gsd_audit.json、gsd_inventory.json、
+gsd_within_test_duplicates.json、gsd_annotation_preview_01.png、gsd_annotation_preview_02.png。
+一次性准备审计代码：runs/member4_readiness_20261114/audit_gsd.py。
+复跑请使用新输出目录；当前脚本拒绝覆盖已有审计 JSON。
+
+共同正式实验仍需解决
+成员2/5的分支集成；统一依赖环境；成员3边界设置确认；派生研究协议接入和哈希检查。
+当前 validate_derivative_use 明确只允许 purpose=pilot；不能通过虚标完整划分来绕过。
+成员5复核报告已存在，但没有自动等同于代码正式放行或全组签署。
+本机当前没有真实 Trans10K 文件或成员1最终交付清单，git pull 不会获取它们。
+
+下一步和群消息见 docs/17_MEMBER4_TODAY_20261114.txt。

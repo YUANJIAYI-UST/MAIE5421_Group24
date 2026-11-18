@@ -1,0 +1,60 @@
+成员4三页展示讲稿
+状态：A/C与A的GSD结果已完成；B/D及A/D结论待补充。
+建议占用全组约10分钟展示中的2至2.5分钟。英文稿可直接口述，中文用于理解和练习。
+讲稿不会把待交付工作描述为已经完成。
+
+第1页  Photometric augmentation
+建议用时：35至40秒
+
+中文讲解
+我负责的是光照变化下的稳定性，以及换到玻璃场景后的表现。做法是训练时随机把照片变亮、变暗，或者改变对比度，但不改变玻璃的位置和标签。每张图有一半概率做增强，每次只做一种。为了比较公平，C和A使用相同的初始参数、数据和训练预算，C只增加增强，没有增加边界辅助头。我们也检查了标签不变、随机结果可重复，以及缓存前后的输入一致。
+
+English script
+My part tests robustness to appearance changes and transfer to glass scenes. During training, C changes brightness, contrast or gamma, while keeping the masks unchanged. Each image has a fifty-percent chance of receiving one transformation. A and C share the same initialization, data and training budget. C adds augmentation and keeps the boundary head off. We checked label consistency, reproducibility and cached inputs before training.
+
+展示提示
+指向同一张训练图的原图、三种变化及共同标签。图中0.8是展示用固定强度；真实训练强度在0.8至1.2均匀采样。不要说每张训练图都同时做了三种增强。
+
+第2页  Small gains under appearance changes
+建议用时：45至50秒
+
+中文讲解
+我们让A和C在同样的4428张测试图片上，分别完成正常条件和12种光度变化。表里的扰动均分只平均12种变化，不包含正常条件。C的扰动平均IoU从86.78提高到86.96，提高约0.18个百分点；困难图片提高约0.40个百分点。不过，正常图片的边界分数略微下降，也有单张图片明显退步。所以目前能说的是这一次实验有小幅平均改善，不能说所有情况都变好，也不能说已经证明显著提升。B和D的结果还在等待正式模型。
+
+English script
+We tested both models on all 4,428 images under clean inputs and twelve separate perturbations. The perturbation mean excludes the clean condition. Mean IoU rises from 86.78 to 86.96 percent, a gain of about 0.18 percentage points. The hard subset gains about 0.40 points. However, clean boundary accuracy drops slightly, and some images become worse. These are small gains from one seed, without significance testing. Formal B and D results are still pending.
+
+展示提示
+先看第二行的扰动均分，再看hard子集。讲“百分点”，不要讲“提高0.18倍”或“提升18%”。下降量越小表示同一模型相对其正常条件退化更少。
+
+第3页  Transfer to GSD glass scenes
+建议用时：40至45秒
+
+中文讲解
+最后，我准备了另一套813条玻璃场景测试数据。在模型评分之前完成了格式检查、重复检索和标签抽查，并固定了清单。目前A没有在这套数据上重新训练，直接测试得到68.13%的IoU。下面是一个失败例子：模型把打开窗户后的空口当成了玻璃。D还没有交付，所以现在只有A的基线，不能判断组合方法是否更好。另外，换到新数据集和识别从未训练过的类别，是两个不同问题，不能用这里的结果代替类别隔离实验。
+
+English script
+For transfer, I prepared and froze 813 GSD test records before scoring. A receives no GSD training or tuning and reaches 68.13 percent IoU. This failure example predicts the open window area as glass. The audit retains a duplicate image with different masks, and the overlap search cannot prove complete separation. D is pending, so the A-versus-D conclusion remains open. Glass-scene transfer is also different from testing categories excluded from training.
+
+展示提示
+依次指向原图、标注和A预测。该失败图来自预先规定的低分筛选规则，用于说明局限，不能代表所有GSD图片。GSD两份冻结清单成员相同，不要说做了两次独立实验。
+
+常见问题准备
+
+为什么采用这些增强？
+它们对应proposal中控制外观变化的实验，可以检验模型对亮暗和对比度变化的敏感性；没有把它们当成真实折射模拟。
+
+C是不是接着A训练出来的？
+不是。C从与A相同的ImageNet编码器和新初始化分割头开始，使用同样的训练预算。
+
+提升这么小，还能得出结论吗？
+可以如实报告这次实验中的小幅平均改善和边界指标的权衡。没有多seed或显著性检验，不能把它扩大为普遍优势。
+
+GSD没有找到跨库重复，是否证明完全无泄漏？
+不能。这里只说明固定检索方法和阈值下没有找到候选；人工检查也只是规定样本的抽查。
+
+B/D没有完成，现在能展示什么？
+可以展示已完成的A/C增强比较、GSD准备和A的迁移基线。B/D的四组消融结论、边界模块效果和A/D迁移比较都保留待补充。
+
+交接时应该让组员复现什么？
+使用已经发布的C模型和下载说明做一次加载与单图预测即可先验证接手能力，不需要重复完整训练或全量评估。

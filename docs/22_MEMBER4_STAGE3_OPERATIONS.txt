@@ -1,0 +1,111 @@
+成员 4 阶段 3：C 入口、预检与可恢复评估
+
+阶段范围
+用户已确认阶段 2。本阶段只完成软件、独立 pilot 和验证集预检。
+阶段 4 的正式 C 训练及 4428 张测试图全量 A/C 尚需用户验收后确认启动。
+本文件中的正式运行命令是待验收后的复现入口，不表示已执行。
+
+C 正式入口
+配置：configs/member4_full_C_20261115.json
+协议：configs/member4_full_C_protocol_20261115.json
+Windows 入口：scripts/run_member4_C.ps1
+训练实现仍使用 transparent_seg/train.py。
+
+公共配置保持与原 A 一致：seed42、512、batch8、BF16、AdamW lr6e-5、
+30 epochs、620 次更新/epoch、18600 次总更新、warmup930、每轮全部995张验证。
+C 只开启 augmentation 并将实验名改为 C；边界辅助头关闭。
+正式协议与哈希另建，A 的原协议文件、配置和已发布结果没有改写。
+新增 C 协议必须引用已固定哈希的 A 配置及协议，并严格核验公共参数、
+完整预算、完整验证选模规则及共享初始参数哈希。
+无论首次训练或续训，C 的初始参数记录必须匹配 A；不能从 A 成品权重继续训练。
+成员 2/3/5 的独立复核仍标记 pending，不代签。
+
+正式运行（仅阶段 4 验收确认后）
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_member4_C.ps1 -Run runs/member4_full_C_seed42_20261115
+脚本设置确定性 CUDA 和本地预训练缓存环境，失败时停止，不自动更改 batch/尺寸/精度。
+输出必须是新目录；训练状态、完整配置、历史、best.pt 和 last.pt 由现有训练器保存。
+
+训练中断后的入口
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_member4_C.ps1 -Run runs/member4_full_C_seed42_resume01 -Resume runs/member4_full_C_seed42_20261115/last.pt
+last.pt 必须来自同一正式 C 配置，旁边必须有一致的 best.pt。
+只恢复最近完整 epoch；配置、学习率日程和总预算保持不变。
+不要把本阶段 purpose=pilot 的权重传给正式配置，原有续训校验会拒绝。
+
+全量预处理缓存
+.cache/member2_v1_512/train：4959 张。
+.cache/member2_v1_512/validation：995 张。
+复用成员 2 的 lossless PIL 预处理实现，不改变图片和 mask 的定义。
+构建时核对源文件 SHA256，加载时核对清单、版本、大小、顺序及每个缓存文件哈希。
+训练标签是512尺寸nearest结果；验证标签保留原始分辨率。
+阶段 3 再用真实的20 train + 20 validation检查完整缓存与原始读取逐元素相同。
+构建记录：runs/member4_stage3_20261115/cache_build.json。
+已有有效缓存不要重新构建或覆盖；新机器需要建立缓存时使用：
+.\.venv\Scripts\python.exe -X utf8 -B -m transparent_seg.cache --manifest manifests/member1_final_20261029/v1/train.json --output .cache/member2_v1_512/train --size 512 --training --workers 4
+.\.venv\Scripts\python.exe -X utf8 -B -m transparent_seg.cache --manifest manifests/member1_final_20261029/v1/validation.json --output .cache/member2_v1_512/validation --size 512 --workers 4
+
+独立训练预检
+入口：scripts/member4_training_preflight.py。
+已执行结果：runs/member4_stage3_20261115/training_preflight/preflight_report.json。
+仅 purpose=pilot、1轮最多20步，真实batch8、512、BF16、每步梯度完整/有限检查。
+复用生产训练循环，检查实际 autocast/logits dtype、峰值显存和完整验证。
+pilot 使用自身20步学习率日程，不能代替正式18600步日程；其权重不进入正式实验。
+在另一轮独立检查中，重载pilot best后全部995张验证结果与原记录完全一致。
+重跑使用新目录：
+.\.venv\Scripts\python.exe -X utf8 -B scripts/member4_training_preflight.py --output runs/member4_stage3_training_recheck01
+
+可恢复评估入口
+模块：transparent_seg.evaluate_resumable
+支持指定 checkpoint、manifest、root、output、device 和条件。
+默认 --conditions all，严格采用clean及proposal规定的12个条件，不叠加。
+也可指定 clean 或逗号分隔的已注册条件名，例如 clean,gamma_0.8。
+模型FP32推理、原尺寸logits双线性插值、sigmoid>=0.5均沿用原规则。
+按图片读取一次并完成全部条件，复用原始GT边界和有效区计算。
+IoU/F1累计像素统计，Boundary IoU逐图平均；全体/easy/hard分开汇总。
+鲁棒性下降为clean减12条件平均，输出是fraction，展示百分点时乘100。
+
+正式 A 全量评估示例（阶段 4 确认后）
+.\.venv\Scripts\python.exe -X utf8 -B -m transparent_seg.evaluate_resumable --checkpoint runs/member2_full_A_20261114/best.pt --manifest manifests/member1_final_20261029/v1/test.json --conditions all --output runs/member4_A_full_test_20261115
+C 使用同一命令结构，把checkpoint换为正式C best，output换成独立的新目录。
+每个模型共13个条件，各自覆盖4428张，不能换为本阶段40张诊断清单。
+
+恢复评估
+在原命令后增加 --resume，保留原output和其他参数不变。
+每25张图完整处理全部条件后，保存一个原子写入的、带SHA256校验的分块。
+恢复核对模型、实际数据内容、清单、全部条件、输入大小、精度、阈值、
+代码提交与源文件哈希、依赖、设备和分块大小。
+损坏/不完整分块重新计算；有效分块复用；残留.tmp不能作为完成证据。
+新尝试会将旧汇总放入previous_exports，避免恢复过程中展示旧的“已完成”结果。
+progress.json只有全部分块和最终汇总成功写出后才标complete=true。
+操作系统文件锁防止两个进程写同一目录，进程退出后锁会自动释放。
+代码/权重/清单变更时不能混用旧块，应另起目录或恢复原版本。
+
+输出文件
+identity.json：运行身份与代码版本。
+source_inventory.json：实际图片和mask哈希。
+chunks/*.json：完整分块及校验。
+progress.json、result.json：当前状态和完成信息。
+各条件目录：metrics.json、per_image.csv（含预测像素指纹）。
+robustness.json：12条件均分及clean下降；只有全部13条件时生成。
+attempts/：各次运行记录；invalid_chunks/：保留的损坏块。
+结果汇总前严格核对全部图片ID和顺序，不缺图、不重复。
+
+真实验证与计时
+固定40张验证图：easy/hard各20张，按member4-stage3/42/<id>哈希排序。
+选择记录：runs/member4_stage3_20261115/validation_selection.json。
+其中8张×13条件逐像素对比旧predict及旧指标；必须完全一致。
+40张×13条件用于连续运行计时和恢复检查，不作为模型正式成绩。
+测试子进程在第一个25张完整块后os._exit(86)，并留下未完成.tmp。
+恢复剩余15张后，13个条件逐图CSV（包括预测指纹）与连续40张逐字节一致。
+测试用强制退出只作用于独立诊断子进程，不影响现有训练或其他进程。
+预检入口：scripts/member4_evaluation_preflight.py。
+结果：runs/member4_stage3_20261115/evaluation_preflight/evaluation_preflight_report.json。
+独立完整验证计时在同目录isolated_validation_timing.json。
+
+验收
+[ ] C与A公共参数和数据一致；A原始成果保留。
+[ ] 105项测试通过，真实图新旧预测和指标完全一致。
+[ ] 20步pilot梯度/BF16/显存/初始化/重载通过，权重明确标注pilot。
+[ ] 全量缓存齐全；40张完整13条件计时完成。
+[ ] 强制结束进程后的恢复结果与连续运行相同。
+[ ] 已阅读实际预算及局限，再确认是否启动整个阶段4长运行队列。
+没有这一确认，不开始正式C或全量A/C测试。

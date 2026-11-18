@@ -1,0 +1,80 @@
+{
+  "automatic_preparation": "passed",
+  "human_review": "pending",
+  "stage6_started": false,
+  "gsd_rows": 813,
+  "gsd_unique_ids": 813,
+  "byte_preserving_exports_verified": 813,
+  "project_reader_masks_verified": 813,
+  "mask_pixel_histogram": {
+    "0": 134378801,
+    "255": 67928931
+  },
+  "empty_masks": [],
+  "all_foreground_masks": [],
+  "trans10k_images": 10382,
+  "trans10k_split_counts": {
+    "train": 4959,
+    "validation": 995,
+    "test": 4428
+  },
+  "source_images_and_masks_verified": 10382,
+  "decoded_rgb_hashes_verified": 10382,
+  "cross_pairs_examined_per_view": 8440566,
+  "views_tested": 3,
+  "exact_pairs": 0,
+  "near_candidate_pairs": 0,
+  "candidate_split_counts": {},
+  "gsd_rows_with_candidates": 0,
+  "provisional_supplementary_rows": 813,
+  "preview_row_indices": [
+    0,
+    42,
+    85,
+    128,
+    170,
+    213,
+    256,
+    299,
+    341,
+    384,
+    427,
+    470,
+    512,
+    555,
+    598,
+    641,
+    683,
+    726,
+    769,
+    812
+  ],
+  "model_evaluation": "not_run",
+  "seconds": 545.9530000000377,
+  "source": {
+    "dataset": "garrying/GSD",
+    "revision": "f8897574bbc2632a440efa1de021fd2b02f89f51",
+    "official_project": "https://jiaying.link/cvpr2021-gsd/",
+    "scope": "test split only; no model evaluation",
+    "license": "cc-by-nc-4.0",
+    "files": [
+      {
+        "file": "README.md",
+        "bytes": 3776,
+        "sha256": "0b4e0c1f9a4cc186db6fdb0dada795bdbca34953cdffc27710490971e9e529bb"
+      },
+      {
+        "file": "parquet_to_raw.py",
+        "bytes": 3347,
+        "sha256": "4ba3302ae1ed65db91947394a2f1423b9b6cbb8c5088cb583a31fee1bf4479da"
+      },
+      {
+        "file": "data/test-00000-of-00001.parquet",
+        "bytes": 33686132,
+        "sha256": "c1ea301305f04d9d05ef09dbf2982e4ce188fb8d779c85095017c54c3a688963"
+      }
+    ]
+  },
+  "full_manifest_sha256": "ee54d72d23e56ab4c8a098366bc8164516ea06696731e75f8bec4361cde5ed61",
+  "supplementary_manifest_sha256": "6b8480b12f475089170c57d3d6aae500f38d3d74e57cc91577289cef638a77a1"
+}

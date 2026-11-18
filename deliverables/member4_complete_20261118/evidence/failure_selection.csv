@@ -1,0 +1,10 @@
+﻿dataset,id,condition,reason,first_model,second_model,first_iou,second_iou
+GSD,gsd/test/000000012034,clean,three lowest D image IoU,A,D,0.0016746713852376137,0.0
+GSD,gsd/test/122355684_81bf2b3d28,clean,three lowest D image IoU,A,D,0.0,0.0
+GSD,gsd/test/ADE_train_00001948,clean,three lowest D image IoU,A,D,0.0,0.0
+GSD,gsd/test/photo-1567001576981-f83c50915618,clean,three lowest D-minus-A image IoU,A,D,0.5489923086065505,0.11918562788018433
+GSD,gsd/test/2019_11_02_15_57_IMG_0948,clean,three lowest D-minus-A image IoU,A,D,0.7623955571121229,0.3712293577981651
+GSD,gsd/test/2019_11_03_16_09_IMG_1013,clean,three lowest D-minus-A image IoU,A,D,0.7447658896816599,0.4119521912350598
+Trans10K,test/hard/images/6436.jpg,gamma_1.6,three lowest D-minus-B image IoU under gamma_1.6,B,D,0.867061133872486,0.32728689343190426
+Trans10K,test/easy/images/4718.jpg,gamma_1.6,three lowest D-minus-B image IoU under gamma_1.6,B,D,0.8001566810603334,0.3979593929259203
+Trans10K,test/hard/images/4682.jpg,gamma_1.6,three lowest D-minus-B image IoU under gamma_1.6,B,D,0.6791309226431947,0.3240980482141937

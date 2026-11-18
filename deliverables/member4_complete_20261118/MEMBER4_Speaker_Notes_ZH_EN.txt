@@ -1,0 +1,42 @@
+成员4四页展示讲稿：建议约3分钟，英文约271词。
+对应小组旧v3的增强部分、第9页、第10页和第11页；整合时沿用小组最终页码。
+第1页约40秒，第2页约40秒，第3页约55秒，第4页约45秒。先排练一次再微调停顿。
+IoU：预测区域和答案重合得有多好；F1：区域精确率和召回率的综合。
+Boundary IoU：边缘重合程度。三者越高越好。
+Background FPR：原本是背景却被判成玻璃的比例，越低越好。
+pp=percentage points=百分点，不是相对提高百分比。
+亮度系数大于1整体变亮，小于1变暗；对比度小于1更灰、差异更小。
+gamma按像素强度的幂变换：大于1通常变暗，小于1通常变亮；1表示不变。
+这些操作只改变外观，不改变玻璃的位置，也不是真实折射仿真。
+
+第1页 Photometric augmentation（40秒）
+中文理解：训练时，一半照片保持原样，另一半随机改变亮度、对比度或gamma中的一种，强度在0.8到1.2。增强放在缩放后、归一化前，玻璃位置和标签完全不变。C在A基础上只加增强；D在B基础上加同样增强。四组共用初始化、数据和训练预算，所以可以分别比较C和A、D和B。
+
+English:
+My part tests whether appearance changes make segmentation more stable. During training, each image has a fifty percent chance of receiving one operation: brightness, contrast, or gamma. The strength is between zero point eight and one point two. Object positions and masks stay unchanged. C adds augmentation to A. D adds the same augmentation to B. The four models share their initialization, data, and training budget.
+
+证据：configs/member4_full_C_20261115.json; evidence/intake_verification.json; stage-2 verified augmentation example
+
+第2页 Four-model clean test（40秒）
+中文理解：这一页是正常照片的考试，四组均测试4428张。IoU看预测区域与答案的重合程度，Boundary IoU看轮廓。数值越高越好。四组分数接近，表格的小数差值不能夸大成显著提高。模型只用验证集选，不能根据这里的测试分挑模型。
+
+English:
+All four models are tested on the same four thousand four hundred and twenty-eight clean images. IoU measures how well the predicted region overlaps the ground truth. Boundary IoU focuses on the outline. Higher is better. C reaches 87.50 percent IoU, and D reaches 87.47 percent. The differences are small. We selected checkpoints using validation data only, and we do not claim a significant improvement.
+
+证据：evidence/ABCD_clean_results.csv; evidence/intake_verification.json
+
+第3页 Photometric robustness（55秒）
+中文理解：三张图依次看亮度、对比度、gamma。横轴是变化强度，纵轴是IoU，1表示不变。每个点都有完整4428张图，均值只包括12个扰动点。纵轴放大了，所以曲线距离不代表巨大收益。C比A平均提高0.177个百分点；D减B为+0.018个百分点。强调单seed的平均结果，个别图仍可能明显变差。
+
+English:
+The three plots show brightness, contrast, and gamma changes. The horizontal axis shows strength, with one meaning unchanged input; the vertical axis shows IoU. Every point uses the full test set. The axis is zoomed, so small gaps should not be exaggerated. Across twelve perturbations, C gains 0.177 percentage points over A. Adding augmentation to B increases the mean by 0.018 percentage points. Some individual images still become worse.
+
+证据：evidence/ABCD_condition_results.csv; evidence/ABCD_robustness_summary.csv; figures/ABCD_robustness_all.png
+
+第4页 Transfer to GSD（45秒）
+中文理解：最后换到813条GSD玻璃场景，不再训练、不调整阈值。A的IoU为68.13%，D为67.97%，说明D没有提升整体IoU。D背景误报更少，但这不等于所有指标都更好。失败图用固定的低分规则选择，不能代表错误出现频率。GSD是在新场景测试，不等同于新类别测试。
+
+English:
+Finally, we test A and D on eight hundred and thirteen GSD records, without training or tuning on GSD. A reaches sixty-eight point one three percent IoU; D reaches sixty-seven point nine seven percent. D produces fewer background errors, but also misses more glass pixels. Overall IoU does not improve. The example shows a failure around an open window. This evaluates new scenes, separate from the experiment on unseen object categories.
+
+证据：evidence/GSD_AD_transfer_results.csv; evidence/failure_selection.csv; gallery/index.json

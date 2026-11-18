@@ -1,0 +1,144 @@
+{
+  "schema": 2,
+  "workflow": "gsd_single_owner_v2",
+  "workflow_sha256": "87682631285c3c0580bb5e50df3f5c945879d767d38d59d0bc5e217f0117ecac",
+  "source_bindings": {
+    "candidate_sha256": "aeb6280ef3ab8467aa889410e7733d53cfb30c281d634361a02c16b18fa7dafe",
+    "retrieval_policy_sha256": "6b15d91fecb4645453b58d3b3ad25a8516058626dc771d0c7dfb658f44680d82",
+    "audit_sha256": "f234588be6953566fcb608e8c83d717d7a8f6c4f6ab3c268bb19beb6879f8893",
+    "diagnostics_sha256": "677a0da09e57c88f2f5c447ffb06be19afc1f4dd56b45dd3439749ff5d4820ee",
+    "internal_duplicates_sha256": "952faf611b41141f0950d837ba0b8468d062f2562bab1d5a312a11574a68a386",
+    "legacy_template_sha256": "f7523c1e25935cf01765c8d79a42e4e5dde777d0bbe339a4cbb8f4bf4dd4c1f1",
+    "preview_index_sha256": "4cac8703cec280dddaaccdd7b2e97af39284f1683e1104a9e4cc809d36a58c7c",
+    "full_manifest_sha256": "ee54d72d23e56ab4c8a098366bc8164516ea06696731e75f8bec4361cde5ed61"
+  },
+  "full_count": 813,
+  "label_samples": [
+    {
+      "number": 1,
+      "gsd_id": "gsd/test/000000000136",
+      "source_row": 0
+    },
+    {
+      "number": 2,
+      "gsd_id": "gsd/test/14256747243_00b7018f25_b",
+      "source_row": 42
+    },
+    {
+      "number": 3,
+      "gsd_id": "gsd/test/196661185_55dccbf094_k",
+      "source_row": 85
+    },
+    {
+      "number": 4,
+      "gsd_id": "gsd/test/2019_10_31_18_54_IMG_0771",
+      "source_row": 128
+    },
+    {
+      "number": 5,
+      "gsd_id": "gsd/test/2019_11_02_16_16_IMG_0991",
+      "source_row": 170
+    },
+    {
+      "number": 6,
+      "gsd_id": "gsd/test/2019_11_07_17_58_IMG_1280",
+      "source_row": 213
+    },
+    {
+      "number": 7,
+      "gsd_id": "gsd/test/23364736582_42120d6887_b",
+      "source_row": 256
+    },
+    {
+      "number": 8,
+      "gsd_id": "gsd/test/28667333225_f4bcd1caf4_b",
+      "source_row": 299
+    },
+    {
+      "number": 9,
+      "gsd_id": "gsd/test/379401860_bada07c57a_h",
+      "source_row": 341
+    },
+    {
+      "number": 10,
+      "gsd_id": "gsd/test/4570163089_41378cdeba_k",
+      "source_row": 384
+    },
+    {
+      "number": 11,
+      "gsd_id": "gsd/test/5982034979_96d0549898_b",
+      "source_row": 427
+    },
+    {
+      "number": 12,
+      "gsd_id": "gsd/test/8239122884_04c344898b_k",
+      "source_row": 470
+    },
+    {
+      "number": 13,
+      "gsd_id": "gsd/test/ADE_train_00000888",
+      "source_row": 512
+    },
+    {
+      "number": 14,
+      "gsd_id": "gsd/test/ADE_train_00006860",
+      "source_row": 555
+    },
+    {
+      "number": 15,
+      "gsd_id": "gsd/test/IMG_3450",
+      "source_row": 598
+    },
+    {
+      "number": 16,
+      "gsd_id": "gsd/test/fernand-de-canne-ZXd2XXcuHWM-unsplash",
+      "source_row": 641
+    },
+    {
+      "number": 17,
+      "gsd_id": "gsd/test/photo-1507209575474-fa61e9d3086b",
+      "source_row": 683
+    },
+    {
+      "number": 18,
+      "gsd_id": "gsd/test/sun_acshzpzroxnbzmdl",
+      "source_row": 726
+    },
+    {
+      "number": 19,
+      "gsd_id": "gsd/test/sun_bldstlalggzleyzq",
+      "source_row": 769
+    },
+    {
+      "number": 20,
+      "gsd_id": "gsd/test/yrN35bRX--I",
+      "source_row": 812
+    }
+  ],
+  "reviewer": "Yuan Jiayi",
+  "reviewed_on": "2026-11-16",
+  "label_review": {
+    "status": "no_obvious_issue",
+    "summary": ""
+  },
+  "internal_duplicate_reviews": [
+    {
+      "issue_id": "GSD_INTERNAL_001",
+      "ids": [
+        "gsd/test/sun_bgsisetzvbqurena",
+        "gsd/test/sun_bvyighnqkfrezdbf"
+      ],
+      "status": "keep_original_and_disclose",
+      "note": ""
+    }
+  ],
+  "diagnostic_review": {
+    "status": "viewed_no_concern",
+    "note": ""
+  },
+  "questions": [],
+  "pairs": [],
+  "policy_acknowledged": true,
+  "stage5_accepted": true,
+  "evaluation_authorized": false
+}

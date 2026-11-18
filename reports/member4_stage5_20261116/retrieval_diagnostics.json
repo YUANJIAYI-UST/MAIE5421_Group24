@@ -1,0 +1,209 @@
+{
+  "independent_byte_popcount_matches_vectorized_retrieval": true,
+  "gsd_rows": 813,
+  "trans10k_rows": 10382,
+  "cross_pair_count_per_view": 8440566,
+  "view_count": 3,
+  "actual_near_candidates": 0,
+  "known_positive_controls": [
+    {
+      "gsd_id": "gsd/test/000000000136",
+      "transformation": "2x resize and JPEG quality90 in memory",
+      "retrieved": true,
+      "distance": [
+        {
+          "method": "whole_vs_whole",
+          "phash_distance": 0,
+          "dhash_distance": 0
+        }
+      ],
+      "not_an_actual_Trans10K_sample": true
+    },
+    {
+      "gsd_id": "gsd/test/2019_10_31_18_54_IMG_0771",
+      "transformation": "2x resize and JPEG quality90 in memory",
+      "retrieved": true,
+      "distance": [
+        {
+          "method": "whole_vs_whole",
+          "phash_distance": 0,
+          "dhash_distance": 0
+        }
+      ],
+      "not_an_actual_Trans10K_sample": true
+    },
+    {
+      "gsd_id": "gsd/test/ADE_train_00000888",
+      "transformation": "2x resize and JPEG quality90 in memory",
+      "retrieved": true,
+      "distance": [
+        {
+          "method": "whole_vs_whole",
+          "phash_distance": 0,
+          "dhash_distance": 2
+        }
+      ],
+      "not_an_actual_Trans10K_sample": true
+    }
+  ],
+  "nearest_pair_selection": "12 distinct GSD rows with smallest combined pHash+dHash over the same three views; diagnostic only, not threshold candidates",
+  "diagnostic_pairs": [
+    {
+      "gsd_id": "gsd/test/5622283802_c5f7ea1ccc_k",
+      "trans10k_id": "test/easy/images/6996.jpg",
+      "trans10k_split": "test",
+      "pair_id": "c94dbfe55a4683f783f8",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_whole",
+      "phash_distance": 10,
+      "dhash_distance": 7,
+      "phash_threshold": 8,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/17292371021_57abfc8005_k",
+      "trans10k_id": "validation/easy/images/1620.jpg",
+      "trans10k_split": "validation",
+      "pair_id": "f22c6d0296144317a9d0",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "center80_vs_whole",
+      "phash_distance": 20,
+      "dhash_distance": 3,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/5577941746_f362ba0fbf_k",
+      "trans10k_id": "validation/easy/images/1620.jpg",
+      "trans10k_split": "validation",
+      "pair_id": "147106fa366af44cb959",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_whole",
+      "phash_distance": 12,
+      "dhash_distance": 12,
+      "phash_threshold": 8,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/16938679256_1e31afb8eb_k",
+      "trans10k_id": "test/easy/images/6547.jpg",
+      "trans10k_split": "test",
+      "pair_id": "e851feeaa0c72dcc4066",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "center80_vs_whole",
+      "phash_distance": 20,
+      "dhash_distance": 4,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/sun_azdqfmsspxirnbby",
+      "trans10k_id": "train/images/392.jpg",
+      "trans10k_split": "train",
+      "pair_id": "f4b354955460933268de",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "center80_vs_whole",
+      "phash_distance": 12,
+      "dhash_distance": 13,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/IMG_3091",
+      "trans10k_id": "test/easy/images/6970.jpg",
+      "trans10k_split": "test",
+      "pair_id": "93b983c223f9d2fb1940",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "center80_vs_whole",
+      "phash_distance": 12,
+      "dhash_distance": 13,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/v7WHJtStmPg",
+      "trans10k_id": "train/images/7536.jpg",
+      "trans10k_split": "train",
+      "pair_id": "ff1829ad85ec11c0629b",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_whole",
+      "phash_distance": 14,
+      "dhash_distance": 11,
+      "phash_threshold": 8,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/2468057759_eb3b0431fc",
+      "trans10k_id": "train/images/6839.jpg",
+      "trans10k_split": "train",
+      "pair_id": "a3613fb02a66ac442d77",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_whole",
+      "phash_distance": 16,
+      "dhash_distance": 10,
+      "phash_threshold": 8,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/14090096359_3d25368fac_k",
+      "trans10k_id": "test/easy/images/7148.jpg",
+      "trans10k_split": "test",
+      "pair_id": "08e2df76ad05cebdd95d",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_center80",
+      "phash_distance": 16,
+      "dhash_distance": 10,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/ADE_val_00001911",
+      "trans10k_id": "train/images/5121.jpg",
+      "trans10k_split": "train",
+      "pair_id": "fb9e7209b4577269f6fc",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_whole",
+      "phash_distance": 18,
+      "dhash_distance": 8,
+      "phash_threshold": 8,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/008_0036",
+      "trans10k_id": "train/images/8297.jpg",
+      "trans10k_split": "train",
+      "pair_id": "90d132d1880133d03875",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "whole_vs_center80",
+      "phash_distance": 18,
+      "dhash_distance": 8,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    },
+    {
+      "gsd_id": "gsd/test/3806977294_d8d7a8fbdc",
+      "trans10k_id": "train/images/3049.jpg",
+      "trans10k_split": "train",
+      "pair_id": "21309663e54bc94c43ae",
+      "kind": "diagnostic_not_threshold_candidate",
+      "method": "center80_vs_whole",
+      "phash_distance": 20,
+      "dhash_distance": 6,
+      "phash_threshold": 6,
+      "dhash_threshold": 12,
+      "automatic_exclusion": false
+    }
+  ],
+  "no_overlap_claim": false
+}

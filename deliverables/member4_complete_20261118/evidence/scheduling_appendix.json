@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-11-18T16:28:38.943768+00:00",
+  "change": "Bounded concurrent D evaluation while B is running, on the same 5090; the original queue later resumes compatible D chunks.",
+  "first_trial_images": 25,
+  "scientific_configuration_changed": false,
+  "code_or_checkpoint_changed": false,
+  "reason": "Measure whether spare same-machine GPU/CPU capacity can reduce elapsed time.",
+  "conditions": "all 13 frozen conditions; FP32; original-resolution logits; threshold 0.5; unchanged image membership",
+  "additional_GPU_used": false,
+  "note": "Per-attempt elapsed time is not total model cost; report saved chunk processing time and queue wall time separately.",
+  "controller_v2_sha256": "0315aa312f72f831a77e6ba4630297f99142f63648b5be219ab3b290f8395d80",
+  "windows_venv_launcher_supervision": "Use taskkill /PID owned-child /T /F to stop the complete D process tree; return output directory before B has fewer than 500 images left.",
+  "controlled_restart_note": "First auxiliary process deliberately paused to add process-tree termination after inspecting Windows launcher behavior; valid chunks retained."
+}

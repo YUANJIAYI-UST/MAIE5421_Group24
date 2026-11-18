@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-11-16T11:19:27.949824+00:00",
+  "user_reply": "尚未交付，先保留 A 的结果",
+  "B": "pending_formal_delivery",
+  "D": "pending_formal_delivery",
+  "A_GSD": "complete",
+  "A_D_GSD_comparison": "pending_D",
+  "B_D_full_perturbations": "pending_B_D",
+  "stage6_complete": false,
+  "stage7_started": false
+}

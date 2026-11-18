@@ -1,0 +1,233 @@
+{
+  "snapshot_date": "2026-11-16",
+  "repository_commit_at_drafting": "145a2a4d69ea52fd2c330fef7122e51684d8f8bf",
+  "branch": "member4/augmentation-gsd",
+  "publication_status": "branch_delivery_partial_results",
+  "publication_date": "2026-11-17",
+  "pull_request": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/3",
+  "C_training_identity": {
+    "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.7.1+cu128",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU",
+    "git_commit": "9cfc5436bdf5c4a7b0da899c1a57450ccaed96d7",
+    "git_dirty": true,
+    "initial_shared_state_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+    "encoder_resolved_revision": "80983a413c30d36a39c20203974ae7807835e2b4",
+    "train_manifest_sha256": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+    "val_manifest_sha256": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497",
+    "synthetic": false,
+    "data_protocol": {
+      "id": "member1_final_20261029_v1",
+      "policy_sha256": "ea9bdecba1fc407979d22a3bf2879c174c26287f4d427578fc6a6c863603e8ac",
+      "status": "owner_complete_pending_independent_review",
+      "source_dataset": "trans10k_v1",
+      "human_visual_review": "18_geometry_and_153_candidate_pairs_complete",
+      "perceptual_candidates_review": "owner_complete_with_one_recorded_test_only_uncertainty",
+      "member1_delivery": "complete",
+      "member5_review": "pending",
+      "official_test_membership_preserved": true
+    },
+    "full_official_train": false
+  },
+  "C_model_sha256": "69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d",
+  "A_GSD_model_sha256": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a",
+  "GSD_mirror_revision": "f8897574bbc2632a440efa1de021fd2b02f89f51",
+  "GSD_manifest_sha256": {
+    "full": "cf33e8de136c5fd0be03c1e4ed70c0a6c866e734df5ca3cf1a5b5b8f6c767d82",
+    "supplementary": "29a75ebbf98b5aa019ad4f08a544ffbb36056cdefc512676a0f2bfad2b54b60a"
+  },
+  "source_files": [
+    {
+      "source_path": "reports/member4_stage4_20261115/A_C_comparison.csv",
+      "package_path": "evidence/A_C_comparison.csv",
+      "sha256": "48d0c9a71f1d18fc153fe3ca721ac9f902bb9d8673f3765d5fcc411fb1583d1f",
+      "bytes": 1885
+    },
+    {
+      "source_path": "reports/member4_stage4_20261115/condition_results.csv",
+      "package_path": "evidence/condition_results.csv",
+      "sha256": "30bc61c8e7fc045d372f9ae3ef04ab51067db4dfdb6890a088407953630108e5",
+      "bytes": 11957
+    },
+    {
+      "source_path": "reports/member4_stage4_20261115/failure_selection.csv",
+      "package_path": "evidence/failure_selection.csv",
+      "sha256": "73ad68001495d392639963cfb497bcb4daf2b67e406b7ee1e89f0fa360713240",
+      "bytes": 691
+    },
+    {
+      "source_path": "reports/member4_stage4_20261115/environment_comparison.json",
+      "package_path": "evidence/environment_comparison.json",
+      "sha256": "53b98e741146917b0db4a2aae267b5ddb708fe4ce8b632f4a3b4b1f95f68aa8a",
+      "bytes": 1770
+    },
+    {
+      "source_path": "reports/member4_stage4_20261115/final_integrity_check.json",
+      "package_path": "evidence/A_C_integrity_check.json",
+      "sha256": "d7ef7392120e41f6ddd59088c981acebfe52f550326c6e2859c060e01117ed23",
+      "bytes": 1340
+    },
+    {
+      "source_path": "reports/member4_stage4_20261115/summary.json",
+      "package_path": "evidence/A_C_summary_original.json",
+      "sha256": "2a0d012cd5427964ac2485d04f882a789d6411bd31702563accf0b80034648af",
+      "bytes": 20013
+    },
+    {
+      "source_path": "reports/member4_stage6_20261116/summary.json",
+      "package_path": "evidence/GSD_A_summary_original.json",
+      "sha256": "49ce0041ed4c3c3f56814637441b663c0bdcc7bd97f7cf31adc519040f20478f",
+      "bytes": 1233
+    },
+    {
+      "source_path": "reports/member4_stage6_20261116/GSD_transfer_results.csv",
+      "package_path": "evidence/GSD_transfer_results.csv",
+      "sha256": "342574bebf27815d9924b7bdbb08de073dd963be2fa2304cc6459cb755902a3e",
+      "bytes": 762
+    },
+    {
+      "source_path": "reports/member4_stage6_20261116/gallery_selection.json",
+      "package_path": "evidence/GSD_gallery_selection.json",
+      "sha256": "832f1f42b330928bcbe479ac6355438014de009b6d8e6655b19c6e1306a81cd3",
+      "bytes": 2430
+    },
+    {
+      "source_path": "reports/member4_stage6_20261116/final_integrity_check.json",
+      "package_path": "evidence/GSD_A_integrity_check.json",
+      "sha256": "58e287e25a226355aa6f4a32284e7bfbf8f5e1582cc4c478c5007a71f44f53ff",
+      "bytes": 451
+    },
+    {
+      "source_path": "reports/member4_gsd_freeze_20261116/frozen_release/release.json",
+      "package_path": "evidence/GSD_frozen_release_original.json",
+      "sha256": "78e02bf33cc3f08271601a672c01b3a6bdc454d079549ee8fec5d94c18c00e57",
+      "bytes": 577
+    },
+    {
+      "source_path": "reports/member4_gsd_freeze_20261116/post_freeze_verification.json",
+      "package_path": "evidence/GSD_freeze_verification.json",
+      "sha256": "d9ebac18f26fef82242619000af2b8700ffd380dbce26ec259407f09ed47b26e",
+      "bytes": 1062
+    },
+    {
+      "source_path": "runs/member4_stage2_20261115_v2/verification_summary.json",
+      "package_path": "evidence/augmentation_verification.json",
+      "sha256": "80d5cbf1f56c17c0850a5c91475e44f552fd402b74b47c42d6867ca317b1e842",
+      "bytes": 1121
+    },
+    {
+      "source_path": "runs/member4_full_C_seed42_20261115/config.json",
+      "package_path": "evidence/C_run_config.json",
+      "sha256": "2ff73ca919dc5c38a717392ec8d4bdb1f508701b2a0733014146ee68de5122d9",
+      "bytes": 1445
+    },
+    {
+      "source_path": "runs/member4_full_C_seed42_20261115/environment.json",
+      "package_path": "evidence/C_run_environment.json",
+      "sha256": "8ebe071fc5a86f5c7f5fe6d177d8d7393d31640d968d98734e29cc5c23dcb493",
+      "bytes": 1228
+    },
+    {
+      "source_path": "runs/member4_full_C_seed42_20261115/pip_freeze.txt",
+      "package_path": "evidence/C_run_pip_freeze.txt",
+      "sha256": "9a318ee149b0ff98000925c4cad142cc10c4bec6d00ed55e55049ced3828c022",
+      "bytes": 730
+    },
+    {
+      "source_path": "runs/member4_full_C_seed42_20261115/history.jsonl",
+      "package_path": "evidence/C_history.jsonl",
+      "sha256": "a19e722a1f3bb3dce35d790ce18b2e021a24f1359d71fa5e862bddd06482733a",
+      "bytes": 420526
+    },
+    {
+      "source_path": "configs/member4_full_C_protocol_20261115.json",
+      "package_path": "evidence/C_frozen_protocol.json",
+      "sha256": "b5865fb9dec70958273ff98b96749ba0a163138db39d9842685fc629cb962fe4",
+      "bytes": 3342
+    },
+    {
+      "source_path": "reports/member4_C_release_20261116/model_assets.json",
+      "package_path": "evidence/C_release_assets_original.json",
+      "sha256": "9b7c540a5c7cf985821cb966ef210f0a7c804e76c787ca9d1113db66ca0db4b5",
+      "bytes": 1390
+    },
+    {
+      "source_path": "reports/member4_C_release_20261116/download_verification.json",
+      "package_path": "evidence/C_download_verification.json",
+      "sha256": "166445dd132e9b3fc6bba44d3dd92c29a126fc90e2c5db33cacd9666c7dc7ef3",
+      "bytes": 1408
+    },
+    {
+      "source_path": "docs/28_MEMBER4_C_RELEASE_HANDOFF.txt",
+      "package_path": "evidence/28_MEMBER4_C_RELEASE_HANDOFF.txt",
+      "sha256": "8418eb0beb029cefa4b120f24d040772177d5f6bc4bfa584afe45cd4da06a8d4",
+      "bytes": 4356
+    },
+    {
+      "source_path": "docs/27_MEMBER4_STAGE5_6_BRANCH_DELIVERY.txt",
+      "package_path": "evidence/27_MEMBER4_STAGE5_6_BRANCH_DELIVERY.txt",
+      "sha256": "383ab516fd24be2609e8150a6a6bd070cb78755474a3e00b1d10aee890ae313d",
+      "bytes": 5270
+    },
+    {
+      "source_path": "runs/member4_stage2_20261115_v2/visuals/01.png",
+      "package_path": "figures/augmentation_fixed_sample.png",
+      "sha256": "4ff3fe8a41f2b85df85f24955e6c2b0839fa07c52eec8844d2567558dafc8175",
+      "bytes": 853406
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/gallery/16.png",
+      "package_path": "figures/A_C_regression_gamma_1p6.png",
+      "sha256": "7f92e254ec1bad956c009284e37c14c2fb29e2091268e762b6a819d0393a414c",
+      "bytes": 651621
+    },
+    {
+      "source_path": "reports/member4_stage6_20261116/A_GSD_case_21.png",
+      "package_path": "figures/A_GSD_failure_case_21.png",
+      "sha256": "f9723e7718c2c9c7f097aae1ffecbb7dbd5a1ec01ab27bf50e2e80d825e4845a",
+      "bytes": 319188
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/robustness_all.png",
+      "package_path": "figures/robustness_all.png",
+      "sha256": "a066e083ed71da4c990f9711c46abe0ff35da3e449dd8ac727938c13930aa706",
+      "bytes": 463919
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/robustness_all.pdf",
+      "package_path": "figures/robustness_all.pdf",
+      "sha256": "b9556ed21efa26043377da8c4f3aeb024f51a304347f1323b4df1bb7bd283fe6",
+      "bytes": 29340
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/robustness_easy.png",
+      "package_path": "figures/robustness_easy.png",
+      "sha256": "bda9bc4aa2c71bbbfe1a937b7241123bb53e98592d01ba91edd230b88f1c8713",
+      "bytes": 461579
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/robustness_easy.pdf",
+      "package_path": "figures/robustness_easy.pdf",
+      "sha256": "7ab29c49bc1edc123885d90eac857546cd8bd5acbd20e6de09778df4722e72b2",
+      "bytes": 29526
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/robustness_hard.png",
+      "package_path": "figures/robustness_hard.png",
+      "sha256": "0800be5253435e0c48c06c6d1ede1928034faa6de0f87bafa6c377407eb931a9",
+      "bytes": 464373
+    },
+    {
+      "source_path": "runs/member4_stage4_20261115/results/robustness_hard.pdf",
+      "package_path": "figures/robustness_hard.pdf",
+      "sha256": "aa8b9da3fd54a2f81ea4698362698d0e3dcf13d9edf8fe66e35bcd9515f6da71",
+      "bytes": 29224
+    }
+  ],
+  "limits": [
+    "Historical source statuses are preserved; current partial status is in validation.json.",
+    "C training source identity is the original source snapshot, not the drafting commit.",
+    "No new model evaluation or experiment was run to draft these materials."
+  ]
+}

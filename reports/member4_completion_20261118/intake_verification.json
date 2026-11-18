@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "models": {
+    "B": {
+      "checkpoint": "runs\\member4_BD_delivery_20261118\\full_runs\\B03_B\\best.pt",
+      "sha256": "e219d6bf2f7f7cc57711d8df7354202efd81360108247f16dd4cc72765549d81",
+      "selected_epoch": 29,
+      "selected_validation_iou": 0.8817059727286424,
+      "last_epoch": 30,
+      "optimizer_steps": 18600,
+      "shared_initialization_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+      "manifest_sha256": {
+        "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+        "val": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+      },
+      "strict_model_load": true,
+      "validation_selection_reconstructed": true,
+      "training_gpu": "NVIDIA GeForce RTX 5070 Ti",
+      "training_commit": "2ef8c07d0008d9bede2189b6e25fa3e7edf4ce47",
+      "frozen_protocol_sha256": "730e4bdfe6429b63c358a7421787f6da5510aff5c49ddf3b297c94c712d3bab0",
+      "passed": true
+    },
+    "D": {
+      "checkpoint": "runs\\member4_BD_delivery_20261118\\full_runs\\B03_D\\best.pt",
+      "sha256": "49498d53b63b13368ceafa5200842a7136c41172c9decad6000c23d1c22b93a4",
+      "selected_epoch": 28,
+      "selected_validation_iou": 0.8817140377586574,
+      "last_epoch": 30,
+      "optimizer_steps": 18600,
+      "shared_initialization_sha256": "fd50559254d2d5fe9b16cbaa6f7fd32452faa4a7f3b9a3ec42f1a6fb6eedc835",
+      "manifest_sha256": {
+        "train": "7a3094e0c1aeacf0edd7335f196af79eacd4b551cd9f78cce2cf7c903e910ca2",
+        "val": "861c24027bfddcfba031e253a6518343010e31d296fb66c010f8d88ee9a90497"
+      },
+      "strict_model_load": true,
+      "validation_selection_reconstructed": true,
+      "training_gpu": "NVIDIA GeForce RTX 5070 Ti",
+      "training_commit": "b145c4d9dd9f11d0892979b3214706a4dd9f4f5f",
+      "frozen_protocol_sha256": "a3ca7eaf4508e6f811c9a3157a45050dd406a1bf6bb3f0f6085e2b9088bc5ba3",
+      "passed": true
+    }
+  },
+  "shared_source_matches": {
+    "transparent_seg/data.py": true,
+    "transparent_seg/model.py": true,
+    "transparent_seg/losses.py": true
+  },
+  "member2_head": "224d008c6b3a2ac27403ec86a0e71b972bcb5da2",
+  "release": "https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/group24-b03-b04-20261118",
+  "C_settings_reference": "configs/member4_full_C_20261115.json",
+  "limitations": [
+    "Single seed; training hardware/Python environments differ.",
+    "Training records establish reproducibility and selection consistency; they are not independent observation of the original training."
+  ],
+  "E03_models_used": false
+}

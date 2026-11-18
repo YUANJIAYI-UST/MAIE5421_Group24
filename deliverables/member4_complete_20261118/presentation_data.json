@@ -1,0 +1,245 @@
+{
+  "summary": {
+    "generated_at": "2026-11-18T18:53:36.546339+00:00",
+    "status": "formal_evaluations_verified",
+    "stage6_experiments_complete": true,
+    "stage7_packaging_complete": true,
+    "ABCD": {
+      "A": {
+        "foreground_iou": {
+          "model": "A",
+          "subset": "all",
+          "metric": "foreground_iou",
+          "clean_percent": 87.43639141301095,
+          "perturbed_mean_percent": 86.78380313416731,
+          "drop_pp": 0.6525882788436377
+        },
+        "region_f1": {
+          "model": "A",
+          "subset": "all",
+          "metric": "region_f1",
+          "clean_percent": 93.29713483476884,
+          "perturbed_mean_percent": 92.92347764682698,
+          "drop_pp": 0.3736571879418591
+        },
+        "boundary_iou": {
+          "model": "A",
+          "subset": "all",
+          "metric": "boundary_iou",
+          "clean_percent": 68.08697531416848,
+          "perturbed_mean_percent": 66.8748917753653,
+          "drop_pp": 1.212083538803185
+        },
+        "background_fpr": {
+          "model": "A",
+          "subset": "all",
+          "metric": "background_fpr",
+          "clean_percent": 2.8342740677322733,
+          "perturbed_mean_percent": 2.93422870676018,
+          "drop_pp": -0.09995463902790691
+        }
+      },
+      "B": {
+        "foreground_iou": {
+          "model": "B",
+          "subset": "all",
+          "metric": "foreground_iou",
+          "clean_percent": 87.52997612289128,
+          "perturbed_mean_percent": 86.88882022042576,
+          "drop_pp": 0.6411559024655276
+        },
+        "region_f1": {
+          "model": "B",
+          "subset": "all",
+          "metric": "region_f1",
+          "clean_percent": 93.35038369069225,
+          "perturbed_mean_percent": 92.98370139915313,
+          "drop_pp": 0.3666822915391208
+        },
+        "boundary_iou": {
+          "model": "B",
+          "subset": "all",
+          "metric": "boundary_iou",
+          "clean_percent": 68.23833636688894,
+          "perturbed_mean_percent": 67.04203011475175,
+          "drop_pp": 1.196306252137191
+        },
+        "background_fpr": {
+          "model": "B",
+          "subset": "all",
+          "metric": "background_fpr",
+          "clean_percent": 2.804750291498957,
+          "perturbed_mean_percent": 2.9087451805213114,
+          "drop_pp": -0.10399488902235454
+        }
+      },
+      "C": {
+        "foreground_iou": {
+          "model": "C",
+          "subset": "all",
+          "metric": "foreground_iou",
+          "clean_percent": 87.50043643400845,
+          "perturbed_mean_percent": 86.96036490223808,
+          "drop_pp": 0.5400715317703657
+        },
+        "region_f1": {
+          "model": "C",
+          "subset": "all",
+          "metric": "region_f1",
+          "clean_percent": 93.33358161521357,
+          "perturbed_mean_percent": 93.02482470394214,
+          "drop_pp": 0.30875691127143057
+        },
+        "boundary_iou": {
+          "model": "C",
+          "subset": "all",
+          "metric": "boundary_iou",
+          "clean_percent": 68.05863841501889,
+          "perturbed_mean_percent": 67.00027675478015,
+          "drop_pp": 1.0583616602387451
+        },
+        "background_fpr": {
+          "model": "C",
+          "subset": "all",
+          "metric": "background_fpr",
+          "clean_percent": 2.768563904967466,
+          "perturbed_mean_percent": 2.8480046981793095,
+          "drop_pp": -0.07944079321184327
+        }
+      },
+      "D": {
+        "foreground_iou": {
+          "model": "D",
+          "subset": "all",
+          "metric": "foreground_iou",
+          "clean_percent": 87.46532388464742,
+          "perturbed_mean_percent": 86.90682888927434,
+          "drop_pp": 0.5584949953730813
+        },
+        "region_f1": {
+          "model": "D",
+          "subset": "all",
+          "metric": "region_f1",
+          "clean_percent": 93.31360282765388,
+          "perturbed_mean_percent": 92.99412518531578,
+          "drop_pp": 0.31947764233810005
+        },
+        "boundary_iou": {
+          "model": "D",
+          "subset": "all",
+          "metric": "boundary_iou",
+          "clean_percent": 68.02067438561615,
+          "perturbed_mean_percent": 66.95967699829662,
+          "drop_pp": 1.0609973873195315
+        },
+        "background_fpr": {
+          "model": "D",
+          "subset": "all",
+          "metric": "background_fpr",
+          "clean_percent": 2.5763433393922184,
+          "perturbed_mean_percent": 2.650749590176252,
+          "drop_pp": -0.07440625078403373
+        }
+      }
+    },
+    "GSD": {
+      "A": {
+        "model": "A",
+        "condition": "clean",
+        "subset": "all",
+        "background_fpr": 0.11418990112882463,
+        "boundary_images": 813,
+        "boundary_iou": 0.4421086061077238,
+        "fn": 11196831,
+        "foreground_iou": 0.6812732668934955,
+        "fp": 15344702,
+        "images": 813,
+        "region_f1": 0.8104253845090758,
+        "skipped_all_void": 0,
+        "tn": 119034099,
+        "tp": 56732100
+      },
+      "D": {
+        "model": "D",
+        "condition": "clean",
+        "subset": "all",
+        "background_fpr": 0.10350707028558769,
+        "boundary_images": 813,
+        "boundary_iou": 0.4418096493918145,
+        "fn": 12301279,
+        "foreground_iou": 0.6797281564022873,
+        "fp": 13909156,
+        "images": 813,
+        "region_f1": 0.8093311454136219,
+        "skipped_all_void": 0,
+        "tn": 120469645,
+        "tp": 55627652
+      }
+    },
+    "GSD_D_minus_A_pp": {
+      "foreground_iou": -0.15451104912082014,
+      "region_f1": -0.10942390954538084,
+      "boundary_iou": -0.029895671590929318,
+      "background_fpr": -1.0682830843236943
+    },
+    "source_runs": {
+      "A": "runs\\member4_A_full_test_20261115",
+      "B": "runs\\member4_completion_20261118\\B_test",
+      "C": "runs\\member4_C_full_test_20261115",
+      "D": "runs\\member4_completion_20261118\\D_test"
+    },
+    "model_sha256": {
+      "A": "3a785feb578ecbd2199684c53130737c872cd6c2f5803f221297f1e9dac0b25a",
+      "B": "e219d6bf2f7f7cc57711d8df7354202efd81360108247f16dd4cc72765549d81",
+      "C": "69841f34ec0c76b0a2dbdce3a07f8ea5926a6beec847c4e8b03e587efc3b5f0d",
+      "D": "49498d53b63b13368ceafa5200842a7136c41172c9decad6000c23d1c22b93a4"
+    },
+    "limitations": [
+      "One training seed; different training GPUs/Python environments.",
+      "No significance claim; both improvements and regressions retained.",
+      "GSD scene transfer is distinct from E03 unseen-category evaluation.",
+      "813 GSD records contain 812 unique decoded photographs; frozen duplicates retained.",
+      "Finite duplicate search cannot establish complete absence of overlap."
+    ],
+    "stage7_deliverable": "deliverables\\member4_complete_20261118"
+  },
+  "slides": [
+    {
+      "title": "Photometric augmentation",
+      "seconds": 40,
+      "zh": "训练时，一半照片保持原样，另一半随机改变亮度、对比度或gamma中的一种，强度在0.8到1.2。增强放在缩放后、归一化前，玻璃位置和标签完全不变。C在A基础上只加增强；D在B基础上加同样增强。四组共用初始化、数据和训练预算，所以可以分别比较C和A、D和B。",
+      "en": "My part tests whether appearance changes make segmentation more stable. During training, each image has a fifty percent chance of receiving one operation: brightness, contrast, or gamma. The strength is between zero point eight and one point two. Object positions and masks stay unchanged. C adds augmentation to A. D adds the same augmentation to B. The four models share their initialization, data, and training budget.",
+      "source": "configs/member4_full_C_20261115.json; evidence/intake_verification.json; stage-2 verified augmentation example"
+    },
+    {
+      "title": "Four-model clean test",
+      "seconds": 40,
+      "zh": "这一页是正常照片的考试，四组均测试4428张。IoU看预测区域与答案的重合程度，Boundary IoU看轮廓。数值越高越好。四组分数接近，表格的小数差值不能夸大成显著提高。模型只用验证集选，不能根据这里的测试分挑模型。",
+      "en": "All four models are tested on the same four thousand four hundred and twenty-eight clean images. IoU measures how well the predicted region overlaps the ground truth. Boundary IoU focuses on the outline. Higher is better. C reaches 87.50 percent IoU, and D reaches 87.47 percent. The differences are small. We selected checkpoints using validation data only, and we do not claim a significant improvement.",
+      "source": "evidence/ABCD_clean_results.csv; evidence/intake_verification.json"
+    },
+    {
+      "title": "Photometric robustness",
+      "seconds": 55,
+      "zh": "三张图依次看亮度、对比度、gamma。横轴是变化强度，纵轴是IoU，1表示不变。每个点都有完整4428张图，均值只包括12个扰动点。纵轴放大了，所以曲线距离不代表巨大收益。C比A平均提高0.177个百分点；D减B为+0.018个百分点。强调单seed的平均结果，个别图仍可能明显变差。",
+      "en": "The three plots show brightness, contrast, and gamma changes. The horizontal axis shows strength, with one meaning unchanged input; the vertical axis shows IoU. Every point uses the full test set. The axis is zoomed, so small gaps should not be exaggerated. Across twelve perturbations, C gains 0.177 percentage points over A. Adding augmentation to B increases the mean by 0.018 percentage points. Some individual images still become worse.",
+      "source": "evidence/ABCD_condition_results.csv; evidence/ABCD_robustness_summary.csv; figures/ABCD_robustness_all.png"
+    },
+    {
+      "title": "Transfer to GSD",
+      "seconds": 45,
+      "zh": "最后换到813条GSD玻璃场景，不再训练、不调整阈值。A的IoU为68.13%，D为67.97%，说明D没有提升整体IoU。D背景误报更少，但这不等于所有指标都更好。失败图用固定的低分规则选择，不能代表错误出现频率。GSD是在新场景测试，不等同于新类别测试。",
+      "en": "Finally, we test A and D on eight hundred and thirteen GSD records, without training or tuning on GSD. A reaches sixty-eight point one three percent IoU; D reaches sixty-seven point nine seven percent. D produces fewer background errors, but also misses more glass pixels. Overall IoU does not improve. The example shows a failure around an open window. This evaluates new scenes, separate from the experiment on unseen object categories.",
+      "source": "evidence/GSD_AD_transfer_results.csv; evidence/failure_selection.csv; gallery/index.json"
+    }
+  ],
+  "wins": {
+    "CA": 12,
+    "DB": 6
+  },
+  "augmentation_effects_pp": {
+    "C_minus_A": 0.17656176807076918,
+    "D_minus_B": 0.0180086688485801,
+    "difference_of_effects": -0.15855309922218908
+  }
+}

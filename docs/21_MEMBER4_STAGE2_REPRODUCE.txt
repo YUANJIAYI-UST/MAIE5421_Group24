@@ -1,0 +1,78 @@
+成员 4 阶段 2：真实图片增强核验复现说明
+
+目的
+检查既有增强是否按计划改变照片、保持标签和有效像素区域不变。
+本阶段不训练模型，不计算模型准确率，不说明 C 是否优于 A。
+用户已确认阶段 1；阶段 2 完成后仍需用户验收，才能进入阶段 3。
+
+最终验收包
+runs/member4_stage2_20261115_v2/
+  验收说明.txt：看图方法、检查结论和人工验收清单。
+  preview_01.png 至 preview_04.png：20 张真实训练图概览。
+  visuals/01.png 至 20.png：单图详细对照，包含三种增强的两个端点。
+  selection.json：事先固定的样本、训练清单哈希和检查范围。
+  stage1_acceptance.json：本次用户对阶段 1 的确认，原记录不覆盖。
+  stage2_report.json：机器检查结果、代码/依赖、次数及局限。
+  augmentation_trace.csv：600 次真实训练数据读取的条件、参数和输入哈希。
+  endpoint_checks.json：120 次固定端点核验。
+  probability_boundary_checks.json：精确概率边界的行为检查。
+  validation_checks.json：20 张验证图的增强禁用和缓存一致性。
+  diagnostic_manifests/、diagnostic_cache/：专用于核验的小样本清单和缓存。
+最终汇总与测试记录见 reports/MEMBER4_STAGE2_20261115.txt。
+
+如何理解对照图
+所有展示均取实际 512×512 模型输入再缩小排版。
+各增强独立从同一原图生成，没有串联，也没有平移、翻转或裁剪。
+亮度 0.8 偏暗、1.2 偏亮；对比度 0.8 更平缓、1.2 更强。
+Gamma 使用 I^gamma，所以 0.8 偏亮、1.2 偏暗。
+黑白图是共同监督标签，白色为透明物体前景。
+展示固定的 0.8/1.2 是为了看清变化，并非把正式训练参数改为离散端点。
+正式训练仍以 0.5 概率三选一，强度均匀分布于 [0.8,1.2]。
+
+检查覆盖
+训练：按 SHA256("member4-stage2/42/"+id) 排序取前 20 张，不按视觉效果选图。
+验证：复用阶段 1 的固定 20 张 ID。
+随机分支：20 张×30 个零起始 epoch 索引，实际经过 SegmentationDataset。
+重复读取：每次改变无关 Python/NumPy/Torch 全局随机状态，检查输出完全一致。
+额外检查：逆序读取、新建数据集实例；seed43 应改变增强日程。
+缓存：全部 120 个端点条件，以及固定 epoch 0/1/2/9/19/29 的 120 个随机条件。
+同一条件下要求 image、target、valid 逐元素完全一致，不采用近似阈值。
+验证：默认输入无增强；即使 augmentation=True，training=False 仍禁用增强。
+验证标签保持原尺寸；训练标签只做原有 nearest 缩放。
+原始图像/标签字节哈希在前后核对，原正式清单保持不变。
+
+实现说明
+复用 transparent_seg/data.py 与 cache.py，不修改生产增强、缓存和训练代码。
+诊断时临时观察 perturb 调用，确认它收到的是缩放后、未归一化的 float32 RGB。
+只在独立核验进程中注入 RNG，检查 p=0.5 的边界及三选一、[0.8,1.2] 参数接口。
+这些注入不会写回训练代码或配置。
+公式核验使用双精度逐像素算式，但对比度中心保留现有实现的 float32 均值，
+容差为 2e-7；缓存和重复输入的一致性仍要求逐元素相同。
+此次选择的真实标签没有 void；现有合成 void/缓存测试作为单独的边界条件检查，
+不能将这些合成样本当作真实数据或性能证据。
+
+重新运行
+在 D:\桌面\cv_group 项目根目录，用尚未存在的新目录：
+.\.venv\Scripts\python.exe -X utf8 -B scripts/member4_stage2.py --output runs/member4_stage2_recheck_02
+脚本拒绝已有输出目录，避免覆盖历史证据。
+正常完成打印 automatic_checks=passed；异常则保存 stage2_failure.json 并退出。
+新目录中的诊断缓存只含 20 train + 20 validation，不能冒充正式全量缓存。
+
+相关既有测试
+Windows 默认临时路径可能超过路径长度限制，使用尚不存在的项目内短目录。
+以下为一条命令；再次执行时请更换 basetemp 和 junitxml 路径，保留原日志：
+.\.venv\Scripts\python.exe -X utf8 -B -m pytest -q tests/test_data_protocol.py::test_augmentation_reproducible_and_masks_unchanged tests/test_full_baseline.py::test_cache_exact_tensors_and_corruption tests/test_full_baseline.py::test_cache_rejects_changed_source tests/test_core.py::test_photometric_range_and_shape tests/test_core.py::test_unknown_mask_fails tests/test_core.py::test_binary_mask_is_explicit --basetemp=tmp/member4_stage2_tests_02 --junitxml=runs/member4_stage2_recheck_02/pytest.xml
+
+保留的初次诊断记录
+runs/member4_stage2_20261115/ 保留首次不完整核验，不是最终通过的验收包。
+首次参考公式误用了 float64 对比度均值，与现有 float32 均值定义不同，出现核验失败。
+contrast_reference_diagnosis.json 定位到了均值累计精度差异；生产代码及增强强度未修改。
+修正核验参照后新建 _v2 运行，逐像素公式容差由 2e-5 收紧为 2e-7。
+首次 pytest.xml 中一项测试因 Windows 临时路径过长失败；
+改用项目内短路径后，pytest_short_paths.xml 记录 18 项全部通过。
+这些是核验脚本/运行环境修正，不是根据模型分数调参。
+
+验收后的下一步
+仅在用户确认阶段 2 后开始阶段 3：正式 C 协议、全量缓存、20 步短试跑、
+可恢复全量评估入口、等价性与实际耗时预检。
+本阶段的通过结论不能代替正式全量缓存验收或长运行许可。

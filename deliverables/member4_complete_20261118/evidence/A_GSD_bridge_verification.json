@@ -1,0 +1,7 @@
+{
+  "all_prediction_hashes_and_metrics_exact": true,
+  "bridge": "runs\\member4_completion_20261118\\A_GSD_bridge",
+  "images": 813,
+  "original": "runs\\member4_stage6_20261116\\A_full",
+  "passed": true
+}

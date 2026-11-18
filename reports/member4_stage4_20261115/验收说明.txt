@@ -1,0 +1,53 @@
+成员4 阶段4：正式C训练及全量A/C验收说明
+
+自动核验通过；用户人工验收待确认；阶段5尚未开始。
+本机RTX5090完成冻结配置：seed42、512、batch8、BF16、30轮、18600次更新。
+C最佳权重来自第30轮，仅按全部995张验证图的前景IoU选择。
+最佳权重重载后完整验证的区域统计与选模记录完全一致。
+A/C各13个条件、每条件4428张，共115128次图像-条件评估全部完成。
+逐条件ID无遗漏/重复；IoU/F1按累计像素计算，Boundary IoU逐图平均。
+
+全体测试集结果：clean及12条件平均为百分数，drop为百分点。
+前景IoU：
+  clean：A 87.4364% / C 87.5004% / C-A +0.0640个百分点
+  12条件平均：A 86.7838% / C 86.9604% / C-A +0.1766个百分点
+  drop=clean-12条件平均：A 0.6526 / C 0.5401个百分点
+区域F1：
+  clean：A 93.2971% / C 93.3336% / C-A +0.0364个百分点
+  12条件平均：A 92.9235% / C 93.0248% / C-A +0.1013个百分点
+  drop=clean-12条件平均：A 0.3737 / C 0.3088个百分点
+Boundary IoU：
+  clean：A 68.0870% / C 68.0586% / C-A -0.0283个百分点
+  12条件平均：A 66.8749% / C 67.0003% / C-A +0.1254个百分点
+  drop=clean-12条件平均：A 1.2121 / C 1.0584个百分点
+
+如何看结果
+clean衡量正常图片，12条件平均衡量这组固定光照扰动下的表现，drop衡量相对自身clean的下降。
+比较平均分和下降时要同时看clean起点，不能只看某个最好看的指标。
+这是单seed A/C实验，不能据此声称在GSD或所有新场景上更好；GSD尚未开始。
+A/C的数据、初始化、训练预算和核心计算库版本相同；GPU型号、Python小版本及部分辅助依赖不同。
+完整环境差异见environment_comparison.json；不能将两台机器的环境称为完全相同。
+无论C是否提高，完整保留全部26组结果，不通过测试分数改参数或重选模型。
+
+交付入口
+A_C_comparison.csv：all/easy/hard的正常、扰动平均及drop对比。
+condition_results.csv：26条件×3分组的完整统计。
+robustness_summary.csv：均分与drop，列名明确fraction/pp。
+robustness_all.png、robustness_easy.png、robustness_hard.png：三类扰动对比曲线。
+../figures/training_curves.png：完整训练与验证曲线。
+gallery/：固定12张及按预先规则选择的诊断案例；索引说明每张图的选择依据。
+failure_selection.csv：低分/相对退步案例的具体规则和分数。
+summary.json：机器验收、权重位置与哈希；原始逐图记录留在各正式评估目录。
+
+模型位置
+C：runs/member4_full_C_seed42_20261115/best.pt（最佳）及last.pt（第30轮续训状态）。
+A：runs/member2_full_A_20261114/best.pt，原始权重和结果保留。
+加载C预测：
+.\.venv\Scripts\python.exe -X utf8 -B -m transparent_seg.predict --checkpoint runs/member4_full_C_seed42_20261115/best.pt --image 图片路径 --output 新预测目录
+
+请验收
+[ ] 理解C的增强只改变光照，标签和几何位置保持不变。
+[ ] 查看完整预算、选模及26组完整覆盖检查。
+[ ] 查看clean、扰动均分和drop，而非只挑一项指标。
+[ ] 查看固定案例与明确标注选择规则的失败/相对薄弱案例。
+[ ] 确认阶段4通过后，再进入阶段5的GSD准备与重叠审计。
