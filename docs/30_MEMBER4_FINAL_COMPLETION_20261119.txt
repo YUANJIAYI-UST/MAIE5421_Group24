@@ -1,0 +1,57 @@
+成员4最终交付：全量四模型扰动与A/D GSD迁移
+更新：2026-11-19；运行编号20261118。
+
+范围：已验收的阶段1—5保持不变，阶段6与阶段7的B/D缺项现已补齐。
+不再需要成员3补交本轮B/D；正式模型来自成员2的member2/b03-b04-e03分支与B03 Release。
+这代表成员4的七阶段计划完成，不等同全组总稿、彩排、提交和所有扩展实验均完成。
+
+最快接手
+分支：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/tree/member4/augmentation-gsd
+未合并PR：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/pull/3
+最终文稿/图表与原始数值记录：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-final-evaluation-20261119
+C权重：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-c-augmentation-20261116
+正式B/D：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/group24-b03-b04-20261118
+仓库交付目录：deliverables/member4_complete_20261118
+
+你应取得的文件
+member4_complete_20261118.zip：报告段落、4页PPT、约3分钟中英文讲稿、图表、失败案例及验收记录。
+member4_final_evaluation_records_20261118.zip：全部数值证据、逐图统计、分块、固定清单、源代码快照及训练记录。
+两个ZIP均不包含训练数据和模型权重；模型复用上述既有Release。新记录不要覆盖历史目录。
+正式下载链接与GitHub端哈希核验记录：reports/member4_final_release_20261119/receipt.json
+member4_complete_20261118.zip SHA256：8049a335c6af4c95de424c44517a212d5a259fb6f7bef21fb6ff62292f97473e
+member4_final_evaluation_records_20261118.zip SHA256：0a0a1be4cf7104e27b30c32e3372df6dcc7e3c71c718f2366f8483485215193c
+
+结果（前景IoU；差值为百分点）
+A: clean 87.4364%，12扰动平均 86.7838%，下降 0.6526 pp
+B: clean 87.5300%，12扰动平均 86.8888%，下降 0.6412 pp
+C: clean 87.5004%，12扰动平均 86.9604%，下降 0.5401 pp
+D: clean 87.4653%，12扰动平均 86.9068%，下降 0.5585 pp
+增强对比：C-A +0.1766 pp；D-B +0.0180 pp。
+GSD A/D IoU：68.1273% / 67.9728%。
+D降低背景误报，但GSD整体IoU略降；保持负结果，不声称全指标提升。
+共52个Trans10K条件，每组4428图；GSD每模型813条。完整/补充GSD同成员，不能当独立实验。
+
+已做的验收
+正式B/D权重/Release哈希、30轮/18600步、公共初始化、全量验证选模和D增强与C一致均通过。
+本机150项回归测试通过；B/D固定验证样本13条件与原实现逐像素及指标完全相同。
+A GSD的813条旧/新后端预测哈希和指标完全一致。四模型分块/图片ID/混淆计数/汇总独立复核通过。
+PPT共4页，数值、备注、原生表格和实际渲染核验通过。
+另完成原分工中的E03召回表复核：66行及seen/held-out成员和类别分母一致；未重跑E03。
+
+其他成员最低配合
+成员1：无需重做GSD人工复核。
+成员2/3：现有B/D已足够，无需重训或重复上传；合并代码时保留C和B/D/E03协议入口。
+截至本次复查，成员2该分支还没有独立PR；需要合入main时，由分支负责人创建PR即可。
+成员5：复核最终表述/指标口径并整合全组报告，不必重复跑成员4实验。
+按原分工完成总稿、全组10分钟彩排和需要的独立机器复现；不要把这些写成已完成。
+
+合并注意
+成员4 protocol.py有C_SCOPE和C初始化/预算约束；成员2版本有B/D/E03 FOLLOWUP_SCOPES。
+不能整文件用一方覆盖另一方。本次只接入已验证的可选OpenCV评估后端，没有合并main或PR。
+本轮启动HEAD是3d11d48397840443d7274d65dd03c44c7b73a0bf；实际运行源文件以protocol.json哈希与source_snapshot为准。
+
+验收入口
+reports/member4_completion_20261118/verification.json
+deliverables/member4_complete_20261118/validation.json
+deliverables/member4_complete_20261118/README_使用与验收.txt
+deliverables/member4_complete_20261118/REPRODUCE_复现说明.txt

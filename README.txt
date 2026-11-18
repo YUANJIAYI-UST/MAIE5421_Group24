@@ -16,9 +16,10 @@ Boundary-Aware Transparent Object Segmentation under Appearance Variation
 机器可读结果、逐图指标、训练曲线与资源记录：reports/member2_full_A_20261114/
 模型/日志：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member2-a-baseline-20261114
 后续实验数据：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/trans10k-course-data-20261114
-成员4已完成正式C、全量A/C正常及12条件扰动对比、GSD冻结及A迁移评估；正式B/D和完整A/D比较仍待补充。
-成员4报告、3页PPT和中英文讲稿（2026-11-17分支交付）：docs/29_MEMBER4_STAGE7_REPORT_PRESENTATION.txt
-交付目录：deliverables/member4_stage7_partial_20261116/；同名ZIP可整体下载后直接交给报告/展示整合者。
+成员4阶段1—7现已完成：C训练、四模型全量13条件评估、GSD冻结及A/D迁移对比。
+最终报告、4页PPT、约3分钟讲稿和验收：docs/30_MEMBER4_FINAL_COMPLETION_20261119.txt
+交付目录：deliverables/member4_complete_20261118/；旧partial包保留历史状态，本次最终包优先。
+完整文稿/数值归档：https://github.com/YUANJIAYI-UST/MAIE5421_Group24/releases/tag/member4-final-evaluation-20261119
 C模型下载和单图验收：docs/28_MEMBER4_C_RELEASE_HANDOFF.txt
 成员3训练/优化器独立review、三种子和held-out正式实验以各自后续交付为准，不视为已完成。
 待优化任务（TXT）：docs/03_OPTIMIZATION_BACKLOG.txt
